@@ -12,35 +12,33 @@
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_convert_hex(unsigned char c)
 {
-	write(1, &c, 1);
+	char	*hex;
+
+	hex = "0123456789abcdef";
+	write(1, &"\\", 1);
+	write(1, &hex[c / 16], 1);
+	write(1, &hex[c % 16], 1);
 }
 
 void	ft_putstr_non_printable(char *str)
 {
-	int		i;
-	char	*hex;
+	int	i;
 
 	i = 0;
-	hex = "0123456789abcdef";
 	while (str[i])
 	{
-		if (str[i] < ' ' || str[i] == 127)
-		{
-			ft_putchar('\\');
-			ft_putchar(hex[str[i] / 16]);
-			ft_putchar(hex[str[i] % 16]);
-		}
-		if (str[i] <= '~' && str[i] >= ' ')
-			ft_putchar(str[i]);
+		if (str[i] < 32 || str[i] == 127)
+			ft_convert_hex(str[i]);
+		else
+			write(1, &str[i], 1);
 		i++;
 	}
 }
 
 /*int main()
 {
-	ft_putstr_non_printable("Yo je \n teste des trucs abcdefghijklmnop 5\0");
-	return 0;
-}
-*/
+	ft_putstr_non_printable("Yo je \n teste des tru\0cs abcdefghijklmnop 5\0");
+	return (0);
+}*/

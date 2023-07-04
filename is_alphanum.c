@@ -18,9 +18,9 @@
 
 int	is_alphanum_char(char str)
 {
-	if ((str < '0' && '9' > str)
-		&& (str < 'a' && 'z' > str)
-		&& (str < 'A' && 'Z' > str))
+	if (!((str >= '0' && str <= '9')
+    	|| (str >= 'a' && str <= 'z')
+    	|| (str >= 'A' && str <= 'Z')))
 	{
 		return (0);
 	}
@@ -34,9 +34,9 @@ int	is_alphanum_string(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if ((str[i] < '0' && '9' > str[i])
-			&& (str[i] < 'a' && 'z' > str[i])
-			&& (str[i] < 'A' && 'Z' > str[i]))
+		if (!((str[i] >= '0' && '9' <= str[i])
+			|| (str[i] >= 'a' && 'z' <= str[i])
+			|| (str[i] >= 'A' && 'Z' <= str[i])))
 		{
 			return (0);
 		}
@@ -50,7 +50,11 @@ int	is_alphanum_string(char *str)
 int main()
 {
 	printf("%i", is_alphanum_char('C'));
+	printf("%i", is_alphanum_char('a'));
+	printf("%i", is_alphanum_char('7'));
 	printf("%i", is_alphanum_char('\n'));
+	printf("%i", is_alphanum_string("0nly4lph4num"));
+	printf("%i", is_alphanum_string("not\n4lph4num"));
 
 
 
