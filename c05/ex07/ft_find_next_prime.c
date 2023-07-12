@@ -41,9 +41,10 @@ int	ft_find_next_prime(int nb)
 			return (i);
 		i++;
 	}
+	return (nb);
 }
 
-/*#include <stdio.h>
+#include <stdio.h>
 
 int	main(void)
 {
@@ -52,4 +53,4 @@ int	main(void)
 	printf("4576 => %d\n", ft_find_next_prime(4576));
 	printf("2147483647 => %d\n", ft_find_next_prime(2147483647));
 	return (0);
-}*/
+}
