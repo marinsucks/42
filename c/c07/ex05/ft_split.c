@@ -1,113 +1,118 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_base.c                                  :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbecker <marvin@42.fr>                    +#+  +:+       +#+         */
+/*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 14:14:21 by mbecker          #+#    #+#              */
-/*   Updated: 2023/07/17 14:14:24 by mbecker         ###   ########.fr        */
+/*   Created: 2023/07/16 23:04:47 by mbecker           #+#    #+#             */
+/*   Updated: 2023/07/16 23:04:48 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_check(char c, char *charset)
+char	*ft_strndup(char *src, int size)
 {
-	int	j;
+	char	*ptr;
+	int		i;
 
-	j = 0;
-	while (charset[j])
+	i = 0;
+	while (src[i])
+		i++;
+	ptr = (char *)malloc((size + 1) * sizeof(char *));
+	if (!ptr)
+		return (0);
+	i = 0;
+	while (src[i] && i < size)
 	{
-		if (c == charset[j])
+		ptr[i] = src[i];
+		i++;
+	}
+	ptr[i] = 0;
+	return (ptr);
+}
+
+int	is_in_charset(char c, char *charset)
+{
+	int	i;
+
+	i = 0;
+	while (charset[i])
+	{
+		if (charset[i] == c)
 			return (1);
-		j++;
+		i++;
 	}
 	return (0);
 }
 
-int	ft_count_words(char *str, char *charset)
+int	wordcount(char *str, char *charset)
 {
 	int	i;
 	int	count;
 
 	i = 0;
 	count = 0;
+	if (str[0] == '\0')
+		return (0);
 	while (str[i])
 	{
-		if (!(ft_check(str[i], charset)))
-		{
+		if (is_in_charset(str[i], charset) == 0 
+			&& ((is_in_charset(str[i + 1], charset) == 1) || (str[i + 1] == '\0')))
 			count++;
-			while (str[i] && (!(ft_check(str[i], charset))))
-				i++;
-		}
 		i++;
 	}
 	return (count);
 }
 
-char	*ft_strdup(char *str, char *charset, int *pos_str)
-{
-	int		first_pos;
-	int		i;
-	char	*ptr_dup;
-
-	while (ft_check(str[*pos_str], charset))
-			(*pos_str)++;
-	first_pos = *pos_str;
-	while (str[*pos_str] && !(ft_check(str[*pos_str], charset)))
-		(*pos_str)++;
-	ptr_dup = (char *)malloc(sizeof(char) * (*pos_str - first_pos + 1));
-	if (!ptr_dup)
-		return (NULL);
-	i = 0;
-	while ((first_pos + i) < (*pos_str))
-	{
-		ptr_dup[i] = str[first_pos + i];
-		i++;
-	}
-	ptr_dup[i] = '\0';
-	return (ptr_dup);
-}
-
 char	**ft_split(char *str, char *charset)
 {
+	char	**res;
 	int		i;
-	int		pos;
-	int		last;
-	char	**tab;
+	int		j;
+	int		size;
 
-	last = ft_count_words(str, charset);
-	tab = (char **)malloc(sizeof(char *) * (last + 1));
 	i = 0;
-	pos = 0;
-	if (!tab)
-		return (NULL);
-	tab[last] = 0;
-	while (i < ft_count_words(str, charset))
+	j = 0;
+	res = (char **)malloc(wordcount(str, charset) * sizeof(char *));
+	if (!res)
+		return (0);
+	while (j < wordcount(str, charset))
 	{
-		tab[i] = ft_strdup(str, charset, &pos);
-		i++;
+		size = 0;
+		while (str[i] && is_in_charset(str[i], charset))
+			i++;
+		while (str[i] && is_in_charset(str[i], charset) == 0)
+		{
+			size++;
+			i++;
+		}
+		res[j] = ft_strndup((str + i - size), size);
+		j++;
 	}
-	return (tab);
+	res[j] = 0;
+	return (res);
 }
-/*
+
 #include <stdio.h>
 int main(int ac, char **av)
 {
-	(void) ac;
+    (void) ac;
 
-	char **tab;
-	int	i;
-	int	number;
+    char **tab;
+    int    i;
+    int    number;
 
-	tab =ft_split(av[1], av[2]);
-	i = 0;
-	number = ft_count_words(av[1], av[2]);
-	while (i < number)
-	{
-		printf("||%s||\n", tab[i]);
-		i++;
-	}
-	
-}*/
+    tab =ft_split(av[1], av[2]);
+    i = 0;
+    number = wordcount(av[1], av[2]);
+    while (i < number)
+    {
+        printf("*%s*\n", tab[i]);
+		if (tab[i] == 0)
+			printf("void");
+        i++;
+    }
+    printf("\n---\n\n");
+}
