@@ -4,7 +4,7 @@ Hey there! I just finished the 42 Piscine, and I'm super excited to kick off my 
 
 ## About Me
 
-I'm Marin, an enthusiastic coder, diving into the world of 42 to learn and to eventually end up a full stack dev.
+I'm Marin, a student learning to code, diving into the world of 42 to learn and to eventually end up a full stack dev.
 
 ## My Projects
 
