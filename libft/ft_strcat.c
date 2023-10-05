@@ -1,17 +1,19 @@
 #include "libft.h"
 #include <string.h>
 
-char	*ft_strcat(char *dest, char *src)
+char	*ft_strcat(char *restrict s1, const char *restrict s2)
 {
-	int i = 0;
-	int j = 0;
-	while (dest[i])
-		i++;
-	while (src[j])
+	char	*ptr;
+
+	ptr = s1;
+	while (*s1 != 0)
+		s1++;
+	while (*s2 != 0)
 	{
-		dest[i + j] = src[j];
-		j++;
+		*s1 = *s2;
+		s1++;
+		s2++;
 	}
-	dest[i + j] = 0;
-	return (dest);
+	*s1 = 0;
+	return (ptr);
 }

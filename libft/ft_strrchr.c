@@ -3,39 +3,16 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	int i;
-	int count;
+	const char	*last_occ;
 
-	i = 0;
-	count = 0;
+	last_occ = NULL;
 	if (c == '\0')
-		return ((char *)&str[i]);
-	while (str[i])
+		return ((char *)str);
+	while (*str != 0)
 	{
-		if (str[i] == c)
-			count++;
-		i++;
+		if (*str == c)
+			last_occ = str;
+		str++;
 	}
-	while (str[i])
-	{
-		if (str[i] == c)
-			count--;
-		if (count == 0)
-			return ((char *)&str[i]);
-		i++;
-	}
-	return (NULL);
-}
-
-#include <stdio.h>
-
-int main()
-{
-	char *strrchr_char;
-	char strrchr_str[] = "Remplace l'espace par un tiret.";
-	printf("STRRCHR\n");
-	printf("input = %s", strrchr_str);
-	strrchr_char = strrchr(strrchr_str, ' ');
-	*strrchr_char = '-';
-	printf("\ntest result = %s\n\n", strrchr_str);
+	return ((char *)last_occ);
 }

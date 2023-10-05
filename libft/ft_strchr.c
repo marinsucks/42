@@ -3,17 +3,14 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
+	while (*str != '\0')
 	{
-		if (str[i] == c)
-			return ((char *)&str[i]);
-		i++;
+		if (*str == c)
+			return ((char *)str);
+		str++;
 	}
 	if (c == '\0')
-		return ((char *)&str[i]);
+		return ((char *)str);
 	else
 		return (NULL);
 }
