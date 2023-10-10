@@ -1,5 +1,4 @@
 #include "libft.h"
-#include <string.h>
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
@@ -15,7 +14,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 		while (haystack[i + j] == needle[j])
 		{
 			if (needle[j + 1] == '\0')
-				return (char *)(&haystack[i]);
+				return ((char *)(&haystack[i]));
 			j++;
 		}
 		i++;

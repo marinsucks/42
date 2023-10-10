@@ -1,6 +1,7 @@
-#include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
 #include "libft.h"
 
 void red(){
@@ -48,7 +49,7 @@ int	main(void) {
 
 	//STRCHR
 	char *strchr_char;
-	char strchr_str[] = "Remplace le premier espace par un tiret."; //CHECKS Empty OK
+	char strchr_str[] = "a b c d"; //CHECKS Empty OK
 	green();
 	printf("STRCHR\n");
 	reset();
@@ -62,12 +63,12 @@ int	main(void) {
 
 	//STRRCHR
 	char *strrchr_char;
-	char strrchr_str[] = "Remplace le dernier espace par un tiret."; //CHECKS Empty OK
+	char strrchr_str[] = "e f g h"; //CHECKS Empty OK
 	green();
 	printf("STRRCHR\n");
 	reset();
 	printf("input = %s", strrchr_str);
-	strrchr_char = ft_strrchr(strrchr_str, ' ');
+	strrchr_char = ft_strrchr(strrchr_str, '\0');
 	*strrchr_char = '-';
 	red();
 	printf("\ntest result = %s\n\n", strrchr_str);
@@ -100,6 +101,30 @@ int	main(void) {
 	printf("a - c = %i\n\n", ft_strncmp(strncmp_a, strncmp_c, num));
 	reset();
 
+	//STRCPY
+	char strcpy_src[] = "text replacing part of dst"; //CHECKS Empty OK
+	char strcpy_dst[] = "xxxxxxxxxxxxxxxxxxxxxxxxxx //DONE";
+	green();
+	printf("STRCPY\n");
+	reset();
+	printf("src = %s\n", strcpy_src);
+	red();
+	printf("dst output = %s\n\n", ft_strcpy(strcpy_dst, strcpy_src));
+	printf("OG output = %s\n\n", strcpy(strcpy_dst, strcpy_src));
+	reset();
+
+	//STRNCPY
+	char strncpy_src[] = "copied text fom src to dstxxxxxxx"; //CHECKS Empty OK
+	char strncpy_dst[] = "xxxxxxxxxxxxxxxxxxxxxxxxxx //DONE";
+	int strncpy_len = 27;
+	green();
+	printf("STRNCPY\n");
+	reset();
+	printf("src = %s\nlen = %d\n", strncpy_src, strncpy_len);
+	red();
+	printf("dst output = %s\n\n", ft_strncpy(strncpy_dst, strncpy_src, strncpy_len));
+	reset();
+
 	//STRLEN
 	char strlen[] = "yolo"; //CHECKS Empty OK
 	green();
@@ -108,18 +133,6 @@ int	main(void) {
 	printf("input = %s\n", strlen);
 	red();
 	printf("output = %i\n\n", ft_strlen(strlen));
-	reset();
-
-	//STRNCPY
-	char strncpy_src[] = "copied text fom src to dst"; //CHECKS Empty OK
-	int strncpy_len = 10;
-	char *strncpy_dst = malloc(ft_strlen(strncpy_src) * sizeof(char));
-	green();
-	printf("STRNCPY\n");
-	reset();
-	printf("src = %s\nlen = %d\n", strncpy_src, strncpy_len);
-	red();
-	printf("dst output = %s\n\n", ft_strncpy(strncpy_dst, strncpy_src, strncpy_len));
 	reset();
 
 	//STRSTR
@@ -146,6 +159,18 @@ int	main(void) {
 	printf("n1 output = %s\n", ft_strnstr(strnstr_haystack, strnstr_needle, n1));
 	printf("n2 output = %s\n\n", ft_strnstr(strnstr_haystack, strnstr_needle, n2));
 	reset();
+
+	//STRDUP
+	char strdup_src[] = "src text to dup"; //CHECKS Empty OK
+	char *strdup_dst = ft_strdup(strdup_src);
+	green();
+	printf("STRDUP\n");
+	reset();
+	printf("src = %s\n", strdup_src);
+	red();
+	printf("dst output = %s\n\n", strdup_dst);
+	reset();
+	free(strdup_dst);
 
 	return (0);
 }
