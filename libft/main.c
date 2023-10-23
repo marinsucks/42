@@ -15,12 +15,25 @@ void green(){
 void blue(){
   printf("\033[1;34m");
 }
+	//IS~
+	// for (int i = -1; i < 129; i++)
+	// {
+	// 	if (ft_isdigit(i))
+	// 		printf("%c / ", i);
+	// }
 
 void reset(){
   printf("\033[0m");
 }
 
 int	main(void) {
+
+	//IS~
+	// for (int i = -1; i < 129; i++)
+	// {
+	// 	if (ft_is~(i))
+	// 		printf("%c / ", i);
+	// }
 	
 	//STRCAT 
 	char strcat_src[] = "World!"; //CHECKS Empty OK
@@ -132,7 +145,7 @@ int	main(void) {
 	reset();
 	printf("input = %s\n", strlen);
 	red();
-	printf("output = %i\n\n", ft_strlen(strlen));
+	printf("output = %zu\n\n", ft_strlen(strlen));
 	reset();
 
 	//STRSTR
@@ -172,5 +185,18 @@ int	main(void) {
 	reset();
 	free(strdup_dst);
 
+	//MEMSET
+	char memset_b[10];
+	char memset_c = 'A';
+	green();
+	printf("MEMSET\n");
+	reset();
+	printf("char c = %c\nsizeof buffer = %lu\n", memset_c, sizeof(memset_b));
+	ft_memset(memset_b, memset_c, sizeof(memset_b));
+	red();
+	printf("result : %s\n(anything after %c is normal, memory tests are fucked lol)\n", memset_b, memset_c);
+	reset();
+
+	
 	return (0);
 }
