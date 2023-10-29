@@ -3,7 +3,6 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 
 SRC = $(wildcard *.c)
-# OBJ = $(SRC:.c=.o)
 
 FUNCTION_NAME = $(firstword $(MAKECMDGOALS))
 
@@ -16,11 +15,11 @@ all: comp exe
 
 comp: $(SRC)
 	@echo "Compiling all .c files..."
-	@$(CC) $(CFLAGS) -o libft $(SRC)
+	@$(CC) $(CFLAGS) -o libexe $(SRC)
 
 exe: 
 	@echo "Executing libft..."
-	@./libft
+	@./libexe
 
 ft_%:
 	@echo "Compiling $@.c..."
@@ -29,5 +28,5 @@ ft_%:
 
 clean:
 	@echo "Removing executables..."
-	rm -f libft a.out
+	rm -rf a.out libexe a.out.dSYM
 

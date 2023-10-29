@@ -4,10 +4,10 @@ void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
 	char	*d;
 	char	*s;
-
+ 
 	d = (char *)dst;
 	s = (char *)src;
-	while (n > 0 || src != NULL)
+	while (n > 0 && src != NULL)
 	{
 		*d = *s;
 		d++;
@@ -17,16 +17,16 @@ void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 	return (dst);
 } 
 
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 
-int main() {
+// int main() {
 
-    char *buffer = NULL;
-	char mem[30];
-    //ft_memcpy(buffer + 3, buffer, strlen(buffer) + 1);
-    ft_memcpy(mem, buffer, 20);
-    printf("%s\n", mem);
+//     char buffer[] = "test goddamn";
+// 	//char mem[30];
+//     ft_memcpy(buffer + 4, buffer, ft_strlen(buffer) + 1);
+//     // ft_memcpy(mem, buffer, 20);
+//     printf("%s\n", buffer);
 
-    return 0;
-}
+//     return 0;
+// }

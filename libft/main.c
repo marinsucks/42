@@ -15,18 +15,153 @@ void green(){
 void blue(){
   printf("\033[1;34m");
 }
-	//IS~
-	// for (int i = -1; i < 129; i++)
-	// {
-	// 	if (ft_isdigit(i))
-	// 		printf("%c / ", i);
-	// }
 
 void reset(){
   printf("\033[0m");
 }
 
-int	main(void) {
+void	atoiTest()
+{
+	green();
+	printf("\n\n*** ATOI ***\nfrom ascii to int\n");
+	reset();
+
+	printf("Enter a string (100 char max): ");
+	char atoi1[101];
+	scanf("%s", atoi1);
+
+	int atoi2 = ft_atoi(atoi1);
+	int atoi0 = atoi(atoi1);
+
+	red();
+	if (atoi2 == atoi0)
+		printf("Success : correct comparison between ft and og output.\n");
+	else
+		printf("Failure : incorrect comparison between ft and og output.\n");
+	reset();
+} 
+
+void	bzeroTest()
+{
+	green();
+	printf("\n\n*** BZERO ***\nwrite n zeroed bytes to the string s \n\n");
+	reset();
+
+	printf("Enter a string (100 char max): ");
+	char bzerostr[101];
+	scanf("%s", bzerostr);
+	char *bzerostr2 = malloc(ft_strlen(bzerostr) + 1);
+	bzerostr2 = ft_strcpy(bzerostr2, bzerostr);
+	printf("Enter the number of zeroed bytes to write to the string: ");
+	int bzeron;
+	scanf("%d", &bzeron);
+	ft_bzero(bzerostr, bzeron);
+	bzero(bzerostr2, bzeron);
+
+	red();
+	if (!ft_strcmp(bzerostr, bzerostr2))
+		printf("\nComparison between ft and og succesful.\n");
+	else
+		printf("\nFailure : comparison unsuccesful between ft_bzero str and bzero str.\n");
+	reset();
+}
+
+void	isTest()
+{
+	green();
+	printf("\n\n*** ISALNUM, ISALPHA, ISASCII, ISDIGIT, ISPRINT ***\n\n");
+	reset();
+
+	printf("Please enter a character, or '*' to test all char:");
+	char isc;
+	scanf("%s", &isc);
+
+	red();
+	if(isc == '*')
+	{
+		for (int i = 0; i <= 255; i++)
+		{
+			if (ft_isalnum(i))
+				printf("%c is alnum.\n", i);
+			if (ft_isalpha(i))
+				printf("%c is alpha.\n", i);
+			if (ft_isdigit(i))
+				printf("%c is digit.\n", i);
+			if (ft_isascii(i))
+				printf("%c is ascii.\n", i);
+			if (ft_isprint(i))
+				printf("%c is print.\n", i);
+		}
+	}
+
+	if (ft_isalnum(isc))
+		printf("%c is alnum.\n", isc);
+	if (ft_isalpha(isc))
+		printf("%c is alpha.\n", isc);
+	if (ft_isdigit(isc))
+		printf("%c is digit.\n", isc);
+	if (ft_isascii(isc))
+		printf("%c is ascii.\n", isc);
+	if (ft_isprint(isc))
+		printf("%c is print.\n", isc);
+	reset();
+}
+
+void	toTest()
+{
+	green();
+	printf("\n\n*** TOLOWER, TOUPPER ***\n\n");
+	reset();
+
+	printf("Please enter an alphabetical character :");
+	char toc;
+	scanf("%s", &toc);
+	char toc2 = toc;
+	
+	red();
+	if (ft_isalpha(toc))
+	{
+		printf("tolower = %c\n", ft_tolower(toc));
+		printf("toupper = %c\n", ft_toupper(toc2));
+	}
+	else 
+		printf("\nincorrect output.");
+	reset();
+}
+
+int	main()
+{
+	red();
+	printf("\nWELCOME TO LIBFT TEST PROGRAM.\n");
+	reset();
+
+	while (1)
+	{
+		char 	func_name[50];
+		printf("\nPlease write the name of the function you want to test, or q to quit: ");
+		scanf("%s", func_name);
+
+		if (!ft_strcmp(func_name, "q"))
+			break;
+
+		if (!ft_strcmp(func_name, "atoi"))
+			atoiTest();
+		else if (!ft_strcmp(func_name, "bzero"))
+			bzeroTest();
+		else if (!ft_strncmp(func_name, "is", 2))
+			isTest();
+		else if (!ft_strncmp(func_name, "to", 2))
+			toTest();
+		
+		else
+			printf("Not a valid entry. Examples can be 'atoi', 'is...', 'strcmp', 'q'.\n");
+	}
+	red();
+	printf("\nEND OF THE PROGRAM\n");
+	return 0;
+}
+
+/* int	main(void) {
 
 	//IS~
 	// for (int i = -1; i < 129; i++)
@@ -199,4 +334,4 @@ int	main(void) {
 
 	
 	return (0);
-}
+}*/
