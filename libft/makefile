@@ -6,11 +6,6 @@ SRC = $(wildcard *.c)
 
 FUNCTION_NAME = $(firstword $(MAKECMDGOALS))
 
-git:
-	@echo "Adding all files to staging area..."
-	@git add .
-	git commit -m "$m"
-
 all: comp exe
 
 comp: $(SRC)
@@ -30,3 +25,7 @@ clean:
 	@echo "Removing executables..."
 	rm -rf a.out libexe a.out.dSYM
 
+git:
+	@echo "Adding all files to staging area..."
+	@git add .
+	git commit -m "$m"
