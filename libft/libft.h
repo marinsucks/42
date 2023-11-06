@@ -19,10 +19,6 @@
 # include <string.h>
 # include <unistd.h>
 
-# ifndef SIZE_T_DEFINED
-#  define SIZE_T_DEFINED
-# endif
-
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);
