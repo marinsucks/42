@@ -22,28 +22,39 @@ void reset(){
 
 void	atoiTest()
 {
-	green();
-	printf("\n\n*** ATOI ***\nfrom ascii to int\n");
-	reset();
-
-	printf("Enter a string (100 char max): ");
-	char atoi1[101];
-	scanf("%s", atoi1);
-
-	int atoi2 = ft_atoi(atoi1);
-	int atoi0 = atoi(atoi1);
-
+    char atoi0[] = "-42";
+    char atoi1[] = "0";
+    char atoi2[] = "123456";
+    char atoi3[] = "  67xy";
+    char atoi4[] = "   +42";
+    char atoi5[] = "  xyz9";
+    
+    blue();
+    printf("Input\tatoi\tft_atoi\n");
+    red();
+    if (ft_atoi(atoi0) == atoi(atoi0)) green();
+    printf("%s\t%d\t%d\n", atoi0, atoi(atoi0), ft_atoi(atoi0));
 	red();
-	if (atoi2 == atoi0)
-		printf("Success : correct comparison between ft and og output.\n");
-	else
-		printf("Failure : incorrect comparison between ft and og output.\n");
+    if (ft_atoi(atoi1) == atoi(atoi1)) green();
+    printf("%s\t%d\t%d\n", atoi1, atoi(atoi1), ft_atoi(atoi1));
+	red();
+    if (ft_atoi(atoi2) == atoi(atoi2)) green();
+    printf("%s\t%d\t%d\n", atoi2, atoi(atoi2), ft_atoi(atoi2));
+	red();
+    if (ft_atoi(atoi3) == atoi(atoi3)) green();
+    printf("%s\t%d\t%d\n", atoi3, atoi(atoi3), ft_atoi(atoi3));
+	red();
+    if (ft_atoi(atoi4) == atoi(atoi4)) green();
+    printf("%s\t%d\t%d\n", atoi4, atoi(atoi4), ft_atoi(atoi4));
+	red();
+    if (ft_atoi(atoi5) == atoi(atoi5)) green();
+    printf("%s\t%d\t%d\n", atoi5, atoi(atoi5), ft_atoi(atoi5));
 	reset();
 } 
 
 void	bzeroTest()
 {
-	green();
+	blue();
 	printf("\n\n*** BZERO ***\nwrite n zeroed bytes to the string s \n\n");
 	reset();
 
@@ -68,7 +79,7 @@ void	bzeroTest()
 
 void	isTest()
 {
-	green();
+	blue();
 	printf("\n\n*** ISALNUM, ISALPHA, ISASCII, ISDIGIT, ISPRINT ***\n\n");
 	reset();
 
@@ -109,7 +120,7 @@ void	isTest()
 
 void	toTest()
 {
-	green();
+	blue();
 	printf("\n\n*** TOLOWER, TOUPPER ***\n\n");
 	reset();
 
