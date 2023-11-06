@@ -21,6 +21,8 @@ int	ft_atoi(const char *str)
 	i = 0;
 	sign = 1;
 	res = 0;
+	while (str[i] == ' ' || ((str[i] >= 9 && str[i] <= 13) || str[i] == '+'))
+		i++;
 	if ((str[i] == '-') && (str[i + 1] >= '0' && str[i + 1] <= '9'))
 	{
 		sign = -1;
@@ -33,12 +35,3 @@ int	ft_atoi(const char *str)
 	}
 	return (res * sign);
 }
-/*
-#include <stdio.h>
-
-int	main(int argc, char const *argv[])
-{
-	if (argc)
-		printf("ft   = %d\natoi = %d\n", ft_atoi(argv[1]), atoi(argv[1]));
-	return (0);
-} */
