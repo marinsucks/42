@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	char	*d;
 	char	*s;
@@ -29,16 +29,21 @@ void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 	return (dst);
 } 
 
-// #include <stdio.h>
-// #include <string.h>
+#include <stdio.h>
+#include <string.h>
 
-// int main() {
+int main() {
 
-//     char buffer[] = "test goddamn";
-// 	//char mem[30];
-//     ft_memcpy(buffer + 4, buffer, ft_strlen(buffer) + 1);
-//     // ft_memcpy(mem, buffer, 20);
-//     printf("%s\n", buffer);
+    char buffer[] = "test goddamn";
+	char *malloc = ft_strdup(buffer);
+	memcpy(malloc + 4, malloc, 5);
+    printf("%s\n", malloc);
+	free(malloc);
 
-//     return 0;
-// }
+	malloc = ft_strdup(buffer);
+	ft_memcpy(malloc + 4, malloc, 5);
+    printf("%s\n", malloc);
+	free(malloc);
+
+    return 0;
+}

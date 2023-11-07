@@ -1,4 +1,4 @@
-/*#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
@@ -20,9 +20,14 @@ void reset(){
   printf("\033[0m");
 }
 
+
 void	atoiTest()
 {
-    char atoi0[] = "-42";
+    blue();
+	printf("\n\n*** ATOI ***\n\n");
+	reset();
+
+	char atoi0[] = "-42";
     char atoi1[] = "0";
     char atoi2[] = "123456";
     char atoi3[] = "  67xy";
@@ -71,7 +76,10 @@ void	bzeroTest()
 
 	red();
 	if (!ft_strcmp(bzerostr, bzerostr2))
+	{
+		green();
 		printf("\nComparison between ft and og succesful.\n");
+	}
 	else
 		printf("\nFailure : comparison unsuccesful between ft_bzero str and bzero str.\n");
 	reset();
@@ -87,7 +95,7 @@ void	isTest()
 	char isc;
 	scanf("%s", &isc);
 
-	red();
+	green();
 	if(isc == '*')
 	{
 		for (int i = 0; i <= 255; i++)
@@ -132,6 +140,7 @@ void	toTest()
 	red();
 	if (ft_isalpha(toc))
 	{
+		green();
 		printf("tolower = %c\n", ft_tolower(toc));
 		printf("toupper = %c\n", ft_toupper(toc2));
 	}
@@ -139,6 +148,82 @@ void	toTest()
 		printf("\nincorrect output.");
 	reset();
 }
+
+void	memmoveTest() 
+{
+	blue();
+	printf("\n\n*** MEMMOVE ***\n\n");
+	reset();
+
+    char str0[] = "samestring";
+    char str1[20] = "Hello, World!";
+    char str2[20] = "1234567890";
+    char str3[20] = "1234567890"; 
+    char str4[20] = "ABCDEFGHIJ"; 
+    char empty[] = "";
+   
+    char str01[20] = "Hello, World!";
+    char str02[20] = "1234567890";
+    char str03[20] = "1234567890";
+    char str04[20] = "ABCDEFGHIJ"; 
+
+    blue();
+	printf("Case 1 : src < dst\nimplementation: memmove(str1 + 3, str1, 12)\n");
+    reset();
+	printf("Input:\t\t%s\n", str1);
+    memmove(str01 + 3, str01, 12);
+    ft_memmove(str1 + 3, str1, 12);
+    if(!ft_strcmp(str01, str1)) green();
+    else red();
+    printf("memmove :\t%s\nft_memmove :\t%s\n\n", str01, str1);
+	reset();
+
+    blue();
+	printf("Case 2 : src > dst\nimplementation: memmove(str2, str2 + 3, 12)\n");
+    reset();
+	printf("Input:\t\t%s\n", str2);
+    memmove(str02, str02 + 3, 12);
+    ft_memmove(str2, str2 + 3, 12);
+    if(!ft_strcmp(str02, str2)) green();
+    else red();
+    printf("memmove :\t%s\nft_memmove :\t%s\n\n", str02, str2);
+	reset();
+
+    blue();
+	printf("Case 3 : src = dst\nimplementation: memmove(str0, str0, sizeof(str0))\n");
+    reset();
+	printf("Input:\t\t%s\n", str0);
+    memmove(str0, str0, sizeof(str0));
+    ft_memmove(str0, str0, sizeof(str0));
+    if(!ft_strcmp(str0, str0)) green();
+    else red();
+    printf("memmove :\t%s\nft_memmove :\t%s\n\n", str0, str0);
+	reset();
+
+    blue();
+	printf("Case 4 : empty string on empty string\nimplementation: memmove(empty, empty, sizeof(empty))\n");
+    reset();
+	printf("Input:\t\t%s\n", empty);
+    memmove(empty, empty, sizeof(empty));
+    ft_memmove(empty, empty, sizeof(empty));
+    if(!ft_strcmp(empty, empty)) green();
+    else red();
+    printf("memmove :\t%s\nft_memmove :\t%s\n\n", empty, empty);
+	reset();
+
+    blue();
+	printf("Case 5 : no specific behaviour\nimplementation: memmove(str3, str4, 12)\n");
+    reset();
+	printf("Input:\t\t%s and %s\n", str3, str4);
+    memmove(str03, str04, 12);
+    ft_memmove(str3, str4, 12);
+    if(!ft_strcmp(str03, str3)) green();
+    else red();
+    printf("memmove :\t%s\nft_memmove :\t%s\n\n", str03, str3);
+	reset();
+}
+
+
 
 int	main()
 {
@@ -163,6 +248,8 @@ int	main()
 			isTest();
 		else if (!ft_strncmp(func_name, "to", 2))
 			toTest();
+		else if (!ft_strcmp(func_name, "memmove"))
+			memmoveTest();
 		
 		else
 			printf("Not a valid entry. Examples can be 'atoi', 'is...', 'strcmp', 'q'.\n");
@@ -170,194 +257,4 @@ int	main()
 	red();
 	printf("\nEND OF THE PROGRAM\n");
 	return 0;
-}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//ANCIEN MAIN
-
-/* int	main(void) {
-
-	//IS~
-	// for (int i = -1; i < 129; i++)
-	// {
-	// 	if (ft_is~(i))
-	// 		printf("%c / ", i);
-	// }
-	
-	//STRCAT 
-	char strcat_src[] = "World!"; //CHECKS Empty OK
-	char strcat_dest[] = "Hello,"; //CHECKS Empty OK
-	green();
-	printf("STRCAT\n");
-	reset();
-	printf("src = %s\ndest = %s", strcat_src, strcat_dest);
-	ft_strcat(strcat_dest, strcat_src);
-	red();
-	printf("\nmy output = %s\n\n", strcat_dest);
-	reset();
-	
-	//STRNCAT
-	char strncat_src[] = "_World!"; //CHECKS Empty OK
-	char strncat_dest[] = "Hello,"; //CHECKS Empty OK
-	int strncat_n = 3;
-	green();
-	printf("STRNCAT\n");
-	reset();
-	printf("src = %s\ndest = %s\nn = %i\n", strncat_src, strncat_dest, strncat_n);
-	ft_strncat(strncat_dest, strncat_src, strncat_n);
-	red();
-	printf("\nmy output = %s\n\n", strncat_dest);
-	reset();
-
-	//STRCHR
-	char *strchr_char;
-	char strchr_str[] = "a b c d"; //CHECKS Empty OK
-	green();
-	printf("STRCHR\n");
-	reset();
-	printf("input = %s", strchr_str);
-
-	strchr_char = ft_strchr(strchr_str, ' ');
-	*strchr_char = '-';
-	red();
-	printf("\ntest result = %s\n\n", strchr_str);
-	reset();
-
-	//STRRCHR
-	char *strrchr_char;
-	char strrchr_str[] = "e f g h"; //CHECKS Empty OK
-	green();
-	printf("STRRCHR\n");
-	reset();
-	printf("input = %s", strrchr_str);
-	strrchr_char = ft_strrchr(strrchr_str, '\0');
-	*strrchr_char = '-';
-	red();
-	printf("\ntest result = %s\n\n", strrchr_str);
-	reset();
-
-	//STRCMP
-	char strcmp_a[] = "aaa";
-	char strcmp_b[] = "aab";
-	char strcmp_0[] = "";
-	green();
-	printf("STRCMP\n");
-	reset();
-	printf("input a = %s\ninput b = %s\ninput 0 = %s\n", strcmp_a, strcmp_b, strcmp_0);
-	red();
-	printf("a - b = %i\n", ft_strcmp(strcmp_a, strcmp_b));
-	printf("a - \\0 = %i\n\n", ft_strcmp(strcmp_a, strcmp_0));
-	reset();
-
-	//STRNCMP
-	char strncmp_a[] = "aaaaa";
-	char strncmp_b[] = "aaaba";
-	char strncmp_c[] = "aaaab"; //CHECKS Empty OK
-	int num = 4;
-	green();
-	printf("STRNCMP\n");
-	reset();
-	printf("input a = %s\ninput b = %s\ninput c = %s\nlimit = %i\n", strncmp_a, strncmp_b, strncmp_c, num);
-	red();
-	printf("a - b = %i\n", ft_strncmp(strncmp_a, strncmp_b, num));
-	printf("a - c = %i\n\n", ft_strncmp(strncmp_a, strncmp_c, num));
-	reset();
-
-	//STRCPY
-	char strcpy_src[] = "text replacing part of dst"; //CHECKS Empty OK
-	char strcpy_dst[] = "xxxxxxxxxxxxxxxxxxxxxxxxxx //DONE";
-	green();
-	printf("STRCPY\n");
-	reset();
-	printf("src = %s\n", strcpy_src);
-	red();
-	printf("dst output = %s\n\n", ft_strcpy(strcpy_dst, strcpy_src));
-	printf("OG output = %s\n\n", strcpy(strcpy_dst, strcpy_src));
-	reset();
-
-	//STRNCPY
-	char strncpy_src[] = "copied text fom src to dstxxxxxxx"; //CHECKS Empty OK
-	char strncpy_dst[] = "xxxxxxxxxxxxxxxxxxxxxxxxxx //DONE";
-	int strncpy_len = 27;
-	green();
-	printf("STRNCPY\n");
-	reset();
-	printf("src = %s\nlen = %d\n", strncpy_src, strncpy_len);
-	red();
-	printf("dst output = %s\n\n", ft_strncpy(strncpy_dst, strncpy_src, strncpy_len));
-	reset();
-
-	//STRLEN
-	char strlen[] = "yolo"; //CHECKS Empty OK
-	green();
-	printf("STRLEN\n");
-	reset();
-	printf("input = %s\n", strlen);
-	red();
-	printf("output = %zu\n\n", ft_strlen(strlen));
-	reset();
-
-	//STRSTR
-	char *strstr_haystack = "foofoobarfoo"; //CHECKS Empty OK
-	char *strstr_needle = "bar";
-	green();
-	printf("STRSTR\n");
-	reset();
-	printf("haystack = %s\nneedle = %s\n", strstr_haystack, strstr_needle);
-	red();
-	printf("output = %s\n\n", ft_strstr(strstr_haystack, strstr_needle));
-	reset();
-
-	//STRNSTR
-	char *strnstr_haystack = "foofoobarfoo"; //CHECKS Empty OK
-	char *strnstr_needle = "bar";
-	int n1 = 9;
-	int n2 = 7;
-	green();
-	printf("STRNSTR\n");
-	reset();
-	printf("haystack = %s\nneedle = %s\nn1 = %d\nn2 = %d\n", strnstr_haystack, strnstr_needle, n1, n2);
-	red();
-	printf("n1 output = %s\n", ft_strnstr(strnstr_haystack, strnstr_needle, n1));
-	printf("n2 output = %s\n\n", ft_strnstr(strnstr_haystack, strnstr_needle, n2));
-	reset();
-
-	//STRDUP
-	char strdup_src[] = "src text to dup"; //CHECKS Empty OK
-	char *strdup_dst = ft_strdup(strdup_src);
-	green();
-	printf("STRDUP\n");
-	reset();
-	printf("src = %s\n", strdup_src);
-	red();
-	printf("dst output = %s\n\n", strdup_dst);
-	reset();
-	free(strdup_dst);
-
-	//MEMSET
-	char memset_b[10];
-	char memset_c = 'A';
-	green();
-	printf("MEMSET\n");
-	reset();
-	printf("char c = %c\nsizeof buffer = %lu\n", memset_c, sizeof(memset_b));
-	ft_memset(memset_b, memset_c, sizeof(memset_b));
-	red();
-	printf("result : %s\n(anything after %c is normal, memory tests are fucked lol)\n", memset_b, memset_c);
-	reset();
-
-	
-	return (0);
-}*/
+}
