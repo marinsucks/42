@@ -8,7 +8,13 @@ FUNCTION_NAME = $(firstword $(MAKECMDGOALS))
 
 all: comp exe
 
-comp: $(SRC)
+allflags: compflags exe
+
+comp:
+	@echo "Compiling all .c files..."
+	@$(CC) -o libexe $(SRC)
+
+compflags:
 	@echo "Compiling all .c files..."
 	@$(CC) $(CFLAGS) -o libexe $(SRC)
 

@@ -16,7 +16,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	char	*d;
 	char	*s;
- 
+
 	d = (char *)dst;
 	s = (char *)src;
 	while (n > 0 && src != NULL)
@@ -27,23 +27,4 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 		n--;
 	}
 	return (dst);
-} 
-
-#include <stdio.h>
-#include <string.h>
-
-int main() {
-
-    char buffer[] = "test goddamn";
-	char *malloc = ft_strdup(buffer);
-	memcpy(malloc + 4, malloc, 5);
-    printf("%s\n", malloc);
-	free(malloc);
-
-	malloc = ft_strdup(buffer);
-	ft_memcpy(malloc + 4, malloc, 5);
-    printf("%s\n", malloc);
-	free(malloc);
-
-    return 0;
 }
