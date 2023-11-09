@@ -19,11 +19,11 @@ char	*ft_strrchr(const char *str, int c)
 	last_occ = NULL;
 	while (*str != 0)
 	{
-		if (*str == c)
+		if (*str == (char)c)
 			last_occ = str;
 		str++;
 	}
-	if (c == '\0')
+	if ((char)c == '\0')
 		return ((char *)str);
 	return ((char *)last_occ);
 }
