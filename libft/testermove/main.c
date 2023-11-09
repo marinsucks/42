@@ -75,7 +75,7 @@ void	bzeroTest()
 	bzero(bzerostr2, bzeron);
 
 	red();
-	if (!ft_strcmp(bzerostr, bzerostr2))
+	if (!strcmp(bzerostr, bzerostr2))
 	{
 		green();
 		printf("\nOutput = ");
@@ -101,9 +101,9 @@ void	isTest()
 {
 	blue();
 	printf("\n\n*** ISALNUM, ISALPHA, ISASCII, ISDIGIT, ISPRINT ***\n\n");
-	reset();
 
 	printf("Please enter a character, or '*' to test all char:");
+	reset();
 	char isc;
 	scanf("%s", &isc);
 
@@ -138,6 +138,29 @@ void	isTest()
 	reset();
 }
 
+void	toTest()
+{
+	blue();
+	printf("\n\n*** TOLOWER, TOUPPER ***\n\n");
+	reset();
+
+	printf("Please enter an alphabetical character :");
+	char toc;
+	scanf("%s", &toc);
+	char toc2 = toc;
+	
+	red();
+	if (ft_isalpha(toc))
+	{
+		green();
+		printf("tolower = %c\n", ft_tolower(toc));
+		printf("toupper = %c\n", ft_toupper(toc2));
+	}
+	else 
+		printf("\nincorrect output.");
+	reset();
+}
+
 void	memmoveTest() 
 {
 	blue();
@@ -164,7 +187,7 @@ void	memmoveTest()
 	printf("Input:\t\t%s\n", str1);
     memmove(str01 + 3, str01, 12);
     ft_memmove(str1 + 3, str1, 12);
-    if(!ft_strcmp(str01, str1)) green();
+    if(!strcmp(str01, str1)) green();
     else red();
     printf("memmove :\t%s\nft_memmove :\t%s\n\n", str01, str1);
 	reset();
@@ -175,7 +198,7 @@ void	memmoveTest()
 	printf("Input:\t\t%s\n", str2);
     memmove(str02, str02 + 3, 12);
     ft_memmove(str2, str2 + 3, 12);
-    if(!ft_strcmp(str02, str2)) green();
+    if(!strcmp(str02, str2)) green();
     else red();
     printf("memmove :\t%s\nft_memmove :\t%s\n\n", str02, str2);
 	reset();
@@ -186,7 +209,7 @@ void	memmoveTest()
 	printf("Input:\t\t%s\n", str0);
     memmove(str00, str00, sizeof(str0));
     ft_memmove(str0, str0, sizeof(str0));
-    if(!ft_strcmp(str00, str0)) green();
+    if(!strcmp(str00, str0)) green();
     else red();
     printf("memmove :\t%s\nft_memmove :\t%s\n\n", str0, str0);
 	reset();
@@ -197,7 +220,7 @@ void	memmoveTest()
 	printf("Input:\t\t%s\n", empty);
     memmove(empty0, empty0, sizeof(empty));
     ft_memmove(empty, empty, sizeof(empty));
-    if(!ft_strcmp(empty0, empty)) green();
+    if(!strcmp(empty0, empty)) green();
     else red();
     printf("memmove :\t%s\nft_memmove :\t%s\n\n", empty, empty);
 	reset();
@@ -208,7 +231,7 @@ void	memmoveTest()
 	printf("Input:\t\t%s and %s\n", str3, str4);
     memmove(str03, str04, 12);
     ft_memmove(str3, str4, 12);
-    if(!ft_strcmp(str03, str3)) green();
+    if(!strcmp(str03, str3)) green();
     else red();
     printf("memmove :\t%s\nft_memmove :\t%s\n\n", str03, str3);
 	reset();
@@ -236,7 +259,7 @@ void	memcpyTest()
 	printf("Input:\t\t%s and %s\n", str3, str4);
     memcpy(str03, str04, 12);
     ft_memcpy(str3, str4, 12);
-	if(!ft_strcmp(str03, str3)) green();
+	if(!strcmp(str03, str3)) green();
     else red();
     printf("memcpy :\t%s\nft_memcpy :\t%s\n\n", str03, str3);
 	reset();
@@ -247,7 +270,7 @@ void	memcpyTest()
 	printf("Input:\t\t%s\n", str0);
     memcpy(str00, str00, sizeof(str0));
     ft_memcpy(str0, str0, sizeof(str0));
-	if(!ft_strcmp(str00, str0)) green();
+	if(!strcmp(str00, str0)) green();
     else red();
     printf("memcpy :\t%s\nft_memcpy :\t%s\n\n", str0, str0);
 	reset();
@@ -258,13 +281,48 @@ void	memcpyTest()
 	printf("Input:\t\t%s\n", empty);
     memcpy(empty0, empty0, sizeof(empty));
     ft_memcpy(empty, empty, sizeof(empty));
-	if(!ft_strcmp(empty0, empty)) green();
+	if(!strcmp(empty0, empty)) green();
     else red();
     printf("memcpy :\t%s\nft_memcpy :\t%s\n\n", empty, empty);
 	reset();
 
 
 }
+
+void	memchrTest()
+{
+	blue();
+	printf("\n\n*** MEMCHR ***\n\n");
+	reset();
+
+	printf("Please enter a character to find in \"abcd\\0test\\ntghkix\": ");
+	char input;
+	scanf("%s", &input);
+
+	char buffer[] = "this is a \0 test";
+	char *ptr = ft_memchr(buffer, input, sizeof(buffer));
+	char *ptr2 = memchr(buffer, input, sizeof(buffer));
+
+	green();
+	if (ptr != ptr2) 
+	{
+		red();
+		printf("Invalid comparison between og and ft. Check again.\n");
+	}
+	else
+	{
+		if (ptr == NULL && ptr2 == NULL)
+			printf("\nptr value = NULL for both funcs.\nValue not found.\n");
+		else
+		{	
+			printf("\nft_memchr\tptr value = %c, found between %c and %c.\n", *ptr, *(ptr -1), *(ptr +1));
+			printf("memchr\t\tptr value = %c, found between %c and %c.\n", *ptr, *(ptr -1), *(ptr +1));
+		}
+	}
+	reset();
+}
+
+
 
 void	memTest()
 {
@@ -324,25 +382,27 @@ int	main()
 
 	while (1)
 	{
-		char 	func_name[30];
-		printf("\nPlease write the name of the function you want to test, or one key to quit: ");
+		char 	func_name[30] = "";
+		printf("\nPlease write the name of the function you want to test, or any key to quit: ");
 		scanf("%s", func_name);
 
-		if (!ft_strcmp(func_name, "q") || func_name[1] == 0)
+		if (!strcmp(func_name, "q") || func_name[1] == 0)
 			break;
-		else if (!ft_strcmp(func_name, "atoi"))
+		else if (!strcmp(func_name, "atoi"))
 			atoiTest();
-		else if (!ft_strcmp(func_name, "bzero"))
+		else if (!strcmp(func_name, "bzero"))
 			bzeroTest();
 		else if (!ft_strncmp(func_name, "is", 2))
 			isTest();
-		else if (!ft_strcmp(func_name, "memmove"))
+		else if (!ft_strncmp(func_name, "to", 2))
+			toTest();
+		else if (!strcmp(func_name, "memmove"))
 			memmoveTest();
-		else if (!ft_strcmp(func_name, "memcpy"))
+		else if (!strcmp(func_name, "memcpy"))
 			memcpyTest();		
-		else if (!ft_strcmp(func_name, "memtest"))
-			memTest();
-		else if (!ft_strcmp(func_name, "memtest"))
+		else if (!strcmp(func_name, "memchr"))
+			memchrTest();		
+		else if (!strcmp(func_name, "memtest"))
 			memTest();
 		else
 		{
@@ -356,28 +416,4 @@ int	main()
 	return 0;
 }
 
-		//else if (!ft_strncmp(func_name, "to", 2))
-		//	toTest();
 
-/*void	toTest()
-{
-	blue();
-	printf("\n\n*** TOLOWER, TOUPPER ***\n\n");
-	reset();
-
-	printf("Please enter an alphabetical character :");
-	char toc;
-	scanf("%s", &toc);
-	char toc2 = toc;
-	
-	red();
-	if (ft_isalpha(toc))
-	{
-		green();
-		printf("tolower = %c\n", ft_tolower(toc));
-		printf("toupper = %c\n", ft_toupper(toc2));
-	}
-	else 
-		printf("\nincorrect output.");
-	reset();
-}*/
