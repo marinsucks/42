@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mbecker <marvin@42.fr>                           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 16:21:51 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/07 16:21:54 by mbecker          ###   ########.fr       */
+/*   Created: 2023/11/10 17:11:16 by mbecker           #+#    #+#             */
+/*   Updated: 2023/11/10 17:11:19 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*res;
-	size_t	memsize;
+	size_t	niktamair;
 
-	memsize = nmemb * size;
-	if (size && memsize / size != nmemb)
+	if (start > ft_strlen(s))
 		return (NULL);
-	res = (char *)malloc(memsize);
+	
+	res = (char *)malloc(len);
 	if (!res)
 		return (NULL);
-	ft_memset(res, 0, memsize);
-	return (res);
+
+	s += start;
+	niktamair = ft_strlcpy(res, s, len);
+
+	return res;
 }

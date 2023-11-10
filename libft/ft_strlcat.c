@@ -12,45 +12,66 @@
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	size_t	d_len;
-	size_t	s_len;
+	size_t	dest_len;
+	size_t	src_len;
+	size_t	space_left;
+	size_t	i;
 
-	d_len = 0;
-	while (dst[d_len] && d_len < size)
-		d_len++;
-	s_len = 0;
-	while (src[s_len] && (d_len + s_len) < (size - 1))
+	dest_len = 0;
+	src_len = 0;
+	i = 0;
+	while (dest_len < size && dest[dest_len])
+		dest_len++;
+	while (src[src_len])
+		src_len++;
+	space_left = 0;
+	if (size > dest_len)
+		space_left = size - dest_len - 1;
+	while (i < space_left && src[i])
 	{
-		dst[d_len + s_len] = src[s_len];
-		s_len++;
+		dest[dest_len + i] = src[i];
+		i++;
 	}
-	if (d_len < size)
-		dst[d_len + s_len] = '\0';
-	while (src[s_len])
-		s_len++;
-	return (d_len + s_len);
+	if (dest_len < size)
+		dest[dest_len + space_left] = '\0';
+	return (dest_len + src_len);
 }
 
-/* // not one which works
-
-#include <stdio.h>
-
-int	main(int argc, char const *argv[])
+/*size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	char	*src;
-	int		ret_val;
-	int		ret_val2;
+	size_t	dest_len;
+	size_t	src_len;
+	size_t	space_left;
+	size_t	i;
 
-	src = (char *)argv[1];
-	char dst[10] = "";
-	char dst2[10] = "";
-	ret_val = ft_strlcat(dst, src, sizeof(dst));
-	ret_val2 = strlcat(dst2, src, sizeof(dst2));
-	if (argc)
-		printf("%s\n%d\n", dst, ret_val);
-	printf("%s\n%d\n", dst2, ret_val2);
-	return (0);
-}
- */
+	dest_len = 0;
+	src_len = 0;
+	i = 0;
+
+	// Find the length of the destination string
+	while (dest_len < size && dest[dest_len] != '\0')
+		dest_len++;
+	while (src[src_len] != '\0')
+		src_len++;
+
+	// Calculate the space available in the destination buffer
+	space_left = 0;
+	if (size > dest_len)
+		space_left = size - dest_len - 1;
+
+	// Copy the source string to the destination buffer
+	while (i < space_left && src[i] != '\0')
+	{
+		dest[dest_len + i] = src[i];
+		i++;
+	}
+
+	// Null-terminate the destination buffer
+	if (dest_len < size)
+		dest[dest_len + space_left] = '\0';
+
+	// Return the total length of the concatenated string
+	return (dest_len + src_len);
+}*/

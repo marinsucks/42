@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/09 15:00:16 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/10 17:48:05 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ all: 	$(NAME)
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo "\033[1;32m\nDone!\033[0m"
+	@echo "\033[1;31m\nDone!\033[0m"
 
 clean:
 	@echo "Removing exe & obj..."
@@ -54,6 +54,16 @@ ftest:
 	@./libexe
 	@rm -rf libexe
 
+git:
+	@echo "Cleaning house..."
+	@make fclean
+	@echo "Adding all files to staging area..."
+	@git add .
+	git commit -m "$m"
+
+norm:
+	@ls *.c *.h | grep -v -e "main.c" -e "oldmain.c" | xargs norminette
+
 
 
 #FUNCTION_NAME = $(firstword $(MAKECMDGOALS))
@@ -79,16 +89,3 @@ ftest:
 #exe: 
 #	@echo "Executing libft..."
 #	@./libexe
-
-
-
-
-
-git:
-	@echo "Adding all files to staging area..."
-	@git add .
-	git commit -m "$m"
-
-norm:
-	@ls *.c *.h | grep -v -e "main.c" -e "oldmain.c" | xargs norminette
-
