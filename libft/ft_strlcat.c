@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:38:16 by mbecker           #+#    #+#             */
-/*   Updated: 2023/10/30 16:38:19 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/13 18:13:19 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,45 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		dest[dest_len + i] = src[i];
 		i++;
 	}
+	dest[dest_len + i] = 0; //!!!
 	if (dest_len < size)
-		dest[dest_len + space_left] = '\0';
+		dest[dest_len + space_left] = 0;
 	return (dest_len + src_len);
 }
+
+/*#include <stdio.h>
+
+int	main()
+{
+	char *dest = (char *)malloc(sizeof(*dest) * 15);
+	memset(dest, 0, 15);
+	memset(dest, 'r', 6);
+	int x = ft_strlcat(dest, "lorem", 15);
+
+
+	printf("%d\n", x);
+	for (int i = 0; i < 15; i++)
+	{
+		printf("%c", dest[i]);
+		if (!isprint(dest[i]))
+		{
+			printf("%d", dest[i]);
+		}
+	}
+
+	dest[0] = '\0';
+	dest[11] = 'a';
+	ft_strlcat(dest, "lorem ipsum", 15);
+	printf("\n\n%d\n", x);
+	for (int i = 0; i < 15; i++)
+	{
+		printf("%c", dest[i]);
+		if (!isprint(dest[i]))
+		{
+			printf("%d", dest[i]);
+		}
+	}
+}*/
 
 /*size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
@@ -53,6 +88,8 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	// Find the length of the destination string
 	while (dest_len < size && dest[dest_len] != '\0')
 		dest_len++;
+
+	// Find the length of the source string
 	while (src[src_len] != '\0')
 		src_len++;
 

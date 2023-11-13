@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/10 17:48:05 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/13 11:14:05 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,13 +44,13 @@ re: fclean all
 
 test:
 	@echo "Compiling all .c files..."
-	@$(CC) $(CFLAGS) -o libexe $(SRC)
+	@$(CC) $(CFLAGS) -g -o libexe $(SRC)
 	@./libexe
-	@rm -rf libexe
+# @rm -rf libexe
 
 ftest:
 	@echo "Compiling all .c files..."
-	@$(CC) -o libexe $(SRC)
+	@$(CC) -g -o libexe $(SRC)
 	@./libexe
 	@rm -rf libexe
 
@@ -60,6 +60,7 @@ git:
 	@echo "Adding all files to staging area..."
 	@git add .
 	git commit -m "$m"
+	git push 42 && git push origin
 
 norm:
 	@ls *.c *.h | grep -v -e "main.c" -e "oldmain.c" | xargs norminette
