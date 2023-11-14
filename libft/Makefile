@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/13 11:14:05 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/14 17:17:23 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,12 @@ OBJ		= $(SRC:.c=.o)
 HEADER	= libft.h
 NAME	= libft.a
 
+RED		=\033[0;31m
+GREEN	=\033[1;32m
+ORANGE	=\033[1;33m
+GREY	=\033[1;37m
+NC		=\033[0m
+
 .PHONY	: all clean fclean re
 
 all: 	$(NAME)
@@ -27,35 +33,34 @@ all: 	$(NAME)
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo "\033[1;31m\nDone!\033[0m"
+	@echo -e "$(RED)\nDone!$(NC)"
 
 clean:
 	@echo "Removing exe & obj..."
-	rm -rf a.out libexe a.out.dSYM .vscode $(OBJ)
+	@rm -rf a.out libexe a.out.dSYM .vscode $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
 %.o: %.c $(HEADER)
-	@printf "\033[0;33mGenerating libft object... %-38.38s \r" $@
+	@printf "$(ORANGE)Generating libft object... %-38.38s \r$(NC)" $@
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 test:
-	@echo "Compiling all .c files..."
 	@$(CC) $(CFLAGS) -g -o libexe $(SRC)
+	@echo "$(GREEN)Compilation OK :)$(NC)"
 	@./libexe
-# @rm -rf libexe
 
 ftest:
-	@echo "Compiling all .c files..."
 	@$(CC) -g -o libexe $(SRC)
+	@echo "$(GREEN)Compilation OK :)$(NC)"
 	@./libexe
 	@rm -rf libexe
 
 git:
-	@echo "Cleaning house..."
+	@echo "$(RED)Cleaning repo...$(NC)"
 	@make fclean
 	@echo "Adding all files to staging area..."
 	@git add .
@@ -64,29 +69,3 @@ git:
 
 norm:
 	@ls *.c *.h | grep -v -e "main.c" -e "oldmain.c" | xargs norminette
-
-
-
-#FUNCTION_NAME = $(firstword $(MAKECMDGOALS))
-#comp:
-#	@echo "Compiling all .c files..."
-#	@$(CC) -o libexe $(SRC)
-
-#compflags:
-#	@echo "Compiling all .c files..."
-#	@$(CC) $(CFLAGS) -o libexe $(SRC)
-
-#ft_%:
-#	@echo "Compiling $@.c..."
-#	@$(CC) $(CFLAGS) $@.c -o a.out
-#	@./a.out
-
-#func: compmain exe
-
-#compmain:
-#	@echo "Compiling *.c (except main)..."
-#	@ls *.c | grep -v "main.c" | xargs $(CC) $(CFLAGS) -g -o libexe
-
-#exe: 
-#	@echo "Executing libft..."
-#	@./libexe

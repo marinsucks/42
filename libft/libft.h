@@ -6,18 +6,20 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/10 17:15:20 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/14 16:53:06 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdlib.h>
+# include <unistd.h>
+
 # include <ctype.h>
 # include <stdio.h>
-# include <stdlib.h>
 # include <string.h>
-# include <unistd.h>
+# include <malloc.h>
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
@@ -32,10 +34,12 @@ int		ft_toupper(int c);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
+char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-size_t	ft_strlcat(char *dst, const char *src, size_t size); // unsure : to test
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
+char	*ft_strtrim(char const *s1, char const *set);
 
 char	*ft_strdup(const char *s1);
 void	*ft_calloc(size_t nmemb, size_t size);
