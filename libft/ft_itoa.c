@@ -6,44 +6,44 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 12:10:08 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/15 16:18:48 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/16 11:44:05 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	intlen(int n)
+static int	intlen(long ln)
 {
 	int	len;
 
 	len = 1;
-	if (n < 0)
+	if (ln < 0)
 	{
 		len++;
-		n = -n;
+		ln = -ln;
 	}
-	while (n >= 10)
+	while (ln >= 10)
 	{
 		len++;
-		n /= 10;
+		ln /= 10;
 	}
 	return (len + 1);
 }
 
-static void	revert_int_tab(char *s)
+static void	revtab(char *s)
 {
-	int	start;
-	int	end;
-	char temp;
+	int		start;
+	int		end;
+	char	temp;
 
 	start = 0;
-	end = ft_strlen(s);
+	end = ft_strlen(s) - 1;
 	if (s[start] == '-')
 		start++;
-	while (start < end / 2)
+	while (start < end)
 	{
 		temp = s[start];
-		s[start++] = s[end]; // cette boucle n'enregistre pas correctement
+		s[start++] = s[end];
 		s[end--] = temp;
 	}
 }
@@ -51,31 +51,27 @@ static void	revert_int_tab(char *s)
 char	*ft_itoa(int n)
 {
 	char	*res;
+	long	ln;
 	int		i;
 
 	i = 0;
-	res = (char *)malloc(intlen(n));
-	if (n < 0)
+	ln = n;
+	res = (char *)malloc(intlen(ln));
+	if (!res)
+		return (NULL);
+	if (ln == 0)
+		res[i++] = '0';
+	if (ln < 0)
 	{
 		res[i++] = '-';
-		n = -n;
+		ln = -ln;
 	}
-	while (n > 0)
+	while (ln > 0)
 	{
-		res[i++] = (n % 10) + 48;
-		n /= 10;
+		res[i++] = (ln % 10) + 48;
+		ln /= 10;
 	}
-	revert_int_tab(res);
 	res[i] = 0;
+	revtab(res);
 	return (res);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	printf("%s\n", ft_itoa(-123));
-//	char tab[] = "-3210";
-//	revert_int_tab(tab);
-//	printf("%s\n", tab);
 }
