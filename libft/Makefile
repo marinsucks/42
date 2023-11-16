@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/16 12:24:50 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/16 12:59:52 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ YELLOW	=\033[1;33m
 LYELLOW	=\033[1;33m
 GREY	=\033[1;37m
 NC		=\033[0m
+SWAG	=🫠
 
 .PHONY	: all clean fclean re
 
@@ -75,3 +76,4 @@ git:
 	git push origin
 	@echo "\n$(LGREEN)Pushing 42...$(NC)"
 	git push 42
+	@echo "\n$(GREEN)REPO PUSH COMPLETED 🫠$(NC)"
