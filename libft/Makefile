@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/14 17:17:23 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/16 11:54:26 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ NAME	= libft.a
 
 RED		=\033[0;31m
 GREEN	=\033[1;32m
+LGREEN	=\033[0;32m
 ORANGE	=\033[1;33m
 GREY	=\033[1;37m
 NC		=\033[0m
@@ -59,13 +60,17 @@ ftest:
 	@./libexe
 	@rm -rf libexe
 
-git:
-	@echo "$(RED)Cleaning repo...$(NC)"
-	@make fclean
-	@echo "Adding all files to staging area..."
-	@git add .
-	git commit -m "$m"
-	git push 42 && git push origin
-
 norm:
 	@ls *.c *.h | grep -v -e "main.c" -e "oldmain.c" | xargs norminette
+	
+git:
+	@echo "$(LGREEN)Cleaning repo...$(NC)"
+	@make fclean
+	@echo "\n$(LGREEN)Adding all files to staging area...$(NC)"
+	@git add .
+	@echo -e"\n$(LGREEN)git commit -m "$m"$(NC)"
+	@git commit -m "$m"
+	@echo -e"\n$(LGREEN)git push origin$(NC)"
+	@git push origin
+	@echo -e"\n$(LGREEN)git push 42$(NC)"
+	@git push 42
