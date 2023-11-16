@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/16 11:54:26 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/16 11:59:59 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ NAME	= libft.a
 RED		=\033[0;31m
 GREEN	=\033[1;32m
 LGREEN	=\033[0;32m
-ORANGE	=\033[1;33m
+YELLOW	=\033[1;33m
+LYELLOW	=\033[1;33m
 GREY	=\033[1;37m
 NC		=\033[0m
 
@@ -46,7 +47,7 @@ fclean: clean
 re: fclean all
 
 %.o: %.c $(HEADER)
-	@printf "$(ORANGE)Generating libft object... %-38.38s \r$(NC)" $@
+	@printf "$(YELLOW)Generating libft object... %-38.38s \r$(NC)" $@
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 test:
@@ -65,12 +66,12 @@ norm:
 	
 git:
 	@echo "$(LGREEN)Cleaning repo...$(NC)"
-	@make fclean
+	make fclean
 	@echo "\n$(LGREEN)Adding all files to staging area...$(NC)"
-	@git add .
-	@echo -e"\n$(LGREEN)git commit -m "$m"$(NC)"
-	@git commit -m "$m"
-	@echo -e"\n$(LGREEN)git push origin$(NC)"
-	@git push origin
-	@echo -e"\n$(LGREEN)git push 42$(NC)"
-	@git push 42
+	git add .
+	@echo "\n$(LGREEN)Commit message = \""$m\""$(NC)"
+	git commit -m "$m"
+	@echo "\n$(LGREEN)Pushing origin...$(NC)"
+	git push origin
+	@echo "\n$(LGREEN)Pushing 42...$(NC)"
+	git push 42
