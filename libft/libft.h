@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/17 13:07:59 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/17 17:37:12 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,3 @@ t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
 
 #endif
-
-// int		ft_strcmp(const char *s1, const char *s2);
-// char	*ft_strstr(const char *haystack, const char *needle);
-// char	*ft_strcat(char *dest, const char *src);
-// char	*ft_strncat(char *s1, const char *s2, size_t n);
-// char	*ft_strncpy(char *dst, const char *src, size_t len);
-// char	*ft_strcpy(char *dst, const char *src);
-// memccpy

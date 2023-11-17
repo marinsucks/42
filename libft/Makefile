@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/17 13:07:07 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/17 17:22:00 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,13 @@ re: fclean all
 	@printf "$(YELLOW)Generating libft object... %-38.38s \r$(NC)" $@
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+norm:
+	@ls *.c *.h | grep -v -e "main.c" -e "oldmain.c" | xargs norminette
+
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC) $(SRC_b)
+	gcc -nostartfiles -shared -o libft.so $(OBJ) $(OBJ_B)
+
 test:
 	@$(CC) $(CFLAGS) -g -o libexe $(SRC)
 	@echo "$(GREEN)Compilation OK :)$(NC)"
@@ -76,9 +83,6 @@ ftest:
 	@echo "$(GREEN)Compilation OK :)$(NC)"
 	@./libexe
 	@rm -rf libexe
-
-norm:
-	@ls *.c *.h | grep -v -e "main.c" -e "oldmain.c" | xargs norminette
 	
 git:
 	@echo "$(LGREEN)Cleaning repo...$(NC)"

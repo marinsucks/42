@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:10:50 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/15 15:18:15 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/17 17:16:02 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,24 @@ char	**ft_split(char const *s, char c)
 	char	**res;
 	size_t	i;
 	size_t	j;
-	size_t	size;
+	size_t	start;
 
 	i = 0;
 	j = 0;
+	if (s == NULL)
+		return (NULL);
 	res = (char **)malloc(wordcount(s, c) * sizeof(char *));
 	if (!res)
 		return (0);
 	while (j < wordcount(s, c) - 1)
 	{
-		size = 0;
+		start = 0;
 		while (s[i] && s[i] == c)
 			i++;
+		start = i;
 		while (s[i] && s[i] != c)
-		{
-			size++;
 			i++;
-		}
-		res[j] = ft_strndup((s + i - size), size);
+		res[j] = ft_strndup((s + start), i - start);
 		j++;
 	}
 	res[j] = NULL;

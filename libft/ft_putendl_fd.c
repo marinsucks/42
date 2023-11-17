@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 12:38:09 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/16 12:40:40 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/17 17:26:47 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
+	if (s == NULL)
+		return ;
 	write(fd, s, ft_strlen(s));
 	write(fd, "\n", 1);
 }

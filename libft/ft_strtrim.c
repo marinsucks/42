@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:25:45 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/14 19:03:57 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/17 16:33:28 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	start = 0;
 	i = 0;
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	end = ft_strlen(s1);
 	while (is_set(s1[start], set))
 		start++;

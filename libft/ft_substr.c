@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:11:16 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/16 16:26:28 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/17 16:11:19 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	i = 0;
+	if (s == NULL)
+		return (NULL);
 	size = ft_sublen(s, start, len);
 	res = (char *)malloc(size);
 	if (!res)

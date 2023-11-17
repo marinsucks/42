@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:59 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/16 13:47:40 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/17 17:26:24 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 	char			*res;
 
+	if (s == NULL)
+		return (NULL);
 	res = ft_strdup(s);
+	if (!res)
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{
