@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/16 19:26:47 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/17 13:07:07 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ SRC		=	ft_atoi.c ft_bzero.c ft_calloc.c ft_isascii.c ft_isalnum.c ft_isalpha.c \
 			ft_substr.c ft_tolower.c ft_toupper.c ft_memchr.c ft_memcmp.c
 OBJ		= 	$(SRC:.c=.o)
 
-SRC_B	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c
-#ft_lstdelone.c ft_lstclear.c  ft_lstiter.c  ft_lstmap.c  
+SRC_B	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
+			ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c  
 
 OBJ_B	=	$(SRC_B:.c=.o)
 

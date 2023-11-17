@@ -1,5 +1,3 @@
 .DS_Store
 .vscode/
-./libft/tester1
-./libft/tester2
-./libft/tester3
+./libft/tester*

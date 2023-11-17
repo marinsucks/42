@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:04:37 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/16 18:48:15 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/17 12:08:11 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if(new)
+	if (new)
 	{
 		new->next = *lst;
 		*lst = new;
