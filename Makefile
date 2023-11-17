@@ -8,8 +8,8 @@ NC		=\033[0m
 SWAG	=🫠
 
 git:
-	@echo "$(LGREEN)Cleaning repo...$(NC)"
-	make -C ./libft fclean
+#@echo "$(LGREEN)Cleaning repo...$(NC)"
+#make -C ./libft fclean
 	@echo "\n$(LGREEN)Adding all 42 files to staging area...$(NC)"
 	git add .
 	@echo "\n$(LGREEN)Commit message = \""$m\""$(NC)"
