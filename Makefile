@@ -10,7 +10,7 @@ SWAG	=🫠
 git:
 	@echo "$(LGREEN)Cleaning repo...$(NC)"
 	make -C ./libft fclean
-	@echo "\n$(LGREEN)Adding all files to staging area...$(NC)"
+	@echo "\n$(LGREEN)Adding all 42 files to staging area...$(NC)"
 	git add .
 	@echo "\n$(LGREEN)Commit message = \""$m\""$(NC)"
 	git commit -m "$m"
