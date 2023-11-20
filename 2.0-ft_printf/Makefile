@@ -6,29 +6,29 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:41:36 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/20 14:52:28 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/20 16:21:26 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-NAME = 
+CC		= cc
+CFLAGS	= -Wall -Wextra -Werror
+NAME	= 
 
-RED =\033[1;31m
-LRED =\033[0;31m
-GREEN =\033[1;32m
-LGREEN =\033[0;32m
-YELLOW =\033[1;33m
-LYELLOW =\033[0;33m
-GREY =\033[1;37m
-NC =\033[0m
+RED		=\033[1;31m
+LRED	=\033[0;31m
+GREEN	=\033[1;32m
+LGREEN 	=\033[0;32m
+YELLOW	=\033[1;33m
+LYELLOW	=\033[0;33m
+GREY	=\033[1;37m
+NC		=\033[0m
 
 all: $(NAME)
 
 $(NAME):
 
 clean:
-	@echo "Removing exe & obj..."
+	@echo "$(RED)Removing exe & obj...$(NC)"
 	@rm -rf *.out* testexe .vscode $(OBJ) $(OBJ_B)
 
 fclean: clean
