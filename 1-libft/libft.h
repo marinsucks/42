@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/17 17:37:12 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/20 12:54:02 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
-# include <ctype.h>
-# include <stdio.h>
-# include <string.h>
-# include <malloc.h>
+# include <stddef.h>
 
 typedef struct s_list
 {
