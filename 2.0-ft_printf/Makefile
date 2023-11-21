@@ -6,13 +6,22 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:41:36 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/20 16:21:26 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/21 17:19:59 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
-NAME	= 
+NAME	= libftprintf.a
+
+SRC_FILES	=	$(patsubst %.c,%,$(wildcard *.c))
+SRC 		= 	$(addsuffix .c, $(SRC_FILES))
+OBJ 		= 	$(addsuffix .o, $(SRC_FILES))
+OBJDIR		=	obj/
+
+LIBFT = ./libft/libft.a
+LIBFT_SRC = $(wildcard ./libft/*.c)
+LIBFT_OBJ = $(LIBFT_SRC:.c=.o)
 
 RED		=\033[1;31m
 LRED	=\033[0;31m
@@ -20,29 +29,38 @@ GREEN	=\033[1;32m
 LGREEN 	=\033[0;32m
 YELLOW	=\033[1;33m
 LYELLOW	=\033[0;33m
-GREY	=\033[1;37m
+GREY	=\033[1;30m
 NC		=\033[0m
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): libft $(OBJ) 
+	@ar rcs $(NAME) $(OBJDIR)*.o
+	@ranlib $(NAME)
+
+$(OBJ):
+	@$(CC) $(CFLAGS) -c *.c
+	@mv $(OBJ) $(OBJDIR)
+
+libft:
+	@make -C ./libft all
+	@cp libft/libft.a $(NAME)
+	@if [ ! -d "$(OBJDIR)" ]; then mkdir -p $(OBJDIR); fi
+	@mv libft/*.o obj/
 
 clean:
 	@echo "$(RED)Removing exe & obj...$(NC)"
-	@rm -rf *.out* testexe .vscode $(OBJ) $(OBJ_B)
+	@rm -rf *.out* testexe .vscode $(OBJ) $(OBJDIR) libft/*.o
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) libft/libft.a
 
 re: fclean all
 
-libft:
-	@echo "$(GREY)Compiling libft..$(NC)"
-	@make -C ./libft all
 
-test:
-	@$(CC) $(CFLAGS) -g -o testexe $(SRC)
-	@echo "$(GREEN)Compilation OK :)$(NC)"
+test: libft
+	@$(CC) $(CFLAGS) -g obj/*.o -o testexe $(SRC)
+	@echo "$(GREEN)Compilation OK\n\n$(NC)"
 	@./testexe
 
 git:
@@ -52,8 +70,8 @@ git:
 	git add .
 	@echo "\n$(LGREEN)Commit message = \"m\"$(NC)"
 	git commit -m "m"
-	@echo "\n$(LGREEN)Pushing 42...$(NC)"
-	git push
+	@echo "\n$(LGREEN)Pushing printf...$(NC)"
+	git push printf
 	@echo "\n$(GREEN)REPO PUSH COMPLETED 🫠$(NC)"
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re libft
