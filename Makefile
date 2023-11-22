@@ -16,6 +16,4 @@ git:
 	git commit -m "$m"
 	@echo "\n$(LGREEN)Pushing origin...$(NC)"
 	git push origin
-	@echo "\n$(LGREEN)Pushing 42...$(NC)"
-	git push 42
 	@echo "\n$(GREEN)REPO PUSH COMPLETED 🫠$(NC)"
