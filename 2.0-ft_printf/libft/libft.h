@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/20 14:58:42 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/22 16:10:25 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+# include <stdio.h>
 
 typedef struct s_list
 {
@@ -72,5 +73,13 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
+
+void reset();
+void red();
+void green();
+void yellow();
+void blue();
+void magenta();
+void cyan();
 
 #endif
