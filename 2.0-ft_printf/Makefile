@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:41:36 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/21 17:19:59 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/23 14:16:02 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ libft:
 
 clean:
 	@echo "$(RED)Removing exe & obj...$(NC)"
-	@rm -rf *.out* testexe .vscode $(OBJ) $(OBJDIR) libft/*.o
+	@rm -rf *.out* testexe .vscode $(OBJ) $(OBJDIR) libft/*.o libft/*.gch
 
 fclean: clean
 	@rm -f $(NAME) libft/libft.a
@@ -60,6 +60,11 @@ re: fclean all
 
 test: libft
 	@$(CC) $(CFLAGS) -g obj/*.o -o testexe $(SRC)
+	@echo "$(GREEN)Compilation OK\n\n$(NC)"
+	@./testexe
+
+ftest: libft
+	@$(CC) -g obj/*.o -o testexe $(SRC)
 	@echo "$(GREEN)Compilation OK\n\n$(NC)"
 	@./testexe
 

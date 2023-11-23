@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   ft_putlong_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 15:43:18 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/23 15:43:19 by mbecker          ###   ########.fr       */
+/*   Created: 2023/11/23 10:57:17 by mbecker           #+#    #+#             */
+/*   Updated: 2023/11/23 11:36:23 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	reset(void)
+void	ft_putlong_fd(long long n, int fd)
 {
-	printf("\033[0m");
-}
-
-void	red(void)
-{
-	printf("\033[1;91m");
-}
-
-void	green(void)
-{
-	printf("\033[1;92m");
-}
-
-void	yellow(void)
-{
-	printf("\033[1;93m");
-}
-
-void	blue(void)
-{
-	printf("\033[1;94m");
+	if (n >= 0 && n <= 9)
+	{
+		ft_putchar_fd(n + '0', fd);
+	}
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putlong_fd(-n, fd);
+	}
+	else
+	{
+		ft_putlong_fd(n / 10, fd);
+		ft_putlong_fd(n % 10, fd);
+	}
 }

@@ -1,59 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_xlen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 12:10:08 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/23 13:50:24 by mbecker          ###   ########.fr       */
+/*   Created: 2023/10/30 16:38:31 by mbecker           #+#    #+#             */
+/*   Updated: 2023/11/23 15:45:17 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	intlen(long ln)
+size_t	ft_strlen(const char *s)
 {
-	int	len;
-
-	len = 1;
-	if (ln < 0)
-	{
-		len++;
-		ln = -ln;
-	}
-	while (ln >= 10)
-	{
-		len++;
-		ln /= 10;
-	}
-	return (len + 1);
-}
-
-char	*ft_itoa(int n)
-{
-	char	*res;
-	long	ln;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	ln = n;
-	res = (char *)malloc(intlen(ln));
-	if (!res)
-		return (NULL);
-	if (ln == 0)
-		res[i++] = '0';
-	if (ln < 0)
+	while (s[i])
+		i++;
+	return (i);
+}
+
+short int	ft_numlen(long long num)
+{
+	short int			len;
+
+	len = 1;
+	if (num < 0)
 	{
-		res[i++] = '-';
-		ln = -ln;
+		len++;
+		num = -num;
 	}
-	while (ln > 0)
+	while (num >= 10)
 	{
-		res[i++] = (ln % 10) + 48;
-		ln /= 10;
+		len++;
+		num /= 10;
 	}
-	res[i] = 0;
-	ft_revert_inttab(res);
-	return (res);
+	return (len);
+}
+
+short int	ft_numlen_base(long long num, short int baselen)
+{
+	short int			len;
+
+	len = 1;
+	if (num < 0)
+	{
+		len++;
+		num = -num;
+	}
+	while (num >= baselen)
+	{
+		len++;
+		num /= baselen;
+	}
+	return (len);
 }
