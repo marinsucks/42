@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:41:36 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/23 14:16:02 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/25 16:32:04 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ git:
 	@echo "\n$(LGREEN)Adding all files to staging area...$(NC)"
 	git add .
 	@echo "\n$(LGREEN)Commit message = \"m\"$(NC)"
-	git commit -m "m"
+	git commit -m "$m"
 	@echo "\n$(LGREEN)Pushing printf...$(NC)"
 	git push printf
 	@echo "\n$(GREEN)REPO PUSH COMPLETED 🫠$(NC)"
