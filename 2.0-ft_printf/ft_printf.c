@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:14:21 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/23 17:29:56 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/25 15:24:00 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	convert(const char *s, va_list args)
 		return (convert_hex(s, args, *s));
 	else if (*s == 'p')
 		return (convert_ptr(s, args));
-	return (0);
+	return (1);
 }
 
 int	ft_printf(const char *s, ...)

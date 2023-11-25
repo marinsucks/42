@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:36:46 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/23 17:30:03 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/25 16:22:22 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ int	convert_str(const char *s, va_list args)
 	size_t	i;
 
 	argstr = va_arg(args, char *);
+	if (argstr == NULL)
+	{
+		write(1, "(null)", 6);
+		return 6;
+	}
+	else if (!argstr)
+		return (0);
 	i = 0;
 	while (argstr[i])
 	{
@@ -64,19 +71,44 @@ short int	convert_hex(const char *s, va_list args, char c)
 	long long	argl;
 	char		*res;
 	short int	len;
+	char		*hex;
 
 	argl = va_arg(args, long long);
 	res = NULL;
 	if (c == 'x')
-		res = ft_to_base(argl, "0123456789abcdef", 16);
-	else if (c == 'X')
-		res = ft_to_base(argl, "0123456789ABCDEF", 16);
+		hex = ft_strdup("0123456789abcdef");
+	else// if (c == 'X')
+		hex = ft_strdup("0123456789ABCDEF");
+	res = ft_to_base(argl, hex, 16);
 	len = ft_strlen(res);
 	ft_putstr_fd(res, 1);
+	free(hex);
 	free(res);
 	s++;
 	return (len);
 }
+
+/*short int	convert_hex(const char *s, va_list args, char c)
+{
+	long long	argl;
+	char		*res;
+	short int	len;
+	char		*hex;
+
+	argl = va_arg(args, long long);
+	res = NULL;
+	if (c == 'x')
+		hex = ft_strdup("0123456789abcdef");
+	else// if (c == 'X')
+		hex = ft_strdup("0123456789ABCDEF");
+	res = ft_to_base(argl, hex, 16);
+	len = ft_strlen(res);
+	ft_putstr_fd(res, 1);
+	free(hex);
+	free(res);
+	s++;
+	return (len);
+}*/
 
 short int	convert_ptr(const char *s, va_list args)
 {
