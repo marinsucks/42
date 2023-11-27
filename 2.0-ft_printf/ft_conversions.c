@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:36:46 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/25 16:22:22 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/27 17:21:47 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	convert_str(const char *s, va_list args)
 	if (argstr == NULL)
 	{
 		write(1, "(null)", 6);
-		return 6;
+		return (6);
 	}
 	else if (!argstr)
 		return (0);
@@ -51,8 +51,8 @@ int	convert_str(const char *s, va_list args)
 
 short int	convert_ui(const char *s, va_list args)
 {
-	unsigned int		argu;
-	short int			len;
+	unsigned int	argu;
+	short int		len;
 
 	argu = va_arg(args, unsigned int);
 	ft_putlong_fd((long long)argu, 1);
@@ -68,18 +68,18 @@ short int	convert_ui(const char *s, va_list args)
 
 short int	convert_hex(const char *s, va_list args, char c)
 {
-	long long	argl;
-	char		*res;
-	short int	len;
-	char		*hex;
+	unsigned long	argl;
+	char			*res;
+	short int		len;
+	char			*hex;
 
-	argl = va_arg(args, long long);
+	argl = va_arg(args, unsigned long);
 	res = NULL;
 	if (c == 'x')
 		hex = ft_strdup("0123456789abcdef");
-	else// if (c == 'X')
+	else
 		hex = ft_strdup("0123456789ABCDEF");
-	res = ft_to_base(argl, hex, 16);
+	res = int_to_base(argl, hex, 16);
 	len = ft_strlen(res);
 	ft_putstr_fd(res, 1);
 	free(hex);
@@ -87,28 +87,6 @@ short int	convert_hex(const char *s, va_list args, char c)
 	s++;
 	return (len);
 }
-
-/*short int	convert_hex(const char *s, va_list args, char c)
-{
-	long long	argl;
-	char		*res;
-	short int	len;
-	char		*hex;
-
-	argl = va_arg(args, long long);
-	res = NULL;
-	if (c == 'x')
-		hex = ft_strdup("0123456789abcdef");
-	else// if (c == 'X')
-		hex = ft_strdup("0123456789ABCDEF");
-	res = ft_to_base(argl, hex, 16);
-	len = ft_strlen(res);
-	ft_putstr_fd(res, 1);
-	free(hex);
-	free(res);
-	s++;
-	return (len);
-}*/
 
 short int	convert_ptr(const char *s, va_list args)
 {
@@ -122,7 +100,7 @@ short int	convert_ptr(const char *s, va_list args)
 		write(1, "(nil)", 5);
 		return (5);
 	}
-	res = ft_to_base(argp, "0123456789abcdef", 16);
+	res = long_to_base(argp, "0123456789abcdef", 16);
 	write(1, "0x", 2);
 	ft_putstr_fd(res, 1);
 	len = ft_strlen(res) + 2;

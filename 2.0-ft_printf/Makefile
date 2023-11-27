@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:41:36 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/25 16:32:04 by mbecker          ###   ########.fr        #
+#    Updated: 2023/11/27 17:11:41 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,11 +57,16 @@ fclean: clean
 
 re: fclean all
 
+runtests:
+	@echo "$(GREEN)Installing Tripouille...$(LGREEN)"
+	@git clone https://github.com/Tripouille/printfTester.git Tripouille
+	@make fclean
+	@echo "\n$(YELLOW)Running tests...$(LYELLOW)"
+	@make -C Tripouille m
 
-test: libft
-	@$(CC) $(CFLAGS) -g obj/*.o -o testexe $(SRC)
-	@echo "$(GREEN)Compilation OK\n\n$(NC)"
-	@./testexe
+rmtests:
+	@make fclean
+	rm -rf Tripouille
 
 ftest: libft
 	@$(CC) -g obj/*.o -o testexe $(SRC)

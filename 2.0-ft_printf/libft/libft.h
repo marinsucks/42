@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/23 17:25:26 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/27 16:59:33 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			ft_toupper(int c);
 
 size_t		ft_strlen(const char *s);
 short int	ft_numlen(long long num);
-short int	ft_numlen_base(long long num, short int baselen);
+short int	ft_numlen_base(unsigned long num, unsigned int baselen);
 char		*ft_strchr(const char *str, int c);
 char		*ft_strrchr(const char *str, int c);
 char		*ft_strjoin(char *s1, char *s2);
@@ -53,7 +53,8 @@ char		*ft_strnstr(const char *haystack, const char *needle, size_t n);
 
 int			ft_atoi(const char *str);
 char		*ft_itoa(int n);
-char		*ft_to_base(long long nbr, char *base, short int baselen);
+char		*int_to_base(unsigned int nbr, char *base, unsigned int baselen);
+char		*long_to_base(unsigned long nbr, char *base, unsigned int baselen);
 
 void		ft_revert_tab(char *s);
 void		ft_revert_inttab(char *s);

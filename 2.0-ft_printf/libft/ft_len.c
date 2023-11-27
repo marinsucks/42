@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_xlen.c                                          :+:      :+:    :+:   */
+/*   ft_len.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:38:31 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/23 15:45:17 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/11/27 15:45:50 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ short int	ft_numlen(long long num)
 	return (len);
 }
 
-short int	ft_numlen_base(long long num, short int baselen)
+short int	ft_numlen_base(unsigned long num, unsigned int baselen)
 {
 	short int			len;
 
