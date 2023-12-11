@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:41:36 by mbecker           #+#    #+#              #
-#    Updated: 2023/11/27 17:11:41 by mbecker          ###   ########.fr        #
+#    Updated: 2023/12/04 15:10:50 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,12 @@ fclean: clean
 re: fclean all
 
 runtests:
+	@echo "$(GREEN)Installing Paulo...$(LGREEN)"
+	@git clone https://github.com/paulo-santana/ft_printf_tester.git Paulo
+	@make fclean
+	@echo "\n$(YELLOW)Running tests...$(LYELLOW)"
+	@cd Paulo && sh test m
+
 	@echo "$(GREEN)Installing Tripouille...$(LGREEN)"
 	@git clone https://github.com/Tripouille/printfTester.git Tripouille
 	@make fclean
@@ -66,7 +72,7 @@ runtests:
 
 rmtests:
 	@make fclean
-	rm -rf Tripouille
+	rm -rf Tripouille Paulo
 
 ftest: libft
 	@$(CC) -g obj/*.o -o testexe $(SRC)
@@ -81,7 +87,7 @@ git:
 	@echo "\n$(LGREEN)Commit message = \"m\"$(NC)"
 	git commit -m "$m"
 	@echo "\n$(LGREEN)Pushing printf...$(NC)"
-	git push printf
+	git push
 	@echo "\n$(GREEN)REPO PUSH COMPLETED 🫠$(NC)"
 
 .PHONY : all clean fclean re libft
