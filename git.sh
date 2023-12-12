@@ -14,26 +14,25 @@ git_action() {
     echo -e "\n${LGREEN}Adding all 42 files to staging area...${NC}"
     git add . 
     echo -e "\n${LGREEN}Commit message = \"$@\"${NC}"
+    git commit -m "$1"
     echo -e "\n${RED}Are you sure you want to push to origin?${NC}"
     read -p "[y/n ]" -n 1 -r
     if [[ ! $REPLY =~ ^[Yy]$|^$ ]]; then
         echo -e "\n${LYELLOW}Exiting...${NC}"
         exit 1
     fi
-    echo -e "\n${LGREEN}Committing...${NC}"
-    git commit -m "$1"
     echo -e "\n${LGREEN}Pushing origin...${NC}"
     git push origin
     echo -e "\n${GREEN}REPO PUSH COMPLETED $SWAG${NC}"
 }
 
-#setup_alias() {
-#    echo -e "${LGREEN}Setting up 'push' alias in ~/.bashrc and ~/.zshrc...${NC}"
-#    echo "alias push='/bin/bash $PWD/git.sh'" >> ~/.bashrc
-#    source ~/.bashrc
-#	echo "alias push='/bin/zsh $PWD/git.sh'" >> ~/.zshrc
-#    echo -e "${GREEN}Alias 'push' set up successfully.${NC}"
-#}
+setup_alias() {
+    echo -e "${LGREEN}Setting up 'push' alias in ~/.bashrc and ~/.zshrc...${NC}"
+    echo -e "push() {\n\t$PWD/git.sh \"\$@\"\n} " >> ~/.bashrc
+    source ~/.bashrc
+	echo -e "push() {\n\t$PWD/git.sh \"\$@\"\n} " >> ~/.zshrc
+    echo -e "${GREEN}Alias 'push' set up successfully.${NC}"
+}
 
 if [ $# -eq 0 ]; then
     echo -e "${LRED}Missing commit message.\n${LYELLOW}Usage: $0 'commit message'${NC}"
