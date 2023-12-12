@@ -20,6 +20,7 @@ git_action() {
         echo -e "\n${LYELLOW}Exiting...${NC}"
         exit 1
     fi
+    echo -e "\n${LGREEN}Committing...${NC}"
     git commit -m "$1"
     echo -e "\n${LGREEN}Pushing origin...${NC}"
     git push origin
