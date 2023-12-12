@@ -37,6 +37,11 @@ ftest:
 #	@echo "$(GREEN)Compilation OK :)$(NC)"
 	@./a.out
 
+installtesters:
+	@echo "$(GREEN)Installing Tripouille...$(LGREEN)"
+	@git clone https://github.com/Tripouille/gnlTester.git tripouille
+
+
 git:
 	@echo "$(LGREEN)Cleaning repo...$(NC)"
 	make fclean

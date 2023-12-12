@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:59:21 by mbecker           #+#    #+#             */
-/*   Updated: 2023/12/11 18:12:54 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/12/12 17:14:16 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define BUFFER_SIZE 10
+# define BUFFER_SIZE 1000000000000
 
 char	*get_next_line(int fd);
 
