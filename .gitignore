@@ -1,3 +1,17 @@
+/*** COMPILATION FILES ***/
+*.out
+*.o
+*.so
+*.a
+*.gch
+
+/*** TESTING FILES ***/
+*.test
+test.*
+test_*
+tripouille/
+
+/*** OS/IDE GENERATED FILES ***/
 .DS_Store
 .vscode/
 

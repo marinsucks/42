@@ -21,7 +21,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)// || fd > OPEN_MAX)
 		return (NULL);
 			// open max est le nombre max de fd ouvert en même temps
-	if (!(res = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	if (!(res = malloc(sizeof(char) * (BUFFER_SIZE + 1)))) 
 		return (NULL);
 	lines_read = 0;
 	while ((ret = read(fd, res, BUFFER_SIZE)) > 0)
