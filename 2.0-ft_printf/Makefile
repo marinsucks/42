@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:41:36 by mbecker           #+#    #+#              #
-#    Updated: 2023/12/04 15:10:50 by mbecker          ###   ########.fr        #
+#    Updated: 2023/12/13 16:15:05 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 NAME	= libftprintf.a
 
-SRC_FILES	=	$(patsubst %.c,%,$(wildcard *.c))
+SRC_FILES	=	ft_printf ft_conversions
 SRC 		= 	$(addsuffix .c, $(SRC_FILES))
 OBJ 		= 	$(addsuffix .o, $(SRC_FILES))
 OBJDIR		=	obj/
@@ -50,7 +50,7 @@ libft:
 
 clean:
 	@echo "$(RED)Removing exe & obj...$(NC)"
-	@rm -rf *.out* testexe .vscode $(OBJ) $(OBJDIR) libft/*.o libft/*.gch
+	@rm -rf *.out* testexe .vscode $(OBJ) $(OBJDIR) *.o libft/*.o libft/*.gch
 
 fclean: clean
 	@rm -f $(NAME) libft/libft.a
