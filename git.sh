@@ -12,15 +12,23 @@ SWAG='🫠'
 
 git_action() {
     echo -e "\n${LGREEN}Adding all 42 files to staging area...${NC}"
-    git add . 
-    echo -e "\n${LGREEN}Commit message = \"$@\"${NC}"
-    git commit -m "$1"
-    echo -e "\n${RED}Are you sure you want to push to origin?${NC}"
+    # if no $2, add all files
+    if [ -z "$2" ]; then
+        echo "git add ."
+        git add . 
+    else
+        shift 1 && echo "git add "$@""
+        git add "$@" 
+    fi
+    echo -e "\n${LGREEN}Commit message = ${NC}\"$1\""
+    echo -e "\n${RED}Are you sure you want to push to origin?${LRED}"
     read -p "[y/n ]" -n 1 -r
     if [[ ! $REPLY =~ ^[Yy]$|^$ ]]; then
-        echo -e "\n${LYELLOW}Exiting...${NC}"
+        echo -e "\n\n${YELLOW}Push aborted.${LYELLOW}"
+        git reset $@
         exit 1
     fi
+    git commit -m "$1"
     echo -e "\n${LGREEN}Pushing origin...${NC}"
     git push origin
     echo -e "\n${GREEN}REPO PUSH COMPLETED $SWAG${NC}"
@@ -35,12 +43,15 @@ setup_alias() {
 }
 
 if [ $# -eq 0 ]; then
-    echo -e "${LRED}Missing commit message.\n${LYELLOW}Usage: $0 'commit message'${NC}"
+    echo -e "${LRED}Missing commit message.${NC}"
     exit 1
 fi
 
 if [ "$1" == "setpush" ]; then
 	setup_alias
+elif [ "$1" == "help" ]; then
+	echo -e "Usage: push \"commit message\" \"[files to add]\""
 else
 	git_action "$@"
 fi
+

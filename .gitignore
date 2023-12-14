@@ -10,6 +10,7 @@
 test.*
 test_*
 tripouille/
+tester*
 
 /*** OS/IDE GENERATED FILES ***/
 .DS_Store
