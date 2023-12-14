@@ -33,7 +33,7 @@ libft:
 	@make -C ./libft all
 
 ftest:
-	@$(CC) *.c *.h
+	@$(CC) -g *.c
 #	@echo "$(GREEN)Compilation OK :)$(NC)"
 	@./a.out
 
