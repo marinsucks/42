@@ -1,5 +1,6 @@
 /*** COMPILATION FILES ***/
 *.out
+*.out.*
 *.o
 *.so
 *.a
