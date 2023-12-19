@@ -16,11 +16,12 @@ git_action() {
     echo -e "\n${LGREEN}Adding all 42 files to staging area...${NC}"
     # if no $2, add all files
     if [ -z "$2" ]; then
-        echo "git add ."
-        git add . 
+        echo "git add ." && git add . 
+        echo "git status:" && git status --short
     else
-        shift 1 && echo "git add "$@""
-        git add "$@" 
+        shift 1 && echo "git add "$@"" 
+        git add "$@"
+        echo "git status:" && git status --short
     fi
     echo -e "\n${LGREEN}Commit message = ${NC}\"$1\""
     echo -e "\n${RED}Are you sure you want to push to origin?${LRED}"
