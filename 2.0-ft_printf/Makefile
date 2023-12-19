@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:41:36 by mbecker           #+#    #+#              #
-#    Updated: 2023/12/13 16:15:05 by mbecker          ###   ########.fr        #
+#    Updated: 2023/12/19 12:26:26 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,6 @@ SRC_FILES	=	ft_printf ft_conversions
 SRC 		= 	$(addsuffix .c, $(SRC_FILES))
 OBJ 		= 	$(addsuffix .o, $(SRC_FILES))
 OBJDIR		=	obj/
-
-LIBFT = ./libft/libft.a
-LIBFT_SRC = $(wildcard ./libft/*.c)
-LIBFT_OBJ = $(LIBFT_SRC:.c=.o)
 
 RED		=\033[1;31m
 LRED	=\033[0;31m
