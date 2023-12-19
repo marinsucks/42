@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:59:21 by mbecker           #+#    #+#             */
-/*   Updated: 2023/12/14 18:11:53 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/12/17 22:47:34 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@
 
 char	*maketemp(char *stash, char *res);
 char	*makeres(char *temp);
-char	*makestash(char *temp, char *stash);
+void	makestash(char *temp, char *stash);
 char	*get_next_line(int fd);
+char	*ft_strjoin(char *s1, char *s2);
+
 
 size_t	ft_strlen(char *s);
-int		nonewline(char *temp);
+int		hasnewline(char *temp);
 
 #endif

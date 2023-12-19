@@ -49,3 +49,11 @@ occurred
 External functs. read, malloc, free
 Description Write a function that returns a line read from a
 file descriptor
+
+
+
+
+BUFFER SIZE = 5
+
+stash = 5
+xxxxx xx\nxxx xxxx
