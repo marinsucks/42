@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:59:38 by mbecker           #+#    #+#             */
-/*   Updated: 2023/12/18 14:16:18 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:59:07 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,23 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_strcpy(char *dst, char *src)
+char	*ft_strdup(const char *s1)
 {
-	int i;
+	int		len;
+	char	*dest;
 
-	i = 0;
-	while (src[i])
+	len = ft_strlen((char *)s1) + 1;
+	dest = malloc(len * sizeof(char));
+	if (!dest)
+		return (0);
+	len = 0;
+	while (s1[len])
 	{
-		dst[i] = src[i];
-		i++;
-	}	
-	dst[i] = 0;
-	return (dst);
+		dest[len] = s1[len];
+		len++;
+	}
+	dest[len] = 0;
+	return (dest);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -52,8 +57,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s1[i])
 		temp[j++] = s1[i++];
 	i = 0;
+//	free(s1);
 	while (s2[i])
 		temp[j++] = s2[i++];
+//	free(s2);
 	temp[j] = 0;
 	return (temp);
 }

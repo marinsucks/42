@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:59:13 by mbecker           #+#    #+#             */
-/*   Updated: 2023/12/18 14:29:28 by mbecker          ###   ########.fr       */
+/*   Updated: 2023/12/19 15:11:29 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,16 @@ char	*get_next_line(int fd)
 	char		*temp;
 	int			readval;
 
-	res = NULL;
-	readval = read(fd, res, BUFFER_SIZE);
+	temp = ft_strdup(stash);
+	stash[0] = 0;
+	readval = read(fd, stash, BUFFER_SIZE); 
 	if (readval <= 0)
 		return (NULL);
-	temp = ft_strjoin(stash, res);
 	while (!hasnewline(temp) && readval > 0)
 	{
-		readval = read(fd, res, BUFFER_SIZE);
-		temp = ft_strjoin(temp, res);
+		stash[0] = 0;
+		readval = read(fd, stash, BUFFER_SIZE);
+		temp = ft_strjoin(temp, stash);
 	}
 	res = makeres(temp);
 	makestash(temp, stash); 
