@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:59:38 by mbecker           #+#    #+#             */
-/*   Updated: 2023/12/19 14:59:07 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/03 18:49:18 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*ft_strdup(const char *s1)
 	int		len;
 	char	*dest;
 
+	if (!s1)
+		return (0);
 	len = ft_strlen((char *)s1) + 1;
 	dest = malloc(len * sizeof(char));
 	if (!dest)
@@ -45,26 +47,26 @@ char	*ft_strdup(const char *s1)
 	return (dest);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *oldtemp, char *stash)
 {
-	char	*temp;
+	char	*newtemp;
 	int		i;
-	int		j;
+	int		oldlen;
 
-	temp = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (oldtemp == NULL || stash == NULL)
+        return (NULL);
+	newtemp = (char *)malloc(ft_strlen(oldtemp) + ft_strlen(stash) + 1);
+	if (!newtemp)
+		return (NULL);
 	i = 0;
-	j = 0;
-	while (s1[i])
-		temp[j++] = s1[i++];
-	i = 0;
-//	free(s1);
-	while (s2[i])
-		temp[j++] = s2[i++];
-//	free(s2);
-	temp[j] = 0;
-	return (temp);
+	oldlen = ft_strlen(oldtemp);
+	ft_strncpy(newtemp, oldtemp, oldlen);
+	while (stash[i]) //pb ici : Invalid read of size 1 quand entre avec null
+		newtemp[oldlen++] = stash[i++];
+	newtemp[oldlen] = 0;
+	free(oldtemp);
+	return (newtemp);
 }
-
 
 int	hasnewline(char *temp)
 {
@@ -78,4 +80,19 @@ int	hasnewline(char *temp)
 		i++;
 	}
 	return (0);
+}
+char	*ft_strncpy(char *dst, const char *src, size_t len)
+{
+	char	*ptr;
+
+	ptr = dst;
+	while (*src != 0 && (int)len > 0)
+	{
+		*dst = *src;
+		src++;
+		dst++;
+		len--;
+	}
+	*dst = 0;
+	return (ptr);
 }

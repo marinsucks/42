@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:59:21 by mbecker           #+#    #+#             */
-/*   Updated: 2023/12/19 14:56:04 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/03 16:42:41 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,17 @@
 # include <limits.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
+#  define BUFFER_SIZE 10
 # endif
 
 char	*maketemp(char *stash, char *res);
-char	*makeres(char *temp);
-void	makestash(char *temp, char *stash);
+char	*tempsplit(char *temp, char *stash);
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *s1, char *s2);
 
 size_t	ft_strlen(char *s);
-int		hasnewline(char *temp);
 char	*ft_strdup(const char *s1);
-
+char	*ft_strjoin(char *s1, char *s2);
+int		hasnewline(char *temp);
+char	*ft_strncpy(char *dst, const char *src, size_t len);
 
 #endif
