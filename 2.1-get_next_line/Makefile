@@ -59,7 +59,7 @@ git:
 	@echo "\n$(LGREEN)Commit message = \"m\"$(NC)"
 	git commit -m "m"
 	@echo "\n$(LGREEN)Pushing gnl...$(NC)"
-	git push
+	git push gnl
 	@echo "\n$(GREEN)"gnl" REPO PUSH COMPLETED 🫠$(NC)"
 
 .PHONY : all clean fclean re
