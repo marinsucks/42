@@ -1,16 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 16:59:13 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/04 16:50:27 by mbecker          ###   ########.fr       */
+/*   Created: 2024/01/04 15:37:57 by mbecker           #+#    #+#             */
+/*   Updated: 2024/01/04 16:59:15 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
+
+typedef struct s_fd_data
+{
+	int				fd;
+	char			stash[BUFFER_SIZE + 1];
+}					t_fd_data;
+
+static t_fd_data	*get_fd_data(int fd)
+{
+	static t_fd_data	fd_data[FD_MAX];
+	int					i;
+
+	i = 0;
+	while (i < FD_MAX)
+	{
+		if (fd_data[i].fd == fd)
+			return (&fd_data[i]);
+		if (fd_data[i].fd == 0)
+		{
+			fd_data[i].fd = fd;
+			return (&fd_data[i]);
+		}
+		i++;
+	}
+	return (NULL);
+}
 
 char	*tempsplit(char *temp, char *stash)
 {
@@ -37,26 +63,29 @@ char	*tempsplit(char *temp, char *stash)
 
 char	*get_next_line(int fd)
 {
-	static char	stash[BUFFER_SIZE + 1];
+	t_fd_data	*fd_data;
 	char		*temp;
 	int			readval;
 
-	temp = ft_strdup(stash);
-	if (hasnewline(stash))
-		return (tempsplit(temp, stash));
-	readval = read(fd, stash, BUFFER_SIZE);
-	stash[readval] = 0;
+	fd_data = get_fd_data(fd);
+	if (!fd_data)
+		return (NULL);
+	temp = ft_strdup(fd_data->stash);
+	if (hasnewline(fd_data->stash))
+		return (tempsplit(temp, fd_data->stash));
+	readval = read(fd, fd_data->stash, BUFFER_SIZE);
+	fd_data->stash[readval] = 0;
 	if (readval <= 0 && temp[0] == 0)
 	{
 		free(temp);
-		return (0);
+		return (NULL);
 	}
-	temp = ft_strjoin(temp, stash);
+	temp = ft_strjoin(temp, fd_data->stash);
 	while (!hasnewline(temp) && readval > 0)
 	{
-		readval = read(fd, stash, BUFFER_SIZE);
-		stash[readval] = 0;
-		temp = ft_strjoin(temp, stash);
+		readval = read(fd, fd_data->stash, BUFFER_SIZE);
+		fd_data->stash[readval] = 0;
+		temp = ft_strjoin(temp, fd_data->stash);
 	}
-	return (tempsplit(temp, stash));
+	return (tempsplit(temp, fd_data->stash));
 }

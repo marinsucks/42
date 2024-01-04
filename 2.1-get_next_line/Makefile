@@ -37,10 +37,19 @@ ftest:
 #	@echo "$(GREEN)Compilation OK :)$(NC)"
 	@./a.out
 
-installtesters:
-	@echo "$(GREEN)Installing Tripouille...$(LGREEN)"
+runtesters: fclean
+	@echo "$(GREEN)Installing Tripouille/gnlTester.git...$(LGREEN)"
 	@git clone https://github.com/Tripouille/gnlTester.git tripouille
+	@echo "\n$(YELLOW)Installing kodpe/gnl-station-tester.git...$(LYELLOW)"
+	@git clone https://github.com/kodpe/gnl-station-tester.git kodpe
 
+	@echo "\n$(RED)Running kodpe/gnl-station-tester.git...$(LRED)"
+	@cd kodpe && make
+	@echo "\n$(RED)Running Tripouille/gnlTester.git...$(LRED)"
+	@cd tripouille && make
+
+rmtesters:
+	rm -rf tripouille kodpe
 
 git:
 	@echo "$(LGREEN)Cleaning repo...$(NC)"
