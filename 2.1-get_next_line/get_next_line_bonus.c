@@ -6,17 +6,11 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:37:57 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/04 16:59:15 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/05 10:56:59 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
-typedef struct s_fd_data
-{
-	int				fd;
-	char			stash[BUFFER_SIZE + 1];
-}					t_fd_data;
 
 static t_fd_data	*get_fd_data(int fd)
 {

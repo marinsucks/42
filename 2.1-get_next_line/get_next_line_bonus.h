@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:38:33 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/04 16:57:03 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/05 10:57:18 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # ifndef FD_MAX
 #  define FD_MAX 512
 # endif
+
+typedef struct s_fd_data
+{
+	int				fd;
+	char			stash[BUFFER_SIZE + 1];
+}					t_fd_data;
 
 char	*maketemp(char *stash, char *res);
 char	*tempsplit(char *temp, char *stash);
