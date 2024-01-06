@@ -38,6 +38,9 @@ function handleAction() {
 		git commit -m "$commit"
 		read -p $'\e[0;32mgit push \e[0m' -a remote
 		git push $remote
+		if [ $? -eq 0 ]; then
+			echo -e "\n${GREEN}REPO PUSH COMPLETED $SWAG${NC}"
+		fi
 	elif [ "$action" == "c" ]; then
 		git commit -m "$commit"
 	elif [ "$action" == "a" ]; then
@@ -78,14 +81,8 @@ function main_detailed() {
 			echo -e "${RED}'$file' ${LRED}did not match any files${NC}"
 		fi
     done
-	showstatus
-	read -p $'\e[0;32mcommit message: \e[0m' -a commit
-	git commit -m "$commit"
-	read -p $'\e[0;32mgit push \e[0m' -a remote
-	git push $remote
-	if [ $? -eq 0 ]; then
-		echo -e "\n${GREEN}REPO PUSH COMPLETED $SWAG${NC}"
-	fi
+	showStatus
+	handleAction
 }
 
 setlgit() {
