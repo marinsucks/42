@@ -16,26 +16,23 @@ SWAG='🫠'
 function showStatus() {
 	staged_files=$(git status -s | grep -E '^[AM]' | awk '{print $2}' | tr '\n' ' ')
 	untracked_files=$(git status -s | grep -E '^\?\?|^ M' | awk '{print $2}' | tr '\n' ' ')
-	modified_files=$(git status -s | grep -E '^ M' | awk '{print $2}' | tr '\n' ' ')
-	echo ""
+	echo -e "\n${BOLD}SUMMARY:${NC}"
 	if [ -z "$staged_files" ]; then
-		echo -e "${LGREEN}Tracked files:${BOLD} none${NC}"
-		echo -e "${LYELLOW}Untracked files:${NC} $untracked_files"
+		echo -e "${GREEN}Tracked files:\t ${LGREY}none${NC}"
+		echo -e "${LGREEN}Untracked files: ${NC}$untracked_files"
 	elif [ -z "$untracked_files" ]; then
-		echo -e "${LGREEN}Tracked files:${NC} $staged_files"
-		echo -e "${LYELLOW}Untracked files:${BOLD} none${NC}"
+		echo -e "${GREEN}Tracked files:\t ${NC}$staged_files"
+		echo -e "${LGREEN}Untracked files: ${LGREY}none${NC}"
 	else
-		echo -e "${LGREEN}Tracked files:${NC} $staged_files"
-		echo -e "${LYELLOW}Untracked files:${NC} $untracked_files"
+		echo -e "${GREEN}Tracked files:\t ${NC}$staged_files"
+		echo -e "${LGREEN}Untracked files: ${NC}$untracked_files"
 	fi
+	echo -e "${GREEN}Commit message:\t${NC} $commit"
 }
 
 function handleAction() {
 	while [[ "$action" != "p" && "$action" != "c" && "$action" != "a" ]]; do
-		read -p $'\e[0;31mcommit, push or abort [p/c/a]:\e[0m' -n 1 -a action
-		if [[ "$action" != "p" && "$action" != "c" && "$action" != "a" && "$action" != "" ]]; then
-			echo -e "\nInvalid action."
-		fi
+		read -p $'\e[1;31m\npush, commit or abort [p/c/a]:\e[0m' -n 1 -a action
 	done
 	if [ "$action" == "p" ]; then
 		git commit -m "$commit"
@@ -44,10 +41,8 @@ function handleAction() {
 	elif [ "$action" == "c" ]; then
 		git commit -m "$commit"
 	elif [ "$action" == "a" ]; then
-		echo -e "\n${YELLOW}Push aborted.${NC}"
-		git reset $files
-	else
-		echo -e "\n${RED}Invalid action.${NC}"
+		echo -e "\n${LRED}Push aborted.${NC}"
+		git reset $files &> /dev/null
 	fi
 }
 
@@ -60,7 +55,12 @@ function quickMode() {
 			echo -e "${RED}'$file' ${LRED}did not match any files${NC}"
 		fi
 	done
-	read -p $'\e[0;32mcommit message: \e[0m' -a commit
+	while [ -z "$commit" ]; do
+		read -p $'\e[0;32mcommit message: \e[0m' commit
+		if [ -z "$commit" ]; then
+			echo -e "${LRED}Please enter a commit message.${NC}"
+		fi
+	done
 	showStatus
 	handleAction
 }
