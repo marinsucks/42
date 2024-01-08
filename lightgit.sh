@@ -71,7 +71,7 @@ function quickMode() {
 
 function main_detailed() {
 	echo -e "\nPlease enter the files or directories to add separated by a space, or '.' to add all files."
-	read -p $'\e[0;32mFiles to add: \e[0m' -a files 
+	read -p $'\e[0;32mFiles to add: \e[0m' files 
     echo -e "\n${LGREEN}Adding ${#files[@]} files to staging area:${NC}"
     for file in "${files[@]}"; do
         if git add "$file" &> /dev/null; then
