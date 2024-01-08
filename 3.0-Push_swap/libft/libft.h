@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/04 10:39:27 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:34:59 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -30,7 +31,9 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 int		ft_tolower(int c);
+char	*ft_strtolower(char *str);
 int		ft_toupper(int c);
+char	*ft_strtoupper(char *str);
 
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *str, int c);
@@ -78,5 +81,14 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
+
+int			ft_printf(const char *s, ...);
+int			pf_convert(const char *s, va_list args);
+void		pf_backslash(const char *s, int *count);
+short int	pf_convert_int(va_list args);
+int			pf_convert_str(const char *s, va_list args);
+short int	pf_convert_ui(const char *s, va_list args);
+short int	pf_convert_hex(const char *s, va_list args, char c);
+short int	pf_convert_ptr(const char *s, va_list args);
 
 #endif

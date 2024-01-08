@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 15:17:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/05 15:18:12 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/08 15:05:47 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,9 @@ NC =\033[0m
 all: $(NAME)
 
 $(NAME):
+	@$(CC) $(CFLAGS) $(NAME) $(SRC)
+	@echo "$(GREEN)Compilation OK :)$(NC)"
+	@./$(NAME)
 
 clean:
 	@echo "Removing exe & obj..."

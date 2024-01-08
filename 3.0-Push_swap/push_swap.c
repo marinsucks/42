@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:40:48 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 14:52:58 by mbecker          ###   ########.fr       */
+/*   Created: 2024/01/08 15:10:25 by mbecker           #+#    #+#             */
+/*   Updated: 2024/01/08 15:24:31 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	ft_toupper(int c)
+# include "libft/libft.h"
+
+typedef	struct s_nums
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
-}
+	int				*num;
+	struct s_nums	*next;
+}					t_nums;
 
-char	*ft_strtoupper(char *str)
-{
-	int	i;
 
-	i = 0;
-	while (str[i])
-	{
-		str[i] = ft_toupper((int)str[i]);
-		i++;
-	}
-	return (str);
-}
+
+#endif
