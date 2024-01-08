@@ -12,7 +12,6 @@ BOLD='\033[1;37m'
 NC='\033[0m'
 SWAG='🫠'
 
-
 function showStatus() {
 	staged_files=$(git status -s | grep -E '^[AM]' | awk '{print $2}' | tr '\n' ' ')
 	untracked_files=$(git status -s | grep -E '^\?\?|^ M' | awk '{print $2}' | tr '\n' ' ')
