@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_wordcount.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:34:21 by mbecker           #+#    #+#             */
-/*   Updated: 2023/10/30 16:34:23 by mbecker          ###   ########.fr       */
+/*   Created: 2023/11/14 19:10:50 by mbecker           #+#    #+#             */
+/*   Updated: 2024/01/08 17:49:45 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+size_t	ft_wordcount(const char *str, char sep)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	size_t	i;
+	size_t	count;
+
+	i = 0;
+	count = 1;
+	while (str[i])
+	{
+		if (str[i] != sep && (str[i + 1] == sep || str[i + 1] == 0))
+			count++;
+		i++;
+	}
+	return (count);
 }

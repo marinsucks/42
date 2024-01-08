@@ -1,20 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_revertx.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:34:31 by mbecker           #+#    #+#             */
-/*   Updated: 2023/10/30 16:34:33 by mbecker          ###   ########.fr       */
+/*   Created: 2023/11/23 13:50:59 by mbecker           #+#    #+#             */
+/*   Updated: 2023/11/23 14:07:24 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+void	ft_revert_tab(char *s)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	int		start;
+	int		end;
+	char	temp;
+
+	start = 0;
+	end = ft_strlen(s) - 1;
+	while (start < end)
+	{
+		temp = s[start];
+		s[start++] = s[end];
+		s[end--] = temp;
+	}
+}
+
+void	ft_revert_inttab(char *s)
+{
+	int		start;
+	int		end;
+	char	temp;
+
+	start = 0;
+	end = ft_strlen(s) - 1;
+	if (s[start] == '-')
+		start++;
+	while (start < end)
+	{
+		temp = s[start];
+		s[start++] = s[end];
+		s[end--] = temp;
+	}
 }

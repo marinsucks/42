@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:37:55 by mbecker           #+#    #+#             */
-/*   Updated: 2023/10/30 16:37:56 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/08 17:32:16 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,25 @@ char	*ft_strdup(const char *s1)
 	}
 	dest[len] = 0;
 	return (dest);
+}
+
+char	*ft_strndup(const char *src, size_t size)
+{
+	char	*ptr;
+	size_t	i;
+
+	i = 0;
+	while (src[i])
+		i++;
+	ptr = (char *)malloc(size + 1);
+	if (!ptr)
+		return (0);
+	i = 0;
+	while (src[i] && i < size)
+	{
+		ptr[i] = src[i];
+		i++;
+	}
+	ptr[i] = 0;
+	return (ptr);
 }
