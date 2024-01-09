@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 15:17:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/09 17:24:59 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/09 23:54:39 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 
-SRC = main.c
+SRC = main.c ft_stack.c
 
 RED =\033[1;31m
 LRED =\033[0;31m
