@@ -40,4 +40,4 @@ For any further information, feel free to contact me on [mbecker@student.42.fr](
 
 You manage to read this entire presentation, congrats ! Here's a cool meme for you to look at :
 
-![Cool Meme](./misc/meme-line42.jpg)
+![Cool Meme](./.misc/meme-line42.jpg)
