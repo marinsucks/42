@@ -33,23 +33,27 @@ function handleAction() {
 	while [[ "$action" != "p" && "$action" != "c" && "$action" != "a" ]]; do
 		read -p $'\e[1;31m\npush, commit or abort [p/c/a]:\e[0m' -n 1 -a action
 	done
+	echo ""
 	if [ "$action" == "p" ]; then
+		echo -e "\n${GREEN}Committing...${NC}"
 		git commit -m "$commit"
-		read -p $'\e[0;32mgit push \e[0m' -a remote
+		read -e -p $'\n\e[0;32mgit push \e[0m' -a remote
+		echo -e "\n${GREEN}Pushing...${NC}"
 		git push $remote
 		if [ $? -eq 0 ]; then
 			echo -e "\n${GREEN}REPO PUSH COMPLETED $SWAG${NC}"
 		fi
 	elif [ "$action" == "c" ]; then
+		echo -e "\n${GREEN}Committing...${NC}"
 		git commit -m "$commit"
 	elif [ "$action" == "a" ]; then
-		echo -e "\n${LRED}Push aborted.${NC}"
+		echo -e "\n${LRED}Push aborted. Resetting files off staging area.${NC}"
 		git reset $files &> /dev/null
 	fi
 }
 
 function quickMode() {
-	read -p $'\e[0;32mgit add \e[0m' -a files
+	read -e -p $'\e[0;32mgit add \e[0m' -a files
 	for file in "${files[@]}"; do
 		if git add "$file" &> /dev/null; then
 			git add "$file"
@@ -58,7 +62,7 @@ function quickMode() {
 		fi
 	done
 	while [ -z "$commit" ]; do
-		read -p $'\e[0;32mcommit message: \e[0m' commit
+		read -e -p $'\e[0;32mcommit message: \e[0m' commit
 		if [ -z "$commit" ]; then
 			echo -e "${LRED}Please enter a commit message.${NC}"
 		fi
@@ -68,9 +72,12 @@ function quickMode() {
 }
 
 
-function main_detailed() {
+function normalMode() {
+	# welcome to lightgit
 	echo -e "\nPlease enter the files or directories to add separated by a space, or '.' to add all files."
-	read -p $'\e[0;32mFiles to add: \e[0m' files 
+	read -e -p $'\e[0;32mFiles to add: \e[0m' files 
+	#same as above but with terminal completion
+
     echo -e "\n${LGREEN}Adding ${#files[@]} files to staging area:${NC}"
     for file in "${files[@]}"; do
         if git add "$file" &> /dev/null; then
@@ -101,25 +108,25 @@ setlgit() {
     fi
 }
 
-sghelp() {
+help() {
 	echo -e "${BOLD}┌─────────────────────────────────────────────────────────────┐${NC}"
 	echo -e "${BOLD}│ LIGHTGIT.SH - a single command for git add, commit and push │${NC}"
 	echo -e "${BOLD}└─────────────────────────────────────────────────────────────┘${NC}\n"
-	echo -e "${BOLD}LGIT COMMAND SETUP:\t${NC}./git.sh setlgit  ${LGREY}-> aliases the lgit command, replacing './git.sh' by 'lgit'${NC}\n"
-    echo -e "${BOLD}MODES:\t\t\t${NC}lgit d ${LGREY}-> normal mode, shows processes in detail${NC}"
-    echo -e "${BOLD}\t\t\t${NC}lgit q ${LGREY}-> quick mode, adds files, commits and pushes with only necessary infos.${NC}\n"
+	echo -e "${BOLD}LGIT COMMAND SETUP:\t${NC}./git.sh setlgit  ${LGREY}-> creates the alias 'lgit' for './lightgit'${NC}\n"
+    echo -e "${BOLD}MODES:\t\t\t${NC}lgit n ${LGREY}-> normal mode, shows processes in detail.${NC}"
+    echo -e "${BOLD}\t\t\t${NC}lgit q ${LGREY}-> quick mode, only necessary infos.${NC}\n"
 }
 
 if [ $# -eq 0 ]; then
     echo -e "${LRED}Missing mode argument.${NC}"
-	echo -e "Try ./lightgit.sh help"
+	echo -e "${BOLD}First time using LIGHTGIT?${NC} Try ${BOLD}./lightgit.sh help${NC} for manual."
     exit 1
 fi
 
 if [ "$1" == "setlgit" ]; then
 	setlgit
 elif [ "$1" == "help" ] || [ "$1" == "h" ] || [ "$1" == "man" ]; then
-	sghelp
+	help
 elif [ "$1" == "n" ]; then
 	normalMode
 elif [ "$1" == "q" ]; then
