@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/09 12:06:54 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/09 17:23:15 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) -c $< -o $@ 
 
 clean:
-	@echo "$(RED)Removing exe & obj...$(NC)"
+	@echo "$(RED)Cleaning libft...$(NC)"
 	@rm -rf a.out libexe a.out.dSYM .vscode obj/ $(OBJ)
 
 fclean: clean

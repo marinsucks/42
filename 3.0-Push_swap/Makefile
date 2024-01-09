@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 15:17:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/09 12:31:59 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/09 17:24:59 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,21 +25,21 @@ LYELLOW =\033[0;33m
 GREY =\033[1;37m
 NC =\033[0m
 
-all: libft
+all: #libft
 	@$(CC) $(CFLAGS) -o $(NAME) $(SRC) libft/libft.a
 	@echo "$(GREEN)Compilation OK :)$(NC)"
 
 f: #libft
-	@$(CC) -o $(NAME) $(SRC) libft/libft.a
+	@$(CC) -g -o $(NAME) $(SRC) libft/libft.a
 	@echo "$(GREEN)Compilation nf OK :)$(NC)"
 
 clean:
-	@echo "$(RED)Cleaning $$(pwd)...$(NC)"
+	@echo "$(RED)Cleaning Push_swap...$(NC)"
 	@rm -rf *.out* */*.out  .vscode $(OBJ)
 
 fclean: clean
 	@rm -f $(NAME)
-#	@make -C ./libft fclean
+	@make -C ./libft fclean
 
 ref: fclean f
 

@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 12:10:08 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 17:21:11 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/09 17:20:25 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_itoa(int n)
 
 	i = 0;
 	ln = n;
-	res = (char *)malloc(ft_numlen(ln));
+	res = (char *)malloc(ft_numlen(ln) + 1);
 	if (!res)
 		return (NULL);
 	if (ln == 0)
