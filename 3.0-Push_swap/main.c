@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:10:25 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 18:24:27 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/09 14:36:56 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char const *argv[])
+#include "push_swap.h" 
+
+int main(int argc, char const *argv[]) //PENSER A REMETTRE COMMANDE LIBFT DS MAKEFILE
 {
-	//take args as a list
+	if (argc < 2)
+	{
+		ft_printf("\033[1;31mERROR:\033[0;31m not enough arguments.\n");
+		return 0;
+	}
+
+
 	return 0;
 }
 

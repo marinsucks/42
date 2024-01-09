@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:11:12 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 18:22:11 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/09 12:53:50 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 
 # include "libft/libft.h"
 
-typedef	struct s_nums
+typedef struct s_nums
 {
 	int				*num;
 	struct s_nums	*next;
 }					t_nums;
-
-
 
 #endif
