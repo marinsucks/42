@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:38:31 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/27 15:45:50 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/09 22:55:21 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,12 @@ short int	ft_numlen(long long num)
 	return (len);
 }
 
+//ft_numlen_base doesn't work with negative numbers. please add 1 for the sign.
 short int	ft_numlen_base(unsigned long num, unsigned int baselen)
 {
 	short int			len;
 
 	len = 1;
-	if (num < 0)
-	{
-		len++;
-		num = -num;
-	}
 	while (num >= baselen)
 	{
 		len++;
