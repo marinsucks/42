@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/09 12:13:18 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/10 15:11:33 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char		*ft_itoa(int n);
 
 //ft_len.c
 size_t		ft_strlen(const char *s);
+size_t		ft_tablen(const char **tab);
 short int	ft_numlen(long long num);
 short int	ft_numlen_base(unsigned long num, unsigned int baselen);
 
