@@ -1,3 +1,5 @@
+ERROR EXCLUSIVE TO MACOS:
+
 ➜  3.0-Push_swap git:(master) ✗ make libft
 Compiling libft..
 ft_printf2.c:29:32: error: parameter 's' set but not used [-Werror,-Wunused-but-set-parameter]

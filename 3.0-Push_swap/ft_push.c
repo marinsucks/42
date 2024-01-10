@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 15:11:12 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/10 16:37:55 by mbecker          ###   ########.fr       */
+/*   Created: 2024/01/10 16:39:52 by mbecker           #+#    #+#             */
+/*   Updated: 2024/01/10 16:44:53 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "libft/libft.h"
+void	ft_lstpush(t_list **stack_a, t_list **stack_b)
+{
+    t_list	*tmp;
 
-//ft_stack
-t_list	*ft_getstack(int argc, char const *argv[]);
+    if (*stack_a == NULL || *stack_b == NULL)
+        return ;
+	//TODO
+}
 
-//ft_swap
-void    ft_lstswap(t_list **node);
-void    sa(t_list **stack_a);
-void    sb(t_list **stack_b);
-void    ss(t_list **stack_a, t_list **stack_b);
+void	pa(t_list **stack_a, t_list **stack_b)
+{
+	ft_lstpush(stack_a, stack_b);
+	write(1, "pa\n", 3);
+}
 
-//test functions
-void	printList(t_list *list);
-void	printBoth(t_list *list_a, t_list *list_b);
-
-
-#endif
+void	pb(t_list **stack_a, t_list **stack_b)
+{
+	ft_lstpush(stack_b, stack_a);
+	write(1, "pb\n", 3);
+}

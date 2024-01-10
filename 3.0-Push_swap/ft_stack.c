@@ -6,14 +6,14 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 23:16:45 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/09 23:54:27 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/10 16:28:29 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 //don't forget to free stack after use
-t_list	*ft_makestack(int argc, char const *argv[])
+t_list	*ft_getstack(int argc, char const *argv[])
 {
 	t_list	*stack;
 	t_list	*new_node;
