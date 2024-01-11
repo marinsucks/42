@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:10:25 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/11 19:29:59 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 19:41:27 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,32 @@ int	main(int argc, char const *argv[]) // PENSER A REMETTRE COMMANDE LIBFT DS MA
 	}
 	stack_a = ft_getstack(argc, argv);
 	stack_b = NULL;
-	
+	printBoth(&stack_a, &stack_b);
+	sa(&stack_a);
+	printBoth(&stack_a, &stack_b);
+	pb(&stack_a, &stack_b);
+	pb(&stack_a, &stack_b);
+	pb(&stack_a, &stack_b);
+	printBoth(&stack_a, &stack_b);
+	rr(&stack_a, &stack_b);
+	printBoth(&stack_a, &stack_b);
+	rrr(&stack_a, &stack_b);
+	printBoth(&stack_a, &stack_b);
+	sa(&stack_a);
+	printBoth(&stack_a, &stack_b);
+	pa(&stack_a, &stack_b);
+	pa(&stack_a, &stack_b);
+	pa(&stack_a, &stack_b);
+	printBoth(&stack_a, &stack_b);
+
+
+
+
 	/*************TESTS*************/
 	//swapTests(stack_a, stack_b, argv);
 	//pushTests(stack_a, stack_b, argv);
 	//rotateTests(stack_a, stack_b, argv);
-	reverseRotateTests(stack_a, stack_b, argv);
+	//reverseRotateTests(stack_a, stack_b, argv);
 
 
 	ft_lstclear(&stack_a, free);
