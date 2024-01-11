@@ -6,12 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:36:48 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 16:40:59 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:39:40 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//returns a pointer to the first occurence of c in str.
 char	*ft_strchr(const char *str, int c)
 {
 	while (*str != '\0')
@@ -26,6 +27,7 @@ char	*ft_strchr(const char *str, int c)
 		return (NULL);
 }
 
+//returns a pointer to the last occurence of c in str.
 char	*ft_strrchr(const char *str, int c)
 {
 	const char	*last_occ;

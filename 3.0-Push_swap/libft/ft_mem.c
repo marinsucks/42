@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mem_xxx.c                                       :+:      :+:    :+:   */
+/*   ft_mem.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:34:58 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 16:31:48 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:30:33 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//searches for the first occurrence of the character c in the first n bytes of the string pointed to, by the argument s.
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*sc;
@@ -50,6 +51,10 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	return (0);
 }
 
+/** 
+ * copies n bytes from memory area src to memory area dst.
+ * use memmove in case of overlapping memories.
+ */
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	char	*d;
@@ -67,6 +72,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
+//copies n bytes from memory area src to memory area dst.
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	char	*d;

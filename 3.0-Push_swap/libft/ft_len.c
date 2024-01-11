@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:38:31 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/10 15:25:37 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:16:43 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ size_t	ft_tablen(const char **tab)
 	return (i);
 }
 
+/**
+ * returns the length of a number.
+ */
 short int	ft_numlen(long long num)
 {
 	short int			len;
@@ -50,7 +53,10 @@ short int	ft_numlen(long long num)
 	return (len);
 }
 
-//ft_numlen_base doesn't work with negative numbers. please add 1 for the sign.
+/**
+ * returns the length of a number in a given base.
+ * doesn't work with negative numbers - add 1 for the sign.
+ */
 short int	ft_numlen_base(unsigned long num, unsigned int baselen)
 {
 	short int			len;

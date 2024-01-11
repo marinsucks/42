@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_printf2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:36:46 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 15:37:15 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:07:03 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ short int	pf_convert_hex(const char *s, va_list args, char c)
 		hex = ft_strdup("0123456789abcdef");
 	else
 		hex = ft_strdup("0123456789ABCDEF");
-	res = int_to_base(argl, hex, 16);
+	res = ft_intbase(argl, hex, 16);
 	len = ft_strlen(res);
 	ft_putstr_fd(res, 1);
 	free(hex);
@@ -100,7 +100,7 @@ short int	pf_convert_ptr(const char *s, va_list args)
 		write(1, "(nil)", 5);
 		return (5);
 	}
-	res = long_to_base(argp, "0123456789abcdef", 16);
+	res = ft_longbase(argp, "0123456789abcdef", 16);
 	write(1, "0x", 2);
 	ft_putstr_fd(res, 1);
 	len = ft_strlen(res) + 2;

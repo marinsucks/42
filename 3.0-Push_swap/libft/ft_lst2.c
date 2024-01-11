@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_xxx2.c                                      :+:      :+:    :+:   */
+/*   ft_lst2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 16:28:31 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 16:25:01 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:27:44 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//applies func del to the content of each node and frees each node.
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*ptr;
@@ -29,6 +30,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	*lst = NULL;
 }
 
+//iterates the list lst and applies the function f to the content of each node.
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list	*ptr;
@@ -45,6 +47,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	}
 }
 
+//returns the last element of the list.
 t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*ptr;
@@ -57,6 +60,11 @@ t_list	*ft_lstlast(t_list *lst)
 	return (ptr);
 }
 
+/**
+ * Iterates the list lst and applies the function f to the content of each element.
+ * Creates and returns a new list resulting of the successive applications of the function f.
+ * The ’del’ function is used to delete the content of an element if needed.
+ */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_node;

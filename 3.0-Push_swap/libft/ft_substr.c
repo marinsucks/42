@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:11:16 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/17 16:11:19 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:52:31 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ static size_t	ft_sublen(char const *s, unsigned int start, size_t len)
 		return (len + 1);
 }
 
+/**
+ * allocates (with malloc(3)) and returns a substring from the string ’s’.
+ * @param start the start index of the substring in the string ’s’.
+ * @param len the maximum length of the substring.
+ */
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*res;

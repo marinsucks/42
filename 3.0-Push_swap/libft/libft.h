@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/10 15:11:33 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:44:11 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef struct s_list
 int			ft_atoi(const char *str);
 
 //ft_base.c
-char		*int_to_base(unsigned int nbr, char *base, unsigned int baselen);
-char		*long_to_base(unsigned long nbr, char *base, unsigned int baselen);
+char		*ft_intbase(unsigned int nbr, char *base, unsigned int baselen);
+char		*ft_longbase(unsigned long nbr, char *base, unsigned int baselen);
 
 void		ft_bzero(void *s, size_t n);
 

@@ -6,12 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:10:50 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 17:49:45 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:51:20 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//returns the number of words in str, separated by sep.
 size_t	ft_wordcount(const char *str, char sep)
 {
 	size_t	i;

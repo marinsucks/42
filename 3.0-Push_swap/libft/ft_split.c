@@ -6,12 +6,16 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:10:50 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 17:32:01 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:38:17 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * splits a string into words, separated by a given char.
+ * allocates and returns a NULL-terminated array of strings (words).
+ */
 char	**ft_split(char const *s, char c)
 {
 	char	**res;

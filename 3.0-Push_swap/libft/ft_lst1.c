@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_xxx1.c                                      :+:      :+:    :+:   */
+/*   ft_lst1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 16:28:31 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 16:25:22 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:27:54 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//allocates (with malloc(3)) and returns a new element.
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*newlist;
@@ -24,6 +25,7 @@ t_list	*ft_lstnew(void *content)
 	return (newlist);
 }
 
+//adds the node ’new’ at the beginning of the list.
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (new)
@@ -33,6 +35,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	}
 }
 
+//adds the node ’new’ at the end of the list.
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
@@ -51,6 +54,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 }
 
+//applies func del to the content of the node and frees the node.
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (!lst || !del)
