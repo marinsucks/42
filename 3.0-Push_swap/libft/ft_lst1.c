@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 16:28:31 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/11 12:27:54 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 16:46:13 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list	*ft_lstnew(void *content)
 	return (newlist);
 }
 
-//adds the node ’new’ at the beginning of the list.
+//adds the node ’new’ at the beginning of the list 'lst'.
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (new)
