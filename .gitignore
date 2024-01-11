@@ -10,10 +10,8 @@ a.out.dSYM/
 push_swap
 
 /*** TESTING FILES ***/
-test.*
-test_*
-tripouille/
-tester*
+test
+tester
 
 /*** IDE GENERATED FILES ***/
 .vscode/
