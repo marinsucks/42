@@ -6,19 +6,22 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:39:52 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/10 16:44:53 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/11 15:12:31 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstpush(t_list **stack_a, t_list **stack_b)
+// moves first node of src to the beginning of dst
+void	ft_lstpush(t_list **src, t_list **dst)
 {
-    t_list	*tmp;
+	t_list	*tmp;
 
-    if (*stack_a == NULL || *stack_b == NULL)
-        return ;
-	//TODO
+	if (*src == NULL)
+		return ;
+	tmp = (*src)->next;
+	ft_lstadd_front(dst, *src);
+	*src = tmp;
 }
 
 void	pa(t_list **stack_a, t_list **stack_b)
