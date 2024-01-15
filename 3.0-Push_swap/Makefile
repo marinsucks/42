@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 15:17:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/11 18:48:12 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/15 15:54:36 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,11 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 
 SRC = 	main.c \
-		ft_stack.c \
 		ft_swap.c \
 		ft_push.c \
 		ft_rotate.c \
 		ft_rrotate.c \
+		ft_sort.c \
 		test.print.c \
 		test.cmds.c \
 

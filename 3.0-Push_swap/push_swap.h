@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:11:12 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/11 18:55:25 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/15 17:24:13 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void    ss(t_list **stack_a, t_list **stack_b);
 void	ft_lstpush(t_list **src, t_list **dst);
 void	pa(t_list **stack_a, t_list **stack_b);
 void	pb(t_list **stack_a, t_list **stack_b);
+void	pa_sorted(t_list **stack_a, t_list **stack_b);
+void	pb_sorted(t_list **stack_a, t_list **stack_b);
 
 //ft_rotate
 void	ft_rotate(t_list **stack);
@@ -40,6 +42,10 @@ void	ft_rrotate(t_list **stack);
 void	rra(t_list **stack_a);
 void	rrb(t_list **stack_b);
 void	rrr(t_list **stack_a, t_list **stack_b);
+
+//ft_sort
+int		ft_is_sorted(t_list *stack);
+int		ft_find_unsorted(t_list *stack);
 
 //test functions
 void	printList(t_list *list);
