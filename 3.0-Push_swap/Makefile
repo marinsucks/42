@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 15:17:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/15 15:54:36 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/16 16:16:39 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC = 	main.c \
 		ft_push.c \
 		ft_rotate.c \
 		ft_rrotate.c \
-		ft_sort.c \
+		ft_sorted.c \
+		ft_insertion_sort.c \
 		test.print.c \
 		test.cmds.c \
 

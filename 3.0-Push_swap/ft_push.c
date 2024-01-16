@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:39:52 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/15 17:29:48 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:04:50 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,30 @@ void	pb(t_list **stack_a, t_list **stack_b)
 	write(1, "pb\n", 3);
 }
 
+//pushes all sorted elements of stack_b to stack_a
 void	pa_sorted(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*ptr;
+	int		unsorted;
 
 	ptr = *stack_b;
-	while (ptr && *(int *)ptr->content > *(int *)ptr->next->content)
-	{
+	unsorted = ft_find_unsorted(*stack_b, FALSE);
+	while (unsorted--)
 		pa(stack_a, stack_b);
-		ptr = (*stack_b)->next;
-	}
+
+	//printBoth(stack_a, stack_b); //delete me
 }
 
+//pushes all sorted elements of stack_a to stack_b
 void	pb_sorted(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*ptr;
 	int		unsorted;
 
 	ptr = *stack_a;
-	unsorted = ft_find_unsorted(*stack_a) + 1;
+	unsorted = ft_find_unsorted(*stack_a, TRUE);
 	while (unsorted--)
-	{
 		pb(stack_a, stack_b);
-		printBoth(stack_a, stack_b);
-	}
+
+	//printBoth(stack_a, stack_b); //delete me
 }

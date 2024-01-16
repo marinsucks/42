@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:08:49 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/10 16:34:18 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/16 12:53:49 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	ft_lstswap(t_list **node)
 {
-    t_list	*tmp;
+	t_list	*tmp;
 
-    if (*node == NULL || (*node)->next == NULL)
-        return ;
-    tmp = (*node)->next;
-    (*node)->next = tmp->next;
-    tmp->next = *node;
-    *node = tmp;
+	if (*node == NULL || (*node)->next == NULL)
+		return ;
+	tmp = (*node)->next;
+	(*node)->next = tmp->next;
+	tmp->next = *node;
+	*node = tmp;
 }
 
 void	sa(t_list **stack_a)

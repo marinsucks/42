@@ -6,13 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:43:46 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/11 12:10:11 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/16 16:40:39 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*is_valid_base(char *str)
+char	*is_valid_base(char *str)
 {
 	int	i;
 	int	j;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort.c                                          :+:      :+:    :+:   */
+/*   ft_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:58:42 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/15 17:29:38 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:05:20 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,39 +23,42 @@ int	ft_is_sorted(t_list *stack)
 	{
 		if (*i > *(int *)ptr->content)
 		{
-			ft_printf("KO\n");
+			//ft_printf("Not sorted\n");
 			return (0);
 		}
 		i = ptr->content;
 		ptr = ptr->next;
 	}
-	ft_printf("OK\n");
+	//ft_printf("Sorted\n");
 	return (1);
 }
 
-// returns index of first element that is not sorted, or max index if sorted.
-int	ft_find_unsorted(t_list *stack)
+/** 
+ * @brief returns index of first element that is not sorted, or max index if sorted.
+ * @param ascending 1/TRUE for ascending, 0/FALSE for descending
+ */
+int	ft_find_unsorted(t_list *stack, int ascending)
 {
 	int		i;
 	t_list	*ptr;
 
 	i = 0;
 	ptr = stack;
-	while (ptr->next && *(int *)ptr->content < *(int *)ptr->next->content)
+	if (ascending)
 	{
-		i++;
-		ptr = ptr->next;
+		while (ptr->next && *(int *)ptr->content < *(int *)ptr->next->content)
+		{
+			i++;
+			ptr = ptr->next;
+		}
+	}
+	else
+	{
+		while (ptr->next && *(int *)ptr->content > *(int *)ptr->next->content)
+		{
+			i++;
+			ptr = ptr->next;
+		}
 	}
 	return (i);
-}
-
-void	ft_insertion_sort(t_list *stack_a, t_list *stack_b)
-{
-	int	i;
-
-	i = 0;
-	while (!ft_is_sorted(stack_a) && stack_b)
-	{
-		pb_sorted(&stack_a, &stack_b);
-	}
 }

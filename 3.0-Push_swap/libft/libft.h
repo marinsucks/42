@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/16 14:57:50 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/16 17:00:22 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ typedef struct s_gnl_fd_data
 	char			stash[BUFFER_SIZE + 1];
 }					t_gnl_fd_data;
 
+//ft_atoi.c
 int			ft_atoi(const char *str);
+long		ft_atol(const char *str);
 
 //ft_base.c
 char		*ft_intbase(unsigned int nbr, char *base, unsigned int baselen);
@@ -47,6 +49,8 @@ char		*ft_longbase(unsigned long nbr, char *base, unsigned int baselen);
 void		ft_bzero(void *s, size_t n);
 
 void		*ft_calloc(size_t nmemb, size_t size);
+
+void		ft_freetab(char **tab);
 
 //ft_is.c
 int			ft_isalnum(int c);

@@ -6,13 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:40:08 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 17:44:16 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/16 16:40:53 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*joincat(char *s1, char *s2, char *res)
+char	*joincat(char *s1, char *s2, char *res)
 {
 	while (*s1)
 	{

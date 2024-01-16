@@ -6,13 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:11:16 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/11 12:52:31 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/16 16:41:04 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_sublen(char const *s, unsigned int start, size_t len)
+size_t	ft_sublen(char const *s, unsigned int start, size_t len)
 {
 	size_t	slen;
 

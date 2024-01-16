@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:16:19 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/11 18:01:41 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/16 12:54:50 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_rotate(t_list **stack)
 	t_list	*second;
 
 	first = *stack;
-	if (first == NULL)	
+	if (first == NULL)
 		return ;
 	second = (*stack)->next;
 	if (second == NULL)

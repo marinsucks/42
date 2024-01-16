@@ -6,13 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:25:45 by mbecker           #+#    #+#             */
-/*   Updated: 2023/11/17 16:33:28 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/16 16:41:26 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_set(char c, const char *set)
+int	is_set(char c, const char *set)
 {
 	while (*set)
 	{
