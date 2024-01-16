@@ -6,12 +6,20 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/11 12:44:11 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:57:50 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# ifndef FD_MAX
+#  define FD_MAX 512
+# endif
 
 # include <stdarg.h>
 # include <stddef.h>
@@ -23,6 +31,12 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_gnl_fd_data
+{
+	int				fd;
+	char			stash[BUFFER_SIZE + 1];
+}					t_gnl_fd_data;
 
 int			ft_atoi(const char *str);
 
@@ -137,5 +151,7 @@ char		*ft_strtolower(char *str);
 char		*ft_strtoupper(char *str);
 
 size_t		ft_wordcount(const char *str, char sep);
+
+char		*get_next_line(int fd);
 
 #endif

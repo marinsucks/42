@@ -6,13 +6,14 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:40:13 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/11 12:46:08 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/16 12:48:58 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// returns a pointer to the first occurrence of the string needle in the string haystack, or NULL if the string needle is not found.
+//returns a pointer to the first occurrence of the string needle in the string
+//haystack, or NULL if the string needle is not found.
 char	*ft_strstr(const char *haystack, const char *needle)
 {
 	int	i;
@@ -34,7 +35,9 @@ char	*ft_strstr(const char *haystack, const char *needle)
 	}
 	return (NULL);
 }
-// returns a pointer to the first occurrence of the string needle in n bytes of the string haystack, or NULL if the full string needle is not found.
+
+//returns a pointer to the first occurrence of the string needle in n bytes 
+//of the string haystack, or NULL if the full string needle is not found.
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 {
 	int	i;

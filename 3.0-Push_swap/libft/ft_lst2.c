@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 16:28:31 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/11 12:27:44 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/16 12:45:48 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,8 @@ t_list	*ft_lstlast(t_list *lst)
 	return (ptr);
 }
 
-/**
- * Iterates the list lst and applies the function f to the content of each element.
- * Creates and returns a new list resulting of the successive applications of the function f.
+/**Iterates the list lst and applies the func f to the content of each element.
+ * Creates and returns a new list resulting of the successive applications of f.
  * The ’del’ function is used to delete the content of an element if needed.
  */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
