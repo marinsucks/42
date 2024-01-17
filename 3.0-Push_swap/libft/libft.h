@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/16 17:00:22 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:37:47 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,9 @@ void		ft_putlong_fd(long long n, int fd);
 void		ft_revert_tab(char *s);
 void		ft_revert_inttab(char *s);
 
+//ft_split.c
 char		**ft_split(char const *s, char c);
+char		**ft_split_charset(char const *s, char *charset);
 
 //ft_strcat.c
 char		*ft_strcat(char *s1, const char *s2);
@@ -154,7 +156,9 @@ int			ft_toupper(int c);
 char		*ft_strtolower(char *str);
 char		*ft_strtoupper(char *str);
 
+//ft_wordcount.c
 size_t		ft_wordcount(const char *str, char sep);
+size_t		ft_wordcount_cset(const char *str, char *charset);
 
 char		*get_next_line(int fd);
 

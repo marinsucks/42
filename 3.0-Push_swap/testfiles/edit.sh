@@ -1,0 +1,1 @@
+echo "\nARG$1=\$(cat $PWD/testfiles/$1.txt)" >> ~/.zshrc

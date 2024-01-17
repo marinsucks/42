@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:58:42 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/16 14:05:20 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/17 13:45:13 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	ft_is_sorted(t_list *stack)
 	{
 		if (*i > *(int *)ptr->content)
 		{
-			//ft_printf("Not sorted\n");
+			ft_printf("Not sorted\n"); //delete me
 			return (0);
 		}
 		i = ptr->content;
 		ptr = ptr->next;
 	}
-	//ft_printf("Sorted\n");
+	ft_printf("Sorted\n"); //delete me
 	return (1);
 }
 

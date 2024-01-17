@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:37:57 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/16 14:56:54 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:39:11 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ static char	*gnl_tempsplit(char *temp, char *stash)
 char	*get_next_line(int fd)
 {
 	t_gnl_fd_data	*fd_data;
-	char		*temp;
-	int			readval;
+	char			*temp;
+	int				readval;
 
 	fd_data = gnl_get_fd_data(fd);
 	if (!fd_data)
