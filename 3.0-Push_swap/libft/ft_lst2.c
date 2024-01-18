@@ -6,13 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 16:28:31 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/16 12:45:48 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:33:39 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//applies func del to the content of each node and frees each node.
+// applies func del to the content of each node and frees each node.
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*ptr;
@@ -30,7 +30,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	*lst = NULL;
 }
 
-//iterates the list lst and applies the function f to the content of each node.
+// iterates the list lst and applies the function f to the content of each node.
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list	*ptr;
@@ -47,7 +47,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	}
 }
 
-//returns the last element of the list.
+// returns the last element of the list.
 t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*ptr;
@@ -58,6 +58,24 @@ t_list	*ft_lstlast(t_list *lst)
 	while (ptr->next)
 		ptr = ptr->next;
 	return (ptr);
+}
+
+// returns index of tofind in lst
+int	ft_lstindex(t_list **lst, t_list *tofind)
+{
+	int		i;
+	t_list	*ptr;
+
+	if (!lst)
+		return (0);
+	i = 0;
+	ptr = (*lst)->next;
+	while (ptr != tofind)
+	{
+		ptr = ptr->next;
+		i++;
+	}
+	return (i);
 }
 
 /**Iterates the list lst and applies the func f to the content of each element.

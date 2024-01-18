@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 15:17:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/17 16:48:28 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/18 10:52:46 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,8 +59,8 @@ libft:
 .PHONY : all clean fclean re libft
 
 
-n = 5
-file = 5.txt
+n = 3
+file = $(n).txt
 rand:
 	@touch testfiles/$(file)
 	@$(CC) $(CFLAGS) -o testfiles/a.out testfiles/generate.randargs.c
