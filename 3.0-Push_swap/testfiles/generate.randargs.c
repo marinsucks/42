@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:30:22 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/17 16:03:54 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:16:08 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,26 @@
 int main(int argc, char **argv) {
 	int n = atoi(argv[2]); 
 
-	if (argc != 3) {
-		printf("Usage: ./a.out filename n\n");
+	if (argc != 3)
+	{
+		printf("\033[1;31mUsage: ./a.out filename n\n\033[0m");
 		return 1;
 	}
 	
 	FILE *file = fopen(argv[1], "w");
 	
-	if (file == NULL) {
-		printf("Error opening file.\n");
+	if (file == NULL) 
+	{
+		printf("\033[1;31mError opening file.\n\033[0m");
 		return 1;
 	}
 	
-	srand(time(NULL)); // Seed the random number generator
+	srand(time(NULL));
 	
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++) 
+	{
 		short int randomInt = rand();
-		fprintf(file, "%d\n", randomInt);
+		fprintf(file, "%d ", randomInt);
 	}
 	
 	fclose(file);
