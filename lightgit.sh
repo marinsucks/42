@@ -94,14 +94,22 @@ function normalMode() {
 setlgit() {
     echo -e "${LGREEN}Setting up 'lgit' alias...${NC}"
     if [ "$(echo $SHELL)" = "/bin/bash" ]; then
-        echo -e "alias lgit=\"$PWD/lightgit.sh\" \"\$@\"" >> ~/.bashrc
-        source ~/.bashrc
-        echo -e "${GREEN}Alias 'lgit' set up successfully in ~/.bashrc.${NC}"
+		if [ -z "$(grep "^alias lgit=" ~/.zshrc)" ]; then
+        	echo -e "alias lgit=\"$PWD/lightgit.sh\" \"\$@\"" >> ~/.bashrc
+        	source ~/.bashrc
+        	echo -e "${GREEN}Alias 'lgit' set up successfully in ~/.bashrc.${NC}"
+		else
+			echo -e "${LRED}Alias 'lgit' already exists in ~/.bashrc.${NC}"
+		fi
     elif [ "$(echo $SHELL)" = "/bin/zsh" ]; then
-        echo -e "alias lgit=\"$PWD/lightgit.sh\" \"\$@\"" >> ~/.zshrc
-        source ~/.zshrc
-        echo -e "${BOLD}Alias 'lgit' written successfully in ~/.zshrc.${NC}"
-        echo -e "If you use ohmyzsh, please run ${BOLD}'source ~/.zshrc'${NC} to finish the installation."
+        if [ -z "$(grep "^alias lgit=" ~/.zshrc)" ]; then
+			echo -e "alias lgit=\"$PWD/lightgit.sh\" \"\$@\"" >> ~/.zshrc
+        	source ~/.zshrc
+        	echo -e "${BOLD}Alias 'lgit' written successfully in ~/.zshrc.${NC}"
+        	echo -e "If you use ohmyzsh, please run ${BOLD}'source ~/.zshrc'${NC} to finish the installation."
+		else
+			echo -e "${LRED}Alias 'lgit' already exists in ~/.zshrc.${NC}"
+		fi
     else
         echo -e "${LRED}Could not set up alias 'lgit': please use ./lightgit.sh instead.${NC}"
         echo $0
