@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:39:52 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/16 14:04:50 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/18 12:25:03 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	pb(t_list **stack_a, t_list **stack_b)
 }
 
 //pushes all sorted elements of stack_b to stack_a
-void	pa_sorted(t_list **stack_a, t_list **stack_b)
+void	pa_sorted(t_list **stack_a, t_list **stack_b, int additional)
 {
 	t_list	*ptr;
 	int		unsorted;
@@ -46,12 +46,13 @@ void	pa_sorted(t_list **stack_a, t_list **stack_b)
 	unsorted = ft_find_unsorted(*stack_b, FALSE);
 	while (unsorted--)
 		pa(stack_a, stack_b);
-
+	while (additional--)
+		pa(stack_a, stack_b);
 	//printBoth(stack_a, stack_b); //delete me
 }
 
 //pushes all sorted elements of stack_a to stack_b
-void	pb_sorted(t_list **stack_a, t_list **stack_b)
+void	pb_sorted(t_list **stack_a, t_list **stack_b, int additional)
 {
 	t_list	*ptr;
 	int		unsorted;
@@ -60,6 +61,7 @@ void	pb_sorted(t_list **stack_a, t_list **stack_b)
 	unsorted = ft_find_unsorted(*stack_a, TRUE);
 	while (unsorted--)
 		pb(stack_a, stack_b);
-
+	while (additional--)
+		pb(stack_a, stack_b);
 	//printBoth(stack_a, stack_b); //delete me
 }

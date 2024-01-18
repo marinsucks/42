@@ -6,30 +6,31 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:58:42 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/18 11:33:11 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/18 17:09:43 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_bubblesort(t_list **stack_a, t_list **stack_b)
+void	ft_bubblesort(t_list **stack_a)
 {
-	//t_list	*last;
-	//-> optimisation :	si last < first, rotate
-	// 					si first > *, rrotate.
-	int i;
-	size_t	len;
+	int		first;
+	int		second;
+	int 	third;
+	t_list	*ptr;
 
-	len = ft_lstsize(*stack_a);
-	i = 15;
-	while (!ft_is_sorted(*stack_a) || *stack_b)
+	int i = 0;
+	while (!ft_is_sorted(*stack_a))
 	{
-		if (ft_lstindex(stack_a, *stack_a) )
-		pb_sorted(stack_a, stack_b);
-		sa(stack_a);
-		printBoth(stack_a, stack_b);
-		ft_printf("i = %d\n", i);
-		if ((!*stack_a || !i--))
-			pa_sorted(stack_a, stack_b);
+		ptr = *stack_a;
+		first = *(int *)ptr->content;
+		second = *(int *)ptr->next->content;
+		third = *(int *)ptr->next->next->content;
+		if (first > second)
+			sa(stack_a);
+		if (second > first && second > third)
+			rra(stack_a);
+		if (i++ == 3)
+			exit(1);
 	}
 }

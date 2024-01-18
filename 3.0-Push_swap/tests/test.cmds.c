@@ -6,11 +6,11 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:39:57 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/17 11:58:05 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/18 18:49:50 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 //SA/SB/SS
 void	swapTests(t_list *stack_a, t_list *stack_b)

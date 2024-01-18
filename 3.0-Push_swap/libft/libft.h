@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/18 11:34:21 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/18 18:38:07 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 4096
 # endif
 
 # ifndef FD_MAX
@@ -28,8 +28,7 @@
 
 typedef struct s_list
 {
-	void			*content;
-	int				rank;
+	int			*content;
 	struct s_list	*next;
 }					t_list;
 
@@ -38,6 +37,8 @@ typedef struct s_gnl_fd_data
 	int				fd;
 	char			stash[BUFFER_SIZE + 1];
 }					t_gnl_fd_data;
+
+int	error(int fd);
 
 //ft_atoi.c
 int			ft_atoi(const char *str);
