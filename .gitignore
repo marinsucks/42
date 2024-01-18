@@ -8,6 +8,8 @@
 *.out
 a.out.dSYM/
 push_swap
+checker
+checker_linux
 
 /*** TESTING FILES ***/
 test
