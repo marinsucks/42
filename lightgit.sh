@@ -71,25 +71,24 @@ function quickMode() {
 	handleAction
 }
 
+#function normalMode() {
+#	# welcome to lightgit
+#	echo -e "\nPlease enter the files or directories to add separated by a space, or '.' to add all files."
+#	read -e -p $'\e[0;32mFiles to add: \e[0m' files 
+#	#same as above but with terminal completion
 
-function normalMode() {
-	# welcome to lightgit
-	echo -e "\nPlease enter the files or directories to add separated by a space, or '.' to add all files."
-	read -e -p $'\e[0;32mFiles to add: \e[0m' files 
-	#same as above but with terminal completion
-
-    echo -e "\n${LGREEN}Adding ${#files[@]} files to staging area:${NC}"
-    for file in "${files[@]}"; do
-        if git add "$file" &> /dev/null; then
-			git add "$file"
-        	echo -e "'$file' added$"
-		else
-			echo -e "${RED}'$file' ${LRED}did not match any files${NC}"
-		fi
-    done
-	showStatus
-	handleAction
-}
+#    echo -e "\n${LGREEN}Adding ${#files[@]} files to staging area:${NC}"
+#    for file in "${files[@]}"; do
+#        if git add "$file" &> /dev/null; then
+#			git add "$file"
+#        	echo -e "'$file' added$"
+#		else
+#			echo -e "${RED}'$file' ${LRED}did not match any files${NC}"
+#		fi
+#    done
+#	showStatus
+#	handleAction
+#}
 
 setlgit() {
     echo -e "${LGREEN}Setting up 'lgit' alias...${NC}"
@@ -125,13 +124,13 @@ help() {
     echo -e "${BOLD}\t\t\t${NC}lgit q ${LGREY}-> quick mode, only necessary infos.${NC}\n"
 }
 
-if [ $# -eq 0 ]; then
+if [ $# -eq 0 ] && [ -z "$(grep "^alias lgit" ~/.zshrc)" ]; then
     echo -e "${LRED}Missing mode argument.${NC}"
 	echo -e "${BOLD}First time using LIGHTGIT?${NC} Try ${BOLD}./lightgit.sh help${NC} for manual."
     exit 1
-fi
-
-if [ "$1" == "setlgit" ]; then
+elif [ -z "$1" ] || [ "$1" == "q" ]; then
+	quickMode
+elif [ "$1" == "setlgit" ]; then
 	setlgit
 elif [ "$1" == "help" ] || [ "$1" == "h" ] || [ "$1" == "man" ]; then
 	help
