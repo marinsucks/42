@@ -6,10 +6,11 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:14:48 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/18 20:26:29 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:31:51 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "checker.h"
 #include "push_swap.h"
 
 /** @return 1 if all args are digits separated by spaces, else 0
@@ -65,32 +66,6 @@ t_list	*ft_getstack(int tablen, const char *argv[])
 	return (stack);
 }
 
-t_list	*ft_getcommands(char **args)
-{
-	t_list	*commands;
-	t_list	*new_node;
-	char 	*gnl;
-
-	ft_printf("start\n");//delete me
-	gnl = get_next_line(1); //infinite loop why ????
-	while (gnl)
-	{
-		new_node = ft_lstnew(gnl);
-		ft_lstadd_back(&commands, new_node);
-		new_node->next = NULL;
-		gnl = get_next_line(1);
-	}
-	commands = NULL;
-	ft_printf("end\n");//delete me
-	new_node = commands;
-	while (new_node)//delete me
-	{//delete me
-		ft_printf("%s\n", new_node->content);//delete me
-		new_node = new_node->next;//delete me
-	}//delete me
-	return (commands);
-}
-
 int	main(int argc, char const *argv[])
 {
 	t_list	*stack_a;
@@ -98,22 +73,24 @@ int	main(int argc, char const *argv[])
 	t_list	*commands;
 	char	**args;
 
-	//if (argc <= 1)
-	//	return (0);
-	//else if (argc == 2)
-	//	args = ft_split_charset(argv[1], SPACES);
-	//else 
-	//	args = (char **)argv + 1;
-	//if (!is_correct_args(args))
-	//	return (error(2));
-	//stack_a = ft_getstack(ft_tablen((const char **)args), (const char **)args);
-	//stack_b = NULL;
-	//if (argc == 2)
-	//	ft_freetab(args);
-
-	commands = ft_getcommands(args);
-
-
-	//ft_lstclear(&stack_a, free);
-	//ft_lstclear(&stack_b, free);
+	if (argc <= 1)
+		return (0);
+	else if (argc == 2)
+		args = ft_split_charset(argv[1], SPACES);
+	else 
+		args = (char **)argv + 1;
+	if (!is_correct_args(args))
+		return (error(2));
+	stack_a = ft_getstack(ft_tablen((const char **)args), (const char **)args);
+	stack_b = NULL;
+	if (argc == 2)
+		ft_freetab(args);
+	commands = ft_getcmds(args);
+	if (ft_execheck(&stack_a, &stack_b, commands))
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
+	ft_lstclear(&stack_a, free);
+	ft_lstclear(&stack_b, free);
+	ft_lstclear(&commands, free);
 }
