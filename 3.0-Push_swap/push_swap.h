@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:11:12 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/18 17:39:41 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:20:23 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ void	pb(t_list **stack_a, t_list **stack_b);
 void	pa_sorted(t_list **stack_a, t_list **stack_b, int additional);
 void	pb_sorted(t_list **stack_a, t_list **stack_b, int additional);
 //ft_rotate.c
-void	ft_rotate(t_list **stack);
+void	ft_lstrotate(t_list **stack);
 void	ra(t_list **stack_a);
 void	rb(t_list **stack_b);
 void	rr(t_list **stack_a, t_list **stack_b);
 void	ft_best_rotate(t_list **stack, t_list *node);
 //ft_rrotate.c
-void	ft_rrotate(t_list **stack);
+void	ft_lstrrotate(t_list **stack);
 void	rra(t_list **stack_a);
 void	rrb(t_list **stack_b);
 void	rrr(t_list **stack_a, t_list **stack_b);

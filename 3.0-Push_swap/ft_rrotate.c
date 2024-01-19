@@ -6,13 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:16:19 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/19 12:41:25 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:20:38 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rrotate(t_list **stack)
+void	ft_lstrrotate(t_list **stack)
 {
 	t_list	*last;
 	t_list	*second_last;
@@ -35,19 +35,19 @@ void	ft_rrotate(t_list **stack)
 
 void	rra(t_list **stack_a)
 {
-	ft_rrotate(stack_a);
+	ft_lstrrotate(stack_a);
 	write(1, "rra\n", 4);
 }
 
 void	rrb(t_list **stack_b)
 {
-	ft_rrotate(stack_b);
+	ft_lstrrotate(stack_b);
 	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_list **stack_a, t_list **stack_b)
 {
-	ft_rrotate(stack_a);
-	ft_rrotate(stack_b);
+	ft_lstrrotate(stack_a);
+	ft_lstrrotate(stack_b);
 	write(1, "rrr\n", 4);
 }

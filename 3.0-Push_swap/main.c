@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:10:25 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/18 20:05:45 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:48:39 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	is_correct_args(char **s)
 	int	j;
 
 	i = 0;
-	//if (!s[1])
-	//	return (0);
 	while (s[i])
 	{
 		j = 0;
@@ -76,13 +74,13 @@ int	main(int argc, char const *argv[])
 	else 
 		args = (char **)argv + 1;
 	if (!is_correct_args(args))
-		return (ft_error());
+		return (error(2));
 	stack_a = ft_getstack(ft_tablen((const char **)args), (const char **)args);
 	stack_b = NULL;
 	if (argc == 2)
 		ft_freetab(args);
 
-
+	
 	//ft_printf("\n\033[1;31mFINAL RESULTS\033[0m\n"); //delete me
 	//printBoth(&stack_a, &stack_b); //delete me
 	ft_lstclear(&stack_a, free);
