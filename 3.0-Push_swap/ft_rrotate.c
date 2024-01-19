@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:16:19 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/16 12:54:03 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/19 12:41:25 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,14 @@ void	ft_rrotate(t_list **stack)
 	t_list	*last;
 	t_list	*second_last;
 
-	if (*stack == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
+	else if ((*stack)->next->next == NULL)
+	{
+		ft_lstadd_front(stack, (*stack)->next);
+		(*stack)->next->next = NULL;
+		return ;
+	}
 	last = ft_lstlast(*stack);
 	second_last = (*stack)->next;
 	while (second_last->next != last)

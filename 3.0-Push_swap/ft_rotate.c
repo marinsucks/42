@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:16:19 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/18 15:47:10 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/19 12:20:45 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,23 @@ void	rr(t_list **stack_a, t_list **stack_b)
 
 void	ft_best_rotate(t_list **stack, t_list *node)
 {
+	t_list	*tmp;
 	int		median;
 
+	tmp = node;
 	median = ft_lstsize(*stack) / 2;
-	while (median-- && node)
-		node = node->next;
-	if (node)
-		write(1, "ra\n", 3);
+	while (median-- && tmp)
+		tmp = tmp->next;
+	if (tmp)
+	{
+		while (*stack != node)
+			ra(stack);
+	}
 	else
-		write(1, "rra\n", 4);
-	ft_printf("median: %d\n", median);
-	ft_printf("node: %p\n", node);
+	{
+		while (*stack != node)
+			rra(stack);
+	}
+	//ft_printf("median: %d\n", median);
+	//ft_printf("node: %p\n", node);
 }
