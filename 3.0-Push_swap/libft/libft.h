@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/18 18:38:07 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:46:51 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 typedef struct s_list
 {
-	int			*content;
+	int				*content;
 	struct s_list	*next;
 }					t_list;
 
@@ -38,7 +38,7 @@ typedef struct s_gnl_fd_data
 	char			stash[BUFFER_SIZE + 1];
 }					t_gnl_fd_data;
 
-int	error(int fd);
+int			error(int fd);
 
 //ft_atoi.c
 int			ft_atoi(const char *str);
