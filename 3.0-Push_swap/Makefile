@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 15:17:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/18 19:17:48 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/19 14:40:44 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 
 MAIN = 	main.c
-BONUS = checker.c
+BONUS = checkerfiles/checker.c \
+		checkerfiles/checker_utils.c \
+
 SRC = 	ft_swap.c \
 		ft_push.c \
 		ft_rotate.c \
