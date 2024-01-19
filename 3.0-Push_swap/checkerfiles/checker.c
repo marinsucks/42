@@ -6,22 +6,20 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:14:48 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/19 14:41:15 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:45:49 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
 /** @return 1 if all args are digits separated by spaces, else 0
- */ 
+ */
 int	is_correct_args(char **s)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	//if (!s[1])
-	//	return (0);
 	while (s[i])
 	{
 		j = 0;
@@ -76,7 +74,7 @@ int	main(int argc, char const *argv[])
 		return (0);
 	else if (argc == 2)
 		args = ft_split_charset(argv[1], SPACES);
-	else 
+	else
 		args = (char **)argv + 1;
 	if (!is_correct_args(args))
 		return (error(2));
