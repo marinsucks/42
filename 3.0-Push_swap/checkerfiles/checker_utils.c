@@ -6,14 +6,14 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:46:05 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/19 14:41:18 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/22 14:30:07 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
 //gets commands from stdin and returns a list of commands
-t_list	*ft_getcmds(char **args)
+t_list	*ft_getcmds(void)
 {
 	t_list	*commands;
 	t_list	*new_node;

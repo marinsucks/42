@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:14:48 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/19 14:45:49 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/22 14:30:32 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(int argc, char const *argv[])
 	stack_b = NULL;
 	if (argc == 2)
 		ft_freetab(args);
-	commands = ft_getcmds(args);
+	commands = ft_getcmds();
 	if (ft_execheck(&stack_a, &stack_b, commands))
 		write(1, "OK\n", 3);
 	else
