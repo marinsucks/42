@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/19 14:46:51 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/22 14:07:18 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 typedef struct s_list
 {
 	int				*content;
+	struct s_list	*target;
 	struct s_list	*next;
 }					t_list;
 
