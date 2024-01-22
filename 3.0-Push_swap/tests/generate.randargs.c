@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:30:22 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/18 14:16:08 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:02:54 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int main(int argc, char **argv) {
 	
 	for (int i = 0; i < n; i++) 
 	{
-		short int randomInt = rand();
+		//short int randomInt = rand();
+		char randomInt = (char)rand();
 		fprintf(file, "%d ", randomInt);
 	}
 	

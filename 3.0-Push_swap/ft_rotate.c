@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:16:19 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/19 14:20:09 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/22 19:10:15 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	rr(t_list **stack_a, t_list **stack_b)
 }
 
 //finds the best rotate direction to get node to top of stack and does it.
-void	ft_best_rotate(t_list **stack, t_list *node)
+void	ft_optirotate(t_list **stack, t_list *node)
 {
 	t_list	*tmp;
 	int		median;

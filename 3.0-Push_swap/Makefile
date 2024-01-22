@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 15:17:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/19 14:40:44 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/22 14:27:52 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ SRC = 	ft_swap.c \
 		ft_push.c \
 		ft_rotate.c \
 		ft_rrotate.c \
-		ft_sort.c \
-		ft_bubblesort.c \
+		algos.c \
+		status.c \
 		$(wildcard ./tests/test.*.c)
 
 RED =\033[1;31m
@@ -53,8 +53,8 @@ libft:
 	@make -C ./libft all
 
 checker: clean #libft
-	@$(CC) -g -o checker $(BONUS) $(SRC) libft/libft.a
-#	@$(CC) $(CFLAGS) -g -o checker $(BONUS) $(SRC) libft/libft.a
+#	@$(CC) -g -o checker $(BONUS) $(SRC) libft/libft.a
+	@$(CC) $(CFLAGS) -g -o checker $(BONUS) $(SRC) libft/libft.a
 
 .PHONY : all clean fclean re libft
 

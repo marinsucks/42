@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:11:12 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/19 14:20:23 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/22 19:10:28 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_lstrotate(t_list **stack);
 void	ra(t_list **stack_a);
 void	rb(t_list **stack_b);
 void	rr(t_list **stack_a, t_list **stack_b);
-void	ft_best_rotate(t_list **stack, t_list *node);
+void	ft_optirotate(t_list **stack, t_list *node);
 //ft_rrotate.c
 void	ft_lstrrotate(t_list **stack);
 void	rra(t_list **stack_a);
@@ -45,11 +45,13 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 
 
 /************ SORTING ***********/
-//ft_sort.c
+//ft_status.c
 int		ft_is_sorted(t_list *stack);
-int		ft_find_unsorted(t_list *stack, int ascending);
+void	ft_settarget(t_list *src, t_list *to_set, int ascending);
+//int		ft_find_unsorted(t_list *stack, int ascending);
+
 //ft_insertion_sort.c
-void	ft_bubblesort(t_list **stack_a);
+void	ft_threesort(t_list **stack_a);
 
 
 
