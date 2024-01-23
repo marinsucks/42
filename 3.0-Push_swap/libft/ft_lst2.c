@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 16:28:31 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/18 11:33:39 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/23 12:04:54 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_list	*ft_lstlast(t_list *lst)
 	return (ptr);
 }
 
-// returns index of tofind in lst
+// @returns index of tofind in lst, starting at 0.
 int	ft_lstindex(t_list **lst, t_list *tofind)
 {
 	int		i;
@@ -69,7 +69,7 @@ int	ft_lstindex(t_list **lst, t_list *tofind)
 	if (!lst)
 		return (0);
 	i = 0;
-	ptr = (*lst)->next;
+	ptr = *lst;
 	while (ptr != tofind)
 	{
 		ptr = ptr->next;

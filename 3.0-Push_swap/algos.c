@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:58:42 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/22 14:29:28 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/23 14:40:16 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,21 @@ void	ft_threesort(t_list **stack_a)
 //	//pb until 3 elements left
 //		//sort elements in b in descending order
 //		// 1. pb 2 times in order to have a max and a min
+//		while (ft_lstsize(*stack_b) < 2
+//			pb(stack_a, stack_b);
 //		// 2. find target node, which is the closest smaller number to current, or max value if none smaller
+//		ft_settarget(*stack_b, *stack_b, FALSE);
 //		// 3. cost analysis : find the cheapest node to push.
 //		//	  pushcost(node) = x cmds for a on top + x cmds for a->target on top.
 //		// 4. if pushcost(*stack_a) == 0 or is the cheapest, put *stack_a and its target on top of the lists and pb
 //		//    -> do instructions for minimum pushcost. min pushcost by default is *stack_a's.
 
 //	//sort 3 in a
+//	//clear b target values
 
 //	//pa until all elements are in a
 //	//find target, which is the closest bigger number to current, or min value if none bigger.
-//	//no cost analysis
+//	//no cost analysis needed : b is sorted in descending order.
 
 //	//best rotate for min.
 //}

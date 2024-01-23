@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:11:12 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/22 19:10:28 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/23 16:58:26 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,16 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 
 
 /************ SORTING ***********/
-//ft_status.c
+//status.c
 int		ft_is_sorted(t_list *stack);
-void	ft_settarget(t_list *src, t_list *to_set, int ascending);
+void	ft_settarget(t_list *to_set, t_list *src, int ascending);
 //int		ft_find_unsorted(t_list *stack, int ascending);
 
-//ft_insertion_sort.c
+//cost.c
+int	single_pushcost(t_list **list, t_list *node);
+int	global_pushcost(t_list **srclist, t_list **tgetlist, t_list *node);
+t_list	*ft_topush(t_list **srclist, t_list **tgetlist);
+//algos.c
 void	ft_threesort(t_list **stack_a);
 
 

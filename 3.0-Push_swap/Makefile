@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 15:17:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/22 14:27:52 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/23 11:56:47 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = 	ft_swap.c \
 		ft_rrotate.c \
 		algos.c \
 		status.c \
+		cost.c\
 		$(wildcard ./tests/test.*.c)
 
 RED =\033[1;31m
@@ -60,7 +61,7 @@ checker: clean #libft
 
 
 f: #libft
-	@$(CC) -g -o $(NAME) $(SRC) libft/libft.a
+	@$(CC) -g -o $(NAME) $(MAIN) $(SRC) libft/libft.a
 	@echo "$(GREEN)Compilation nf OK :)$(NC)"
 
 ref: clean f #fclean f

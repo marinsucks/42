@@ -6,12 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:58:42 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/22 19:04:49 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:51:04 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// @returns 1 if stack is sorted, else 0
 int	ft_is_sorted(t_list *stack)
 {
 	t_list	*ptr;
@@ -22,29 +23,26 @@ int	ft_is_sorted(t_list *stack)
 	while (ptr)
 	{
 		if (*i > *(int *)ptr->content)
-		{//delete me
-			//ft_printf("Not sorted\n"); //delete me
 			return (0);
-		}//delete me
 		i = ptr->content;
 		ptr = ptr->next;
 	}
-	//ft_printf("Sorted\n"); //delete me
 	return (1);
 }
 
 /**
- * @returns the closest smallest number of the stack ptr, or biggest if none found.
+ * @returns the closest smallest number of the stack ptr, or biggest if none 
+ * found.
  * @param node the node to find the target for.
  * @param ptr the stack to search in.
  */
-t_list	*target_asc(t_list *node, t_list *ptr, t_list *targ, t_list *max)
+t_list	*target_desc(t_list *node, t_list *ptr, t_list *targ, t_list *max)
 {
-	while (ptr) 
+	while (ptr)
 	{
 		if (targ == NULL && *node->content > *ptr->content)
 			targ = ptr;
-		if (targ && *node->content > *ptr->content 
+		if (targ && *node->content > *ptr->content
 			&& *targ->content < *ptr->content)
 			targ = ptr;
 		if (*max->content < *ptr->content)
@@ -57,17 +55,18 @@ t_list	*target_asc(t_list *node, t_list *ptr, t_list *targ, t_list *max)
 }
 
 /**
- * @returns the closest biggest number of the stack ptr, or smallest if none found.
+ * @returns the closest biggest number of the stack ptr, or smallest if none 
+ * found.
  * @param node the node to find the target for.
  * @param ptr the stack to search in.
  */
-t_list	*target_desc(t_list *node, t_list *ptr, t_list *targ, t_list *min)
+t_list	*target_asc(t_list *node, t_list *ptr, t_list *targ, t_list *min)
 {
-	while (ptr) 
+	while (ptr)
 	{
 		if (targ == NULL && *node->content < *ptr->content)
 			targ = ptr;
-		if (targ && *node->content < *ptr->content 
+		if (targ && *node->content < *ptr->content
 			&& *targ->content > *ptr->content)
 			targ = ptr;
 		if (*min->content > *ptr->content)
@@ -81,11 +80,11 @@ t_list	*target_desc(t_list *node, t_list *ptr, t_list *targ, t_list *min)
 
 /**
  * @brief sets the target of each node of to_set to src.
- * @param src the stack to search in.
  * @param to_set the stack of nodes to set the target for.
- * @param ascending 1/TRUE for ascending, 0/FALSE for descending
+ * @param src the stack to search in.
+ * @param ascending 1/TRUE for closest biggest, 0/FALSE for closest smallest.
  */
-void	ft_settarget(t_list *src, t_list *to_set, int ascending)
+void	ft_settarget(t_list *to_set, t_list *src, int ascending)
 {
 	t_list	*target;
 	t_list	*edge;
@@ -101,15 +100,12 @@ void	ft_settarget(t_list *src, t_list *to_set, int ascending)
 		else
 			target = target_desc(to_set, src, target, edge);
 		to_set->target = target;
-		ft_printf("to_set: %p\n", to_set);
-		ft_printf("content: %d\n", *to_set->content);
-		ft_printf("target->content: %d\n\n", *to_set->target->content);
 		to_set = to_set->next;
 	}
 }
 
 ///** 
-// * @brief returns index of first element that is not sorted, or max index if sorted.
+// * @returns index of first element that is not sorted, or max index if sorted.
 // * @param ascending 1/TRUE for ascending, 0/FALSE for descending
 // */
 //int	ft_find_unsorted(t_list *stack, int ascending) //delete me

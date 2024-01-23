@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:10:25 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/22 19:13:08 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/23 17:26:33 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,12 @@ int	main(int argc, char const *argv[])
 		ft_freetab(args);
 
 	printBoth(&stack_a, &stack_b); //delete me
-
-	for (int i = 0; i < 4; i++) //delete me
-		pb(&stack_a, &stack_b); //delete me
-	ft_settarget(stack_b, stack_a, TRUE); //delete me
+	for (int i = 0; i < 5; i++)
+		pb(&stack_a, &stack_b);
+	
+	ft_settarget(stack_a, stack_b, FALSE);
+	ft_topush(&stack_a, &stack_b);
+	//single_pushcost(&stack_b, stack_a->target);
 
 	ft_printf("\n\033[1;31mFINAL RESULTS\033[0m\n"); //delete me
 	printBoth(&stack_a, &stack_b); //delete me
