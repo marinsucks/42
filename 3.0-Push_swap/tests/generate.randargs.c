@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:30:22 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/22 16:02:54 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:54:50 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,21 @@ int main(int argc, char **argv) {
 	
 	for (int i = 0; i < n; i++) 
 	{
-		//short int randomInt = rand();
-		char randomInt = (char)rand();
+		////min -9223372036854775808, max 9223372036854775807
+		//long int randomInt = rand();
+		
+		////min -2147483648, max 2147483647
+		//int randomInt = rand();
+		
+		////min -32768, max 32767
+		//short int randomInt = rand(); 
+
+		////min -128, max 127
+		//char randomInt = (char)rand(); 
+
+		//min 0, max 255
+		unsigned char randomInt = (char)rand();
+
 		fprintf(file, "%d ", randomInt);
 	}
 	
