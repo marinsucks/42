@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:10:25 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/23 17:26:33 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:13:16 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,21 +61,21 @@ t_list	*ft_getstack(int tablen, const char *argv[])
 	return (stack);
 }
 
-//void	ft_sort(t_list **stack_a, t_list **stack_b)
-//{
-//	int a_size;
+void	ft_sort(t_list **stack_a, t_list **stack_b)
+{
+	int a_size;
 
-//	a_size = ft_lstsize(*stack_a);
-//	if (!ft_is_sorted(*stack_a))
-//	{
-//		if (a_size == 2)
-//			sa(stack_a);
-//		else if (a_size == 3)
-//			ft_threesort(stack_a);
-//		else
-//			ft_turksort(stack_a, stack_b);
-//	}
-//}
+	a_size = ft_lstsize(*stack_a);
+	if (!ft_is_sorted(*stack_a))
+	{
+		if (a_size == 2)
+			sa(stack_a);
+		//else if (a_size == 3)
+		//	ft_threesort(stack_a);
+		else
+			ft_turksort(stack_a, stack_b);
+	}
+}
 
 int	main(int argc, char const *argv[])
 {
@@ -96,16 +96,15 @@ int	main(int argc, char const *argv[])
 	if (argc == 2)
 		ft_freetab(args);
 
-	printBoth(&stack_a, &stack_b); //delete me
-	for (int i = 0; i < 5; i++)
-		pb(&stack_a, &stack_b);
-	
-	ft_settarget(stack_a, stack_b, FALSE);
-	ft_topush(&stack_a, &stack_b);
-	//single_pushcost(&stack_b, stack_a->target);
+	//printBoth(&stack_a, &stack_b); //delete me
 
-	ft_printf("\n\033[1;31mFINAL RESULTS\033[0m\n"); //delete me
-	printBoth(&stack_a, &stack_b); //delete me
+	ft_sort(&stack_a, &stack_b);
+	//ft_threesort(&stack_a);
+
+	//ft_printf("\n\033[1;31mFINAL RESULTS\033[0m\n"); //delete me
+	//printBoth(&stack_a, &stack_b); //delete me
+	//ft_printf("sorted ? %d\n", ft_is_sorted(stack_a)); //delete me
+	//ft_printf("stack_b = %p\n", stack_b); //delete me
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);
 }

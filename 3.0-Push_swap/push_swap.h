@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:11:12 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/23 16:58:26 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/24 15:11:17 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_lstrotate(t_list **stack);
 void	ra(t_list **stack_a);
 void	rb(t_list **stack_b);
 void	rr(t_list **stack_a, t_list **stack_b);
-void	ft_optirotate(t_list **stack, t_list *node);
 //ft_rrotate.c
 void	ft_lstrrotate(t_list **stack);
 void	rra(t_list **stack_a);
@@ -47,15 +46,25 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 /************ SORTING ***********/
 //status.c
 int		ft_is_sorted(t_list *stack);
-void	ft_settarget(t_list *to_set, t_list *src, int ascending);
+t_list	*ft_getmin(t_list *stack);
 //int		ft_find_unsorted(t_list *stack, int ascending);
 
+//target.c
+void	ft_settarget(t_list *to_set, t_list *src, int ascending);
+void	ft_cleartarget(t_list *stack);
+
 //cost.c
-int	single_pushcost(t_list **list, t_list *node);
-int	global_pushcost(t_list **srclist, t_list **tgetlist, t_list *node);
+int		single_pushcost(t_list **list, t_list *node);
+int		global_pushcost(t_list **srclist, t_list **tgetlist, t_list *node);
 t_list	*ft_topush(t_list **srclist, t_list **tgetlist);
+
+//optirotate.c
+void	ft_optirotate_one(t_list **stack, t_list *node, char ab);
+void	ft_optirotate(t_list **srclist, t_list **tgtlst, t_list *node, char ab);
+
 //algos.c
 void	ft_threesort(t_list **stack_a);
+void	ft_turksort(t_list **stack_a, t_list **stack_b);
 
 
 

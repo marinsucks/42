@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 15:17:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/23 11:56:47 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/24 15:12:12 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,10 @@ SRC = 	ft_swap.c \
 		ft_rotate.c \
 		ft_rrotate.c \
 		algos.c \
-		status.c \
 		cost.c\
+		optirotate.c \
+		status.c \
+		target.c\
 		$(wildcard ./tests/test.*.c)
 
 RED =\033[1;31m

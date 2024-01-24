@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:23:38 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/23 17:25:05 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:49:10 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,14 @@ int	single_pushcost(t_list **list, t_list *node)
 {
 	int	cost;
 	int	median;
-	int nodei;
+	int	nodei;
 
 	median = ft_lstsize(*list) / 2;
 	nodei = ft_lstindex(list, node);
-	//ft_printf("median = %d\n", median); //delete me
-	//ft_printf("node index = %d\n", nodei); //delete me
-	if (nodei <= median)// && ft_lstsize(*list) % 2 == 1)
+	if (nodei <= median)
 		cost = nodei;
-	//else if (nodei < median)
-	//	cost = nodei;
 	else
 		cost = nodei - ft_lstsize(*list);
-	//ft_printf("cost = %d\n\n", cost); //delete me
 	return (cost);
 }
 
@@ -53,8 +48,6 @@ int	global_pushcost(t_list **srclist, t_list **tgetlist, t_list *node)
 
 	nodecost = single_pushcost(srclist, node);
 	tgetcost = single_pushcost(tgetlist, node->target);
-	ft_printf("nodecost = %d\n", nodecost); //delete me
-	ft_printf("tgetcost = %d\n", tgetcost); //delete me
 	totalcost = 0;
 	if (nodecost >= 0 && tgetcost < 0)
 		return (nodecost - tgetcost);
@@ -78,7 +71,7 @@ int	global_pushcost(t_list **srclist, t_list **tgetlist, t_list *node)
 /** 
  * @brief Analyses stacks and returns the cheapest node to push.
  * @note make sure to assign targets to all srclist nodes.
- * @param srclist the stack containing node.
+ * @param srclist the stack containing the node.
  * @param tgetlist the stack containing the targets.
  */
 t_list	*ft_topush(t_list **srclist, t_list **tgetlist)
@@ -90,18 +83,18 @@ t_list	*ft_topush(t_list **srclist, t_list **tgetlist)
 	ptr = *srclist;
 	res = ptr;
 	mincost = global_pushcost(srclist, tgetlist, ptr);
+	if (mincost == 0)
+		return (ptr);
 	while (ptr)
 	{
-		ft_printf("\nNODE %d, TARGET %d\n", *(int *)ptr->content, *(int *)ptr->target->content); //delete me
-		ft_printf("mincost = %d\n", mincost); //delete me
-		ft_printf("global_pushcost = %d\n", global_pushcost(srclist, tgetlist, ptr)); //delete me
 		if (mincost > global_pushcost(srclist, tgetlist, ptr))
 		{
 			mincost = global_pushcost(srclist, tgetlist, ptr);
+			if (mincost == 0)
+				return (ptr);
 			res = ptr;
 		}
-		ft_printf("res = %d\n", *res->content); //delete me
 		ptr = ptr->next;
 	}
-	return (ptr);
+	return (res);
 }
