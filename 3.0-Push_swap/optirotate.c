@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:50:42 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/25 15:07:17 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/25 16:25:39 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,4 @@ void	ft_optirotate(t_list **srclst, t_list **tgtlst, t_list *node, char ab)
 	else
 		ab = 'a';
 	ft_optirotate_one(tgtlst, target, ab);
-}	
+}

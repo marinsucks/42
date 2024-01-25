@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:58:42 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/24 15:09:37 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/25 16:30:41 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,33 +43,3 @@ t_list	*ft_getmin(t_list *stack)
 	}
 	return (stack);
 }
-
-///** 
-// * @returns index of first element that is not sorted, or max index if sorted.
-// * @param ascending 1/TRUE for ascending, 0/FALSE for descending
-// */
-//int	ft_find_unsorted(t_list *stack, int ascending) //delete me
-//{
-//	int		i;
-//	t_list	*ptr;
-
-//	i = 0;
-//	ptr = stack;
-//	if (ascending)
-//	{
-//		while (ptr->next && *(int *)ptr->content < *(int *)ptr->next->content)
-//		{
-//			i++;
-//			ptr = ptr->next;
-//		}
-//	}
-//	else
-//	{
-//		while (ptr->next && *(int *)ptr->content > *(int *)ptr->next->content)
-//		{
-//			i++;
-//			ptr = ptr->next;
-//		}
-//	}
-//	return (i);
-//}

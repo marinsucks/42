@@ -6,14 +6,14 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:06:45 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/24 15:07:14 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/25 16:21:36 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /**
- * @returns the closest smallest number of the stack ptr, or biggest if none 
+ * @returns the closest smallest number of the stack ptr, or biggest if none
  * found.
  * @param node the node to find the target for.
  * @param ptr the stack to search in.
@@ -37,7 +37,7 @@ t_list	*target_desc(t_list *node, t_list *ptr, t_list *targ, t_list *max)
 }
 
 /**
- * @returns the closest biggest number of the stack ptr, or smallest if none 
+ * @returns the closest biggest number of the stack ptr, or smallest if none
  * found.
  * @param node the node to find the target for.
  * @param ptr the stack to search in.

@@ -6,14 +6,14 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:10:25 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/25 15:05:50 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/25 16:25:22 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /** @return 1 if all args are digits separated by spaces, else 0
- */ 
+ */
 int	is_correct_args(char **s)
 {
 	int	i;
@@ -41,7 +41,7 @@ int	is_correct_args(char **s)
 	return (1);
 }
 
-//allocates and returns a stack with all args
+// allocates and returns a stack with all args
 t_list	*ft_getstack(int tablen, const char *argv[])
 {
 	t_list	*stack;
@@ -63,15 +63,13 @@ t_list	*ft_getstack(int tablen, const char *argv[])
 
 void	ft_sort(t_list **stack_a, t_list **stack_b)
 {
-	int a_size;
+	int	a_size;
 
 	a_size = ft_lstsize(*stack_a);
 	if (!ft_is_sorted(*stack_a))
 	{
 		if (a_size == 2)
 			sa(stack_a);
-		//else if (a_size == 3)
-		//	ft_threesort(stack_a);
 		else
 			ft_turksort(stack_a, stack_b);
 	}
@@ -87,7 +85,7 @@ int	main(int argc, char const *argv[])
 		return (0);
 	else if (argc == 2)
 		args = ft_split_charset(argv[1], SPACES);
-	else 
+	else
 		args = (char **)argv + 1;
 	if (!is_correct_args(args))
 		return (error(2));
@@ -95,28 +93,7 @@ int	main(int argc, char const *argv[])
 	stack_b = NULL;
 	if (argc == 2)
 		ft_freetab(args);
-
-	//ft_printf("\n\033[1;31mINITIALIZATION\033[0m\n"); //delete me
-	//printBoth(&stack_a, &stack_b); //delete me
-
-	//pb(&stack_a, &stack_b);
-	//pb(&stack_a, &stack_b);
-	//ft_settarget(stack_a, stack_b, FALSE);
-	//t_list *ptr = stack_a;
-	//t_list *target = ptr->target;
-	//ft_optirotate(&stack_a, &stack_b, ptr, 'a');
-	//ft_optirotate_one(&stack_a, ptr, 'a');
-	//ft_optirotate_one(&stack_b, target, 'b');
-	
-
-
 	ft_sort(&stack_a, &stack_b);
-	//ft_threesort(&stack_a);
-
-	//ft_printf("\n\033[1;31mFINAL RESULTS\033[0m\n"); //delete me
-	//printBoth(&stack_a, &stack_b); //delete me
-	//ft_printf("sorted ? %d\n", ft_is_sorted(stack_a)); //delete me
-	//ft_printf("stack_b = %p\n", stack_b); //delete me
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);
 }
