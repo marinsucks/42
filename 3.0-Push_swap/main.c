@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:10:25 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/24 16:13:16 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/25 15:05:50 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,19 @@ int	main(int argc, char const *argv[])
 	if (argc == 2)
 		ft_freetab(args);
 
+	//ft_printf("\n\033[1;31mINITIALIZATION\033[0m\n"); //delete me
 	//printBoth(&stack_a, &stack_b); //delete me
+
+	//pb(&stack_a, &stack_b);
+	//pb(&stack_a, &stack_b);
+	//ft_settarget(stack_a, stack_b, FALSE);
+	//t_list *ptr = stack_a;
+	//t_list *target = ptr->target;
+	//ft_optirotate(&stack_a, &stack_b, ptr, 'a');
+	//ft_optirotate_one(&stack_a, ptr, 'a');
+	//ft_optirotate_one(&stack_b, target, 'b');
+	
+
 
 	ft_sort(&stack_a, &stack_b);
 	//ft_threesort(&stack_a);

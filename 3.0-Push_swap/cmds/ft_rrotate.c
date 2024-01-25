@@ -6,11 +6,11 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:16:19 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/19 14:20:38 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/25 12:13:34 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	ft_lstrrotate(t_list **stack)
 {

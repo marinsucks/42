@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/18 17:29:50 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/25 16:13:15 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,14 +41,18 @@ $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@rm -rf $(OBJ)
-	@printf "$(RED)\nDone!\n$(NC)"
+	@echo "$(LGREEN)libft.a ready.$(NC)"
 
-%.o: %.c $(HEADER)
-	@printf "$(YELLOW)Generating libft object: %-38.38s \r$(NC)" $@
-	@$(CC) $(CFLAGS) -c $< -o $@ 
+$(OBJ):
+	@$(CC) $(CFLAGS) -c $(SRC)
+
+# PAS DE WILDCARD AUTORISEE :(
+#%.o: %.c $(HEADER)
+#	@printf "$(YELLOW)Generating libft object: %-38.38s \r$(NC)" $@
+#	@$(CC) $(CFLAGS) -c $< -o $@ 
 
 clean:
-	@echo "$(RED)Cleaning libft...$(NC)"
+	@echo "$(LRED)Cleaning libft...$(NC)"
 	@rm -rf a.out libexe a.out.dSYM .vscode obj/ $(OBJ)
 
 fclean: clean

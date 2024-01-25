@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:11:12 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/24 15:11:17 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/25 14:15:28 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	ft_turksort(t_list **stack_a, t_list **stack_b);
 t_list	*ft_getstack(int argc, const char *argv[]);
 //test.print.c
 void	printList(t_list **list);
-void	printBoth(t_list **list_a, t_list **list_b);
+int		printBoth(t_list **list_a, t_list **list_b);
 //test.cmds.c
 void	swapTests(t_list *stack_a, t_list *stack_b);
 void	pushTests(t_list *stack_a, t_list *stack_b);

@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 15:17:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/24 15:12:12 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/25 16:13:52 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,18 +16,20 @@ NAME = push_swap
 
 MAIN = 	main.c
 BONUS = checkerfiles/checker.c \
-		checkerfiles/checker_utils.c \
+		checkerfiles/checker_utils.c 
 
-SRC = 	ft_swap.c \
-		ft_push.c \
-		ft_rotate.c \
-		ft_rrotate.c \
-		algos.c \
+SRC = 	algos.c \
 		cost.c\
 		optirotate.c \
 		status.c \
-		target.c\
-		$(wildcard ./tests/test.*.c)
+		target.c
+
+CMDS =	ft_swap.c \
+		ft_push.c \
+		ft_rotate.c \
+		ft_rrotate.c
+COBJ =	$(CMDS:.c=.o)
+
 
 RED =\033[1;31m
 LRED =\033[0;31m
@@ -38,35 +40,41 @@ LYELLOW =\033[0;33m
 BOLD =\033[1;37m
 NC =\033[0m
 
-all: #libft
-	@$(CC) $(CFLAGS) -g -o $(NAME) $(MAIN) $(SRC) libft/libft.a
+all: archives
+	@$(CC) $(CFLAGS) -g -o $(NAME) $(MAIN) $(SRC) archives/*.a
+	@printf "$(GREEN)push_swap ready.\n$(NC)"
 
 clean:
-#	@echo "$(RED)Cleaning Push_swap...$(NC)"
-	@rm -rf *.out* */*.out checker .vscode $(OBJ)
+	@rm -rf *.out* */*.out checker *.o $(OBJ)
+	@echo "$(LRED)Cleaning objects & executables...$(NC)"
 
 fclean: clean
-	@rm $(NAME)
+	@rm -rf $(NAME) archives
 	@make -C ./libft fclean
+	@echo "$(RED)FULL CLEAN FINISHED$(NC)"
 
-re: clean all #fclean all
+re: clean all
+
+archives: libft cmds
+	@mkdir -p archives
+	@mv libft/libft.a cmds.a archives/
 
 libft:
-	@echo "$(BOLD)Compiling libft..$(NC)"
 	@make -C ./libft all
 
-checker: clean #libft
-#	@$(CC) -g -o checker $(BONUS) $(SRC) libft/libft.a
-	@$(CC) $(CFLAGS) -g -o checker $(BONUS) $(SRC) libft/libft.a
+cmds:
+	@$(CC) $(CFLAGS) -c cmds/*.c
+	@ar rcs cmds.a $(COBJ)
+	@ranlib cmds.a
+	@rm -rf $(COBJ)
+	@printf "$(LGREEN)cmds.a ready.\n$(NC)"
 
-.PHONY : all clean fclean re libft
+checker: clean libft
+	@$(CC) $(CFLAGS) -g -o checker $(BONUS) $(SRC) archives/*.a
+
+.PHONY : all clean fclean re libft cmds
 
 
-f: #libft
-	@$(CC) -g -o $(NAME) $(MAIN) $(SRC) libft/libft.a
-	@echo "$(GREEN)Compilation nf OK :)$(NC)"
-
-ref: clean f #fclean f
 
 
 n = 3

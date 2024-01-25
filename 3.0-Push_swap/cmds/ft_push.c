@@ -6,11 +6,11 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:39:52 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/22 14:17:34 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/25 12:13:25 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 // moves first node of src to the beginning of dst
 void	ft_lstpush(t_list **src, t_list **dst)

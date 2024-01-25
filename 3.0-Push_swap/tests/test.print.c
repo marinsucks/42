@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:54:27 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/18 18:49:53 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/25 14:17:49 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ void	printList(t_list **list)
 	ft_printf("\033[0;34m%d\n\n\033[0m", ft_lstsize(*list));
 }
 
-void	printBoth(t_list **list_a, t_list **list_b)
+int	printBoth(t_list **list_a, t_list **list_b)
 {
-	int len_a = ft_lstsize(*list_a);
-	int len_b = ft_lstsize(*list_b);
-	t_list *ptr_a = *list_a;
-	t_list *ptr_b = *list_b;
-	
+	int 		len_a = ft_lstsize(*list_a);
+	int 		len_b = ft_lstsize(*list_b);
+	t_list		*ptr_a = *list_a;
+	t_list		*ptr_b = *list_b;
+	static int	index = 0;
+
+	ft_printf("\033[1;34m\nTAKE %d\n\033[0m", index++);
 	while (len_a > len_b)
 	{
 		ft_printf("%d\n", *(int *)ptr_a->content);
@@ -51,7 +53,9 @@ void	printBoth(t_list **list_a, t_list **list_b)
 		ptr_b = ptr_b->next;
 	}
 	ft_printf("\033[1;32m_\t_\nA\tB\n\033[0m");
-	ft_printf("\033[0;32m%d\t%d\n\n\033[0m", ft_lstsize(*list_a), ft_lstsize(*list_b));
+	ft_printf("\033[0;32m%d\t%d\n\033[0m", ft_lstsize(*list_a), ft_lstsize(*list_b));
+
+	return (index);
 }
 
 //void	printBothLong(t_list **list_a, t_list **list_b)

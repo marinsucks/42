@@ -6,11 +6,11 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:08:49 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/16 12:53:49 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/25 12:13:39 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	ft_lstswap(t_list **node)
 {
