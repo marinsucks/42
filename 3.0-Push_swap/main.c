@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:10:25 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/25 16:25:22 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/25 18:16:15 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,11 @@ int	main(int argc, char const *argv[])
 	else
 		args = (char **)argv + 1;
 	if (!is_correct_args(args))
+	{
+		if (argc == 2)
+			ft_freetab(args);
 		return (error(2));
+	}
 	stack_a = ft_getstack(ft_tablen((const char **)args), (const char **)args);
 	stack_b = NULL;
 	if (argc == 2)

@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:14:48 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/22 14:30:32 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/25 18:25:44 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,17 @@ t_list	*ft_getstack(int tablen, const char *argv[])
 	return (stack);
 }
 
+void	return_and_free(t_list **a, t_list **b, t_list **cmds)
+{
+	if (ft_execheck(a, b, *cmds))
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
+	ft_lstclear(a, free);
+	ft_lstclear(b, free);
+	ft_lstclear(cmds, free);
+}
+
 int	main(int argc, char const *argv[])
 {
 	t_list	*stack_a;
@@ -77,17 +88,16 @@ int	main(int argc, char const *argv[])
 	else
 		args = (char **)argv + 1;
 	if (!is_correct_args(args))
+	{
+		if (argc == 2)
+			ft_freetab(args);
 		return (error(2));
+	}
 	stack_a = ft_getstack(ft_tablen((const char **)args), (const char **)args);
 	stack_b = NULL;
 	if (argc == 2)
 		ft_freetab(args);
 	commands = ft_getcmds();
-	if (ft_execheck(&stack_a, &stack_b, commands))
-		write(1, "OK\n", 3);
-	else
-		write(1, "KO\n", 3);
-	ft_lstclear(&stack_a, free);
-	ft_lstclear(&stack_b, free);
-	ft_lstclear(&commands, free);
+	return_and_free(&stack_a, &stack_b, &commands);
+	return (0);
 }
