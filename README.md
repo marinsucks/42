@@ -19,7 +19,7 @@ Apart from work, I love creating awful melodies on the bass and getting my butt 
 
 - **Born2beRoot**: A system administration project, consisting in setting up a secure server environment following strict guidelines and emphasizing security protocols and configurations.
 
-- **Push_swap**: Back to the classic sorting algorithms! I sorted stacks, grooved with diverse sorting algorithms, and mastered linked list manipulations. Stack sorting like you've never seen before!
+- **push_swap**: Back to the classic sorting algorithms! I sorted stacks, grooved with diverse sorting algorithms, and mastered linked list manipulations. Stack sorting like you've never seen before!
 
 
 ## Goals
