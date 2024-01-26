@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/22 14:07:18 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/26 11:50:49 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # ifndef FD_MAX
 #  define FD_MAX 512
 # endif
+
+# define TRUE 1
+# define FALSE 0
 
 # include <stdarg.h>
 # include <stddef.h>
@@ -139,6 +142,7 @@ size_t		ft_strlcpy(char *dest, const char *src, size_t size);
 //ft_strdup.c
 char		*ft_strdup(const char *s1);
 char		*ft_strndup(const char *src, size_t size);
+char		**ft_tabdup(char **tab);
 
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 
