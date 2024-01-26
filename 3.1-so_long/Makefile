@@ -6,19 +6,25 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/26 11:50:02 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/26 16:11:35 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
+ifeq ($(shell uname), Linux)
+MLX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext
+else ifeq ($(shell uname), Darwin)
+MLX = NOT SURE PLEASE CHECK
+endif
+
 NAME = so_long
 
 SRC = main.c
 
 all: archives
-	@$(CC) $(CFLAGS) -g -o $(NAME) $(MAIN) $(SRC) archives/*.a
+	@$(CC) $(CFLAGS) -g -o $(NAME) $(SRC) archives/*.a $(MLX)
 	@echo "$(GREEN)$(NAME) ready.$(NC)"
 
 clean:
@@ -35,8 +41,9 @@ re: clean all
 archives: libft
 	@mkdir -p archives
 	@mv libft/libft.a archives/
+	@cp minilibx*/*.a archives/
 
 libft:
 	@make -C ./libft all
 
-.PHONY : all clean fclean re archives libft
+.PHONY : all clean fclean re archives #libft
