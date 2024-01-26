@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:37:55 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/08 17:32:16 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/26 11:39:14 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,30 @@ char	*ft_strndup(const char *src, size_t size)
 	}
 	ptr[i] = 0;
 	return (ptr);
+}
+
+char	**ft_tabdup(char **tab)
+{
+	char	**new_tab;
+	int		i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	new_tab = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!new_tab)
+		return (0);
+	i = 0;
+	while (tab[i])
+	{
+		new_tab[i] = ft_strdup(tab[i]);
+		if (!new_tab[i])
+		{
+			ft_freetab(new_tab);
+			return (0);
+		}
+		i++;
+	}
+	new_tab[i] = 0;
+	return (new_tab);
 }
