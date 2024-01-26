@@ -6,11 +6,12 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/26 16:22:49 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/26 16:21:21 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC 		= cc
+
 ifeq ($(shell uname), Linux)
 CFLAGS 	= -Wall -Wextra -Werror
 else ifeq ($(shell uname), Darwin)

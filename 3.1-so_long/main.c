@@ -6,19 +6,26 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/26 15:58:03 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/26 17:15:41 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+
+
 int main(void)
 {
-    void	*mlx_ptr;
+    void	*connection;
+    void	*window;
 
-    mlx_ptr = mlx_init();
-	if (!mlx_ptr)
+    connection = mlx_init();
+	if (!connection)
 		return (1);
-    mlx_destroy_display(mlx_ptr);
-    free(mlx_ptr);
+	window = mlx_new_window(connection, 640, 480, "Hello world!");
+	if (!window)
+		return (1); //and free the rest
+	mlx_loop(connection);
+    mlx_destroy_display(connection);
+    free(connection);
 }

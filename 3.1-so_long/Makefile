@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/26 16:34:59 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/26 17:16:13 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,5 +45,8 @@ archives: libft
 
 libft:
 	@make -C ./libft all
+
+fetchlibft:
+	@cp -r ../.utils/libft ./
 
 .PHONY : all clean fclean re archives libft

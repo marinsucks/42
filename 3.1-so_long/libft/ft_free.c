@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:02:33 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/26 12:29:12 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/26 17:10:13 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_freetab(char **tab)
  * @param 3: t_list **ptr
  * @note add a NULL pointer at the end of the arguments.
  */
-void	ft_free(int mode, ...)
+int	ft_free(int mode, ...)
 {
 	va_list	args;
 	void	*ptr;
@@ -54,4 +54,5 @@ void	ft_free(int mode, ...)
 		ptr = va_arg(args, void *);
 	}
 	va_end(args);
+	return (1);
 }
