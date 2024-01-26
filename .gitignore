@@ -7,7 +7,6 @@ archives/
 
 /*** EXECUTABLE FILES ***/
 *.out
-a.out.dSYM/
 push_swap
 checker
 checker_linux
@@ -22,6 +21,7 @@ minilibx*
 
 /*** IDE GENERATED FILES ***/
 .vscode/
+*.dSYM/
 
 /*** OS GENERATED FILES ***/
 .DS_Store
