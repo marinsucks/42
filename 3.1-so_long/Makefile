@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/26 17:16:13 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/26 17:21:05 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ all: archives
 	@echo "$(GREEN)$(NAME) ready.$(NC)"
 
 clean:
-	@rm -rf *.out* */*.out checker *.o $(OBJ)
+	@rm -rf *.out* */*.out *.dSYM* *.o $(OBJ)
 	@echo "$(LRED)Cleaning objects & executables...$(NC)"
 
 fclean: clean
