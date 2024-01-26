@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/26 16:11:35 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/26 16:34:59 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 ifeq ($(shell uname), Linux)
 MLX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext
 else ifeq ($(shell uname), Darwin)
-MLX = NOT SURE PLEASE CHECK
+MLX = -Lminilibx-linux -lmlx_Darwin -L/opt/X11/lib -lX11 -lXext
 endif
 
 NAME = so_long
@@ -46,4 +46,4 @@ archives: libft
 libft:
 	@make -C ./libft all
 
-.PHONY : all clean fclean re archives #libft
+.PHONY : all clean fclean re archives libft
