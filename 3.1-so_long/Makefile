@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/26 17:21:05 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/29 18:57:57 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ NAME = so_long
 SRC = main.c
 
 all: archives
-	@$(CC) $(CFLAGS) -g -o $(NAME) $(SRC) archives/*.a $(MLX)
+	@$(CC) $(CFLAGS) -g $(SRC) archives/*.a $(MLX) -o $(NAME)
 	@echo "$(GREEN)$(NAME) ready.$(NC)"
 
 clean:
@@ -50,3 +50,12 @@ fetchlibft:
 	@cp -r ../.utils/libft ./
 
 .PHONY : all clean fclean re archives libft
+
+RED =\033[1;31m
+LRED =\033[0;31m
+GREEN =\033[1;32m
+LGREEN =\033[0;32m
+YELLOW =\033[1;33m
+LYELLOW =\033[0;33m
+GREY =\033[1;37m
+NC =\033[0m
