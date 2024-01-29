@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:58:42 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/25 15:07:53 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/29 13:45:49 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	ft_turksort(t_list **stack_a, t_list **stack_b)
 	{
 		while (ft_lstsize(*stack_b) < 2 && ft_lstsize(*stack_a) > 3)
 			pb(stack_a, stack_b);
+		if (ft_lstsize(*stack_b) == 1)
+			break ;
 		ft_settarget(*stack_a, *stack_b, FALSE);
 		topush = ft_topush(stack_a, stack_b);
 		ft_optirotate(stack_a, stack_b, topush, 'a');
@@ -53,7 +55,6 @@ void	ft_turksort(t_list **stack_a, t_list **stack_b)
 			pb(stack_a, stack_b);
 	}
 	ft_threesort(stack_a);
-	ft_cleartarget(*stack_a);
 	while (*stack_b)
 	{
 		ft_settarget(*stack_b, *stack_a, TRUE);
