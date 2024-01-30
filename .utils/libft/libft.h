@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/26 17:10:42 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/30 16:47:56 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,8 @@ void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 char		*ft_strjoin(char *s1, char *s2);
 
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
+int			ft_strset(char *s, char *set);
 
 //ft_strstr.c
 char		*ft_strstr(const char *haystack, const char *needle);
