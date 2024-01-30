@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 15:17:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/25 16:13:52 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/30 17:03:36 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,10 @@ all: archives
 	@$(CC) $(CFLAGS) -g -o $(NAME) $(MAIN) $(SRC) archives/*.a
 	@printf "$(GREEN)push_swap ready.\n$(NC)"
 
+bonus: archives
+	@$(CC) $(CFLAGS) -g -o checker $(BONUS) $(SRC) archives/*.a
+	@printf "$(GREEN)checker ready.\n$(NC)"
+
 clean:
 	@rm -rf *.out* */*.out checker *.o $(OBJ)
 	@echo "$(LRED)Cleaning objects & executables...$(NC)"
@@ -68,9 +72,6 @@ cmds:
 	@ranlib cmds.a
 	@rm -rf $(COBJ)
 	@printf "$(LGREEN)cmds.a ready.\n$(NC)"
-
-checker: clean libft
-	@$(CC) $(CFLAGS) -g -o checker $(BONUS) $(SRC) archives/*.a
 
 .PHONY : all clean fclean re libft cmds
 

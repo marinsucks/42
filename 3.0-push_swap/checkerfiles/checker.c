@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:14:48 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/25 18:25:44 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/30 17:01:49 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	is_correct_args(char **s)
 	int	j;
 
 	i = 0;
+	if (!s[0] || !ft_strset(s[0], "-0123456789"))
+		return (0);
 	while (s[i])
 	{
 		j = 0;
@@ -81,7 +83,7 @@ int	main(int argc, char const *argv[])
 	t_list	*commands;
 	char	**args;
 
-	if (argc <= 1)
+	if (argc < 2 || !ft_strlen(argv[1]))
 		return (0);
 	else if (argc == 2)
 		args = ft_split_charset(argv[1], SPACES);

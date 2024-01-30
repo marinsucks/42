@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:10:25 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/25 18:16:15 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/30 16:54:07 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	is_correct_args(char **s)
 	int	j;
 
 	i = 0;
+	if (!s[0] || !ft_strset(s[0], "-0123456789"))
+		return (0);
 	while (s[i])
 	{
 		j = 0;
@@ -31,7 +33,7 @@ int	is_correct_args(char **s)
 		j = 0;
 		while (s[i][j])
 		{
-			if (s[i][j] == '-')
+			if (s[i][j] == '-' || s[i][j] == '+')
 				j++;
 			if (!ft_isdigit(s[i][j++]) || ft_atoi(s[i]) != ft_atol(s[i]))
 				return (0);
@@ -81,7 +83,7 @@ int	main(int argc, char const *argv[])
 	t_list	*stack_b;
 	char	**args;
 
-	if (argc <= 1)
+	if (argc < 2 || !ft_strlen(argv[1]))
 		return (0);
 	else if (argc == 2)
 		args = ft_split_charset(argv[1], SPACES);
