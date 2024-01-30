@@ -6,11 +6,17 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/29 16:38:07 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/01/30 14:21:49 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+// @returns an int equal in bin as `00000000rrrrrrrrggggggggbbbbbbbb`
+int	encode_rgb(t_byte red, t_byte green, t_byte blue)
+{
+	return (red << 16 | green << 8 | blue);
+}
 
 int	handle_key(int keysym, t_mlx *data)
 {
@@ -20,6 +26,7 @@ int	handle_key(int keysym, t_mlx *data)
 		ft_printf("the key %d has been pressed\n", keysym);
 	if (keysym == XK_Escape)
 	{
+		ft_printf("test = %b\n", encode_rgb(255, 255, 255));
 		mlx_destroy_window(data->cnx, data->wdw);
 		mlx_destroy_display(data->cnx);
 		free(data->cnx);
@@ -45,12 +52,7 @@ int	main(void)
 		free(data.cnx);
 		return (1);
 	}
-	
-//	mlx_string_put(data.cnx, data.wdw, 50, 50, 0x00FFFFFF, "\033[1;31mHello world!");
 	mlx_key_hook(data.wdw, handle_key, &data);
-	
-	
-
 	mlx_loop(data.cnx);
 	mlx_destroy_display(data.cnx);
 	free(data.cnx);

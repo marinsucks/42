@@ -1,0 +1,3 @@
+- pixel_put : create designs, but make sure they correspond to a certain
+			  dimension. ex 16x9 etc
+			

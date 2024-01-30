@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/29 18:57:57 by mbecker          ###   ########.fr        #
+#    Updated: 2024/01/30 13:52:10 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ endif
 
 NAME = so_long
 
-SRC = main.c
+#SRC = main.c
+SRC = 4_pixel_put_slow.c
 
 all: archives
 	@$(CC) $(CFLAGS) -g $(SRC) archives/*.a $(MLX) -o $(NAME)
