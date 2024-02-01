@@ -6,14 +6,23 @@ Push_Swap revolves around creating a program named `push_swap` that efficiently 
 
 ## Skills Acquired
 
-- **Algorithmic Exploration**: Explored various sorting strategies to optimize stack sorting and implemented [ayogun](https://github.com/ayogun)'s [Turk Algorithm](https://medium.com/@ayogun/push-swap-c1f5d2d41e97).
+- **Algorithmic Exploration**: Explored various sorting strategies to optimize stack sorting and implemented a sorting algorithm under specific operations constraints.
 - **Linked List Manipulation**: Gained proficiency in manipulating linked lists, a crucial skill for stack-based algorithms.
 
 ## Project Details
 
 ### The `push_swap` Program
 
-In progress ! 
+The push_swap program takes a list of integers as an argument and stores it on a stack - `a`. 
+
+1. While `a` has more than three value, each value of `a` is pushed to the other stack - `b` -  while sorting `b` in descending order. 
+   - The latter is done first by assigning each `a` node a target node from `b`, namely the smallest closest value from `b`.
+   - Then, the program evaluates the push cost of each node, which is the number of operations needed to bring the node and its target to the top of their stacks. The first cheapest node is then pushed to `b`.
+2. The 3 remaining values in `a` are sorted by a specific function. 
+3. While `b` still contains values, each node from `b` is assigned a target node from `a`, this time the biggest closest value from `a`. The first cheapest node is pushed to `a`.
+
+The program returns the list of operations used to sort the list, or none if the stack is either empty or already sorted. In case of incorrect arguments, it prints "Error".
+
 
 ### The `checker` Program (bonus)
 
