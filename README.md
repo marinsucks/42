@@ -9,17 +9,19 @@ Apart from work, I love creating awful melodies on the bass and getting my butt 
 
 ## My Projects
 
-- **Piscine**: I got my hands dirty with basic C programming during the 42 Piscine.
+- [**Piscine**](./0-piscine/): I got my hands dirty with basic C programming during the 42 Piscine.
 
-- **libft**: Building up my own C library.
+- [**libft**](./1-libft/): I built my own basic C library.
 
-- **ft_printf**: Implemented printf, delving into the intricacies of output formatting and string manipulation in C, ensuring precise and accurate output functionality.
+- [**ft_printf**](./2.0-ft_printf/): Implemented printf, delving into the intricacies of output formatting and string manipulation in C, ensuring precise and accurate output functionality.
 
-- **get_next_line**: Unlocked the magic of reading files line by line! Mastered file I/O, memory handling, and error management to craft a function that spins through files, delivering lines on demand. Optimized buffer size for efficient file processing.
+- [**get_next_line**](./2.1-get_next_line/): Unlocked the magic of reading files line by line! Mastered file I/O, memory handling, and error management to craft a function that spins through files, delivering lines on demand. Optimized buffer size for efficient file processing.
 
-- **Born2beRoot**: A system administration project, consisting in setting up a secure server environment following strict guidelines and emphasizing security protocols and configurations.
+- [**Born2beRoot**](./2.2-Born2beroot/): A system administration project, consisting in setting up a secure server environment following strict guidelines and emphasizing security protocols and configurations.
 
-- **push_swap**: Back to the classic sorting algorithms! I sorted stacks, grooved with diverse sorting algorithms, and mastered linked list manipulations. Stack sorting like you've never seen before!
+- [**push_swap**](./3.0-push_swap/): Back to the classic sorting algorithms! I sorted stacks, grooved with diverse sorting algorithms, and mastered linked list manipulations. Stack sorting like you've never seen before!
+
+- [**so_long**](./3.1-so_long/): In progress! I'm creating my first 2d game.
 
 
 ## Goals
@@ -35,7 +37,6 @@ During my studies at 42, here's what I'm aiming for:
 ## Contact
 
 For any further information, feel free to contact me on [mbecker@student.42.fr](mailto:mbecker@student.42.fr) or to take a look at [marinbecker.com](https://www.marinbecker.com) !
-
 
 
 ## Still here ?!
