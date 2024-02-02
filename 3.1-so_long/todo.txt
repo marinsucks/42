@@ -1,3 +1,6 @@
-- pixel_put : create designs, but make sure they correspond to a certain
-			  dimension. ex 16x9 etc
-			
+- create designs with my_pixel_put
+- handle movements : wasd, zqsd, ↑←↓→.
+- handle walls
+
+BONUS
+- handle enemies

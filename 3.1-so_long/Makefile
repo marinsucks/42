@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/30 13:52:10 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/02 16:01:24 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,10 @@ else ifeq ($(shell uname), Darwin)
 MLX = -Lminilibx-linux -lmlx_Darwin -L/opt/X11/lib -lX11 -lXext
 endif
 
-NAME = so_long
+NAME =	so_long
 
-#SRC = main.c
-SRC = 4_pixel_put_slow.c
+SRC =	main.c \
+		mlx_utils.c \
 
 all: archives
 	@$(CC) $(CFLAGS) -g $(SRC) archives/*.a $(MLX) -o $(NAME)
@@ -34,18 +34,17 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME) archives
-	@make -C ./libft fclean
 	@echo "$(RED)FULL CLEAN FINISHED$(NC)"
 
-re: clean all
+re: fclean all
 
 archives: libft
 	@mkdir -p archives
-	@mv libft/libft.a archives/
+	@if [ -f libft/libft.a ]; then mv libft/libft.a archives/; fi
 	@cp minilibx*/*.a archives/
 
 libft:
-	@make -C ./libft all
+	@if [ ! -f archives/libft.a ] || [ ! -d archives ]; then make -C ./libft all; fi
 
 fetchlibft:
 	@cp -r ../.utils/libft ./
