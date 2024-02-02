@@ -6,18 +6,14 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/02 16:01:24 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/02 17:15:20 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-ifeq ($(shell uname), Linux)
 MLX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext
-else ifeq ($(shell uname), Darwin)
-MLX = -Lminilibx-linux -lmlx_Darwin -L/opt/X11/lib -lX11 -lXext
-endif
 
 NAME =	so_long
 
@@ -38,13 +34,18 @@ fclean: clean
 
 re: fclean all
 
-archives: libft
+archives: libft mlx
 	@mkdir -p archives
 	@if [ -f libft/libft.a ]; then mv libft/libft.a archives/; fi
 	@cp minilibx*/*.a archives/
 
+mlx:
+	@if [ ! -d minilibx-linux ]; then git clone https://github.com/42Paris/minilibx-linux.git; fi
+	@if [ ! -f archives/libmlx_Linux.a ] || [ ! -d archives ]; then make -C ./minilibx-linux all; fi
+
 libft:
 	@if [ ! -f archives/libft.a ] || [ ! -d archives ]; then make -C ./libft all; fi
+
 
 fetchlibft:
 	@cp -r ../.utils/libft ./

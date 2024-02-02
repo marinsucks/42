@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/02 15:53:11 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/02 17:28:42 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(void)
 
 	int x = 32;
 	int y = 24;
-	data.img.ptr = mlx_xpm_file_to_image(data.cnx, "textures/pacman/Arcade - Pac-Man - General Sprites.xpm", &x, &y);
+	data.img.ptr = mlx_xpm_file_to_image(data.cnx, "textures/pacman/pacman.xpm", &x, &y);
 	if (!data.img.ptr)
 		return (ft_quit(&data), 1);
 
