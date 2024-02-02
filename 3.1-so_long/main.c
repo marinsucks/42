@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/02 17:28:42 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/02 17:46:25 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,15 @@ int	main(void)
 {
 	t_mlx	data;
 
+	ft_printf("start\n");
 	data.cnx = mlx_init();
 	if (!data.cnx)
 		return (free(data.cnx), 1);
+	ft_printf("data.cnx ok\n");
 	data.wdw = mlx_new_window(data.cnx, 640, 480, "Hello world!");
 	if (!data.wdw)
 		return (mlx_destroy_display(data.cnx), free(data.cnx), 1);
+	ft_printf("data.wdw ok\n");
 
 	int x = 32;
 	int y = 24;
