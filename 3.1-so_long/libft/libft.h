@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/26 17:10:42 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/05 15:04:52 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t nmemb, size_t size);
 
 //ft_free.c
-void		ft_freetab(char **tab);
+void		ft_freetab(char **tab, int heap);
 int			ft_free(int mode, ...);
 
 //ft_is.c

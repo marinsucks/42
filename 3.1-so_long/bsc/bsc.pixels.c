@@ -25,7 +25,7 @@ int	handle_input(int keysym, t_mlx *data)
 		free(data->cnx);
 		exit(0);
 	}
-	mlx_put_image_to_window(data->cnx, data->wdw, data->img.img_ptr, 0, 0);
+	mlx_put_image_to_window(data->cnx, data->wdw, data->img.ptr, 0, 0);
 	return (0);
 }
 
@@ -41,9 +41,9 @@ int	main(void)
 		free(data.cnx);
 		return (1);
 	}
-	data.img.img_ptr = mlx_new_image(data.cnx, WWIDTH, WHEIGHT);
-	data.img.img_pxls_ptr = mlx_get_data_addr(data.img.img_ptr,
-			&data.img.bits_per_pxl, &data.img.line_len, &data.img.endian);
+	data.img.ptr = mlx_new_image(data.cnx, WWIDTH, WHEIGHT);
+	data.img.pxls_ptr = mlx_get_data_addr(data.img.ptr,
+			&data.img.bpp, &data.img.line_len, &data.img.endian);
 	mlx_key_hook(data.wdw, handle_input, &data);
 	mlx_loop(data.cnx);
 	mlx_destroy_window(data.cnx, data.wdw);

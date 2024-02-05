@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/02 17:15:20 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/05 14:58:07 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ NAME =	so_long
 
 SRC =	main.c \
 		mlx_utils.c \
+		images.c \
+		map.c 
 
 all: archives
 	@$(CC) $(CFLAGS) -g $(SRC) archives/*.a $(MLX) -o $(NAME)

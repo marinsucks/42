@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:23 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/02 16:06:30 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/05 15:18:15 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 # include "libft/libft.h"
+# include "sprites.h"
 
 # include "minilibx-linux/mlx.h"
 # include <X11/keysym.h>
@@ -38,7 +40,7 @@ typedef unsigned char	t_byte;
  * line_len
  * `void *`	img_ptr;
  * `char *`	img_pixels_ptr;
- * `int`	bits_per_pixel;
+ * `int`	bpp; //bits per pixel
  * `int`	endian;
  * `int`	line_len; //necessary due to alignment optimization.
 */
@@ -46,7 +48,7 @@ typedef struct s_img
 {
 	void	*ptr;
 	char	*pxls_ptr;
-	int		bits_per_pxl;
+	int		bpp;
 	int		endian;
 	int		line_len;
 }				t_img;
@@ -60,17 +62,25 @@ typedef struct s_mlx
 {
 	void	*cnx;
 	void	*wdw;
-	t_img	img;
+	t_img	img[SPRITES_NB];
 
 }			t_mlx;
 
 /***** FUNCTIONS *****/
+//main.c
+int		ft_quit(void *data);
+int		handle_key(int keysym, t_mlx *data);
+int		main(void);
+
 //mlx_utils.c
 int		encode_rgb(t_byte red, t_byte green, t_byte blue);
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	color_fill(t_mlx *data, int color, int x, int y);
 
+//images.c
+void	set_textures(t_mlx *data);
 
-
+//map.c
+void	draw_map(t_mlx *data, char *map);
 
 #endif

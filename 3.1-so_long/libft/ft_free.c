@@ -6,13 +6,18 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:02:33 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/26 17:10:13 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/05 15:07:56 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_freetab(char **tab)
+/**
+ * @brief Frees a char **tab and its content.
+ * @param tab The tab to free.
+ * @param heap If 1, frees the tab itself.
+ */
+void	ft_freetab(char **tab, int heap)
 {
 	int	i;
 
@@ -22,7 +27,8 @@ void	ft_freetab(char **tab)
 		free(tab[i]);
 		i++;
 	}
-	free(tab);
+	if (heap)
+		free(tab);
 }
 
 /**
@@ -46,7 +52,7 @@ int	ft_free(int mode, ...)
 		if (mode == 1)
 			free(ptr);
 		else if (mode == 2)
-			ft_freetab((char **)ptr);
+			ft_freetab((char **)ptr, TRUE);
 		else if (mode == 3)
 			ft_lstclear((t_list **)ptr, free);
 		else
