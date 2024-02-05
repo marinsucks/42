@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:37:55 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/26 11:39:14 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/05 15:06:10 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	**ft_tabdup(char **tab)
 		new_tab[i] = ft_strdup(tab[i]);
 		if (!new_tab[i])
 		{
-			ft_freetab(new_tab);
+			ft_freetab(new_tab, TRUE);
 			return (0);
 		}
 		i++;

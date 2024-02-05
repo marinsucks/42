@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/30 16:47:56 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/05 15:04:52 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t nmemb, size_t size);
 
 //ft_free.c
-void		ft_freetab(char **tab);
+void		ft_freetab(char **tab, int heap);
 int			ft_free(int mode, ...);
 
 //ft_is.c
@@ -151,8 +151,6 @@ void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 char		*ft_strjoin(char *s1, char *s2);
 
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-
-int			ft_strset(char *s, char *set);
 
 //ft_strstr.c
 char		*ft_strstr(const char *haystack, const char *needle);
