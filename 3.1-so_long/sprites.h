@@ -6,14 +6,14 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 15:16:37 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/05 17:45:56 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:47:05 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPRITES_H
 # define SPRITES_H
 
-# define SPRITES_NB	16
+# define SPRITES_NB	17
 
 /*** PLAYER SPRITES ***/
 //top player anim #0
@@ -52,5 +52,8 @@
 # define BLC 14
 //top left corner
 # define TLC 15
+
+/*** COIN SPRITE ***/
+# define COIN 16
 
 #endif

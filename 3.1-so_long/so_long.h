@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:23 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/05 15:18:15 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/06 17:02:10 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct s_mlx
 //main.c
 int		ft_quit(void *data);
 int		handle_key(int keysym, t_mlx *data);
-int		main(void);
 
 //mlx_utils.c
 int		encode_rgb(t_byte red, t_byte green, t_byte blue);
@@ -81,6 +80,6 @@ void	color_fill(t_mlx *data, int color, int x, int y);
 void	set_textures(t_mlx *data);
 
 //map.c
-void	draw_map(t_mlx *data, char *map);
+void	draw_map(t_mlx *data, int fd);
 
 #endif

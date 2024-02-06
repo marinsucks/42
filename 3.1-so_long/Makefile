@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/05 14:58:07 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/06 19:41:19 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,11 +48,18 @@ mlx:
 libft:
 	@if [ ! -f archives/libft.a ] || [ ! -d archives ]; then make -C ./libft all; fi
 
+.PHONY : all clean fclean re archives libft
+
+
 
 fetchlibft:
 	@cp -r ../.utils/libft ./
 
-.PHONY : all clean fclean re archives libft
+checks: archives
+	@$(CC) $(CFLAGS) -g checks.c archives/*.a $(MLX)
+	@./a.out
+
+
 
 RED =\033[1;31m
 LRED =\033[0;31m

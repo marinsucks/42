@@ -1,6 +1,7 @@
 - create designs with my_pixel_put
 - handle movements : wasd, zqsd, ↑←↓→.
 - handle walls
+- handle args 
 
 BONUS
 - handle enemies

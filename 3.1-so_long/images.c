@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:59:39 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/05 17:47:26 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/06 16:01:07 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,13 @@ void	set_textures_player(t_mlx *data, int *i)
 
 void	set_textures(t_mlx *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	set_textures_player(data, &i);
 	set_textures_borders(data, &i);
+	data->img[COIN].ptr = mlx_xpm_file_to_image(data->cnx,
+			"sprites/pcm/coin.xpm", &i, &i);
 	while (i < SPRITES_NB)
 	{
 		if (!data->img[i].ptr)
