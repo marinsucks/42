@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/06 19:41:19 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/07 16:31:17 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,11 +52,14 @@ libft:
 
 
 
+pushlibft:
+	@cp -r ./libft ../.utils/
+
 fetchlibft:
 	@cp -r ../.utils/libft ./
 
 checks: archives
-	@$(CC) $(CFLAGS) -g checks.c archives/*.a $(MLX)
+	@$(CC) $(CFLAGS) -g gnl.c archives/*.a $(MLX)
 	@./a.out
 
 

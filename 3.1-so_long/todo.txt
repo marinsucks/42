@@ -5,3 +5,5 @@
 
 BONUS
 - handle enemies
+
+note : rect = 13

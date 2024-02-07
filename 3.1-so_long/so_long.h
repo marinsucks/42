@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:23 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/06 17:02:10 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/07 15:32:12 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 # include "libft/libft.h"
 # include "sprites.h"
@@ -65,6 +66,30 @@ typedef struct s_mlx
 	t_img	img[SPRITES_NB];
 
 }			t_mlx;
+
+/**
+ * - `char` player;
+ * - `char` exit;
+ * - `char` coin;
+ * - `char` wall;
+ * - `char` floor;
+ * - `int` count_p;
+ * - `int` count_e;
+ * - `int` count_c;
+*/
+typedef struct s_checks
+{
+	char	player;
+	char	exit;
+	char	coin;
+	char	wall;
+	char	floor;
+	int		count_p;
+	int		count_e;
+	int		count_c;
+}			t_checks;
+
+
 
 /***** FUNCTIONS *****/
 //main.c
