@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/01/26 16:21:21 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/07 12:39:44 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,9 @@ NAME 	= libft.a
 SRC		=	error.c ft_atoi.c ft_base.c ft_bzero.c ft_calloc.c ft_free.c \
 			ft_is.c ft_itoa.c ft_len.c ft_lst1.c ft_lst2.c ft_mem.c ft_printf.c \
 			ft_printf2.c ft_put.c ft_revert.c ft_split.c ft_strcat.c ft_strchr.c \
-			ft_strcmp.c ft_strcpy.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strmapi.c\
-			ft_strstr.c ft_strtrim.c ft_substr.c ft_to.c ft_wordcount.c get_next_line.c
+			ft_strcmp.c ft_strcpy.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strmapi.c \
+			ft_strstr.c ft_strtrim.c ft_substr.c ft_to.c ft_wordcount.c get_next_line.c \
+			get_file.c
 OBJ		= 	$(SRC:.c=.o)
 
 HEADER	= libft.h

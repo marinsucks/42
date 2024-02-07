@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:14:21 by mbecker           #+#    #+#             */
-/*   Updated: 2024/01/30 11:46:28 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/07 12:35:35 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ int	pf_convert(const char *s, va_list args)
 }
 
 /**
- * @brief ft_printf is a variadic function that prints to stdout according to a
- * format.
+ * @brief ft_printf is a variadic function that prints to stdout 
+ * according to a specific format.
 
- * @param s The format string. Use the ```%``` character to indicate a conversion.
+ * @param s The format string. Use the ```%``` character 
+ * to indicate a conversion.
  * @param %c The char to print.
  * @param %s The string to print.
  * @param %p The pointer to print.
