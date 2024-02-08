@@ -6,32 +6,33 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:26:10 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/07 16:41:51 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/08 19:06:08 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 int	is_rectangle(char **map)
 {
 	int		i;
+	int		lastline;
 	size_t	width;
 
 	i = 0;
 	width = ft_strlen(map[0]) - 1;
+	lastline = ft_tablen((const char **)map) - 1;
 	while (map[i])
 	{
-		if (ft_strlen(map[i]) - 1 != width)
+		if (i != lastline && ft_strlen(map[i]) - 1 != width)
+			return (0);
+		else if (i == lastline && ft_strlen(map[i]) != width)
 			return (0);
 		i++;
 	}
-	if (ft_strlen(map[i - 1]) - 1 != width)
-		return (0);
 	return (1);
 }
 
-int	has_correct_elements(char **map, t_checks *ctnt)
+int	has_valid_elements(char **map, t_checks *ctnt)
 {
 	int	i;
 	int	j;
@@ -49,20 +50,62 @@ int	has_correct_elements(char **map, t_checks *ctnt)
 			if (map[i][j] == 'C')
 				ctnt->count_c++;
 			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'P'
-				&& map[i][j] != 'E' && map[i][j] != 'C' && map[i][j] != '\n')//DEBUG : j++ here
+				&& map[i][j] != 'E' && map[i][j] != 'C' && map[i][j] != '\n')
 				return (0);
 		}
 	}
-	ft_printf("i = %d, j = %d\n", i, j);
-	if (map[--i][--j] == '\n')
-		ft_printf("map [--i][j] = \\n\n");
-	if (map[i][j] == 0)
-		ft_printf("map [--i][j] = \\0\n");
-	else
-		ft_printf("map [--i][j] = %c\n", map[i][j]);
-	
-	if (ctnt->count_p != 1 || ctnt->count_e != 1 || ctnt->count_c < 1)// || map[i - 1][j] == '\n')
+	if (ctnt->count_p != 1 || ctnt->count_e != 1 || ctnt->count_c < 1)
 		return (0);
+	return (1);
+}
+
+int	is_valid_line(char *line, int wall)
+{
+	int	i;
+
+	i = 0;
+	if (line[i] != '1')
+		return (0);
+	while (line[++i] && wall)
+	{
+		if (line[i] != '1')
+			return (0);
+		if (line[i + 1] == '\n' || line[i + 1] == 0)
+			return (1);
+	}
+	while (line[++i] && !wall)
+	{
+		if (line[i] == '1' && line[i + 1] != '\n')
+			i++;
+		else if (line[i] == '1' && line[i + 1] == '\n')
+			return (1);
+		if (line[i] == 'C' || line[i] == 'E')
+			return (0);
+	}
+	return (0);
+}
+
+int	has_valid_path(char **map, t_checks *ctnt)
+{
+	size_t		i;
+	int			last;
+	long		p;
+
+	p = get_xy(map, 'P');
+	last = ft_strlen(map[0]) - 1;
+	ctnt->dfsmap = ft_tabdup(map);
+	ft_dfs(ctnt->dfsmap, p >> 32, p & 0xFFFFFFFF, "0PEC");
+	i = -1;
+	while (ctnt->dfsmap[++i])
+	{
+		if ((i == 0 || i == ft_tablen((const char **)ctnt->dfsmap) - 1)
+			&& !is_valid_line(ctnt->dfsmap[i], TRUE))
+			return (0);
+		else if (!(i == 0 || i == ft_tablen((const char **)ctnt->dfsmap) - 1)
+			&& !is_valid_line(ctnt->dfsmap[i], FALSE))
+			return (0);
+	}
+	ft_freetab(ctnt->dfsmap, 1);
 	return (1);
 }
 
@@ -70,78 +113,21 @@ int	is_valid_map(char **map)
 {
 	t_checks	ctnt;
 
-	ctnt = (t_checks){'P', 'E', 'C', '1', '0', 0, 0, 0};
 	if (!map)
-		return (write(1, "Error: map is missing or empty.\n", 32), 0);
+		return (write(2, "\033[0;31mError: map is missing or empty.\
+\033[0m\n", 43), 0);
 	else if (ft_tablen((const char **)map) <= 2)
-		return (write(1, "Error: map is too small.\n", 25), 0);
+		return (write(2, "\033[0;31mError: map is too small.\
+\033[0m\n", 36), 0);
 	else if (!is_rectangle(map))
-		return (write(1, "Error: map isn't a rectangle.\n", 30), 0);
-	else if (!has_correct_elements(map, &ctnt))
-		return (write(1, "Error: \
-map has either incorrect, too many or too few elements.\n", 63), 0);
+		return (write(2, "\033[0;31mError: map isn't a rectangle.\
+\033[0m\n", 41), 0);
+	ctnt = (t_checks){'P', 'E', 'C', '1', '0', 0, 0, 0, NULL};
+	if (!has_valid_elements(map, &ctnt))
+		return (write(2, "\033[0;31mError: map has either invalid, \
+too many or too few elements.\033[0m\n", 72), 0);
+	if (!has_valid_path(map, &ctnt))
+		return (write(2, "\033[0;31mError: map has no valid path or has holes.\
+\033[0m\n", 54), 0);
 	return (1);
-}
-
-int	main(void)
-{
-	int		fd;
-	char	**map;
-
-	char *mapnames[] = {
-		////MISSING
-		//"tests/empty.ber",
-
-		////TOO SMALL
-		//"tests/oneclmn.ber",
-		//"tests/onecorner.ber",
-		//"tests/onewall.ber",
-		//"tests/twowalls.ber",
-
-		////NOT RECTANGLE
-		//"tests/notrect.ber",
-		//"tests/notrect2.ber",
-		"tests/withnl.ber",
-
-		////HAS HOLES
-		//"tests/badlftwall.ber",
-		//"tests/badbtmwall.ber",
-		//"tests/badrgtwall.ber",
-		//"tests/badtopwall.ber",
-		
-		////ELEMENTS
-		//"tests/noC.ber",
-		//"tests/noE.ber",
-		//"tests/noP.ber",
-		//"tests/noPEC.ber",
-		//"tests/invalidchar.ber",
-
-		////PATH
-		//"tests/nopath.ber",
-
-		////OK
-		//"tests/ok.ber",
-		//"tests/ok2.ber",
-
-		NULL
-						};
-	for (size_t i = 0; mapnames[i]; i++)
-	{
-		ft_printf("\nTEST %s\n", mapnames[i] + 6);
-		fd = open(mapnames[i], O_RDONLY);
-		map = get_file(fd);
-		if (!map)
-		{
-			ft_printf("%p\n", map);
-			is_valid_map(map);
-		}
-		else
-		{
-			for (size_t i = 0; map[i]; i++)
-				ft_printf("%s", map[i]);
-			is_valid_map(map);
-		}
-		if (map)
-			ft_freetab(map, 1);
-	}
 }

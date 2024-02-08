@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/07 16:31:17 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/08 19:30:07 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,16 @@ MLX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext
 
 NAME =	so_long
 
-SRC =	main.c \
-		mlx_utils.c \
+MAIN =	main.c
+SRC =	mlx_utils.c \
+		checks.c \
 		images.c \
-		map.c 
+		map.c \
+		keys.c \
+		position.c 
 
 all: archives
-	@$(CC) $(CFLAGS) -g $(SRC) archives/*.a $(MLX) -o $(NAME)
+	@$(CC) $(CFLAGS) -g $(MAIN) $(SRC) archives/*.a $(MLX) -o $(NAME)
 	@echo "$(GREEN)$(NAME) ready.$(NC)"
 
 clean:
@@ -59,7 +62,7 @@ fetchlibft:
 	@cp -r ../.utils/libft ./
 
 checks: archives
-	@$(CC) $(CFLAGS) -g gnl.c archives/*.a $(MLX)
+	@$(CC) $(CFLAGS) -g checks.c position.c archives/*.a $(MLX)
 	@./a.out
 
 
