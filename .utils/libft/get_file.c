@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:57:10 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/09 12:59:02 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:17:11 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	**get_file(int fd)
 	char	**res;
 	char	*line;
 
+	if (fd < 0)
+		return (NULL);
 	line = get_next_line(fd);
 	if (!line)
 		return (NULL);
