@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/08 19:54:26 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:32:33 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@ int	main(int ac, char **av)
 	t_mlx	data;
 	int		fd;
 
+	//get map and set data.
 	fd = open(av[1], O_RDONLY);
-	data = (t_mlx){NULL, NULL, {{NULL, NULL, 0, 0, 0}}, get_file(fd)};
-	if (!is_valid_map(data.map) || ac <= 1)
+	data = (t_mlx){NULL, NULL, {{NULL, NULL, 0, 0, 0}}, get_file(fd), 0};
+	//make checks
+	if (!is_valid_map(data.map, av[1]) || ac <= 1)
 		return (ft_quit(&data), 1);
-
-
+	data.xy = get_xy(data.map, 0);
 
 
 	ft_printf("start\n"); //DEBUG

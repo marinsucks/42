@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/08 19:30:07 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/09 15:56:01 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC =	mlx_utils.c \
 		images.c \
 		map.c \
 		keys.c \
-		position.c 
+		position.c \
+		quit.c
 
 all: archives
 	@$(CC) $(CFLAGS) -g $(MAIN) $(SRC) archives/*.a $(MLX) -o $(NAME)

@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprites.h                                          :+:      :+:    :+:   */
+/*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 15:16:37 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/06 15:47:05 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/09 15:27:58 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPRITES_H
-# define SPRITES_H
+#ifndef DEFINES_H
+# define DEFINES_H
 
+# define DEFAULT_COLOR 0xf1efdf
+
+//total number of sprites
 # define SPRITES_NB	17
 
 /*** PLAYER SPRITES ***/
@@ -55,5 +58,11 @@
 
 /*** COIN SPRITE ***/
 # define COIN 16
+
+
+
+
+
+
 
 #endif

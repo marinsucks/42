@@ -8,6 +8,7 @@ int	main(void)
 	char *mapnames[] = {
 		//MISSING
 		"empty.ber",
+		"map",
 
 		//TOO SMALL
 		"oneclmn.ber",

@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:23 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/08 19:38:15 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:11:47 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,13 @@
 # include <stdio.h>
 
 # include "libft/libft.h"
-# include "sprites.h"
+# include "defines.h"
 
 # include "minilibx-linux/mlx.h"
 # include <X11/keysym.h>
 
 /***** DEFINES *****/
 # define MALLOC_ERR	1
-# define WWIDTH 	640
-# define WHEIGHT	480
 
 
 /***** TYPEDEFS & STRUCTS *****/
@@ -59,6 +57,7 @@ typedef struct s_img
  * - `void *`	wdw;
  * - `t_img`	img[SPRITES_NB];
  * - `char **`	map;
+ * - `long`		xy;
 */
 typedef struct s_mlx
 {
@@ -66,6 +65,7 @@ typedef struct s_mlx
 	void	*wdw;
 	t_img	img[SPRITES_NB];
 	char	**map;
+	long	xy;
 }			t_mlx;
 
 /**
@@ -98,7 +98,7 @@ int		ft_quit(void *data);
 int		handle_key(int keysym, t_mlx *data);
 //main.c
 
-int		is_valid_map(char **map);
+int	is_valid_map(char **map, char *fname);
 //parsing.c
 
 void	set_textures(t_mlx *data);

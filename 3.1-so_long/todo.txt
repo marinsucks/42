@@ -1,9 +1,9 @@
 - create designs with my_pixel_put
 - handle movements : wasd, zqsd, ↑←↓→.
 - handle walls
-- handle args 
 
 BONUS
 - handle enemies
 
-note : rect = 13
+NOTES:
+- project must be 16x16.

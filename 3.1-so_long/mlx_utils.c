@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:28:55 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/05 13:00:54 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:14:15 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	my_pixel_put(t_img *img, int x, int y, int color)
  */
 void	color_fill(t_mlx *data, int color, int x, int y)
 {
-	while (y < WHEIGHT)
+	while (y < (data->xy & 0xFFFFFFFF))
 	{
-		while (x < WWIDTH)
+		while (x < (data->xy >> 32))
 		{
 			my_pixel_put(&data->img[0], x, y, color);
 			x++;

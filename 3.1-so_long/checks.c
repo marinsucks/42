@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:26:10 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/09 13:03:49 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/09 16:59:42 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,13 @@ int	has_valid_path(char **map, t_checks *ctnt)
 	return (1);
 }
 
-int	is_valid_map(char **map)
+int	is_valid_map(char **map, char *fname)
 {
 	t_checks	ctnt;
 
-	if (!map)
-		return (write(2, "\033[0;31mError: map is missing or empty.\
-\033[0m\n", 43), 0);
+	if (!map || ft_strcmp(".ber", fname + ft_strlen(fname) - 4))
+		return (write(2, "\033[0;31mError: map is missing, not .ber or empty.\
+\033[0m\n", 53), 0);
 	else if (ft_tablen((const char **)map) <= 2)
 		return (write(2, "\033[0;31mError: map is too small.\
 \033[0m\n", 36), 0);
