@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:26:10 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/08 19:06:08 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/09 13:03:49 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,9 @@ int	is_valid_line(char *line, int wall)
 int	has_valid_path(char **map, t_checks *ctnt)
 {
 	size_t		i;
-	int			last;
 	long		p;
 
 	p = get_xy(map, 'P');
-	last = ft_strlen(map[0]) - 1;
 	ctnt->dfsmap = ft_tabdup(map);
 	ft_dfs(ctnt->dfsmap, p >> 32, p & 0xFFFFFFFF, "0PEC");
 	i = -1;
