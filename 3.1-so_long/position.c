@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:01:35 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/09 17:20:02 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/09 13:35:32 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,29 @@
  * @param map The 2D array representing the map.
  * @param element The element to search for in the map. use 0 to get 
  * the end of the map.
- * @return the position of the element if found, otherwise -1.
- * @note get_xy(map, element) >> 32; = i 
- * @note get_xy(map, element) & 0xFFFFFFFF; = j
+ * @note returns the position of the element if found, otherwise -1.
+ * @note x == result & 0xFFFFFFFF
+ * @note y == result >> 32
  */
 long get_xy(char **map, char element)
 {
-	long i;
-	long j;
+	long y;
+	long x;
 
-	i = -1;
+	y = -1; 
 	if (map == NULL)
 		return (-1);
-	while (map[++i])
+	while (map[++y])
 	{
-		j = -1;
-		while (map[i][++j])
+		x = -1;
+		while (map[y][++x])
 		{
-			if (map[i][j] == element)
-				return (i << 32 | j);
+			if (map[y][x] == element)
+				return (y << 32 | x);
 		}
 	}
 	if (element == 0)
-		return (i << 32 | j);
+		return (y << 32 | x);
 	return (-1);
 }
 

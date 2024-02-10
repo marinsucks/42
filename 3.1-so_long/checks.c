@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:26:10 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/09 16:59:42 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/09 14:11:40 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,20 +112,15 @@ int	is_valid_map(char **map, char *fname)
 	t_checks	ctnt;
 
 	if (!map || ft_strcmp(".ber", fname + ft_strlen(fname) - 4))
-		return (write(2, "\033[0;31mError: map is missing, not .ber or empty.\
-\033[0m\n", 53), 0);
+		return (write(2, MISSING, 53), 0);
 	else if (ft_tablen((const char **)map) <= 2)
-		return (write(2, "\033[0;31mError: map is too small.\
-\033[0m\n", 36), 0);
+		return (write(2, TOO_SMALL, 36), 0);
 	else if (!is_rectangle(map))
-		return (write(2, "\033[0;31mError: map isn't a rectangle.\
-\033[0m\n", 41), 0);
-	ctnt = (t_checks){'P', 'E', 'C', '1', '0', 0, 0, 0, NULL};
+		return (write(2, NOT_RECT, 41), 0);
+	ctnt = (t_checks){0, 0, 0, NULL};
 	if (!has_valid_elements(map, &ctnt))
-		return (write(2, "\033[0;31mError: map has either invalid, \
-too many or too few elements.\033[0m\n", 72), 0);
+		return (write(2, BAD_ELEMENTS, 72), 0);
 	if (!has_valid_path(map, &ctnt))
-		return (write(2, "\033[0;31mError: map has no valid path or has holes.\
-\033[0m\n", 54), 0);
+		return (write(2, INVALID_PATH, 54), 0);
 	return (1);
 }

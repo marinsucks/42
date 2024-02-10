@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:23 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/09 17:11:47 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/10 12:02:06 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@
 
 # include "minilibx-linux/mlx.h"
 # include <X11/keysym.h>
-
-/***** DEFINES *****/
-# define MALLOC_ERR	1
-
 
 /***** TYPEDEFS & STRUCTS *****/
 //a byte. 8 bits.
@@ -69,11 +65,6 @@ typedef struct s_mlx
 }			t_mlx;
 
 /**
- * - `char` player;
- * - `char` exit;
- * - `char` coin;
- * - `char` wall;
- * - `char` floor;
  * - `int` count_p;
  * - `int` count_e;
  * - `int` count_c;
@@ -81,11 +72,6 @@ typedef struct s_mlx
 */
 typedef struct s_checks
 {
-	char	player;
-	char	exit;
-	char	coin;
-	char	wall;
-	char	floor;
 	int		count_p;
 	int		count_e;
 	int		count_c;
@@ -94,20 +80,23 @@ typedef struct s_checks
 
 /***** FUNCTIONS *****/
 
-int		ft_quit(void *data);
 int		handle_key(int keysym, t_mlx *data);
-//main.c
+//input.c
 
-int	is_valid_map(char **map, char *fname);
-//parsing.c
+int		ft_quit(void *data);
+//quit.c
+
+int		is_valid_map(char **map, char *fname);
+//checks.c
+
+int		put_wdw(t_mlx *data, char *title, int width, int height);
+void	put_map(t_mlx *data);
+//display.c
 
 void	set_textures(t_mlx *data);
-//images.c
+//display_utils.c
 
-void	draw_map(t_mlx *data, int fd);
-//map.c
-
-int	handle_key(int keysym, t_mlx *data);
+int		handle_key(int keysym, t_mlx *data);
 //keys.c
 
 long	get_xy(char **map, char element);

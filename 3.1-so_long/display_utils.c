@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   images.c                                           :+:      :+:    :+:   */
+/*   display_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:59:39 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/09 14:58:54 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/10 12:05:38 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ void	set_textures(t_mlx *data)
 	int	i;
 
 	i = 0;
-	set_textures_player(data, &i);
-	set_textures_borders(data, &i);
-	data->img[COIN].ptr = mlx_xpm_file_to_image(data->cnx,
-			"sprites/pacman/coin.xpm", &i, &i);
+	//set_textures_player(data, &i);
+	//set_textures_borders(data, &i);
+	//data->img[COIN].ptr = mlx_xpm_file_to_image(data->cnx,
+	//		"sprites/pacman/coin.xpm", &i, &i);
+	//data->img[0].ptr = mlx_xpm_file_to_image(data->cnx,
+	//		"sprites/pokemon/coin.xpm", &i, &i);
 	while (i < SPRITES_NB)
 	{
 		if (!data->img[i].ptr)

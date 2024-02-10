@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/09 15:56:01 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/10 11:44:19 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ MLX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext
 NAME =	so_long
 
 MAIN =	main.c
-SRC =	mlx_utils.c \
-		checks.c \
-		images.c \
-		map.c \
-		keys.c \
+SRC =	checks.c \
+		display.c \
+		display_utils.c \
+		input.c \
+		mlx_utils.c \
 		position.c \
 		quit.c
 

@@ -6,37 +6,11 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/09 17:32:33 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/10 11:39:35 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	ft_quit(void *data)
-{
-	int i;
-
-	i = 0;
-	if (!data)
-		exit(0);
-	if (((t_mlx *)data)->map)
-		ft_freetab(((t_mlx *)data)->map, TRUE);
-	while (i < SPRITES_NB)
-	{
-		if (((t_mlx *)data)->img[i].ptr)
-			mlx_destroy_image(((t_mlx *)data)->cnx, 
-				((t_mlx *)data)->img[i].ptr);
-		i++;
-	}
-	if (((t_mlx *)data)->wdw && ((t_mlx *)data)->cnx)
-	{
-		mlx_destroy_window(((t_mlx *)data)->cnx, ((t_mlx *)data)->wdw);
-		mlx_destroy_display(((t_mlx *)data)->cnx);
-		free(((t_mlx *)data)->cnx);
-	}
-	exit(0);
-	return (0);
-}
 
 int	main(int ac, char **av)
 {
@@ -46,25 +20,20 @@ int	main(int ac, char **av)
 	//get map and set data.
 	fd = open(av[1], O_RDONLY);
 	data = (t_mlx){NULL, NULL, {{NULL, NULL, 0, 0, 0}}, get_file(fd), 0};
+
 	//make checks
 	if (!is_valid_map(data.map, av[1]) || ac <= 1)
 		return (ft_quit(&data), 1);
 	data.xy = get_xy(data.map, 0);
 
+	//start a window
+	put_wdw(&data, "so_long", data.xy & 0xFFFFFFFF, data.xy >> 32);
 
-	ft_printf("start\n"); //DEBUG
-	data.cnx = mlx_init();
-	if (!data.cnx)
-		return (free(data.cnx), 1);
-	ft_printf("data.cnx ok\n"); //DEBUG
-	data.wdw = mlx_new_window(data.cnx, 640, 480, "Hello world!");
-	if (!data.wdw)
-		return (mlx_destroy_display(data.cnx), free(data.cnx), 1);
-	ft_printf("data.wdw ok\n"); //DEBUG
-
-	set_textures(&data);
-
+	//Ask for preferences, store them in data.wasd and data.theme.
+	//get_preferences(&data);
+		//set_sprites(&data);
 	//draw_map(&data, "maps/map.ber");
+
 	mlx_key_hook(data.wdw, handle_key, &data);
 	mlx_hook(data.wdw, 17, 1L << 17, ft_quit, &data);
 	mlx_loop(data.cnx);
