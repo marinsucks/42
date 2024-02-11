@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:23 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/10 12:02:06 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/10 13:28:51 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		put_wdw(t_mlx *data, char *title, int width, int height);
 void	put_map(t_mlx *data);
 //display.c
 
-void	set_textures(t_mlx *data);
+int		set_textures(t_mlx *data);
 //display_utils.c
 
 int		handle_key(int keysym, t_mlx *data);

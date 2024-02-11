@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:59:39 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/10 12:05:38 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/10 13:28:02 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	set_textures_player(t_mlx *data, int *i)
 			"sprites/pacman/pcm_l0.xpm", i, i);
 }
 
-void	set_textures(t_mlx *data)
+int	set_textures(t_mlx *data)
 {
 	int	i;
 
@@ -61,12 +61,21 @@ void	set_textures(t_mlx *data)
 	//set_textures_borders(data, &i);
 	//data->img[COIN].ptr = mlx_xpm_file_to_image(data->cnx,
 	//		"sprites/pacman/coin.xpm", &i, &i);
-	//data->img[0].ptr = mlx_xpm_file_to_image(data->cnx,
-	//		"sprites/pokemon/coin.xpm", &i, &i);
+	data->img[0].ptr = mlx_xpm_file_to_image(data->cnx,
+			"sprites/pokemon/rock.xpm", &i, &i);
+	data->img[1].ptr = mlx_xpm_file_to_image(data->cnx,
+			"sprites/pokemon/background.xpm", &i, &i);
+	data->img[2].ptr = mlx_xpm_file_to_image(data->cnx,
+			"sprites/pokemon/Ethan_d0.xpm", &i, &i);
+	data->img[3].ptr = mlx_xpm_file_to_image(data->cnx,
+			"sprites/pokemon/exit.xpm", &i, &i);
+	data->img[4].ptr = mlx_xpm_file_to_image(data->cnx,
+			"sprites/pokemon/pokeball.xpm", &i, &i);
 	while (i < SPRITES_NB)
 	{
 		if (!data->img[i].ptr)
-			ft_quit(&data);
+			return(write(2, "Invalid sprite\n", 15), ft_quit(&data), 1);
 		i++;
 	}
+	return (0);
 }

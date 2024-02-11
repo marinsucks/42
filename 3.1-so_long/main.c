@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/10 11:39:35 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/10 13:28:27 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(int ac, char **av)
 
 	//start a window
 	put_wdw(&data, "so_long", data.xy & 0xFFFFFFFF, data.xy >> 32);
+	set_textures(&data);
+	put_map(&data);
 
 	//Ask for preferences, store them in data.wasd and data.theme.
 	//get_preferences(&data);
