@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:26:10 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/09 14:11:40 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/12 13:00:04 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	has_valid_path(char **map, t_checks *ctnt)
 	return (1);
 }
 
-int	is_valid_map(char **map, char *fname)
+int	is_valid_map(char **map, char *fname, t_mlx *data)
 {
 	t_checks	ctnt;
 
@@ -120,6 +120,7 @@ int	is_valid_map(char **map, char *fname)
 	ctnt = (t_checks){0, 0, 0, NULL};
 	if (!has_valid_elements(map, &ctnt))
 		return (write(2, BAD_ELEMENTS, 72), 0);
+	data->coinsleft = ctnt.count_c;
 	if (!has_valid_path(map, &ctnt))
 		return (write(2, INVALID_PATH, 54), 0);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:23 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/10 13:28:51 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/12 13:00:22 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ typedef struct s_img
  * - `void *`	wdw;
  * - `t_img`	img[SPRITES_NB];
  * - `char **`	map;
- * - `long`		xy;
+ * - `int`		width;
+ * - `int`		height;
+ * - `int`		coinsleft;
 */
 typedef struct s_mlx
 {
@@ -61,7 +63,9 @@ typedef struct s_mlx
 	void	*wdw;
 	t_img	img[SPRITES_NB];
 	char	**map;
-	long	xy;
+	int		width;
+	int		height;
+	int		coinsleft;
 }			t_mlx;
 
 /**
@@ -86,7 +90,7 @@ int		handle_key(int keysym, t_mlx *data);
 int		ft_quit(void *data);
 //quit.c
 
-int		is_valid_map(char **map, char *fname);
+int		is_valid_map(char **map, char *fname, t_mlx *data);
 //checks.c
 
 int		put_wdw(t_mlx *data, char *title, int width, int height);
@@ -105,6 +109,7 @@ long	get_xy(char **map, char element);
 int		encode_rgb(t_byte red, t_byte green, t_byte blue);
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	color_fill(t_mlx *data, int color, int x, int y);
+int		print_image(t_mlx *data, void *imgptr, int x, int y);
 //mlx_utils.c
 
 #endif

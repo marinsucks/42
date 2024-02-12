@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:40:34 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/10 12:03:17 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/12 12:08:45 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,15 @@ void	put_map(t_mlx *data)
 		while (data->map[i][++j])
 		{
 			if (data->map[i][j] == '1')
-				mlx_put_image_to_window(data->cnx, data->wdw, data->img[0].ptr,
-					j * BPS, i * BPS);
+				print_image(data, data->WALL, j * BPS, i * BPS);
 			else if (data->map[i][j] == '0')
-				mlx_put_image_to_window(data->cnx, data->wdw, data->img[1].ptr,
-					j * BPS, i * BPS);
+				print_image(data, data->FLOOR, j * BPS, i * BPS);
 			else if (data->map[i][j] == 'P')
-				mlx_put_image_to_window(data->cnx, data->wdw, data->img[2].ptr,
-					j * BPS, i * BPS);
+				print_image(data, data->PDOWN, j * BPS, i * BPS);
 			else if (data->map[i][j] == 'E')
-				mlx_put_image_to_window(data->cnx, data->wdw, data->img[3].ptr,
-					j * BPS, i * BPS);
+				print_image(data, data->EXIT, j * BPS, i * BPS);
 			else if (data->map[i][j] == 'C')
-				mlx_put_image_to_window(data->cnx, data->wdw, data->img[4].ptr,
-					j * BPS, i * BPS);
+				print_image(data, data->COIN, j * BPS, i * BPS);
 		}
 	}
 }
