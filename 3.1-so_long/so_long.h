@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:23 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/12 13:00:22 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:10:35 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ typedef struct s_img
  * - `int`		width;
  * - `int`		height;
  * - `int`		coinsleft;
+ * - `int`		px;
+ * - `int`		py;
+ * - `char` 	dir;
 */
 typedef struct s_mlx
 {
@@ -66,6 +69,10 @@ typedef struct s_mlx
 	int		width;
 	int		height;
 	int		coinsleft;
+	int		px;
+	int		py;
+	int 	dir;
+
 }			t_mlx;
 
 /**
@@ -84,9 +91,6 @@ typedef struct s_checks
 
 /***** FUNCTIONS *****/
 
-int		handle_key(int keysym, t_mlx *data);
-//input.c
-
 int		ft_quit(void *data);
 //quit.c
 
@@ -98,10 +102,13 @@ void	put_map(t_mlx *data);
 //display.c
 
 int		set_textures(t_mlx *data);
+int 	is_blocked(t_mlx *data);
+void	move_player(t_mlx *data);
+int	animate_player(void *data);
 //display_utils.c
 
 int		handle_key(int keysym, t_mlx *data);
-//keys.c
+//input.c
 
 long	get_xy(char **map, char element);
 //position.c
@@ -109,7 +116,7 @@ long	get_xy(char **map, char element);
 int		encode_rgb(t_byte red, t_byte green, t_byte blue);
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	color_fill(t_mlx *data, int color, int x, int y);
-int		print_image(t_mlx *data, void *imgptr, int x, int y);
+int		print_img(t_mlx *data, void *imgptr, int x, int y);
 //mlx_utils.c
 
 #endif

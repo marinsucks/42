@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/08 18:47:09 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/13 14:54:34 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRC		=	error.c \
 			ft_lst1.c \
 			ft_lst2.c \
 			ft_mem.c \
-			ft_printf.c \
+			ft_print.c \
 			ft_printf.c \
 			ft_printf2.c \
 			ft_put.c \

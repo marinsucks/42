@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:28:55 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/12 12:43:53 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/13 16:49:53 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	color_fill(t_mlx *data, int color, int x, int y)
 	}
 }
 
-int print_image(t_mlx *data, void *imgptr, int x, int y)
+int print_img(t_mlx *data, void *imgptr, int x, int y)
 {
 	return (mlx_put_image_to_window(data->cnx, data->wdw, imgptr, x, y));
 }

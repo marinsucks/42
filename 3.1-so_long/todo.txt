@@ -6,4 +6,4 @@ BONUS
 - handle enemies
 
 NOTES:
-- project must be 16x16.
+- project must be 32x32.

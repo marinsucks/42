@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:59:39 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/13 12:09:41 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:17:21 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,54 @@ int	set_textures(t_mlx *data)
 	data->img[PLEFT].ptr = mlx_xpm_file_to_image(data->cnx, PL_P, &i, &i);
 	data->img[PLEFT1].ptr = mlx_xpm_file_to_image(data->cnx, PL1_P, &i, &i);
 	data->img[PLEFT2].ptr = mlx_xpm_file_to_image(data->cnx, PL2_P, &i, &i);
-	//while (i < SPRITES_NB && data->img[i].ptr)
-	//	i++;
-	//if (i != SPRITES_NB)
-	//	return(write(2, "Missing sprite\n", 15), ft_quit(&data), 1); //DEBUG
 	return (0);
 }
 
-//int move_player(t_mlx *data, char direction)
-//{
-//	long temp;
-//	int x;
-//	int y;
+/**
+ * Checks if the given position is blocked in the specified direction.
+ *
+ * @param data The pointer to the t_mlx structure.
+ * @param x The x-coordinate of the position.
+ * @param y The y-coordinate of the position.
+ * @param direction The direction to check ('u' for up, 'r' for right, 'd' for down, 'l' for left).
+ * @return 1 if the position is blocked, 0 otherwise.
+ */
+int is_blocked(t_mlx *data)
+{
+	if (data->dir == PUP && data->map[data->py - 1][data->px] == '1')
+		return 1;
+	else if (data->dir == PRIGHT && data->map[data->py][data->px + 1] == '1')
+		return 1;
+	else if (data->dir == PDOWN && data->map[data->py + 1][data->px] == '1')
+		return 1;
+	else if (data->dir == PLEFT && data->map[data->py][data->px - 1] == '1')
+		return 1;
+	return 0;
+}
 
-//	temp = get_xy(data->map, 'P');
-//	x = temp & 0x0000FFFF;
-//	y = (temp >> 32) - 1;
-//	//if (direction == 'u')
-	
-//}
+void	move_player(t_mlx *data)
+{
+	animate_player(data);
+	if (data->dir == PUP && !is_blocked(data))
+	{
+		data->map[data->py - 1][data->px] = 'P';
+		data->map[data->py][data->px] = '0';
+	}
+	else if (data->dir == PRIGHT && !is_blocked(data))
+	{
+		data->map[data->py][data->px + 1] = 'P';
+		data->map[data->py][data->px] = '0';
+	}
+	else if (data->dir == PDOWN && !is_blocked(data))
+	{
+		data->map[data->py + 1][data->px] = 'P';
+		data->map[data->py][data->px] = '0';
+	}
+	else if (data->dir == PLEFT && !is_blocked(data))
+	{
+		data->map[data->py][data->px - 1] = 'P';
+		data->map[data->py][data->px] = '0';
+	}
+}
+
+

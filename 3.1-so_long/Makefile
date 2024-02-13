@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/10 11:44:19 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/13 16:47:39 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC =	checks.c \
 		display_utils.c \
 		input.c \
 		mlx_utils.c \
-		position.c \
+		animation.c \
 		quit.c
 
 all: archives
