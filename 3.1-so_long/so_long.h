@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:23 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/13 19:00:09 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/13 19:44:14 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_mlx
 	int		width;
 	int		height;
 	int		coinsleft;
+	int		moves;
 	int		px;
 	int		py;
 	int 	dir;

@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 15:16:37 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/13 12:11:31 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/13 19:17:48 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,37 +20,39 @@
 // Bytes Per Sprite
 # define BPS 32
 
-# define SPRITES_NB 16
+# define SPRITES_NB 17
 
 # define WALL 0
 # define FLOOR 1
-# define EXIT 2
-# define COIN 3
+# define EXIT1 2
+# define EXIT2 3
+# define COIN 4
 
 // player facing down
-# define PDOWN 4
-# define PDOWN1 5
-# define PDOWN2 6
+# define PDOWN 5
+# define PDOWN1 6
+# define PDOWN2 7
 
 // player facing right
-# define PRIGHT 7
-# define PRIGHT1 8
-# define PRIGHT2 9
+# define PRIGHT 8
+# define PRIGHT1 9
+# define PRIGHT2 10
 
 // player facing up
-# define PUP 10
-# define PUP1 11
-# define PUP2 12
+# define PUP 11
+# define PUP1 12
+# define PUP2 13
 
 // player facing left
-# define PLEFT 13
-# define PLEFT1 14
-# define PLEFT2 15
+# define PLEFT 14
+# define PLEFT1 15
+# define PLEFT2 16
 
 /*********** PATHS ***********/
 # define WALL_P "sprites/wall.xpm"
 # define FLOOR_P "sprites/floor.xpm"
-# define EXIT_P "sprites/exit.xpm"
+# define EXIT1_P "sprites/exit_open.xpm"
+# define EXIT2_P "sprites/exit_closed.xpm"
 # define COIN_P "sprites/pokeball.xpm"
 # define PD_P "sprites/player/Ethan_d0.xpm"
 # define PD1_P "sprites/player/Ethan_d1.xpm"

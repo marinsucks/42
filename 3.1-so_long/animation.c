@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:39:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/13 18:57:22 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/13 19:46:47 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	run_anim(t_mlx *data, int *x, int *y, int i)
 			*y += 2;
 		else if (data->dir == PLEFT)
 			*x -= 2;
-		ft_printf("*x: %d, *y: %d\n", *x, *y);
 		if (i % 2 == 0)
             print_img(data, data->img[data->dir].ptr, *x, *y);
         else if ((i - 1) % 4 == 0 ) 
@@ -50,8 +49,9 @@ int	animate_player(void *dataptr)
 	print_img(data, data->img[data->dir].ptr, x, y);
 	mlx_do_sync(data->cnx);
 	if (is_blocked(data))
-		return 0;	
+		return 0;
 	run_anim(data, &x, &y, i); // pb here
+	ft_printf("moves count: %d\n", ++data->moves);
 	print_img(data, data->img[data->dir].ptr, x, y);
 	mlx_do_sync(data->cnx);
 	return (0);

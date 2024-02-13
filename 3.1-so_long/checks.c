@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:26:10 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/13 12:19:11 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/13 19:39:24 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,27 +59,30 @@ int	has_valid_elements(char **map, t_checks *ctnt)
 	return (1);
 }
 
-int	is_valid_line(char *line, int wall)
+int	is_valid_line(char **line, int i, int wall)
 {
-	int	i;
+	int	j;
 
-	i = 0;
-	if (line[i] != '1')
+	j = 0;
+	if (line[i][j] != '1')
 		return (0);
-	while (line[++i] && wall)
+	while (line[i][++j] && wall)
 	{
-		if (line[i] != '1')
+		if (line[i][j] != '1')
 			return (0);
-		if (line[i + 1] == '\n' || line[i + 1] == 0)
+		if (line[i][j + 1] == '\n' || line[i][j + 1] == 0)
 			return (1);
 	}
-	while (line[++i] && !wall)
+	while (line[i][++j] && !wall)
 	{
-		if (line[i] == '1' && line[i + 1] != '\n')
-			i++;
-		else if (line[i] == '1' && line[i + 1] == '\n')
+		if (line[i][j] == '1' && line[i][j + 1] != '\n')
+			j++;
+		else if (line[i][j] == '1' && line[i][j + 1] == '\n')
 			return (1);
-		if (line[i] == 'C' || line[i] == 'E')
+		if (line[i][j] == 'C' || ((line[i][j] == 'E' && line[i][j + 1] != '~')
+			&& (line[i][j] == 'E' && line[i][j - 1] != '~')
+			&& (line[i][j] == 'E' && line[i - 1][j] != '~')
+			&& (line[i][j] == 'E' && line[i + 1][j] != '~')))
 			return (0);
 	}
 	return (0);
@@ -92,15 +95,15 @@ int	has_valid_path(char **map, t_checks *ctnt)
 
 	p = get_xy(map, 'P');
 	ctnt->dfsmap = ft_tabdup(map);
-	ft_dfs(ctnt->dfsmap, p >> 32, p & 0xFFFFFFFF, "0PEC");
+	ft_dfs(ctnt->dfsmap, p >> 32, p & 0xFFFFFFFF, "0PC");
 	i = -1;
 	while (ctnt->dfsmap[++i])
 	{
 		if ((i == 0 || i == ft_tablen((const char **)ctnt->dfsmap) - 1)
-			&& !is_valid_line(ctnt->dfsmap[i], TRUE))
+			&& !is_valid_line(ctnt->dfsmap, i, TRUE))
 			return (ft_freetab(ctnt->dfsmap, 1), 0);
 		else if (!(i == 0 || i == ft_tablen((const char **)ctnt->dfsmap) - 1)
-			&& !is_valid_line(ctnt->dfsmap[i], FALSE))
+			&& !is_valid_line(ctnt->dfsmap, i, FALSE))
 			return (ft_freetab(ctnt->dfsmap, 1), 0);
 	}
 	return (ft_freetab(ctnt->dfsmap, 1), 1);
