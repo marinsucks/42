@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:59:39 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/12 13:25:55 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/13 12:09:41 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ int	set_textures(t_mlx *data)
 	int	i;
 
 	i = 0;
-	data->WALL = mlx_xpm_file_to_image(data->cnx, WALL_PATH, &i, &i);
-	data->FLOOR = mlx_xpm_file_to_image(data->cnx, FLOOR_PATH, &i, &i);
-	data->EXIT = mlx_xpm_file_to_image(data->cnx, EXIT_PATH, &i, &i);
-	data->COIN = mlx_xpm_file_to_image(data->cnx, COIN_PATH, &i, &i);
-	data->PDOWN = mlx_xpm_file_to_image(data->cnx, PD_PATH, &i, &i);
-	data->PDOWN1 = mlx_xpm_file_to_image(data->cnx, PD1_PATH, &i, &i);
-	data->PDOWN2 = mlx_xpm_file_to_image(data->cnx, PD2_PATH, &i, &i);
-	data->PRIGHT = mlx_xpm_file_to_image(data->cnx, PR_PATH, &i, &i);
-	data->PRIGHT1 = mlx_xpm_file_to_image(data->cnx, PR1_PATH, &i, &i);
-	data->PRIGHT2 = mlx_xpm_file_to_image(data->cnx, PR2_PATH, &i, &i);
-	data->PUP = mlx_xpm_file_to_image(data->cnx, PU_PATH, &i, &i);
-	data->PUP1 = mlx_xpm_file_to_image(data->cnx, PU1_PATH, &i, &i);
-	data->PUP2 = mlx_xpm_file_to_image(data->cnx, PU2_PATH, &i, &i);
-	data->PLEFT = mlx_xpm_file_to_image(data->cnx, PL_PATH, &i, &i);
-	data->PLEFT1 = mlx_xpm_file_to_image(data->cnx, PL1_PATH, &i, &i);
-	data->PLEFT2 = mlx_xpm_file_to_image(data->cnx, PL2_PATH, &i, &i);
+	data->img[WALL].ptr = mlx_xpm_file_to_image(data->cnx, WALL_P, &i, &i);
+	data->img[FLOOR].ptr = mlx_xpm_file_to_image(data->cnx, FLOOR_P, &i, &i);
+	data->img[EXIT].ptr = mlx_xpm_file_to_image(data->cnx, EXIT_P, &i, &i);
+	data->img[COIN].ptr = mlx_xpm_file_to_image(data->cnx, COIN_P, &i, &i);
+	data->img[PDOWN].ptr = mlx_xpm_file_to_image(data->cnx, PD_P, &i, &i);
+	data->img[PDOWN1].ptr = mlx_xpm_file_to_image(data->cnx, PD1_P, &i, &i);
+	data->img[PDOWN2].ptr = mlx_xpm_file_to_image(data->cnx, PD2_P, &i, &i);
+	data->img[PRIGHT].ptr = mlx_xpm_file_to_image(data->cnx, PR_P, &i, &i);
+	data->img[PRIGHT1].ptr = mlx_xpm_file_to_image(data->cnx, PR1_P, &i, &i);
+	data->img[PRIGHT2].ptr = mlx_xpm_file_to_image(data->cnx, PR2_P, &i, &i);
+	data->img[PUP].ptr = mlx_xpm_file_to_image(data->cnx, PU_P, &i, &i);
+	data->img[PUP1].ptr = mlx_xpm_file_to_image(data->cnx, PU1_P, &i, &i);
+	data->img[PUP2].ptr = mlx_xpm_file_to_image(data->cnx, PU2_P, &i, &i);
+	data->img[PLEFT].ptr = mlx_xpm_file_to_image(data->cnx, PL_P, &i, &i);
+	data->img[PLEFT1].ptr = mlx_xpm_file_to_image(data->cnx, PL1_P, &i, &i);
+	data->img[PLEFT2].ptr = mlx_xpm_file_to_image(data->cnx, PL2_P, &i, &i);
 	//while (i < SPRITES_NB && data->img[i].ptr)
 	//	i++;
 	//if (i != SPRITES_NB)
@@ -40,15 +40,15 @@ int	set_textures(t_mlx *data)
 	return (0);
 }
 
-int move_player(t_mlx *data, char direction)
-{
-	long temp;
-	int x;
-	int y;
+//int move_player(t_mlx *data, char direction)
+//{
+//	long temp;
+//	int x;
+//	int y;
 
-	temp = get_xy(data->map, 'P');
-	x = temp & 0x0000FFFF;
-	y = (temp >> 32) - 1;
-	//if (direction == 'u')
+//	temp = get_xy(data->map, 'P');
+//	x = temp & 0x0000FFFF;
+//	y = (temp >> 32) - 1;
+//	//if (direction == 'u')
 	
-}
+//}
