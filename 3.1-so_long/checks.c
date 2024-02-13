@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:26:10 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/12 13:00:04 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/13 12:19:11 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,12 @@ int	has_valid_path(char **map, t_checks *ctnt)
 	{
 		if ((i == 0 || i == ft_tablen((const char **)ctnt->dfsmap) - 1)
 			&& !is_valid_line(ctnt->dfsmap[i], TRUE))
-			return (0);
+			return (ft_freetab(ctnt->dfsmap, 1), 0);
 		else if (!(i == 0 || i == ft_tablen((const char **)ctnt->dfsmap) - 1)
 			&& !is_valid_line(ctnt->dfsmap[i], FALSE))
-			return (0);
+			return (ft_freetab(ctnt->dfsmap, 1), 0);
 	}
-	ft_freetab(ctnt->dfsmap, 1);
-	return (1);
+	return (ft_freetab(ctnt->dfsmap, 1), 1);
 }
 
 int	is_valid_map(char **map, char *fname, t_mlx *data)
@@ -116,12 +115,13 @@ int	is_valid_map(char **map, char *fname, t_mlx *data)
 	else if (ft_tablen((const char **)map) <= 2)
 		return (write(2, TOO_SMALL, 36), 0);
 	else if (!is_rectangle(map))
-		return (write(2, NOT_RECT, 41), 0);
+		return (write(2, NOT_RECT, 42), 0);
 	ctnt = (t_checks){0, 0, 0, NULL};
 	if (!has_valid_elements(map, &ctnt))
-		return (write(2, BAD_ELEMENTS, 72), 0);
+		return (write(2, "\033[0;31mError: map has either invalid, too many or \
+too few elements.\033[0m\n", 72), 0);
 	data->coinsleft = ctnt.count_c;
 	if (!has_valid_path(map, &ctnt))
-		return (write(2, INVALID_PATH, 54), 0);
+		return (write(2, BAD_PATH, 50), 0);
 	return (1);
 }
