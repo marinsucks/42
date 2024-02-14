@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 15:16:37 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/13 19:17:48 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/14 11:48:37 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@
 
 /*********** ERROR MESSAGES ***********/
 # define ERR_MALLOC "Error\nMalloc failed\n"
-# define MISSING "\033[0;31mError: map is missing, not .ber or empty.\033[0m\n"
-# define TOO_SMALL "\033[0;31mError: map is too small.\033[0m\n"
-# define NOT_RECT "\033[0;31mError: map is not a rectangle.\033[0m\n"	
-# define BAD_PATH "\033[0;31mError: map has holes or no valid path.\033[0m\n"
+# define MISSING "Error\n\033[0;31mMap is missing, not .ber or empty.\033[0m\n"
+# define TOO_SMALL "Error\n\033[0;31mMap is too small.\033[0m\n"
+# define NOT_RECT "Error\n\033[0;31mMap is not a rectangle.\033[0m\n"	
+# define BAD_PATH "Error\n\033[0;31mMap has holes or no valid path.\033[0m\n"
 
 #endif

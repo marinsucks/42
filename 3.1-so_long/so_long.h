@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:23 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/13 19:44:14 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/14 13:06:16 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,29 +94,28 @@ typedef struct s_checks
 int		ft_quit(void *data);
 //quit.c
 
+int		is_rectangle(char **map);
+int		has_valid_elements(char **map, t_checks *ctnt);
+int		is_valid_line(char **line, int i, int wall);
+int		has_valid_path(char **map, t_checks *ctnt);
 int		is_valid_map(char **map, char *fname, t_mlx *data);
-//checks.c
-
-int		put_wdw(t_mlx *data, char *title, int width, int height);
-void	put_map(t_mlx *data);
-//display.c
-
-int		set_textures(t_mlx *data);
-int 	is_blocked(t_mlx *data);
-void	move_player(t_mlx *data);
-int	animate_player(void *data);
-//display_utils.c
+//error_checks.c
 
 int		handle_key(int keysym, t_mlx *data);
-//input.c
+void	move_player(t_mlx *data, int dir);
+void	update_map(t_mlx *data, int y, int x);
+//main.c
+
+int		display_wdw(t_mlx *data, char *title, int width, int height);
+int		set_textures(t_mlx *data);
+void	display_map(t_mlx *data);
+void	animate_player(void *data);
+void	run_player_animation(t_mlx *data, int *x, int *y, int i);
+//display.c
 
 long	get_xy(char **map, char element);
-//position.c
-
-int		encode_rgb(t_byte red, t_byte green, t_byte blue);
-void	my_pixel_put(t_img *img, int x, int y, int color);
-void	color_fill(t_mlx *data, int color, int x, int y);
+int 	is_blocked(t_mlx *data);
 int		print_img(t_mlx *data, void *imgptr, int x, int y);
-//mlx_utils.c
+//utils.c
 
 #endif

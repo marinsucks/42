@@ -6,53 +6,68 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/13 19:48:35 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/14 13:04:14 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/**
- * Finds the coordinates (x, y) of the given element in the map.
- *
- * @param map The 2D array representing the map.
- * @param element The element to search for in the map. use 0 to get
- * the end of the map.
- * @note returns the position of the element if found, otherwise -1.
- * @note x == result & 0xFFFFFFFF
- * @note y == result >> 32
- */
-long	get_xy(char **map, char element)
+int	handle_key(int keysym, t_mlx *data)
 {
-	long	y;
-	long	x;
-
-	y = -1;
-	if (map == NULL)
-		return (-1);
-	while (map[++y])
-	{
-		x = -1;
-		while (map[y][++x])
-		{
-			if (map[y][x] == element)
-				return (y << 32 | x);
-		}
-	}
-	if (element == 0)
-		return (y << 32 | x);
-	return (-1);
+	data->px = get_xy(data->map, 'P') & 0x0000FFFF;
+	data->py = get_xy(data->map, 'P') >> 32;
+	if (keysym == XK_Escape)
+		ft_quit(data);
+	else if (keysym == XK_w || keysym == XK_Up)
+		move_player(data, PUP);
+	else if (keysym == XK_d || keysym == XK_Right)
+		move_player(data, PRIGHT);
+	else if (keysym == XK_s || keysym == XK_Down)
+		move_player(data, PDOWN);
+	else if (keysym == XK_a || keysym == XK_Left)
+		move_player(data, PLEFT);
+	return (0);
 }
 
-int frames(void *ptr)
+void	move_player(t_mlx *data, int dir)
 {
-	t_mlx	*data;
+	data->dir = dir;
+	if (data->dir == PUP && !is_blocked(data))
+		update_map(data, -1, 0);
+	else if (data->dir == PRIGHT && !is_blocked(data))
+		update_map(data, 0, 1);
+	else if (data->dir == PDOWN && !is_blocked(data))
+		update_map(data, 1, 0);
+	else if (data->dir == PLEFT && !is_blocked(data))
+		update_map(data, 0, -1);
+	animate_player(data);
+}
 
-	data = (t_mlx *)ptr;
-	if (data->img[PDOWN].ptr)
-		mlx_put_image_to_window(data->cnx, data->wdw, data->img[PDOWN].ptr, 0, 0);
-	return (0);
+void	update_map(t_mlx *data, int y, int x)
+{
+	long	exit;
 
+	if (data->map[(data->py) + y][(data->px) + x] == 'C')
+	{
+		ft_printf("coin collected!\n");
+		data->coinsleft--;
+	}
+	exit = get_xy(data->map, 'E');
+	if (data->coinsleft == 0 && exit != -1)
+	{
+		data->map[exit >> 32][exit & 0xFFFFFFFF] = 'o';
+		print_img(data, data->img[EXIT1].ptr,
+			(exit & 0xFFFFFFFF) * BPS, (exit >> 32) * BPS);
+		mlx_do_sync(data->cnx);
+	}
+	else if (data->map[(data->py) + y][(data->px) + x] == 'o')
+	{
+		ft_printf("You won! You collected all the \
+coins in %d moves!\n", data->moves);
+		ft_quit(data);
+	}
+	data->map[(data->py) + y][(data->px) + x] = 'P';
+	data->map[data->py][data->px] = '0';
 }
 
 int	main(int ac, char **av)
@@ -60,21 +75,17 @@ int	main(int ac, char **av)
 	t_mlx	data;
 	int		fd;
 
-	// get map and set data.
 	fd = open(av[1], O_RDONLY);
 	data = (t_mlx){NULL, NULL, {{NULL, NULL, 0, 0, 0}}, get_file(fd),
 		0, 0, 0, 0, 0, 0, 0};
-	// make checks
 	if (!is_valid_map(data.map, av[1], &data) || ac <= 1)
 		return (ft_quit(&data), 1);
 	data.width = ft_strlen((const char *)data.map[0]) - 1;
 	data.height = ft_tablen((const char **)data.map);
-
-	// start a window
-	put_wdw(&data, "so_long", data.width, data.height);
+	display_wdw(&data, "so_long", data.width, data.height);
 	set_textures(&data);
-	put_map(&data);
-	mlx_key_hook(data.wdw, handle_key, &data);
+	display_map(&data);
+	mlx_hook(data.wdw, 2, 1L << 0, handle_key, &data);
 	mlx_hook(data.wdw, 17, 1L << 17, ft_quit, &data);
 	mlx_loop(data.cnx);
 	ft_quit(&data);

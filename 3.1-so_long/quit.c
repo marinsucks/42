@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:56:13 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/10 11:34:47 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/14 13:11:32 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_quit(void *vdata)
 {
-	int i;
-	t_mlx *data;
+	int		i;
+	t_mlx	*data;
 
 	i = -1;
 	if (!vdata)
@@ -31,7 +31,7 @@ int	ft_quit(void *vdata)
 	if (data->wdw)
 		mlx_destroy_window(data->cnx, data->wdw);
 	if (data->cnx)
-	{		
+	{
 		mlx_destroy_display(data->cnx);
 		free(data->cnx);
 	}

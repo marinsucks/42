@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 11:43:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/13 16:47:39 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/14 14:04:25 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,8 @@ NAME =	so_long
 MAIN =	main.c
 SRC =	checks.c \
 		display.c \
-		display_utils.c \
-		input.c \
-		mlx_utils.c \
-		animation.c \
-		quit.c
+		quit.c \
+		utils.c
 
 all: archives
 	@$(CC) $(CFLAGS) -g $(MAIN) $(SRC) archives/*.a $(MLX) -o $(NAME)
@@ -53,20 +50,6 @@ libft:
 	@if [ ! -f archives/libft.a ] || [ ! -d archives ]; then make -C ./libft all; fi
 
 .PHONY : all clean fclean re archives libft
-
-
-
-pushlibft:
-	@cp -r ./libft ../.utils/
-
-fetchlibft:
-	@cp -r ../.utils/libft ./
-
-checks: archives
-	@$(CC) $(CFLAGS) -g checks.c position.c archives/*.a $(MLX)
-	@./a.out
-
-
 
 RED =\033[1;31m
 LRED =\033[0;31m

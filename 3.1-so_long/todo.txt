@@ -1,9 +1,0 @@
-- create designs with my_pixel_put
-- handle movements : wasd, zqsd, ↑←↓→.
-- handle walls
-
-BONUS
-- handle enemies
-
-NOTES:
-- project must be 32x32.
