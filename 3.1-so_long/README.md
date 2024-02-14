@@ -2,7 +2,7 @@
 
 "So Long" is a 2D game developed in C using the MiniLibX graphics library. This document provides an overview of the game from a developer's perspective, including how to build and run the game, the structure of the code, and how to extend the game with new features.
 <div align="center">
-	<img src="./so_long.gif" alt="so_long.gif">
+	<img src="../.misc/so_long.gif" alt="so_long.gif">
 </div>
 
 ## Building the Game
