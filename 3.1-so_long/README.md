@@ -46,4 +46,4 @@ Replace `username` with your GitHub username.
 
 ## Conclusion
 
-"So Long" is a valuable game that provided an excellent platform for enhancing my C programming and game development skills. By working on this project, I have strengthen my understanding of C language concepts, improve my problem-solving abilities, and gain hands-on experience in game development.
+"So Long" is a valuable game that provided an excellent platform for enhancing my C programming and game development skills. By working on this project, I have strengthened my understanding of C language concepts, improved my problem-solving abilities, and gained hands-on experience in game development.
