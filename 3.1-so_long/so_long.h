@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:01:23 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/14 13:06:16 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/14 16:16:56 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_mlx
 	int		moves;
 	int		px;
 	int		py;
-	int 	dir;
+	int		dir;
 }			t_mlx;
 
 /**
@@ -114,7 +114,7 @@ void	run_player_animation(t_mlx *data, int *x, int *y, int i);
 //display.c
 
 long	get_xy(char **map, char element);
-int 	is_blocked(t_mlx *data);
+int		is_blocked(t_mlx *data);
 int		print_img(t_mlx *data, void *imgptr, int x, int y);
 //utils.c
 
