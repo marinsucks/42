@@ -21,7 +21,7 @@ Apart from work, I love creating awful melodies on the bass and getting my butt 
 
 - [**push_swap**](./3.0-push_swap/): Back to the classic sorting algorithms! I sorted stacks, grooved with diverse sorting algorithms, and mastered linked list manipulations. Stack sorting like you've never seen before!
 
-- [**so_long**](./3.1-so_long/): In progress! I'm creating my first 2d game.
+- [**so_long**](./3.1-so_long/): Ever played pokemon? This project will bring you a few years back! I designed and coded my own basic 2d game using the minilibx, an X11-based library.
 
 
 ## Goals
