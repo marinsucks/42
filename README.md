@@ -23,6 +23,7 @@ Apart from work, I love creating awful melodies on the bass and getting my butt 
 
 - [**so_long**](./3.1-so_long/): Ever played pokemon? This project will bring you a few years back! I designed and coded my own basic 2d game using the minilibx, an X11-based library.
 
+- [**pipex**](./3.2-pipex/): In progress! I'm reproducing the pipe `|` behavior.
 
 ## Goals
 
