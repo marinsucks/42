@@ -6,11 +6,11 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:12:54 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/08 16:30:14 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/19 12:29:13 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "other.h"
 
 /**
  * Performs a depth-first search on a 2d map, starting from a 

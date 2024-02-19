@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:48:19 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/15 17:25:25 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/19 12:03:41 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,3 @@ void		ft_putlong_fd(long long n, int fd);
 void		printtab(char **tab, int color);
 
 #endif
-
-
-
-

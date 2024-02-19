@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/15 19:53:59 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/19 12:28:54 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ LST =	lst/ft_lst1.c \
 MEM =	mem/ft_bzero.c \
 		mem/ft_calloc.c \
 		mem/ft_mem.c
+OTHER =	other/pathfinding.c
 PRINT =	print/ft_printf2.c \
 		print/ft_printf.c \
 		print/ft_put.c \
@@ -54,8 +55,8 @@ STR =	str/ft_atoi.c \
 		str/ft_to.c \
 		str/ft_wordcount.c
 
-SRC		=	pathfinding.c $(FREE) $(GET) $(LST) $(MEM) $(PRINT) $(STR)
-OBJ		= 	$(SRC:.c=.o)
+SRC	=	$(FREE) $(GET) $(LST) $(MEM) $(OTHER) $(PRINT) $(STR)
+OBJ	=	$(SRC:.c=.o)
 
 HEADER	= libft.h
 NAME	= libft.a
