@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/19 12:28:54 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/20 19:46:00 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ PRINT =	print/ft_printf2.c \
 STR =	str/ft_atoi.c \
 		str/ft_base.c \
 		str/ft_is.c \
+		str/ft_is2.c \
 		str/ft_itoa.c \
 		str/ft_len.c \
 		str/ft_revert.c \

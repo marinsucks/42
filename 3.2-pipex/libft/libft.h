@@ -6,23 +6,14 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/19 16:57:27 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/20 17:20:15 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4096
-# endif
-
-# ifndef FD_MAX
-#  define FD_MAX 512
-# endif
-
-# define TRUE 1
-# define FALSE 0
+# include "macros.h"
 
 # include <stdarg.h>
 # include <stddef.h>

@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_is2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 15:11:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/20 16:06:54 by mbecker          ###   ########.fr       */
+/*   Created: 2023/10/30 16:33:35 by mbecker           #+#    #+#             */
+/*   Updated: 2024/02/20 19:46:46 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "str.h"
 
-# include "libft/libft.h"
-# include <unistd.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <errno.h>
-
-#endif
+// Check if c is one of the charset characters
+int	ft_is(int c, char *charset)
+{
+	while (*charset)
+	{
+		if (*charset == c)
+			return (c);
+		charset++;
+	}
+	return (0);
+}

@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 15:11:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/20 16:06:54 by mbecker          ###   ########.fr       */
+/*   Created: 2024/02/20 17:22:17 by mbecker           #+#    #+#             */
+/*   Updated: 2024/02/20 17:32:03 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef MACROS_H
+# define MACROS_H
 
-# include "libft/libft.h"
-# include <unistd.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <errno.h>
+# define TRUE 1
+# define FALSE 0
+
+# define BUFFER_SIZE 4096
+# define FD_MAX 512
+
+# define SPACES " \t\n\v\f\r"
 
 #endif

@@ -1,0 +1,2 @@
+This will go into output.txt
+This will be printed to the console
