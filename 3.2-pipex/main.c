@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/20 19:48:22 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/21 13:15:14 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,27 @@ char	**get_path(char **envp)
 	return (path);
 }
 
-char	**get_cmd_args(char *exe)
+char	**get_cmd_args(char *exe, char **cmd)
 {
 	char	**args;
 
-	while (!ft_is(*exe, SPACES)) //PB HERE
+	*cmd = exe;
+	while (*exe && ft_is(*exe, SPACES))
 		exe++;
-	ft_printf("exe: %s\n", exe);
+	while (*exe && (!ft_is(*exe, SPACES)))
+	{
+		if ((*exe == '\\' && ft_is(*(exe + 1), " \t\n\v\f\r\\\"'")))
+			exe++;
+		exe++;
+	}
+	*cmd = ft_strndup(*cmd, exe - *cmd);
+	if (!*exe)
+		return (NULL);
 	args = ft_split_charset(exe, SPACES);
 	if (!args)
 		return (NULL);
 	if (!args[0])
 		return (free(args), NULL);
-	
 	return (args);
 }
 
@@ -55,8 +63,8 @@ int	exec_cmd(char *exe, char **envp)
 
 	if (!exe || !envp)
 		return (1);
-	args = get_cmd_args(exe);
-	cmd = ft_strjoin("/", *args, FALSE, FALSE);
+	args = get_cmd_args(exe, &cmd);
+	cmd = ft_strjoin("/", cmd, FALSE, TRUE);
 	if (ft_strchr(exe, '/'))
 		execve(exe, args, envp);
 	path = get_path(envp);
@@ -98,9 +106,11 @@ int	main(int argc, char **argv, char **envp)
 	//	}
 	//}
 	//return (0);
-	char **args = get_cmd_args(argv[1]);
+	char *cmd;
+	char **args = get_cmd_args(argv[1], &cmd);
 
 	ft_printf("%s\n", argv[1]);
+	ft_printf("%s\n", cmd);
 	printtab(args, 1);
 	freetab(args, TRUE);
 
