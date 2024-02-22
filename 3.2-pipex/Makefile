@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 12:26:01 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/16 12:52:24 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/22 14:25:56 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = pipex
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = main.c \
+SRC =	main.c \
+		commands.c \
 
 all: $(NAME)
 
