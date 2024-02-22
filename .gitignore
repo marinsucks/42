@@ -10,6 +10,7 @@ archives/
 push_swap
 checker
 so_long
+pipex
 
 /*** TESTING FILES ***/
 test
