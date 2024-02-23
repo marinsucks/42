@@ -6,12 +6,16 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:38:31 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/15 17:13:59 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/23 16:15:29 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str.h"
+#include "other.h"
 
+/***
+ * returns the length of a string.
+ * @note doesn't count the null-terminating character.
+ */
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;

@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   other.h                                            :+:      :+:    :+:   */
+/*   mem.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 15:48:19 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/23 16:11:52 by mbecker          ###   ########.fr       */
+/*   Created: 2024/02/15 15:56:33 by mbecker           #+#    #+#             */
+/*   Updated: 2024/02/15 15:56:55 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OTHER_H
-# define OTHER_H
+#ifndef MEM_H
+# define MEM_H
 
 # include "../libft.h"
 
-size_t		ft_strlen(const char *s);
-size_t		ft_tablen(const char **tab);
-short int	ft_numlen(long long num);
-short int	ft_numlen_base(unsigned long num, unsigned int baselen);
-//ft_len.c
+void	ft_bzero(void *s, size_t n);
 
-void		ft_revert_tab(char *s);
-void		ft_revert_inttab(char *s);
-//ft_revert.c
+void	*ft_calloc(size_t nmemb, size_t size);
 
-void	ft_dfs(char **map, int i, int j, char *notwalls);
+void	*ft_memchr(const void *s, int c, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_memmove(void *dst, const void *src, size_t len);
+void	*ft_memset(void *b, int c, size_t len);
 
 #endif

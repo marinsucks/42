@@ -1,53 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_tabdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:37:55 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/23 16:06:08 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/23 16:11:00 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str.h"
+#include "tab.h"
 
-char	*ft_strdup(const char *s1)
+char	**ft_tabdup(char **tab)
 {
-	int		len;
-	char	*dest;
-
-	len = ft_strlen(s1) + 1;
-	dest = malloc(len * sizeof(char));
-	if (!dest)
-		return (0);
-	len = 0;
-	while (s1[len])
-	{
-		dest[len] = s1[len];
-		len++;
-	}
-	dest[len] = 0;
-	return (dest);
-}
-
-char	*ft_strndup(const char *src, size_t size)
-{
-	char	*ptr;
-	size_t	i;
+	char	**new_tab;
+	int		i;
 
 	i = 0;
-	while (src[i])
+	while (tab[i])
 		i++;
-	ptr = (char *)malloc(size + 1);
-	if (!ptr)
+	new_tab = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!new_tab)
 		return (0);
 	i = 0;
-	while (src[i] && i < size)
+	while (tab[i])
 	{
-		ptr[i] = src[i];
+		new_tab[i] = ft_strdup(tab[i]);
+		if (!new_tab[i])
+		{
+			freetab(new_tab, TRUE);
+			return (0);
+		}
 		i++;
 	}
-	ptr[i] = 0;
-	return (ptr);
+	new_tab[i] = 0;
+	return (new_tab);
 }

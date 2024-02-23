@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   other.h                                            :+:      :+:    :+:   */
+/*   get.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 15:48:19 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/23 16:11:52 by mbecker          ###   ########.fr       */
+/*   Created: 2024/02/15 15:46:08 by mbecker           #+#    #+#             */
+/*   Updated: 2024/02/15 17:21:03 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OTHER_H
-# define OTHER_H
+#ifndef GET_H
+# define GET_H
 
 # include "../libft.h"
 
-size_t		ft_strlen(const char *s);
-size_t		ft_tablen(const char **tab);
-short int	ft_numlen(long long num);
-short int	ft_numlen_base(unsigned long num, unsigned int baselen);
-//ft_len.c
+typedef struct s_gnl_fd_data
+{
+	int				fd;
+	char			stash[BUFFER_SIZE + 1];
+}					t_gnl_fd_data;
 
-void		ft_revert_tab(char *s);
-void		ft_revert_inttab(char *s);
-//ft_revert.c
+char	**get_file(int fd);
 
-void	ft_dfs(char **map, int i, int j, char *notwalls);
+char	*get_next_line(int fd);
 
 #endif

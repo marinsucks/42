@@ -6,11 +6,11 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:50:59 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/15 17:13:59 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/23 16:15:34 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str.h"
+#include "other.h"
 
 //reverts the order of the characters in a string
 void	ft_revert_tab(char *s)
