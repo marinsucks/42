@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:48:37 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/19 13:28:57 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/20 19:45:39 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	printtab(char **tab, int color)
 	else
 		cstr = "\033[0;30m";
 	if (!tab)
-		return (void)ft_printf("%sempty tab.\033[0m\n", cstr) ;
+		return ((void)ft_printf("%sempty tab.\033[0m\n", cstr));
 	i = -1;
 	while (tab[++i])
 		ft_printf("\033[0;30m[%d]\t%s%s\033[0;30m$\n", i, cstr, tab[i]);

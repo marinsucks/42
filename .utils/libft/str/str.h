@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:48:31 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/15 17:20:51 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/23 16:14:00 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,10 @@ int			ft_isdigit(int c);
 int			ft_isprint(int c);
 //ft_is.c
 
+int			ft_is(int c, char *charset);
+//ft_is2.c
+
 char		*ft_itoa(int n);
-
-size_t		ft_strlen(const char *s);
-size_t		ft_tablen(const char **tab);
-short int	ft_numlen(long long num);
-short int	ft_numlen_base(unsigned long num, unsigned int baselen);
-//ft_len.c
-
-void		ft_revert_tab(char *s);
-void		ft_revert_inttab(char *s);
-//ft_revert.c
 
 char		**ft_split(char const *s, char c);
 char		**ft_split_charset(char const *s, char *charset);
@@ -65,14 +58,11 @@ size_t		ft_strlcpy(char *dest, const char *src, size_t size);
 
 char		*ft_strdup(const char *s1);
 char		*ft_strndup(const char *src, size_t size);
-char		**ft_tabdup(char **tab);
 //ft_strdup.c
 
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 
 char		*ft_strjoin(char *s1, char *s2, int free_s1, int free_s2);
-char		**ft_tabjoin(char **tab, char *str, int free_tab, int free_str);
-//ft_strjoin.c
 
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 

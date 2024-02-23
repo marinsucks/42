@@ -6,17 +6,12 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/19 12:28:54 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/23 16:13:26 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC 		= cc
-
-ifeq ($(shell uname), Linux)
 CFLAGS 	= -Wall -Wextra -Werror
-else ifeq ($(shell uname), Darwin)
-CFLAGS 	= -Wall -Wextra -Werror -Wno-unused-but-set-parameter
-endif
 
 NAME 	= libft.a
 
@@ -28,7 +23,9 @@ LST =	lst/ft_lst1.c \
 MEM =	mem/ft_bzero.c \
 		mem/ft_calloc.c \
 		mem/ft_mem.c
-OTHER =	other/pathfinding.c
+OTHER =	other/ft_len.c \
+		other/ft_revert.c \
+		other/pathfinding.c
 PRINT =	print/ft_printf2.c \
 		print/ft_printf.c \
 		print/ft_put.c \
@@ -36,9 +33,8 @@ PRINT =	print/ft_printf2.c \
 STR =	str/ft_atoi.c \
 		str/ft_base.c \
 		str/ft_is.c \
+		str/ft_is2.c \
 		str/ft_itoa.c \
-		str/ft_len.c \
-		str/ft_revert.c \
 		str/ft_split.c \
 		str/ft_strcat.c \
 		str/ft_strchr.c \
@@ -54,8 +50,10 @@ STR =	str/ft_atoi.c \
 		str/ft_substr.c \
 		str/ft_to.c \
 		str/ft_wordcount.c
+TAB =	tab/ft_tabdup.c \
+		tab/ft_tabjoin.c
 
-SRC	=	$(FREE) $(GET) $(LST) $(MEM) $(OTHER) $(PRINT) $(STR)
+SRC	=	$(FREE) $(GET) $(LST) $(MEM) $(OTHER) $(PRINT) $(STR) $(TAB)
 OBJ	=	$(SRC:.c=.o)
 
 HEADER	= libft.h
