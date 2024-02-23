@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:48:19 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/19 12:03:41 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/23 16:51:00 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,19 @@
 # define PRINT_H
 
 # include "../libft.h"
+
+short int	pf_fd_convert_int(int fd, va_list args);
+int			pf_fd_convert_str(int fd, const char *s, va_list args);
+short int	pf_fd_convert_ui(int fd, const char *s, va_list args);
+short int	pf_fd_convert_hex(int fd, const char *s, va_list args, char c);
+short int	pf_fd_convert_ptr(int fd, const char *s, va_list args);
+//ft_printf_fd2.c
+
+void		pf_fd_backslash(int fd, const char *s, int *count);
+short int	pf_fd_convert_bin(int fd, const char *s, va_list args);
+int			pf_fd_convert(int fd, const char *s, va_list args);
+int			ft_printf_fd(int fd, const char *s, ...);
+//ft_printf_fd.c
 
 short int	pf_convert_int(va_list args);
 int			pf_convert_str(const char *s, va_list args);

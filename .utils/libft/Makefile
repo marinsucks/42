@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/23 16:13:26 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/23 16:56:59 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ MEM =	mem/ft_bzero.c \
 OTHER =	other/ft_len.c \
 		other/ft_revert.c \
 		other/pathfinding.c
-PRINT =	print/ft_printf2.c \
+PRINT =	print/ft_printf_fd2.c \
+		print/ft_printf_fd.c \
+		print/ft_printf2.c \
 		print/ft_printf.c \
 		print/ft_put.c \
 		print/printtab.c
