@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:48:19 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/23 16:11:52 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/23 16:29:17 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void		ft_revert_tab(char *s);
 void		ft_revert_inttab(char *s);
 //ft_revert.c
 
-void	ft_dfs(char **map, int i, int j, char *notwalls);
+void		ft_dfs(char **map, int i, int j, char *notwalls);
 
 #endif
