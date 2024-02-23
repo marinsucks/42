@@ -6,13 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/22 15:38:30 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/23 19:38:39 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**get_cmd(char **envp, char *cmd, char **args)
+char	**get_cmd_paths(char **envp, char *cmd)//, int fd)//DEBUG
 {
 	int		i;
 	char	**path;
@@ -20,7 +20,6 @@ char	**get_cmd(char **envp, char *cmd, char **args)
 	i = 0;
 	if (!envp)
 		return (NULL);
-	cmd = ft_strjoin("/", cmd, FALSE, TRUE);
 	while (envp[i] && ft_strncmp(envp[i], "PATH=", 5))
 		i++;
 	if (!envp[i])
@@ -29,66 +28,38 @@ char	**get_cmd(char **envp, char *cmd, char **args)
 	if (!path)
 		return (free(cmd), NULL);
 	i = -1;
-	printtab(path, 2);
 	while (path[++i])
 	{
 		path[i] = ft_strjoin(path[i], cmd, TRUE, FALSE);
-		ft_printf("path[%d] = %s\n", i, path[i]);
-		execve(path[i], args, envp);
 		if (!path[i])
 			return (freetab(path, TRUE), free(cmd), NULL);
 	}
-	free(cmd);
 	return (path);
 }
 
-char	**get_cmd_args(const char *exe, char **cmd)
-{
-	char	**args;
-
-	*cmd = (char *)exe;
-	while (*exe && ft_is(*exe, SPACES))
-		exe++;
-	while (*exe && (!ft_is(*exe, SPACES)))
-	{
-		if ((*exe == '\\' && ft_is(*(exe + 1), " \t\n\v\f\r\\\"'")))
-			exe++;
-		exe++;
-	}
-	*cmd = ft_strndup(*cmd, exe - *cmd);
-	if (!*exe)
-		return (NULL);
-	args = ft_split_charset(exe, SPACES);
-	if (!args)
-		return (NULL);
-	if (!args[0])
-		return (free(args), NULL);
-	return (args);
-}
-
-int	exec_cmd(const char *exe, char **envp)
+int	exec_cmd(const char *exe, char **envp)//, int fd)//DEBUG
 {
 	char	**path;
 	char	**args;
-	char	*cmd;
 	int		i;
 
-	ft_printf("exe = %p\n", exe); //DEBUG
-	if (!exe || ft_isprint(*exe) || !envp) //CHECK ISPRINT
-		return (1);
-	args = get_cmd_args(exe, &cmd);
+	if (!exe || !*exe || !envp)
+		return (write(2, "Empty or incomplete command.\n", 29), 1);
+	args = ft_split_charset(exe, SPACES);
 	if (ft_strchr(exe, '/'))
 	{
-		free(cmd);
-		execve(exe, args, envp);
+		execve(args[0], args, envp);
+		return (perror(args[0]), freetab(args, TRUE), 1);
 	}
-	path = get_cmd(envp, cmd, args);
+	args[0] = ft_strjoin("/", args[0], FALSE, TRUE);
+	path = get_cmd_paths(envp, args[0]);
 	if (!path)
-		return (freetab(path, TRUE), 1);
+		return (write(2, MALLOC_ERR, 21), freetab(path, TRUE), 1);
 	i = -1;
 	while (path[++i])
 		execve(path[i], args, envp);
-	return (perror(cmd), free(cmd), freetab(path, TRUE),
+	return (perror(args[0]), freetab(path, TRUE),
 		freetab(args, TRUE),  1);
+	return (0);
 }
 
