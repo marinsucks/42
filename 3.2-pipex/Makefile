@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 12:26:01 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/22 14:25:56 by mbecker          ###   ########.fr        #
+#    Updated: 2024/02/28 16:07:41 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 SRC =	main.c \
 		commands.c \
+		processes.c
 
 all: $(NAME)
 
@@ -47,3 +48,7 @@ YELLOW =\033[1;33m
 LYELLOW =\033[0;33m
 GREY =\033[1;37m
 NC =\033[0m
+
+f: libft
+	@$(CC) $(SRC) libft/libft.a -o $(NAME)
+	@echo "$(GREEN)$(NAME) ready.$(NC)"

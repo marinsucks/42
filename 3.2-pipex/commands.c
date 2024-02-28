@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/23 19:38:39 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:08:18 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	**get_cmd_paths(char **envp, char *cmd)//, int fd)//DEBUG
 	char	**path;
 
 	i = 0;
-	if (!envp)
+	if (!envp || !cmd || !*cmd)
 		return (NULL);
 	while (envp[i] && ft_strncmp(envp[i], "PATH=", 5))
 		i++;
@@ -30,6 +30,7 @@ char	**get_cmd_paths(char **envp, char *cmd)//, int fd)//DEBUG
 	i = -1;
 	while (path[++i])
 	{
+		path[i] = ft_strjoin(path[i], "/", TRUE, FALSE);
 		path[i] = ft_strjoin(path[i], cmd, TRUE, FALSE);
 		if (!path[i])
 			return (freetab(path, TRUE), free(cmd), NULL);
@@ -44,14 +45,13 @@ int	exec_cmd(const char *exe, char **envp)//, int fd)//DEBUG
 	int		i;
 
 	if (!exe || !*exe || !envp)
-		return (write(2, "Empty or incomplete command.\n", 29), 1);
+		return (execve(exe, (char * const*)&exe, envp), perror(exe), 1);
 	args = ft_split_charset(exe, SPACES);
 	if (ft_strchr(exe, '/'))
 	{
 		execve(args[0], args, envp);
 		return (perror(args[0]), freetab(args, TRUE), 1);
 	}
-	args[0] = ft_strjoin("/", args[0], FALSE, TRUE);
 	path = get_cmd_paths(envp, args[0]);
 	if (!path)
 		return (write(2, MALLOC_ERR, 21), freetab(path, TRUE), 1);
@@ -62,4 +62,3 @@ int	exec_cmd(const char *exe, char **envp)//, int fd)//DEBUG
 		freetab(args, TRUE),  1);
 	return (0);
 }
-
