@@ -1,1 +1,1 @@
-hi from child 2
+Child 2 writing in its file child_a.txt
