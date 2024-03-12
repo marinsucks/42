@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 12:26:01 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/28 16:07:41 by mbecker          ###   ########.fr        #
+#    Updated: 2024/03/12 18:04:04 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME) libft/libft.a
+	@make -C ./libft fclean
 	@echo "$(RED)FULL CLEAN FINISHED$(NC)"
 
 re: fclean all

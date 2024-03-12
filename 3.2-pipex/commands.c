@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/28 15:08:18 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/12 11:46:37 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ int	exec_cmd(const char *exe, char **envp)//, int fd)//DEBUG
 	if (!path)
 		return (write(2, MALLOC_ERR, 21), freetab(path, TRUE), 1);
 	i = -1;
+	ft_printf_fd(2, "executing %s\n", args[0]);//DEBUG
 	while (path[++i])
 		execve(path[i], args, envp);
-	return (perror(args[0]), freetab(path, TRUE),
-		freetab(args, TRUE),  1);
-	return (0);
+	return (perror(args[0]), freetab(path, TRUE), freetab(args, TRUE), 1);
 }

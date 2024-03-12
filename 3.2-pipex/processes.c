@@ -6,71 +6,75 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:47:48 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/11 15:05:10 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/12 18:25:07 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*read_all(int fd, int buffer_size)
-{
-	char	temp[buffer_size + 1];
-	char	*res;
-	int 	readval;
+//char	*read_all(int fd, int buffer_size)
+//{
+//	char	temp[buffer_size + 1];
+//	char	*res;
+//	int 	readval;
 
-	readval = read(fd, temp, buffer_size);
-	if (readval <= 0)
-		return (NULL);
-	temp[readval] = '\0';
-	res = ft_strdup(temp);
-	while (readval > 0)
+//	readval = read(fd, temp, buffer_size);
+//	if (readval <= 0)
+//		return (NULL);
+//	temp[readval] = '\0';
+//	res = ft_strdup(temp);
+//	while (readval > 0)
+//	{
+//		readval = read(fd, temp, buffer_size);
+//		temp[readval] = '\0';
+//		res = ft_strjoin(res, temp, TRUE, FALSE);
+//	}
+//	return (res);
+//}
+
+void	handle_io(int i, int max, t_pipex *fd)
+{
+	if (i == 2)
 	{
-		readval = read(fd, temp, buffer_size);
-		temp[readval] = '\0';
-		res = ft_strjoin(res, temp, TRUE, FALSE);
+		if (dup2(fd->pipe[0], STDIN_FILENO) == -1)
+			perror("Error redirecting standard input");
 	}
-	return (res);
-}
-
-void	child_one(int fd[2])
-{	
-	char *message = "Hi from child a !!";
-	write(fd[1], message, 17);
-	close(fd[1]);
-
-	exit(0);
-}
-
-void	child_two(int fd[2])
-{
-	close(fd[1]);
-	char *message = get_next_line(fd[0]);
-	ft_printf("Child 2 reading from pipe: %s\n", message); //DEBUG
-
-	exit(0);
-}
-
-void	give_birth(void)
-{
-	int 	fd[2];
-	pid_t	pid1;
-	pid_t	pid2;
-
-    if (pipe(fd) == -1) 
+	else if (i > 2 && i != max)
 	{
-        perror("Pipe Failed");
-        return ;
-    }
+		if (dup2(fd->pipe[1], STDOUT_FILENO) == -1)
+			perror("Error redirecting standard output");
+		if (dup2(fd->pipe[0], STDIN_FILENO) == -1)
+			perror("Error redirecting standard input");
+	}
+	else
+	{
+		if (dup2(fd->pipe[1], STDOUT_FILENO) == -1)
+			perror("Error redirecting standard output");
+		if (dup2(fd->outfile, STDOUT_FILENO) == -1)
+			perror("Error redirecting standard output");
+	}
+}
 
-	pid1 = fork();
-	if (pid1 < 0)
-		return ; //fork failed
-	else if (pid1 == 0)
-		child_one(fd);
-	
-	pid2 = fork();
-	if (pid2 < 0)//fork failed
-		return ;
-	else if (pid2 == 0)
-		child_two(fd);
+int	split_process(t_args args, pid_t *pid, t_pipex *fd)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 0;
+	while (++i < args.ac - 1)
+	{
+		pid[j] = fork();
+		if (pid[j] < 0)
+			return (perror("fork failed"), 1);
+		else if (!pid[j])
+		{
+			if (i > 2)
+				handle_io(i, args.ac - 2, fd);
+			exec_cmd(args.av[i], args.envp);
+			exit(1);
+		}
+		j++;
+	}
+	return (0);
 }
