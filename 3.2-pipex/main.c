@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/12 18:17:33 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/13 15:48:57 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char const **argv, char **envp)
 	if (pipe(fd.pipe) == -1)
 		return (perror("pipe failed"), 1);
 
-	split_process(args, pid, &fd);
+	split_process(args, pid, fd);
 
 	i = 0;
 	while (i < argc - 3)

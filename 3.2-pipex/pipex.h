@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:11:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/12 18:19:57 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/13 15:49:15 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_args
 int		exec_cmd(const char *exe, char **envp);//, int fd); //DEBUG
 //commands.c
 
-int	split_process(t_args args, pid_t *pid, t_pipex *fd);
+int	split_process(t_args args, pid_t *pid, t_pipex fd);
 //processes.c
 
 #endif
