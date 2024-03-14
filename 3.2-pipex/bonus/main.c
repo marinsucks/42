@@ -6,20 +6,29 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/14 16:52:57 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/14 16:49:20 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "bonus.h"
 
 int	parsing(int argc, char const **argv, int *infile, int *outfile)
 {
-	if (argc < 5)
-		return (write(2, "Error: too few arguments\n", 25), 0);
-	*infile = open(argv[1], O_RDONLY);
-	if (*infile < 0)
-		return (perror(argv[1]), 0);
-	*outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (!ft_strncmp(argv[1], "here_doc", 8))
+	{
+		if (argc < 6)
+			return (write(2, "Error: too few arguments\n", 25), 0);
+		*outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_APPEND, 0644);
+	}
+	else 
+	{
+		if (argc < 5)
+			return (write(2, "Error: too few arguments\n", 25), 0);
+		*infile = open(argv[1], O_RDONLY);
+		if (*infile < 0)
+			return (perror(argv[1]), 0);
+		*outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
+	}
 	if (*outfile < 0)
 		return (perror(argv[argc - 1]), close(*infile), 0);
 	return (1);
@@ -68,11 +77,19 @@ int	main(int argc, char const **argv, char **envp)
 	int 	outfile;
 	int		i;
 
-	if (!parsing(argc, argv, &infile, &outfile))
+	if (argc == 1 || !parsing(argc, argv, &infile, &outfile))
 		return (1);
-	i = 2;
-	if (dup2(infile, STDIN_FILENO) == -1)
-		return (perror("Error redirecting standard input"), 1);
+	if (!ft_strncmp(argv[1], "here_doc", 8))
+	{
+		i = 3;
+		here_doc(argv[2]);
+	}
+	else
+	{
+		i = 2;
+		if (dup2(infile, STDIN_FILENO) == -1)
+			return (perror("Error redirecting standard input"), 1);
+	}
 	while (i < argc - 2)
 		child_process(argv[i++], envp);
 	if (dup2(outfile, STDOUT_FILENO) == -1)

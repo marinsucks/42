@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:42:24 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/14 14:56:28 by mbecker          ###   ########.fr       */
+/*   Created: 2024/03/14 14:53:50 by mbecker           #+#    #+#             */
+/*   Updated: 2024/03/14 16:41:23 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "other.h"
 
-# include "macros.h"
+void	exit_error(char *msg)
+{
+	perror(msg);
+	exit(EXIT_FAILURE);
+}
 
-# include <stdarg.h>
-# include <stddef.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-
-# include "free/free.h"
-# include "get/get.h"
-# include "lst/lst.h"
-# include "mem/mem.h"
-# include "other/other.h"
-# include "print/print.h"
-# include "str/str.h"
-# include "tab/tab.h"
-
-#endif
+void	cmd_error(char *cmd)
+{
+	write(2, "command not found: ", 19);
+	write(2, cmd, ft_strlen(cmd));
+	write(2, "\n", 1);
+}

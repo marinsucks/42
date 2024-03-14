@@ -6,11 +6,11 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/14 16:39:31 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/14 16:49:38 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "bonus.h"
 
 char	**get_cmd_paths(char **envp, char *cmd)//, int fd)//DEBUG
 {

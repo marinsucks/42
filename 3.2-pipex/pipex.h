@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:11:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/13 15:49:15 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/14 15:43:22 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,12 @@
 # include <stdio.h>
 # include <errno.h>
 
-typedef struct s_pipex
-{
-	int		infile;
-	int		outfile;
-	int		pipe[2];
-}			t_pipex;
 
-typedef struct s_args
-{
-	int			ac;
-	char const	**av;
-	char		**envp;
-}				t_args;
 
-int		exec_cmd(const char *exe, char **envp);//, int fd); //DEBUG
+int		exec_cmd(const char *cmd, char **envp);//, int fd); //DEBUG
 //commands.c
 
-int	split_process(t_args args, pid_t *pid, t_pipex fd);
-//processes.c
+void	here_doc(const char *limiter);
+//bonus.c
 
 #endif

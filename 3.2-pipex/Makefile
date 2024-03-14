@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 12:26:01 by mbecker           #+#    #+#              #
-#    Updated: 2024/03/12 18:04:04 by mbecker          ###   ########.fr        #
+#    Updated: 2024/03/14 17:06:15 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,12 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRC =	main.c \
-		commands.c \
-		processes.c
+		commands.c
+
+BONUS =	bonus/main.c \
+		bonus/commands.c \
+		bonus/here_doc.c
+
 
 all: $(NAME)
 
@@ -25,12 +29,16 @@ $(NAME): libft
 	@$(CC) $(CFLAGS) $(SRC) libft/libft.a -o $(NAME)
 	@echo "$(GREEN)$(NAME) ready.$(NC)"
 
+bonus: libft
+	@$(CC) $(CFLAGS) $(BONUS) libft/libft.a -o $(NAME)bonus
+	@echo "$(GREEN)$(NAME)bonus ready.$(NC)"
+
 clean:
 	@echo "$(LRED)Cleaning objects & executables...$(NC)"
 	@rm -rf *.out* */*.out *.dSYM* $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME) libft/libft.a
+	@rm -rf $(NAME) $(NAME)bonus libft/libft.a outfile
 	@make -C ./libft fclean
 	@echo "$(RED)FULL CLEAN FINISHED$(NC)"
 
@@ -40,6 +48,8 @@ libft:
 	@if [ ! -f libft/libft.a ]; then make -C ./libft all; fi
 
 .PHONY : all clean fclean re libft
+
+
 
 RED =\033[1;31m
 LRED =\033[0;31m
@@ -53,3 +63,14 @@ NC =\033[0m
 f: libft
 	@$(CC) $(SRC) libft/libft.a -o $(NAME)
 	@echo "$(GREEN)$(NAME) ready.$(NC)"
+
+tester: 
+	@if [ ! -d "pipex.tester" ]; then \
+		echo "$(GREEN)Cloning tester...$(LGREEN)"; \
+		git clone https://github.com/vfurmane/pipex-tester pipex.tester; \
+	fi
+	@chmod +x pipex.tester/run.sh
+	@echo "$(YELLOW)Tester ready.$(NC)"
+	@echo "$(RED)Running tester...$(NC)"
+	@printf "..\nn" | pipex.tester/run.sh
+	
