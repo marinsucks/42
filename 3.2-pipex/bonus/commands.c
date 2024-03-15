@@ -6,13 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/14 16:49:38 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/15 14:48:27 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
 
-char	**get_cmd_paths(char **envp, char *cmd)//, int fd)//DEBUG
+char	**get_cmd_paths(char **envp, char *cmd)
 {
 	int		i;
 	char	**path;
@@ -38,7 +38,7 @@ char	**get_cmd_paths(char **envp, char *cmd)//, int fd)//DEBUG
 	return (path);
 }
 
-int	exec_cmd(const char *cmd, char **envp)//, int fd)//DEBUG
+int	exec_cmd(const char *cmd, char **envp)
 {
 	char	**path;
 	char	**args;

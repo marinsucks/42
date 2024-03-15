@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/14 16:52:57 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/15 14:48:43 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	parsing(int argc, char const **argv, int *infile, int *outfile)
  *
  * @param cmd The command to be executed.
  * @param envp The environment variables for the child process.
- * 
+ *
  * This function creates a pipe and forks a child process. The child process
  * redirects its standard output to the write end of the pipe. Then, it executes
  * the specified executable using the `exec_cmd` function. The parent process
@@ -58,15 +58,14 @@ void	child_process(const char *cmd, char **envp)
 	{
 		close(pipefd[1]);
 		dup2(pipefd[0], STDIN_FILENO);
-		//waitpid(pid, NULL, 0);
 	}
 }
 
 int	main(int argc, char const **argv, char **envp)
 {
-	int 	infile;
-	int 	outfile;
-	int		i;
+	int	infile;
+	int	outfile;
+	int	i;
 
 	if (!parsing(argc, argv, &infile, &outfile))
 		return (1);
@@ -77,7 +76,7 @@ int	main(int argc, char const **argv, char **envp)
 		child_process(argv[i++], envp);
 	if (dup2(outfile, STDOUT_FILENO) == -1)
 		return (perror("Error redirecting standard output"), 1);
-	if(exec_cmd(argv[argc -2], envp))
+	if (exec_cmd(argv[argc - 2], envp))
 		return (127);
 	return (0);
 }
