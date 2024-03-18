@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 15:00:14 by mbecker           #+#    #+#              #
-#    Updated: 2024/02/23 16:56:59 by mbecker          ###   ########.fr        #
+#    Updated: 2024/03/14 14:54:38 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ LST =	lst/ft_lst1.c \
 MEM =	mem/ft_bzero.c \
 		mem/ft_calloc.c \
 		mem/ft_mem.c
-OTHER =	other/ft_len.c \
+OTHER =	other/error.c \
+		other/ft_len.c \
 		other/ft_revert.c \
 		other/pathfinding.c
 PRINT =	print/ft_printf_fd2.c \
