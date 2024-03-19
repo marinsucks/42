@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 12:26:01 by mbecker           #+#    #+#              #
-#    Updated: 2024/03/14 17:06:15 by mbecker          ###   ########.fr        #
+#    Updated: 2024/03/19 15:30:38 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ clean:
 	@rm -rf *.out* */*.out *.dSYM* $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME) $(NAME)bonus libft/libft.a outfile
+	@rm -rf $(NAME) $(NAME)bonus libft/libft.a *infile *outfile pipex.tester 
 	@make -C ./libft fclean
 	@echo "$(RED)FULL CLEAN FINISHED$(NC)"
 
@@ -64,7 +64,7 @@ f: libft
 	@$(CC) $(SRC) libft/libft.a -o $(NAME)
 	@echo "$(GREEN)$(NAME) ready.$(NC)"
 
-tester: 
+tester: all
 	@if [ ! -d "pipex.tester" ]; then \
 		echo "$(GREEN)Cloning tester...$(LGREEN)"; \
 		git clone https://github.com/vfurmane/pipex-tester pipex.tester; \
