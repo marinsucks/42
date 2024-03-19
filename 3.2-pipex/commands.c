@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/19 15:10:18 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/19 15:34:55 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ int	report_and_clean(char *errorstr, ...)
 
 	cmd_error(errorstr);
 	va_start(args, errorstr);
-	while ((tab = va_arg(args, char **)) != NULL)
+	tab = va_arg(args, char **);
+	while (tab)
+	{
 		freetab(tab, TRUE);
+		tab = va_arg(args, char **);
+	}
 	va_end(args);
 	return (1);
 }
