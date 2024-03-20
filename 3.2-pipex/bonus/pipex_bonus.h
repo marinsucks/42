@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:11:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/15 14:50:00 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/20 14:51:02 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 # define BONUS_H
 
 # include "../libft/libft.h"
+# include "../pipex.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <sys/wait.h>
 # include <unistd.h>
 
-int		exec_cmd(const char *cmd, char **envp); //, int fd); //DEBUG
+# define INVALID_LIMITER "Error: LIMITER must be printable\n"
+
+int		exec_cmd(const char *cmd, char **envp);
 // commands.c
 
 void	here_doc(const char *limiter);
