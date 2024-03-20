@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 12:26:01 by mbecker           #+#    #+#              #
-#    Updated: 2024/03/19 16:06:55 by mbecker          ###   ########.fr        #
+#    Updated: 2024/03/20 11:14:50 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ CFLAGS = -Wall -Wextra -Werror -g
 SRC =	main.c \
 		commands.c
 
-BONUS =	bonus/main.c \
-		bonus/commands.c \
-		bonus/here_doc.c
+BONUS =	bonus/main_bonus.c \
+		bonus/commands_bonus.c \
+		bonus/here_doc_bonus.c
 
 
 all: $(NAME)

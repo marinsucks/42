@@ -6,26 +6,19 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/19 15:34:55 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/20 13:05:10 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	report_and_clean(char *errorstr, ...)
+int	report_and_clean(char *errorstr, char **tab1, char **tab2)
 {
-	va_list	args;
-	char	**tab;
-
 	cmd_error(errorstr);
-	va_start(args, errorstr);
-	tab = va_arg(args, char **);
-	while (tab)
-	{
-		freetab(tab, TRUE);
-		tab = va_arg(args, char **);
-	}
-	va_end(args);
+	if (tab1)
+		freetab(tab1, TRUE);
+	if (tab2)	
+		freetab(tab2, TRUE);
 	return (1);
 }
 
@@ -65,7 +58,7 @@ int	exec_cmd(const char *cmd, char **envp)
 	if (ft_strchr(cmd, '/'))
 	{
 		execve(args[0], args, envp);
-		return (report_and_clean(args[0], args));
+		return (report_and_clean(args[0], args, NULL));
 	}
 	path = get_cmd_paths(envp, args[0]);
 	if (!path)

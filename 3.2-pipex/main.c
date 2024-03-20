@@ -6,22 +6,27 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/19 16:01:50 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/20 14:44:01 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	parsing(int argc, char const **argv, int *infile, int *outfile)
+int	parsing(int argc, char const **argv, t_pipex *data, int *i)
 {
 	if (argc < 5)
 		return (write(2, "Error: too few arguments\n", 25), 0);
-	*outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
-	if (*outfile < 0)
+	data->outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (data->outfile < 0)
 		return (perror(argv[argc - 1]), 0);
-	*infile = open(argv[1], O_RDONLY);
-	if (*infile < 0)
+	data->infile = open(argv[1], O_RDONLY);
+	if (data->infile < 0)
+	{
+		*i = 3;
+		data->infile = open("/dev/null", O_RDONLY);
 		return (perror(argv[1]), -1);
+	}
+	*i = 2;
 	return (1);
 }
 
@@ -71,17 +76,20 @@ void	child_process(const char *cmd, t_pipex *data, char islast)
 int	main(int argc, char const **argv, char **envp)
 {
 	t_pipex	data;
+	int 	parsing_result;
 	int		i;
 
-	if (!parsing(argc, argv, &data.infile, &data.outfile))
+	parsing_result = parsing(argc, argv, &data, &i);
+	if (!parsing_result)
 		return (1);
 	data.envp = envp;
-	i = 2;
 	if (dup2(data.infile, STDIN_FILENO) >= 0)
 		close(data.infile);
 	while (i < argc - 2)
 		child_process(argv[i++], &data, FALSE);
 	child_process(argv[i], &data, TRUE);
 	wait(NULL);
+	if (parsing_result == -1)
+		close(data.infile);
 	return (0);
 }
