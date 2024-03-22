@@ -29,14 +29,12 @@ Finally, it cleans up any remaining open file descriptors and exits.
 
 ## Concepts Learned
 
-By working on this project, you'll gain a deep understanding of several key Unix concepts:
+By working on this project, I gained a deep understanding of several key Unix concepts:
 
-- File Descriptors and Redirection: You'll learn how to open files, duplicate file descriptors, and redirect standard input and output.
-- Pipes: You'll learn how to create pipes and use them to connect the output of one process to the input of another.
-- Process Creation: You'll learn how to create new processes using `fork` and execute commands in them using `execve`.
-- Error Handling: You'll learn how to handle errors thoroughly and avoid common pitfalls like segmentation faults, double frees, and memory leaks.
-
-So, are you ready to dive into the world of Unix pipes? Let's get started!
+- File Descriptors and Redirection: I learned how to open files, duplicate file descriptors, and redirect standard input and output.
+- Pipes: I learned how to create pipes and use them to connect the output of one process to the input of another.
+- Process Creation: I learned how to create new processes using `fork` and execute commands in them using `execve`.
+- Error Handling: I learned how to handle errors thoroughly and avoid common pitfalls like segmentation faults, double frees, and memory leaks.
 
 ## Try me!!
 
