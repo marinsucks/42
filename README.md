@@ -9,7 +9,7 @@ Apart from work, I love creating awful melodies on the bass and getting my butt 
 
 ## My Projects
 
-- [**Piscine**](./0-piscine/): I got my hands dirty with basic C programming during the 42 Piscine.
+- [**Piscine**](./0-piscine/): Gotta start somewhere! I learned the basics in C.
 
 - [**libft**](./1-libft/): I built my own basic C library.
 
@@ -23,17 +23,9 @@ Apart from work, I love creating awful melodies on the bass and getting my butt 
 
 - [**so_long**](./3.1-so_long/): Ever played pokemon? This project will bring you a few years back! I designed and coded my own basic 2d game using the minilibx, an X11-based library.
 
-- [**pipex**](./3.2-pipex/): In progress! I'm reproducing the pipe `|` behavior.
+- [**pipex**](./3.2-pipex/): I reproduced the pipe `|` behavior.
 
-## Goals
-
-During my studies at 42, here's what I'm aiming for:
-
-- Explore new languages and tech stacks.
-- Collaborate with fellow students on interesting and useful projects.
-- Help others and share my knowledge.
-- Level up my coding skills.
-
+- [**Philosophers**](./4.0-Philosophers/): In progress! I'm discovering threads by feeding, killing or putting them to sleep.
 
 ## Contact
 
