@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:11:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/20 11:11:05 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/22 15:41:06 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,4 @@ typedef struct s_pipex
 int		exec_cmd(const char *cmd, char **envp);
 
 #endif
+/* Hello World! */

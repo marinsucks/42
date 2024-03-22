@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/20 13:05:10 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/21 13:40:10 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	report_and_clean(char *errorstr, char **tab1, char **tab2)
 	cmd_error(errorstr);
 	if (tab1)
 		freetab(tab1, TRUE);
-	if (tab2)	
+	if (tab2)
 		freetab(tab2, TRUE);
 	return (1);
 }

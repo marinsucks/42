@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/20 14:50:41 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/21 13:41:06 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	parsing(int argc, char const **argv, t_pipex *data, int *i)
 		return (perror(argv[argc - 1]), 0);
 	if (ft_strncmp(argv[1], "here_doc\0", 9))
 	{
-		ft_printf("DEBUG: "); // DEBUG
 		data->infile = open(argv[1], O_RDONLY);
 		if (data->infile < 0)
 		{

@@ -6,12 +6,12 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:11:32 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/20 14:51:02 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/21 13:40:46 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BONUS_H
-# define BONUS_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
 # include "../libft/libft.h"
 # include "../pipex.h"

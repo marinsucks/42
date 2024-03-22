@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:20:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/20 14:44:01 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/21 13:40:28 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	child_process(const char *cmd, t_pipex *data, char islast)
 int	main(int argc, char const **argv, char **envp)
 {
 	t_pipex	data;
-	int 	parsing_result;
+	int		parsing_result;
 	int		i;
 
 	parsing_result = parsing(argc, argv, &data, &i);
