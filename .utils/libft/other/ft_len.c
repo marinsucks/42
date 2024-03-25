@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:38:31 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/23 16:15:29 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/19 17:21:40 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
+	if (!s)
+		return (0);
 	i = 0;
 	while (s[i])
 		i++;
@@ -30,6 +32,8 @@ size_t	ft_tablen(const char **tab)
 {
 	size_t	i;
 
+	if (!tab || !*tab)
+		return (0);
 	i = 0;
 	while (tab[i])
 		i++;

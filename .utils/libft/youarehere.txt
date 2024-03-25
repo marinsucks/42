@@ -16,6 +16,7 @@ libft
 │   ├── ft_mem.c
 │   └── mem.h
 ├── other
+│   ├── error.c
 │   ├── ft_len.c
 │   ├── ft_revert.c
 │   ├── other.h
@@ -23,6 +24,8 @@ libft
 ├── print
 │   ├── ft_printf2.c
 │   ├── ft_printf.c
+│   ├── ft_printf_fd2.c
+│   ├── ft_printf_fd.c
 │   ├── ft_put.c
 │   ├── print.h
 │   └── printtab.c
@@ -57,3 +60,5 @@ libft
 ├── macros.h
 ├── Makefile
 └── youarehere.txt
+
+8 directories, 53 files

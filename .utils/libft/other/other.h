@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:48:19 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/14 16:37:48 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/25 12:01:54 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 void		exit_error(char *msg);
 void		cmd_error(char *cmd);
+void		msg(char *msg, ...);
 //error.c
 
 size_t		ft_strlen(const char *s);

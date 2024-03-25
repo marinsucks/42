@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:48:31 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/23 16:14:00 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/25 11:58:52 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int			ft_isprint(int c);
 //ft_is.c
 
 int			ft_is(int c, char *charset);
+int			ft_isnum(char *str);
 //ft_is2.c
 
 char		*ft_itoa(int n);
