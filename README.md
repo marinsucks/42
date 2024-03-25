@@ -9,21 +9,21 @@ Apart from work, I love creating awful melodies on the bass and getting my butt 
 
 ## My Projects
 
- - Basic C functions:
+ -  📚 Basic C functions:
 	- [**Piscine**](./0-piscine/) - Gotta start somewhere! I learned the basics in C.
 	- [**libft**](./1-libft/) - I built my own basic C library.
 	- [**ft_printf**](./2.0-ft_printf/) - I created my own implementation of printf.
 	- [**get_next_line**](./2.1-get_next_line/) - Unlocked the magic of reading files line by line!
 
-- [**Born2beRoot**](./2.2-Born2beroot/): I discovered system admininistration by setting up a secure server environment following strict guidelines.
+- 🔧 [**Born2beRoot**](./2.2-Born2beroot/) - I discovered system admininistration by setting up a secure server environment following strict guidelines. 
 
-- [**push_swap**](./3.0-push_swap/): An introduction to sorting algorithms through restricted operations.
+- 🔄 [**push_swap**](./3.0-push_swap/) - An introduction to sorting algorithms through restricted operations. 
 
-- [**so_long**](./3.1-so_long/): Ever played pokemon? I designed and coded my own minigame using 42's [minilibx](https://github.com/42Paris/minilibx-linux), an X11-based library.
+- 🕹️ [**so_long**](./3.1-so_long/) - Ever played pokemon? I designed and coded my own minigame using 42's [minilibx](https://github.com/42Paris/minilibx-linux), an X11-based library.
 
-- [**pipex**](./3.2-pipex/): A program reproducing the pipe `|` behavior. ~~Such a pain in th~~ Such a thrilling project!
+- 🚰 [**pipex**](./3.2-pipex/) - A program reproducing the pipe `|` behavior. ~~Such a pain in th~~ Such a thrilling project!
 
-- [**Philosophers**](./4.0-Philosophers/): In progress! Eat, sleep, think, repeat7 (don't lose the thread!)
+- 🍽️ [**Philosophers**](./4.0-Philosophers/) - In progress! Eat, sleep, think, repeat (don't lose the thread!)
 
 ## Contact
 
