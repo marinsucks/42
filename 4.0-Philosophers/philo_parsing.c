@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   philo_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:32:38 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/15 17:13:57 by mbecker          ###   ########.fr       */
+/*   Created: 2024/03/25 12:30:43 by mbecker           #+#    #+#             */
+/*   Updated: 2024/03/25 13:52:09 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str.h"
+#include "philo.h"
 
-int	ft_atoi(const char *str)
+int	ft_isdigit(int c)
 {
-	int	i;
-	int	sign;
-	int	res;
-
-	i = 0;
-	sign = 1;
-	res = 0;
-	while (str[i] == ' ' || ((str[i] >= 9 && str[i] <= 13)
-			|| (str[i] == '+' && ft_isdigit(str[i + 1]))))
-		i++;
-	if ((str[i] == '-') && (str[i + 1] >= '0' && str[i + 1] <= '9'))
-	{
-		sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = res * 10 + (str[i] - '0');
-		i++;
-	}
-	return (res * sign);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
+
 
 long	ft_atol(const char *str)
 {
@@ -60,4 +43,39 @@ long	ft_atol(const char *str)
 		i++;
 	}
 	return (res * sign);
+}
+
+// Check if str is a number
+int	ft_isnum(const char *str)
+{
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
+int	philo_parsing(int ac, char const *av[], t_philo *data)
+{
+	int	i;
+
+	if (ac < 5)
+		return (write(2, TOO_FEW_ARG, 26), 0);
+	else if (ac > 6)
+		return (write(2, TOO_MANY_ARG, 27), 0);
+	i = 0;
+	while (av[++i])
+	{
+		if (!ft_isnum(av[i]) || ft_atol(av[i]) < 0 || ft_atol(av[i]) > INT_MAX)
+			return (write(2, INVALID_ARG, 25), 0);
+	}
+	*data = (t_philo){0, ft_atol(av[1]), ft_atol(av[2]), ft_atol(av[3]), 
+		ft_atol(av[4]), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	if (ac == 6)
+		data->must_eat = ft_atol(av[5]);
+	return (1);
 }
