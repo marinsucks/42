@@ -23,7 +23,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : all clean fclean re libft
+.PHONY : $(NAME) all clean fclean re libft
 
 RED =\033[1;31m
 LRED =\033[0;31m
