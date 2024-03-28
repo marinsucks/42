@@ -11,6 +11,7 @@ push_swap
 checker
 so_long
 pipex
+philo
 
 /*** TESTING FILES ***/
 test
