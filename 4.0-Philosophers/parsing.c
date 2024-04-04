@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:30:43 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/26 17:21:58 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/27 12:33:15 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ft_isnum(const char *str)
 	return (1);
 }
 
-int	philo_parsing(int ac, char const *av[], t_specs *data)
+int	philo_parsing(int ac, char const *av[], t_specs *specs)
 {
 	int	i;
 
@@ -72,11 +72,11 @@ int	philo_parsing(int ac, char const *av[], t_specs *data)
 		if (!ft_isnum(av[i]) || ft_atol(av[i]) < 0 || ft_atol(av[i]) > INT_MAX)
 			return (write(2, NOT_AN_UINT, 46), 0);
 	}
-	*data = (t_specs){0, ft_atol(av[1]), ft_atol(av[2]), ft_atol(av[3]),
+	*specs = (t_specs){0, ft_atol(av[1]), ft_atol(av[2]), ft_atol(av[3]),
 		ft_atol(av[4]), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	if (ac == 6)
-		data->nb_must_eat = ft_atol(av[5]);
+		specs->nb_must_eat = ft_atol(av[5]);
 	else
-		data->nb_must_eat = -1;
+		specs->nb_must_eat = -1;
 	return (1);
 }

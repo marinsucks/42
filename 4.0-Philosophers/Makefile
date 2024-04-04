@@ -4,8 +4,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = 	main.c \
-		philo_utils.c \
-		philo_parsing.c \
+		parsing.c \
+		threads.c
 
 all: $(NAME)
 

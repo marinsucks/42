@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:19:41 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/26 17:19:46 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/03/28 13:18:21 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,10 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-# define TOO_FEW_ARG "Error: Too few arguments.\n"
-# define TOO_MANY_ARG "Error: Too many arguments.\n"
-# define NOT_AN_UINT "Error: Invalid argument: not a positive int.\n"
-# define INT_MAX 2147483647
-
-typedef struct s_philo
-{
-	int	id;
-	int	died;
-	int	is_eating;
-	int	must_eat;
-}		t_philo;
+# define TOO_FEW_ARG 	"Error: Too few arguments.\n"
+# define TOO_MANY_ARG 	"Error: Too many arguments.\n"
+# define NOT_AN_UINT 	"Error: Invalid argument: not a positive int.\n"
+# define INT_MAX		2147483647
 
 typedef struct s_specs
 {
@@ -53,10 +45,22 @@ typedef struct s_specs
 	pthread_mutex_t	*full_mutex;
 }					t_specs;
 
+typedef struct s_philo
+{
+	int			id;
+	int			died;
+	int			is_eating;
+	int			must_eat;
+	t_specs		*specs;
+}				t_philo;
+
 int	philo_parsing(int ac, char const *av[], t_specs *data);
 // philo_parsing.c
 
 int	gettimestamp(t_specs *data);
 // ?.c
+
+int	philo_routine(t_philo *philo);
+// threads.c
 
 #endif
