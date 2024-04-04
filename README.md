@@ -17,7 +17,7 @@ Hey there! I'm Marin. I just finished the 42 Piscine, and I'm super excited to k
 
 - 🍽️ [**Philosophers**](./4.0-Philosophers/) - In progress! I'm handling threads routine: eat, sleep, think, die.
 
-- 📟 [**Minishell**](./4.1-Minishell/) - In progress! A group project in which [Aleksei]() and I create our own basic reproduction of bash.
+- 📟 [**Minishell**](https://github.com/42mates/minishell/) - In progress! A group project in which my mate @ku-alexej and I create our own basic reproduction of bash.
 
 ## System Administration 
 
