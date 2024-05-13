@@ -17,7 +17,7 @@ Hey there! I'm Marin. I just finished the 42 Piscine, and I'm super excited to k
 
 - 🍽️ [**Philosophers**](./4.0-Philosophers/) - In progress! I'm handling threads routine: eat, sleep, think, die.
 
-- 📟 [**Minishell**](https://github.com/42mates/minishell/) - In progress! A group project in which my mate @ku-alexej and I create our own basic reproduction of bash.
+- 📟 [**Minishell**](https://github.com/42mates/minishell/) - In progress! A group project in which my mate [@ku-alexej](https://github.com/ku-alexej) and I create our own basic reproduction of bash.
 
 ## System Administration 
 
@@ -25,7 +25,7 @@ Hey there! I'm Marin. I just finished the 42 Piscine, and I'm super excited to k
 
 ## Contact
 
-For any further information, feel free to contact me on [mbecker@student.42.fr](mailto:mbecker@student.42.fr) or to take a look at [marinbecker.com](https://www.marinbecker.com) !
+For any further information, feel free to contact me on [mbecker@student.42.fr](mailto:mbecker@student.42.fr) and go take a look at [marinbecker.me](https://www.marinbecker.me)!
 
 
 ## Still here ?!
@@ -33,5 +33,5 @@ For any further information, feel free to contact me on [mbecker@student.42.fr](
 You manage to read this entire presentation, congrats !   
 Here's a cool meme for you to look at :
 <div align="center">
-	<img src="./.misc/meme-line42.jpg" alt="Cool Meme" style="max-width: 600">
+	<img src="./.misc/meme-line42.jpg" alt="Cool Meme">
 </div>
