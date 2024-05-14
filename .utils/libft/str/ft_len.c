@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:38:31 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/15 17:13:59 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/05/14 16:14:24 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ short int	ft_numlen(long long num)
 {
 	short int			len;
 
+	if (num < -9223372036854775807)
+		return (20);
 	len = 1;
 	if (num < 0)
 	{

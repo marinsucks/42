@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:32:38 by mbecker           #+#    #+#             */
-/*   Updated: 2024/02/15 17:13:57 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/05/14 16:10:09 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,7 @@ long	ft_atol(const char *str)
 		res = res * 10 + (str[i] - '0');
 		i++;
 	}
+	if (res < -9223372036854775807 && sign == -1)
+		return (res);
 	return (res * sign);
 }
