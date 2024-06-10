@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   threads.c                                          :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 12:28:22 by mbecker           #+#    #+#             */
-/*   Updated: 2024/06/10 18:09:11 by mbecker          ###   ########.fr       */
+/*   Created: 2024/06/10 14:09:57 by mbecker           #+#    #+#             */
+/*   Updated: 2024/06/10 18:34:02 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo_routine(void *philo)
+/**
+ * Prints an `error_msg` to the standard error output and returns 1.
+ */
+int	error(char *error_msg)
 {
-	static int	i = 0;
-
-	(void)philo;
-	printf("%d\n", ++i);
-	return (0);
+	write(STDERR_FILENO, error_msg, strlen(error_msg));
+	return (1);
 }

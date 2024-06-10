@@ -1,22 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   threads.c                                          :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 12:28:22 by mbecker           #+#    #+#             */
-/*   Updated: 2024/06/10 18:09:11 by mbecker          ###   ########.fr       */
+/*   Created: 2024/06/10 17:09:40 by mbecker           #+#    #+#             */
+/*   Updated: 2024/06/10 18:10:37 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo_routine(void *philo)
+/**
+ * @brief Frees a char **tab and its content.
+ * @param tab The tab to free.
+ * @param heap If 1, frees the tab itself.
+ */
+void	freetab(char **tab, int heap)
 {
-	static int	i = 0;
+	int	i;
 
-	(void)philo;
-	printf("%d\n", ++i);
-	return (0);
+	i = 0;
+	if (tab == NULL)
+		return ;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	if (heap)
+		free(tab);
+}
+
+void	freedata(t_data data)
+{
+	free(data.params);
+	freetab((char **)data.forum, TRUE);
 }

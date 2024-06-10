@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_parsing.c                                    :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:30:43 by mbecker           #+#    #+#             */
-/*   Updated: 2024/03/27 12:33:15 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/06/10 15:41:35 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,34 @@ int	ft_isnum(const char *str)
 	return (1);
 }
 
-int	philo_parsing(int ac, char const *av[], t_specs *specs)
+/**
+ * Parses the command line arguments.
+ *
+ * @param params A pointer to the t_params structure where the parsed values
+ * will be stored.
+ * @return Returns 0 if parsing is successful, 1 otherwise.
+ */
+t_params	*philo_parsing(int ac, char const *av[])
 {
-	int	i;
+	int			i;
+	t_params	*params;
 
+	params = (t_params *)malloc(sizeof(t_params));
 	if (ac < 5)
-		return (write(2, TOO_FEW_ARG, 26), 0);
+		return (free(params), error(TOO_FEW_ARG), NULL);
 	else if (ac > 6)
-		return (write(2, TOO_MANY_ARG, 27), 0);
+		return (free(params), error(TOO_MANY_ARG), NULL);
 	i = 0;
 	while (av[++i])
 	{
 		if (!ft_isnum(av[i]) || ft_atol(av[i]) < 0 || ft_atol(av[i]) > INT_MAX)
-			return (write(2, NOT_AN_UINT, 46), 0);
+			return (free(params), error(NOT_AN_UINT), NULL);
 	}
-	*specs = (t_specs){0, ft_atol(av[1]), ft_atol(av[2]), ft_atol(av[3]),
-		ft_atol(av[4]), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	*params = (t_params){0, ft_atol(av[1]), ft_atol(av[2]), ft_atol(av[3]),
+		ft_atol(av[4]), 0, ft_atol(av[1]), 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	if (ac == 6)
-		specs->nb_must_eat = ft_atol(av[5]);
+		params->nb_must_eat = ft_atol(av[5]);
 	else
-		specs->nb_must_eat = -1;
-	return (1);
+		params->nb_must_eat = -1;
+	return (params);
 }

@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/06/04 15:40:22 by mbecker           #+#    #+#              #
+#    Updated: 2024/06/10 17:14:21 by mbecker          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = philo
 
 CC = cc
@@ -5,13 +17,15 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = 	main.c \
 		parsing.c \
-		threads.c
+		threads.c \
+		error.c \
+		free.c
 
 all: $(NAME)
 
 $(NAME):
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
-	@echo "$(GREEN)$(NAME) ready.$(NC)"
+	@echo "$(LGREEN)./$(GREEN)$(NAME)$(LGREEN) ready.$(NC)"
 
 clean:
 	@echo "$(LRED)Removing objects and misc...$(NC)"
@@ -23,7 +37,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : $(NAME) all clean fclean re libft
+.PHONY : $(NAME) all clean fclean re
 
 RED =\033[1;31m
 LRED =\033[0;31m
