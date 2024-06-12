@@ -11,9 +11,9 @@ Hey there! I'm Marin. I just finished the 42 Piscine, and I'm super excited to k
 
 - ♻️ [**push_swap**](./3.0-push_swap/) - An introduction to sorting algorithms through restricted operations. 
 
-- 🕹️ [**so_long**](./3.1-so_long/) - Ever played pokemon HeartGold? I designed and coded my own desktop minigame using 42's minilibx, an X11-based library.
+- 🕹️ [**so_long**](./3.1-so_long/) - Ever played pokemon HeartGold? I designed and coded my own desktop minigame using 42's minilibx, a X11-based library.
 
-- 🚰 [**pipex**](./3.2-pipex/) - A program reproducing the pipe `|` behavior. ~~Such a pain in th~~ Such a thrilling project!
+- 🚰 [**pipex**](./3.2-pipex/) - A program reproducing the pipe `|` behavior.
 
 - 🍽️ [**Philosophers**](./4.0-Philosophers/) - In progress! I'm handling threads routine: eat, sleep, think, die.
 
