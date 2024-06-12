@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 11:24:42 by mbecker           #+#    #+#             */
-/*   Updated: 2024/06/10 18:33:51 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/06/12 17:43:43 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,33 @@
 /**
  * Calculates the timestamp in milliseconds since the start of the program.
  *
- * @param params The parameters struct containing the start time of the program.
+ * @param params The original start time of the program in milliseconds, or 0 
+ * to set it.
  * @return The timestamp in milliseconds.
  */
-int	gettimestamp(t_params *params)
+int	gettimestamp(int start_time)
 {
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000 - params->start_time);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000 - start_time);
 }
 
 int	create_threads(t_data *data)
 {
-	int	i;
+	t_philo	*philo;
+	int		i;
 
 	i = 0;
 	while (i < data->params->nb_philo)
 	{
-		data->forum[i] = malloc(sizeof(t_philo));
-		if (pthread_create(&data->forum[i]->id, NULL, &philo_routine, data))
+		philo = malloc(sizeof(t_philo));
+		if (!philo)
+			return (error("malloc failed\n"));
+		*philo = (t_philo){0, i, 0, 0, 0, data};
+		data->forum[i++] = philo;
+		if (pthread_create(&philo->thread, NULL, &philo_routine, philo))
 			return (error("pthread_create failed\n"));
-		i++;
 	}
 	data->forum[i] = NULL;
 	return (0);
@@ -50,13 +55,20 @@ int	main(int ac, char const *av[])
 	data.params = philo_parsing(ac, av);
 	if (!data.params)
 		return (1);
-	data.params->start_time = gettimestamp(data.params); // put at start 
+	data.params->start_time = gettimestamp(data.params->start_time);
 	data.forum = malloc((sizeof(t_philo *) * data.params->nb_philo) + 8);
+	if (!data.forum)
+		return (error("malloc failed\n"));
+	pthread_mutex_init(&data.mutex, NULL);
 	if (create_threads(&data))
-		return (2);
+		return (error("create_threads failed\n"));
 	i = 0;
 	while (i < data.params->nb_philo)
-		pthread_join(data.forum[i++]->id, NULL);
+	{
+		if (pthread_join(data.forum[i++]->thread, NULL))
+			return (error("pthread_join failed\n"));
+	}
+	pthread_mutex_destroy(&data.mutex);
 	freedata(data);
 	return (0);
 }

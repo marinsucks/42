@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:30:43 by mbecker           #+#    #+#             */
-/*   Updated: 2024/06/10 15:41:35 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/06/11 12:20:53 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_params	*philo_parsing(int ac, char const *av[])
 			return (free(params), error(NOT_AN_UINT), NULL);
 	}
 	*params = (t_params){0, ft_atol(av[1]), ft_atol(av[2]), ft_atol(av[3]),
-		ft_atol(av[4]), 0, ft_atol(av[1]), 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		ft_atol(av[4]), 0, ft_atol(av[1]), 0, 0, 0, 0, 0};
 	if (ac == 6)
 		params->nb_must_eat = ft_atol(av[5]);
 	else

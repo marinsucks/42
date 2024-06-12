@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:19:41 by mbecker           #+#    #+#             */
-/*   Updated: 2024/06/10 18:09:31 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/06/11 16:30:23 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <time.h>
 # include <pthread.h>
 
+# define PROGRAM_NAME	"philo"
+
 # define TOO_FEW_ARG 	"Error: Too few arguments.\n"
 # define TOO_MANY_ARG 	"Error: Too many arguments.\n"
 # define NOT_AN_UINT 	"Error: Invalid argument: not a positive int.\n"
@@ -28,6 +30,7 @@
 # define TRUE			1
 # define FALSE			0
 # define INT_MAX		2147483647
+
 
 /**
 
@@ -43,10 +46,6 @@
  * `int	*`			nb_meal;
  * `int	*`			is_dead;
  * `int	*`			is_full;
- * `pthread_mutex_t *` mutex;
- * `pthread_mutex_t *` print_mutex;
- * `pthread_mutex_t *` dead_mutex;
- * `pthread_mutex_t *` full_mutex;
 */
 typedef struct s_params
 {
@@ -62,38 +61,47 @@ typedef struct s_params
 	int				*nb_meal;
 	int				*is_dead;
 	int				*is_full;
-	pthread_mutex_t	*mutex;
-	pthread_mutex_t	*print_mutex;
-	pthread_mutex_t	*dead_mutex;
-	pthread_mutex_t	*full_mutex;
 }					t_params;
 
+//typedef struct s_mutex
+//{
+//	pthread_mutex_t	mtx;
+//	pthread_mutex_t	print;
+//	pthread_mutex_t	dead;
+//	pthread_mutex_t	full;
+//}					t_mutex;
+
 /*
+ * `pthread_t`	thread;
  * `int`		id;
  * `int`		died;
  * `int`		is_eating;
  * `int`		must_eat;
- * `t_philo *`	next;
+ * `t_data *`	data;
 */
 typedef struct s_philo
 {
-	pthread_t		id;
+	pthread_t		thread;
+	int				id;
 	int				died;
 	int				is_eating;
 	int				must_eat;
+	struct s_data	*data;
 }					t_philo;
 
 typedef struct s_data
 {
-	t_params	*params;
-	t_philo		**forum;
-}				t_data;
+	t_params		*params;
+	//t_mutex		*mutex;
+	pthread_mutex_t	mutex;
+	t_philo			**forum;
+}					t_data;
 
 t_params	*philo_parsing(int ac, char const *av[]);
-// philo_parsing.c
+// parsing.c
 
-int			gettimestamp(t_params *data);
-// ?.c
+int			gettimestamp(int start_time);
+// main.c
 
 void		*philo_routine(void *philo);
 // threads.c

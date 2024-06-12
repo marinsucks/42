@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   threads.c                                          :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:28:22 by mbecker           #+#    #+#             */
-/*   Updated: 2024/06/10 18:09:11 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/06/12 17:44:07 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo_routine(void *philo)
+void	*philo_routine(void *arg)
 {
-	static int	i = 0;
+	t_philo	*philo;
 
+	philo = (t_philo *)arg;
 	(void)philo;
-	printf("%d\n", ++i);
 	return (0);
 }
