@@ -6,44 +6,85 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 11:24:42 by mbecker           #+#    #+#             */
-/*   Updated: 2024/06/12 17:43:43 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/06/14 17:33:17 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 /**
- * Calculates the timestamp in milliseconds since the start of the program.
- *
- * @param params The original start time of the program in milliseconds, or 0 
- * to set it.
- * @return The timestamp in milliseconds.
+ * Parses the command line arguments.
+ * @return `0` if parsing is successful, `1` otherwise.
  */
-int	gettimestamp(int start_time)
+int	philo_parsing(int ac, char const *av[])
 {
-	struct timeval	time;
+	int			i;
 
-	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000 - start_time);
+	if (ac < 5)
+		return (error(TOO_FEW_ARG));
+	else if (ac > 6)
+		return (error(TOO_MANY_ARG));
+	i = 0;
+	while (av[++i])
+	{
+		if (!ft_isnum(av[i]) || ft_atol(av[i]) < 0 || ft_atol(av[i]) > INT_MAX)
+			return (error(NOT_AN_UINT));
+	}
+	return (0);
 }
 
+/**
+ * Initializes the data structure with the given arguments.
+ * @return 0 if successful, 1 if there was an error.
+ */
+int	init_data(t_data *data, int ac, char const *av[])
+{
+	int	i;
+
+	*data = (t_data){data->mutex, data->forum, ft_atol(av[1]), ft_atol(av[2]),
+		ft_atol(av[3]), ft_atol(av[4]), -1, 0, 0};
+	if (ac == 6)
+		data->max_meal = ft_atol(av[5]);
+	data->forum = malloc((sizeof(t_philo *) * data->nb_philo));
+	data->forks = malloc((sizeof(int *) * data->nb_philo));
+	if (!data->forum || !data->forks)
+		return (error("malloc failed\n"));
+	i = 0;
+	while (i < data->nb_philo)
+	{
+		data->forks[i] = malloc(sizeof(int));
+		if (!data->forks[i])
+			return (error("malloc failed\n"));
+		*data->forks[i] = 1;
+		i++;
+	}
+	data->start_time = gettimestamp(data->start_time);
+	return (0);
+}
+
+/**
+ * Creates threads for each philosopher and initializes their data.
+ * 
+ * @param data The data structure containing information about the philosophers.
+ * @return 0 if successful, -1 if an error occurred.
+ */
 int	create_threads(t_data *data)
 {
-	t_philo	*philo;
-	int		i;
+	t_philo *philo;
+	int i;
 
 	i = 0;
-	while (i < data->params->nb_philo)
+	while (i < data->nb_philo)
 	{
 		philo = malloc(sizeof(t_philo));
-		if (!philo)
+		if (!data->forks[i] || !philo)
 			return (error("malloc failed\n"));
-		*philo = (t_philo){0, i, 0, 0, 0, data};
+		*philo = (t_philo){0, i, 0, 0, 0, 
+			data->forks[i], data->forks[(i + 1) % data->nb_philo], data};
 		data->forum[i++] = philo;
 		if (pthread_create(&philo->thread, NULL, &philo_routine, philo))
 			return (error("pthread_create failed\n"));
 	}
-	data->forum[i] = NULL;
 	return (0);
 }
 
@@ -52,30 +93,26 @@ int	main(int ac, char const *av[])
 	t_data	data;
 	int		i;
 
-	data.params = philo_parsing(ac, av);
-	if (!data.params)
+	if (philo_parsing(ac, av))
 		return (1);
-	data.params->start_time = gettimestamp(data.params->start_time);
-	data.forum = malloc((sizeof(t_philo *) * data.params->nb_philo) + 8);
-	if (!data.forum)
-		return (error("malloc failed\n"));
+	init_data(&data, ac, av);
 	pthread_mutex_init(&data.mutex, NULL);
 	if (create_threads(&data))
 		return (error("create_threads failed\n"));
 	i = 0;
-	while (i < data.params->nb_philo)
+	while (i < data.nb_philo)
 	{
 		if (pthread_join(data.forum[i++]->thread, NULL))
 			return (error("pthread_join failed\n"));
 	}
 	pthread_mutex_destroy(&data.mutex);
-	freedata(data);
+	freedata(&data);
 	return (0);
 }
 
 //void	*print_structs(t_data data)
 //{
-//	printf("start_time: \t%d\n", data.params->start_time);
+//	printf("start_time: \t%d\n", data.start_time);
 //	printf("nb_philo: \t%d\n", data.params->nb_philo);
 //	printf("time_to_die: \t%d\n", data.params->time_to_die);
 //	printf("time_to_eat: \t%d\n", data.params->time_to_eat);

@@ -1,21 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 12:30:43 by mbecker           #+#    #+#             */
-/*   Updated: 2024/06/11 12:20:53 by mbecker          ###   ########.fr       */
+/*   Created: 2024/06/14 16:40:39 by mbecker           #+#    #+#             */
+/*   Updated: 2024/06/14 16:45:17 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_isdigit(int c)
+/**
+ * Calculates the timestamp in milliseconds since the start of the program.
+ *
+ * @param params The original start time of the program in milliseconds, or 0
+ * to set it.
+ * @return The timestamp in milliseconds.
+ */
+int	gettimestamp(int start_time)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000 - start_time);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int				i;
+	unsigned char	*us1;
+	unsigned char	*us2;
+
+	i = 0;
+	us1 = (unsigned char *)s1;
+	us2 = (unsigned char *)s2;
+	if (!us1 && !us2)
+		return (0);
+	else if (!us1)
+		return (-us2[0]);
+	else if (!us2)
+		return (us1[0]);
+	while (us1[i] || us2[i])
+	{
+		if (us1[i] != us2[i])
+			return (us1[i] - us2[i]);
+		i++;
+	}
 	return (0);
 }
 
@@ -29,7 +61,7 @@ long	ft_atol(const char *str)
 	sign = 1;
 	res = 0;
 	while (str[i] == ' ' || ((str[i] >= 9 && str[i] <= 13) || (str[i] == '+'
-				&& ft_isdigit(str[i + 1]))))
+				&& (str[i + 1] >= '0' && str[i + 1] <= '9'))))
 		i++;
 	if ((str[i] == '-') && (str[i + 1] >= '0' && str[i + 1] <= '9'))
 	{
@@ -51,41 +83,9 @@ int	ft_isnum(const char *str)
 		str++;
 	while (*str)
 	{
-		if (!ft_isdigit(*str))
+		if (!(*str >= '0' && *str <= '9'))
 			return (0);
 		str++;
 	}
 	return (1);
-}
-
-/**
- * Parses the command line arguments.
- *
- * @param params A pointer to the t_params structure where the parsed values
- * will be stored.
- * @return Returns 0 if parsing is successful, 1 otherwise.
- */
-t_params	*philo_parsing(int ac, char const *av[])
-{
-	int			i;
-	t_params	*params;
-
-	params = (t_params *)malloc(sizeof(t_params));
-	if (ac < 5)
-		return (free(params), error(TOO_FEW_ARG), NULL);
-	else if (ac > 6)
-		return (free(params), error(TOO_MANY_ARG), NULL);
-	i = 0;
-	while (av[++i])
-	{
-		if (!ft_isnum(av[i]) || ft_atol(av[i]) < 0 || ft_atol(av[i]) > INT_MAX)
-			return (free(params), error(NOT_AN_UINT), NULL);
-	}
-	*params = (t_params){0, ft_atol(av[1]), ft_atol(av[2]), ft_atol(av[3]),
-		ft_atol(av[4]), 0, ft_atol(av[1]), 0, 0, 0, 0, 0};
-	if (ac == 6)
-		params->nb_must_eat = ft_atol(av[5]);
-	else
-		params->nb_must_eat = -1;
-	return (params);
 }

@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:19:41 by mbecker           #+#    #+#             */
-/*   Updated: 2024/06/11 16:30:23 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/06/14 16:48:54 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,45 +23,13 @@
 
 # define PROGRAM_NAME	"philo"
 
-# define TOO_FEW_ARG 	"Error: Too few arguments.\n"
-# define TOO_MANY_ARG 	"Error: Too many arguments.\n"
-# define NOT_AN_UINT 	"Error: Invalid argument: not a positive int.\n"
+# define TOO_FEW_ARG 	"too few arguments\n"
+# define TOO_MANY_ARG 	"too many arguments\n"
+# define NOT_AN_UINT 	"invalid argument: not a positive int\n"
 
 # define TRUE			1
 # define FALSE			0
 # define INT_MAX		2147483647
-
-
-/**
-
- * `int`			start_time;
- * `int`			nb_philo;
- * `int`			time_to_die;
- * `int`			time_to_eat;
- * `int`			time_to_sleep;
- * `int`			nb_must_eat; (minimum nb of meal before end of simulation)
- * `int`			forks;
- * `int	*`			forks_status;
- * `int	*`			last_meal;
- * `int	*`			nb_meal;
- * `int	*`			is_dead;
- * `int	*`			is_full;
-*/
-typedef struct s_params
-{
-	int				start_time;
-	int				nb_philo;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				nb_must_eat;
-	int				forks;
-	int				*forks_status;
-	int				*last_meal;
-	int				*nb_meal;
-	int				*is_dead;
-	int				*is_full;
-}					t_params;
 
 //typedef struct s_mutex
 //{
@@ -76,7 +44,9 @@ typedef struct s_params
  * `int`		id;
  * `int`		died;
  * `int`		is_eating;
- * `int`		must_eat;
+ * `int`		is_thinking;
+ * `int *`		left_fork;
+ * `int *`		right_fork;
  * `t_data *`	data;
 */
 typedef struct s_philo
@@ -85,23 +55,41 @@ typedef struct s_philo
 	int				id;
 	int				died;
 	int				is_eating;
-	int				must_eat;
+	int				is_thinking;
+	int				*left_fork;
+	int				*right_fork;
 	struct s_data	*data;
 }					t_philo;
 
+/*
+ * `pthread_mutex_t`	mutex;
+ * `t_philo **`			forum;
+ * `int`				nb_philo;
+ * `int`				time_to_die;
+ * `int`				time_to_eat;
+ * `int`				time_to_sleep;
+ * `int`				max_meal;
+ * `int`				start_time;
+*/
 typedef struct s_data
 {
-	t_params		*params;
-	//t_mutex		*mutex;
 	pthread_mutex_t	mutex;
 	t_philo			**forum;
+	int				nb_philo;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				max_meal;
+	int				start_time;
+	int				**forks;
 }					t_data;
 
-t_params	*philo_parsing(int ac, char const *av[]);
-// parsing.c
-
 int			gettimestamp(int start_time);
-// main.c
+int			ft_strcmp(const char *s1, const char *s2);
+long		ft_atol(const char *str);
+int			ft_isnum(const char *str);
+//utils.c
+
 
 void		*philo_routine(void *philo);
 // threads.c
@@ -109,8 +97,8 @@ void		*philo_routine(void *philo);
 int			error(char *error_msg);
 // error.c
 
-void		freetab(char **tab, int heap);
-void		freedata(t_data data);
+void		freentab(char **tab, int heap, int n);
+void		freedata(t_data *data);
 // free.c
 
 #endif
