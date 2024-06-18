@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 15:40:22 by mbecker           #+#    #+#              #
-#    Updated: 2024/06/14 16:49:23 by mbecker          ###   ########.fr        #
+#    Updated: 2024/06/18 15:13:02 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,12 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = 	main.c \
-		utils.c \
-		routine.c \
+		\
 		error.c \
-		free.c
+		forks.c \
+		free.c \
+		routine.c \
+		utils.c
 
 all: $(NAME)
 
