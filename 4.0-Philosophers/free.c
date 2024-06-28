@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:09:40 by mbecker           #+#    #+#             */
-/*   Updated: 2024/06/18 12:40:14 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/06/28 15:04:38 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,4 @@ void	freedata(t_data *data, int nb_philo)
 {
 	freentab((char **)data->philo_tab, TRUE, nb_philo);
 	freentab((char **)data->forks, TRUE, data->nb_philo);
-	freentab((char **)data->mutex, TRUE, data->nb_philo);
 }

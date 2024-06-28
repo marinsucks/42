@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:19:41 by mbecker           #+#    #+#             */
-/*   Updated: 2024/06/18 15:58:49 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/06/28 16:13:36 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,61 +31,64 @@
 # define FALSE			0
 # define INT_MAX		2147483647
 
-
-/*
+/* 
  * `pthread_t`			thread;
  * `int`				id;
- * `int`				died;
- * `int`				is_eating;
- * `int`				is_thinking;
- * `int *`				left_fork;
- * `int *`				right_fork;
  * `pthread_mutex_t *`	left_mutex;
  * `pthread_mutex_t *`	right_mutex;
+ * `int`				died;
  * `int`				last_meal;
- * `int`				max_meal;
+ * `int`				meals_eaten;
  * `t_data *`			data;
 */
 typedef struct s_philo
 {
 	pthread_t		thread;
 	int				id;
-	int				died;
-	int				is_eating;
-	int				is_thinking;
-	int				*left_fork;
-	int				*right_fork;
 	pthread_mutex_t	*left_mutex;
 	pthread_mutex_t	*right_mutex;
+	int				died;
 	int				last_meal;
-	int				max_meal;
+	int				meals_eaten;
 	struct s_data	*data;
 }					t_philo;
 
 /*
- * `t_philo **`			philo_tab;
- * `int **`				forks;
- * `pthread_mutex_t **`	mutex;
  * `int`				nb_philo;
  * `int`				time_to_die;
  * `int`				time_to_eat;
  * `int`				time_to_sleep;
  * `int`				max_meal;
+ * 
+ * `t_philo **`			philo_tab;
+ *
+ * `pthread_mutex_t **`	mutex;
+ * `pthread_mutex_t`	printf_mutex;
+ * `pthread_mutex_t`	check_mutex;
+ * 
  * `int`				start_time;
  * `int`				simulation_start;
+ * `int`				death;
+ * `int`				meals_left;
 */
 typedef struct s_data
 {
-	t_philo			**philo_tab;
-	int				**forks;
-	pthread_mutex_t	**mutex;
 	int				nb_philo;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				max_meal;
+
+	t_philo			**philo_tab;
+
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	printf_mutex;
+	pthread_mutex_t	check_mutex;
+
 	int				start_time;
 	int				simulation_start;
+	int				death;
+	int				all_full;
 }					t_data;
 
 int			error(char *error_msg);
@@ -105,6 +108,10 @@ int			dies(t_philo *philo);
 int			eats(t_philo *philo);
 void		*philo_routine(void *philo);
 // routine.c
+
+int			create_threads(t_data *data);
+void		join_threads(t_data *data);
+// threads.c
 
 int			gettimestamp(int start_time);
 int			ft_strcmp(const char *s1, const char *s2);

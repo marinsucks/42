@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 15:40:22 by mbecker           #+#    #+#              #
-#    Updated: 2024/06/18 15:13:02 by mbecker          ###   ########.fr        #
+#    Updated: 2024/06/28 16:16:45 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,16 +18,21 @@ CFLAGS = -Wall -Wextra -Werror -g
 SRC = 	main.c \
 		\
 		error.c \
-		forks.c \
 		free.c \
 		routine.c \
+		threads.c \
 		utils.c
 
 all: $(NAME)
 
 $(NAME):
-	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
-	@echo "$(LGREEN)./$(GREEN)$(NAME)$(LGREEN) ready.$(NC)"
+	@if [ ! -f philo ]; then \
+		$(CC) $(CFLAGS) $(SRC) -o $(NAME); \
+		echo "$(LGREEN)./$(GREEN)$(NAME)$(LGREEN) ready.$(NC)"; \
+	else \
+		echo "$(LGREEN)./$(GREEN)$(NAME)$(LGREEN) already compiled.$(NC)"; \
+	fi
+
 
 clean:
 	@echo "$(LRED)Removing objects and misc...$(NC)"
