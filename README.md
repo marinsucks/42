@@ -15,9 +15,14 @@ Hey there! I'm Marin. I just finished the 42 Piscine, and I'm super excited to k
 
 - 🚰 [**pipex**](./3.2-pipex/) - A program reproducing the pipe `|` behavior.
 
-- 🍽️ [**Philosophers**](./4.0-Philosophers/) - In progress! I'm handling threads routine: eat, sleep, think, die.
+- 🍽️ [**Philosophers**](./4.0-Philosophers/) - I handled threads routine: _take a fork_, _eat_, _sleep_, _think_, _die_ - with mutexes, of course.
 
 - 📟 [**Minishell**](https://github.com/42mates/minishell/) - A group project in which [@ku-alexej](https://github.com/ku-alexej) and I reproduced our own basic reproduction of bash.
+
+## C++ Projects
+
+- 🆙 [**C++ Modules**](./5.0-C++):
+	- [**Module 00**](./5.0-C++/Module_00/ex00/) - Introduction to C++.
 
 ## System Administration 
 
