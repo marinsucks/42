@@ -3,19 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
+#    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/01 14:09:50 by mbecker           #+#    #+#              #
-#    Updated: 2024/07/01 16:15:45 by mbecker          ###   ########.fr        #
+#    Updated: 2024/07/02 17:41:53 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = phonebook
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
-SRC = megaphone.cpp
+SRC = 	Contact.cpp \
+		#PhoneBook.cpp
 
 .PHONY : all clean fclean re libft
 

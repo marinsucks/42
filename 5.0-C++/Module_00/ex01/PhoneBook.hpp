@@ -1,4 +1,8 @@
-#include "main.h"
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+
+# include "main.h"
+# include "Contact.hpp"
 
 class PhoneBook {
 	private:
@@ -9,3 +13,5 @@ class PhoneBook {
 		void searchContact();
 		void exitPhoneBook(void);
 };
+
+#endif
