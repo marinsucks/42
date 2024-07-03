@@ -6,17 +6,18 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/01 14:09:50 by mbecker           #+#    #+#              #
-#    Updated: 2024/07/02 17:41:53 by mbecker          ###   ########.fr        #
+#    Updated: 2024/07/03 16:34:08 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = phonebook
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -g
 
-SRC = 	Contact.cpp \
-		#PhoneBook.cpp
+SRC = 	main.cpp \
+		Contact.cpp \
+		PhoneBook.cpp
 
 .PHONY : all clean fclean re libft
 
