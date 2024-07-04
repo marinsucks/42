@@ -8,9 +8,9 @@ class PhoneBook {
 	private:
 		Contact contacts[8];
 		int contacts_nb;
+		int index;
 	public:
 		PhoneBook(void);
-		~PhoneBook(void);
 		void addContact(void);
 		void searchContact(void);
 		void exitPhoneBook(void);
