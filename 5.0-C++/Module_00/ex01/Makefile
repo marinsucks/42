@@ -6,7 +6,7 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/01 14:09:50 by mbecker           #+#    #+#              #
-#    Updated: 2024/07/03 16:34:08 by mbecker          ###   ########.fr        #
+#    Updated: 2024/07/05 12:47:27 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ SRC = 	main.cpp \
 #all: $(NAME)
 
 #$(NAME):
-all:
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 	@echo "$(LGREEN)./$(GREEN)$(NAME)$(LGREEN) compiled.$(NC)"
 
