@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 11:37:36 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/04 17:19:36 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/07/05 12:11:33 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,58 @@
 
 PhoneBook::PhoneBook(void)
 {
-	this->contacts_nb = 0;
-	this->index = 0;
+	this->_contacts_nb = 0;
+	this->_index = 0;
+}
+
+std::string getContactInfo(std::string info)
+{
+	std::string buff;
+
+	while (buff.empty())
+	{
+		std::cout << CYAN << info << NC;
+		std::getline(std::cin, buff);
+		if (buff.empty())
+			std::cout << RED << "Please enter a valid input." << NC << std::endl;
+	}
+	return (buff);
 }
 
 void PhoneBook::addContact(void)
 {
-	std::string	buff;
+	std::string buff;
 
-	std::cout << "\033[1;36mFirst Name:\033[0m ";
-	std::getline(std::cin, buff);
-	this->contacts[index].setFirstName(buff);
-	std::cout << "\033[1;36mLast Name:\033[0m ";
-	std::getline(std::cin, buff);
-	this->contacts[index].setLastName(buff);
-	std::cout << "\033[1;36mNickname:\033[0m ";
-	std::getline(std::cin, buff);
-	this->contacts[index].setNickname(buff);
-	std::cout << "\033[1;36mPhone Number:\033[0m ";
-	std::getline(std::cin, buff);
-	this->contacts[index].setPhoneNumber(buff);
-	std::cout << "\033[1;36mYour Darkest Secret:\033[0m ";
-	std::getline(std::cin, buff);
-	this->contacts[index].setDarkestSecret(buff);
-	if (this->contacts_nb < 7)
-		this->contacts_nb++;
-	this->index = (this->index + 1) % 8;
-	std::cout << "\033[0;32mContact \033[1;32m";
-	std::cout << this->contacts[index].getFirstName() << " ";
-	std::cout << this->contacts[index].getLastName();
-	std::cout << "\033[0;32m has been successfully added to the phone book.\033[0m" << std::endl;
+	buff = getContactInfo("First Name: ");
+	this->contacts[_index].setFirstName(buff);
+	
+	buff = getContactInfo("Last Name: ");
+	this->contacts[_index].setLastName(buff);
+	
+	buff = getContactInfo("Nickname: ");
+	this->contacts[_index].setNickname(buff);
+	
+	buff = getContactInfo("Phone Number: ");
+	this->contacts[_index].setPhoneNumber(buff);
+	
+	buff = getContactInfo("Your Darkest Secret: ");
+	this->contacts[_index].setDarkestSecret(buff);
+
+	if (this->_contacts_nb < 7)
+		this->_contacts_nb++;
+	std::cout << LGREEN << "Contact " << GREEN;
+	std::cout << this->contacts[_index].getFirstName() << " ";
+	std::cout << this->contacts[_index].getLastName() << " ";
+	std::cout << LGREEN <<"has been successfully added to the phone book.";
+	std::cout << NC << std::endl;
+	this->_index = (this->_index + 1) % 8;
 }
 
 void displayContacts(Contact *contacts)
 {
-	std::string	blue = "\033[1;36m";
-	std::string	nc = "\033[0m";
 	std::string pipe = "\033[1;36m|\033[0m";
 
-	std::cout << blue << "     index| firstname|  lastname|  nickname" << nc << std::endl;
+	std::cout << CYAN << "     index| firstname|  lastname|  nickname" << NC << std::endl;
 	for (int i = 0; i < 8; i++)
 	{
 		std::cout << std::setw(10) << i << pipe;
@@ -73,44 +86,37 @@ void displayContacts(Contact *contacts)
 
 void PhoneBook::searchContact(void)
 {
-	std::string	blue = "\033[1;36m";
-	std::string	red = "\033[1;31m";
-	std::string	nc = "\033[0m";
 	std::string input;
 	
 	displayContacts(this->contacts);
 
-	std::cout << blue << "Contact id: " << nc;
+	std::cout << CYAN << "Contact id: " << NC;
 	std::getline(std::cin, input);
 	int i = input[0] - '0';
-	if (input.length() != 1 || i < 0 || i >= this->contacts_nb) 
+	if (input.length() != 1 || i < 0 || i >= this->_contacts_nb) 
 	{
-		std::cout << red << "Invalid index." << nc << std::endl;
+		std::cout << RED << "Invalid index." << NC << std::endl;
 		return;
 	}
 	
 	// Clear the screen and display the contact the contact
+	std::cout << "\033[2K";
 	for (int x = 0; x < 10; x++)
 		std::cout << "\033[A\033[2K";
-	std::cout << blue << "First Name:     " << nc << this->contacts[i].getFirstName() << std::endl;
-	std::cout << blue << "Last Name:      " << nc << this->contacts[i].getLastName() << std::endl;
-	std::cout << blue << "Nickname:       " << nc << this->contacts[i].getNickname() << std::endl;
-	std::cout << blue << "Phone Number:   " << nc << this->contacts[i].getPhoneNumber() << std::endl;
-	std::cout << blue << "Darkest Secret: " << nc << this->contacts[i].getDarkestSecret() << std::endl;
+	std::cout << CYAN << "First Name:     " << NC << this->contacts[i].getFirstName() << std::endl;
+	std::cout << CYAN << "Last Name:      " << NC << this->contacts[i].getLastName() << std::endl;
+	std::cout << CYAN << "Nickname:       " << NC << this->contacts[i].getNickname() << std::endl;
+	std::cout << CYAN << "Phone Number:   " << NC << this->contacts[i].getPhoneNumber() << std::endl;
+	std::cout << CYAN << "Darkest Secret: " << NC << this->contacts[i].getDarkestSecret() << std::endl;
 }
 
 void PhoneBook::exitPhoneBook(void)
 {
 	std::cout << std::endl;
-	std::cout << "\033[1;35mB";
-	std::cout << "\033[1;36mY";
-	std::cout << "\033[1;35mE ";
-	std::cout << "\033[1;36mB";
-	std::cout << "\033[1;35mY";
-	std::cout << "\033[1;36mE ";
-	std::cout << "\033[1;35m!";
-	std::cout << "\033[1;36m!";
-	std::cout << "\033[1;35m!";
+
+	std::cout << MAGENTA << "B" << CYAN << "Y" << MAGENTA << "E " << " ";
+	std::cout << CYAN << "B" << MAGENTA << "Y" << CYAN << "E " << " ";
+	std::cout << MAGENTA << "!" << CYAN << "!" << MAGENTA << "!" << std::endl;
 	std::cout << "\033[0m" << std::endl;
 }
 

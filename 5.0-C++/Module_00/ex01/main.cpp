@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 11:37:28 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/03 18:00:03 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/07/05 12:07:50 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int main(void)
 	while (1)
 	{
 		std::cin.clear();
-		std::cout << "\033[1;35mPlease enter a command:\033[0m ";
+		std::cout << MAGENTA << "Please enter a command: " << NC;
 		std::getline(std::cin, command);
 
 		if (std::cin.eof())
@@ -59,8 +59,7 @@ int main(void)
 			break;
 		}
 		else
-			std::cout << "\033[1;31mInvalid command.\033[0;90m [ADD/SEARCH/EXIT]\033[0m" << std::endl;
-		std::cout << std::endl;
+			std::cout << RED <<"Invalid command." << GREY << " [ADD/SEARCH/EXIT]" << NC << std::endl;
 	}
 	return (0);
 }
