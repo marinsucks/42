@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 11:37:36 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/05 12:11:33 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/07/05 12:34:59 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void PhoneBook::addContact(void)
 	
 	buff = getContactInfo("Last Name: ");
 	this->contacts[_index].setLastName(buff);
-	
+
 	buff = getContactInfo("Nickname: ");
 	this->contacts[_index].setNickname(buff);
 	
@@ -51,13 +51,15 @@ void PhoneBook::addContact(void)
 	buff = getContactInfo("Your Darkest Secret: ");
 	this->contacts[_index].setDarkestSecret(buff);
 
-	if (this->_contacts_nb < 7)
+	if (this->_contacts_nb < 8)
 		this->_contacts_nb++;
+	
 	std::cout << LGREEN << "Contact " << GREEN;
 	std::cout << this->contacts[_index].getFirstName() << " ";
 	std::cout << this->contacts[_index].getLastName() << " ";
 	std::cout << LGREEN <<"has been successfully added to the phone book.";
 	std::cout << NC << std::endl;
+
 	this->_index = (this->_index + 1) % 8;
 }
 
@@ -93,14 +95,13 @@ void PhoneBook::searchContact(void)
 	std::cout << CYAN << "Contact id: " << NC;
 	std::getline(std::cin, input);
 	int i = input[0] - '0';
-	if (input.length() != 1 || i < 0 || i >= this->_contacts_nb) 
-	{
+	if (input.length() != 1 || i < 0  || i >= this->_contacts_nb) 
+		{
 		std::cout << RED << "Invalid index." << NC << std::endl;
-		return;
+		return; 
 	}
 	
 	// Clear the screen and display the contact the contact
-	std::cout << "\033[2K";
 	for (int x = 0; x < 10; x++)
 		std::cout << "\033[A\033[2K";
 	std::cout << CYAN << "First Name:     " << NC << this->contacts[i].getFirstName() << std::endl;
@@ -113,10 +114,9 @@ void PhoneBook::searchContact(void)
 void PhoneBook::exitPhoneBook(void)
 {
 	std::cout << std::endl;
-
 	std::cout << MAGENTA << "B" << CYAN << "Y" << MAGENTA << "E " << " ";
 	std::cout << CYAN << "B" << MAGENTA << "Y" << CYAN << "E " << " ";
 	std::cout << MAGENTA << "!" << CYAN << "!" << MAGENTA << "!" << std::endl;
-	std::cout << "\033[0m" << std::endl;
+	std::cout << NC << std::endl;
 }
 
