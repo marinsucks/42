@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:18:04 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/08 12:45:18 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/07/08 13:22:34 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ class Zombie
 		std::string _name;
 	public:
 		Zombie(std::string name);
-		~Zombie();
+		~Zombie(void);
 		void	announce(void);
-		void	setName(std::string name);
 };
 
 #endif

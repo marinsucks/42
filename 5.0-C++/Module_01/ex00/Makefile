@@ -6,7 +6,7 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 12:17:46 by mbecker           #+#    #+#              #
-#    Updated: 2024/07/08 12:58:44 by mbecker          ###   ########.fr        #
+#    Updated: 2024/07/08 13:23:21 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,6 @@ fclean: clean
 	@echo "$(RED)FULL CLEAN FINISHED$(NC)"
 
 re: fclean all
-
-libft:
-	@if [ ! -f libft/libft.a ]; then make -C ./libft all; fi
-
 
 RED =\033[1;31m
 LRED =\033[0;31m
