@@ -3,19 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
+#    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 12:17:46 by mbecker           #+#    #+#              #
-#    Updated: 2024/07/08 14:02:51 by mbecker          ###   ########.fr        #
+#    Updated: 2024/07/09 11:12:02 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = brain
+NAME = unnecessary_violence
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
-SRC =	main.cpp
+SRC =	main.cpp \
+		Weapon.cpp \
+		HumanA.cpp \
+		HumanB.cpp
 
 .PHONY : all clean fclean re libft
 

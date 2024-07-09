@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:17:38 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/08 14:34:12 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/07/09 11:02:14 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
