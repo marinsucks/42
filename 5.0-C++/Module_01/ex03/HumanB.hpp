@@ -6,9 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 14:32:46 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/09 10:55:52 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/07/09 15:29:32 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
+#ifndef	HUMANB_HPP
+# define HUMANB_HPP
 
 #include "Weapon.hpp"
 
@@ -22,3 +26,5 @@ class HumanB
 		void setWeapon(Weapon &weapon);
 		void attack();
 };
+
+#endif

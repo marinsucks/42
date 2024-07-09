@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 14:32:46 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/09 15:27:09 by mbecker          ###   ########.fr       */
+/*   Created: 2024/07/08 12:17:38 by mbecker           #+#    #+#             */
+/*   Updated: 2024/07/09 16:13:57 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "Harl.hpp"
 
-#pragma once
-#ifndef	HUMANA_HPP
-# define HUMANA_HPP
-
-class HumanA
+int main(int argc, char **argv)
 {
-	private:
-		std::string _name;
-		Weapon &_weapon;
-	public:
-		HumanA(std::string name, Weapon &weapon);
-		void attack();
-};
+	Harl harl;
 
-#endif
+	if (argc < 2)
+	{
+		std::cout << "Usage: " << argv[0] << " [debug/info/warning/error]" << std::endl;
+		return 1;
+	}
+	for (int i = 1; argv[i]; i++)
+		harl.complain(argv[i]);
+	return 0;
+}
