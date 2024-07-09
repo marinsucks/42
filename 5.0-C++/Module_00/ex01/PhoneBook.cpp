@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 11:37:36 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/05 12:34:59 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/07/05 16:26:44 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,12 @@ void PhoneBook::searchContact(void)
 	std::getline(std::cin, input);
 	int i = input[0] - '0';
 	if (input.length() != 1 || i < 0  || i >= this->_contacts_nb) 
-		{
+	{
 		std::cout << RED << "Invalid index." << NC << std::endl;
 		return; 
 	}
 	
-	// Clear the screen and display the contact the contact
+	// Clear the screen and display the contact
 	for (int x = 0; x < 10; x++)
 		std::cout << "\033[A\033[2K";
 	std::cout << CYAN << "First Name:     " << NC << this->contacts[i].getFirstName() << std::endl;
@@ -114,8 +114,8 @@ void PhoneBook::searchContact(void)
 void PhoneBook::exitPhoneBook(void)
 {
 	std::cout << std::endl;
-	std::cout << MAGENTA << "B" << CYAN << "Y" << MAGENTA << "E " << " ";
-	std::cout << CYAN << "B" << MAGENTA << "Y" << CYAN << "E " << " ";
+	std::cout << MAGENTA << "B" << CYAN << "Y" << MAGENTA << "E" << " ";
+	std::cout << CYAN << "B" << MAGENTA << "Y" << CYAN << "E" << " ";
 	std::cout << MAGENTA << "!" << CYAN << "!" << MAGENTA << "!" << std::endl;
 	std::cout << NC << std::endl;
 }
