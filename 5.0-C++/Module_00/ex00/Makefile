@@ -6,16 +6,16 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/01 14:09:50 by mbecker           #+#    #+#              #
-#    Updated: 2024/07/05 12:48:02 by mbecker          ###   ########.fr        #
+#    Updated: 2024/07/05 17:08:40 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = megaphone
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
-SRC = phonebook.cpp
+SRC = megaphone.cpp
 
 .PHONY : all clean fclean re libft
 
@@ -34,9 +34,6 @@ fclean: clean
 	@echo "$(RED)FULL CLEAN FINISHED$(NC)"
 
 re: fclean all
-
-libft:
-	@if [ ! -f libft/libft.a ]; then make -C ./libft all; fi
 
 
 RED =\033[1;31m

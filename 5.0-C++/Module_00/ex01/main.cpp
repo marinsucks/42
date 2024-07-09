@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 11:37:28 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/05 12:07:50 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/07/05 16:18:19 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,10 @@ int main(void)
 	displayMenu();
 	while (1)
 	{
-		std::cin.clear();
 		std::cout << MAGENTA << "Please enter a command: " << NC;
 		std::getline(std::cin, command);
-
 		if (std::cin.eof())
 			return (std::cout << std::endl, 0);
-		
 		if (command == "ADD")
 			pb.addContact();
 		else if (command == "SEARCH")
