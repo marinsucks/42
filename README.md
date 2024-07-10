@@ -9,7 +9,7 @@ Hey there! I'm Marin, a student at [42 Paris](https://github.com/42Paris) since 
 	- [**ft_printf**](./C.2-printf/) - I created my own implementation of printf.
 	- [**get_next_line**](./C.3-get_next_line/) - Unlocked the magic of reading files line by line!
 
-- 🕹️ [**so_long**](./C.4-so_long/) - Ever played Pokemon HeartGold? I designed and coded my own desktop minigame using 42's [`minilibx`](https://github.com/42Paris/minilibx-linux), a X11-based library.
+- 🕹️ [**so_long**](./C.4-so_long/) - Ever played Pokemon HeartGold? I designed and coded my own desktop minigame using 42's [minilibx](https://github.com/42Paris/minilibx-linux), a X11-based library.
 
 - ♻️ [**push_swap**](./C.5-push_swap/) - I implemented a sorting algorithm following restricted operations.
 
