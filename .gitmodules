@@ -1,4 +1,3 @@
 [submodule "C.8-minishell"]
 	path = C.8-minishell
-	url = git@github.com:42mates/minishell.git
-	branch = main
+	url = https://github.com/42mates/minishell/
