@@ -1,4 +1,4 @@
-[submodule "4.1-minishell"]
-	path = 4.1-minishell
+[submodule "C.8-minishell"]
+	path = C.8-minishell
 	url = git@github.com:42mates/minishell.git
 	branch = main
