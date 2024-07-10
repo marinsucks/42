@@ -30,19 +30,19 @@ The game is controlled using the arrow keys or `W`, `A`, `S`, `D` keys. The goal
 ## Try Me !
 
 First, download the source code, either by cloning the entire repository:
-```
+```bash
 git clone git@github.com:marinsucks2.git
 ```
 
 or by cloning this subdirectory only:
-```
+```bash
 mkdir 42-so_long && cd 42-so_long
 
 # Initialize Git and add this remote repository.
 git init && git remote add -f origin git@github.com:marinsucks/42.git
 
 # Configure Git to only fetch so_long from the remote repository.
-git config core.sparseCheckout true && echo "3.1-so_long" >> .git/info/sparse-checkout
+git config core.sparseCheckout true && echo "C.4-so_long" >> .git/info/sparse-checkout
 
 git pull origin master
 ```
@@ -60,7 +60,7 @@ For example: `sudo apt-get install gcc make xorg libxext-dev libbsd-dev (Debian/
 
 
 Create the program and run the game with any valid .ber map:
-```
+```bash
 make all && ./so_long maps/ex3.ber
 ```
 
