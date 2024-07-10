@@ -21,8 +21,8 @@ Hey there! I'm Marin, a student at [42 Paris](https://github.com/42Paris) since 
 
 ## C++ Projects
 
-- 🆙 [**C++ Modules**](./C++.0-Modules/):
-	- [**Module 00**](./C++.0-Modules/Module_00/ex00/) - Introduction to classes.
+- 🆙 [**Cpp Modules**](./Cpp.0-Modules/):
+	- [**Module 00**](./Cpp.0-Modules/Module_00/ex00/) - Introduction to classes.
 
 ## IT Ops Projects
 
