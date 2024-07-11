@@ -17,7 +17,7 @@ Hey there! I'm Marin, a student at [42 Paris](https://github.com/42Paris) since 
 
 - 🍽️ [**Philosophers**](./C.8-Philosophers/) - I handled threads routine: _take a fork_, _eat_, _sleep_, _think_, _die_ - with mutexes, of course !
 
-- 📟 [**Minishell**](https://github.com/42mates/minishell/) - A group project in which [@ku-alexej](https://github.com/ku-alexej) and I reproduced our own basic reproduction of `bash`.
+- 🐚 [**Minishell**](https://github.com/42mates/minishell/) - A group project in which [@ku-alexej](https://github.com/ku-alexej) and I reproduced our own basic reproduction of `bash`.
 
 ## C++ Projects
 
