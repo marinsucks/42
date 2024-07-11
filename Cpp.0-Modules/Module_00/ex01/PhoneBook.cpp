@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 11:37:36 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/05 16:26:44 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/07/11 13:20:10 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ std::string getContactInfo(std::string info)
 	{
 		std::cout << CYAN << info << NC;
 		std::getline(std::cin, buff);
-		if (buff.empty())
+		if (buff.empty() || !std::isprint(buff[0]))
 			std::cout << RED << "Please enter a valid input." << NC << std::endl;
 	}
 	return (buff);
