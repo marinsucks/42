@@ -1,3 +1,6 @@
 [submodule "C.8-minishell"]
 	path = C.8-minishell
 	url = https://github.com/42mates/minishell/
+[submodule "C.9-cub3d"]
+	path = C.9-cub3d
+	url = https://github.com/42mates/cub3d.git
