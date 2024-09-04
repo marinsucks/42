@@ -4,6 +4,8 @@ Hey there! I'm Marin, a student at [42 Paris](https://github.com/42Paris) since 
 
 ## C Projects
 
+- 🎮 [**cub3D**](https://github.com/42mates/cub3D) - In progress! A group project in which [@ku-alexej](https://github.com/ku-alexej) and created a 3D game using raycasting techniques, inspired by the classic game Wolfenstein 3D.
+
 - 🐚 [**Minishell**](https://github.com/42mates/minishell/) - A group project in which [@ku-alexej](https://github.com/ku-alexej) and I reproduced our own basic reproduction of `bash`.
 
 - 🍽️ [**Philosophers**](./C.8-Philosophers/) - I handled threads routine: _take a fork_, _eat_, _sleep_, _think_, _die_ - with mutexes, of course !
@@ -25,11 +27,11 @@ Hey there! I'm Marin, a student at [42 Paris](https://github.com/42Paris) since 
 - 🆙 [**Cpp Modules**](./Cpp.0-Modules/):
 	- [**Module 00**](./Cpp.0-Modules/Module_00/ex00/) - Introduction to classes.
 
-## IT Ops Projects
+## IT Projects
 
-- 🌱 [**Born2beroot**](./Ops.0-Born2beroot/) - I set up a secure Linux server environment following strict guidelines.
+- 🌱 [**Born2beroot**](./IT.0-Born2beroot/) - I set up a secure Linux server environment following strict guidelines.
 
-- 🛜 [**NetPractice**](./Ops.0-Born2beroot/) - In progress! I'm setting a small-scale network using IPs and masks.  
+- 🛜 [**NetPractice**](./IT.0-Born2beroot/) - In progress! I'm setting a small-scale network using IPs and masks.  
 
 ## Contact
 
