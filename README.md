@@ -4,7 +4,7 @@ Hey there! I'm Marin, a student at [42 Paris](https://github.com/42Paris) since 
 
 ## C Projects
 
-- 🎮 [**cub3D**](https://github.com/42mates/cub3D) - In progress! A group project in which [@ku-alexej](https://github.com/ku-alexej) and created a 3D game using raycasting techniques, inspired by the classic game Wolfenstein 3D.
+- 🎮 [**cub3D**](https://github.com/42mates/cub3D) - In progress! A group project in which [@ku-alexej](https://github.com/ku-alexej) and I created a 3D game using raycasting techniques, inspired by the classic game Wolfenstein 3D.
 
 - 🐚 [**Minishell**](https://github.com/42mates/minishell/) - A group project in which [@ku-alexej](https://github.com/ku-alexej) and I reproduced our own basic reproduction of `bash`.
 
