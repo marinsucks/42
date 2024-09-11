@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:17:38 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/09 14:21:27 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/11 17:06:35 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	file_replace(std::string str, char *argv[])
 	std::ofstream outfile((std::string(argv[1]) + ".replace").c_str());
 	if (!outfile.is_open()) 
 	{
-		std::cerr << "Failed to open the output file." << std::endl;
+		std::cerr << "Failed to create " << argv[1] << ".replace" << std::endl;
 		return ;
 	}
 	for (size_t i = 0; i < str.size(); i++)
@@ -44,14 +44,14 @@ int main(int argc, char *argv[])
 
 	if (argc != 4)
 	{
-		std::cerr << "Usage: " << argv[0] << " <filename> <arg1> <arg2>" << std::endl;
+		std::cerr << "Usage: " << argv[0] << " <filename> <s1> <s2>" << std::endl;
 		return 1;
 	}
 
 	std::ifstream infile(argv[1]);
 	if (!infile.is_open())
 	{
-		std::cerr << argv[1] << ": No such file or directory" << std::endl;
+		std::cerr << argv[1] << ": Failed to open file" << std::endl;
 		return 1;
 	}
 
