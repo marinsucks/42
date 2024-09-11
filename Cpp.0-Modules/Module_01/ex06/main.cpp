@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:17:38 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/09 16:13:57 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/11 16:49:46 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 
 	if (argc < 2)
 	{
-		std::cout << "Usage: " << argv[0] << " [debug/info/warning/error]" << std::endl;
+		std::cout << "Usage: " << argv[0] << " [DEBUG/INFO/WARNING/ERROR]" << std::endl;
 		return 1;
 	}
 	for (int i = 1; argv[i]; i++)

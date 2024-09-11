@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 14:39:28 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/09 16:23:41 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/11 16:59:14 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Harl::Harl()
 {
 	_levels[0] = "DEBUG";
 	_levels[1] = "INFO";
-	_levels[2] = "WANING";
+	_levels[2] = "WARNING";
 	_levels[3] = "ERROR";
 	_funcs[0] = &Harl::debug;
 	_funcs[1] = &Harl::info;
@@ -49,7 +49,7 @@ void	Harl::warning()
 void	Harl::error()
 {
 	std::cout << RED << "[ERROR]\t\t" ;
-	std::cout << LRED << "This is too much I'm calling Xavier Niel..." << std::endl;
+	std::cout << LRED << "I'm calling Xavier." << std::endl;
 	std::cout << NC;
 }
 
@@ -76,5 +76,5 @@ void Harl::complain(std::string level)
 			this->error();
 	}
 	if (i == 4)
-		std::cout << CYAN << "[Dude's not paying for his school and he still finds ways to complain...]" << NC << std::endl;
+		std::cout << CYAN << "[Finally, some silence...]" << NC << std::endl;
 }

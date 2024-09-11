@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 14:39:28 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/09 16:23:49 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/11 16:59:19 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ void Harl::complain(std::string level)
 			return ;
 		}
 	}	
-	std::cout << CYAN << "[Dude's not paying for his school and he still finds ways to complain...]" << NC << std::endl;
+	std::cout << CYAN << "[Finally, some silence...]" << NC << std::endl;
 }
