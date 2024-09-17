@@ -13,18 +13,31 @@ NC='\033[0m'
 SWAG='🫠'
 
 function showStatus() {
-	staged_files=$(git status -s | grep -E '^[AM]' | awk '{print $2}' | tr '\n' ' ')
-	untracked_files=$(git status -s | grep -E '^\?\?|^ M' | awk '{print $2}' | tr '\n' ' ')
+	staged=$(git status -s | grep -E '^[AM]' | awk '{print $2}' | tr '\n' ' ')
+	staged_del=$(git status -s | grep -E '^D' | awk '{print $2}' | tr '\n' ' ')
+	untracked=$(git status -s | grep -E '^\?\?|^ M' | awk '{print $2}' | tr '\n' ' ')
+	untracked_del=$(git status -s | grep -E '^ D' | awk '{print $2}' | tr '\n' ' ')
+	other=$(git status -s | grep -E '^\?' | awk '{print $2}' | tr '\n' ' ')
+	
 	echo -e "\n${BOLD}SUMMARY:${NC}"
-	if [ -z "$staged_files" ]; then
+	if [ -z "$staged" ] && [ -z "$staged_del" ]; then
 		echo -e "${GREEN}Tracked files:\t ${LGREY}none${NC}"
-		echo -e "${LGREEN}Untracked files: ${NC}$untracked_files"
-	elif [ -z "$untracked_files" ]; then
-		echo -e "${GREEN}Tracked files:\t ${NC}$staged_files"
+	else
+		echo -en "${GREEN}Tracked files:\t ${NC}$staged"
+		if [ "$staged_del" ]; then
+			echo -en "${LRED}(deleted: $staged_del)${NC}"
+		fi
+		echo ""
+	fi
+	if [ -z "$untracked" ]; then
 		echo -e "${LGREEN}Untracked files: ${LGREY}none${NC}"
 	else
-		echo -e "${GREEN}Tracked files:\t ${NC}$staged_files"
-		echo -e "${LGREEN}Untracked files: ${NC}$untracked_files"
+		echo -e "${LGREEN}Untracked files: ${NC}$untracked ${LRED}(deleted: $untracked_del)${NC}"
+	fi
+	if [ -z "$other" ]; then
+		echo -e "${YELLOW}Other files:\t ${LGREY}none${NC}"
+	else
+		echo -e "${YELLOW}Other files:\t ${NC}$other${NC}"
 	fi
 	echo -e "${GREEN}Commit message:\t${NC} $commit"
 }
@@ -71,25 +84,6 @@ function quickMode() {
 	handleAction
 }
 
-#function normalMode() {
-#	# welcome to lightgit
-#	echo -e "\nPlease enter the files or directories to add separated by a space, or '.' to add all files."
-#	read -e -p $'\e[0;32mFiles to add: \e[0m' files 
-#	#same as above but with terminal completion
-
-#    echo -e "\n${LGREEN}Adding ${#files[@]} files to staging area:${NC}"
-#    for file in "${files[@]}"; do
-#        if git add "$file" &> /dev/null; then
-#			git add "$file"
-#        	echo -e "'$file' added$"
-#		else
-#			echo -e "${RED}'$file' ${LRED}did not match any files${NC}"
-#		fi
-#    done
-#	showStatus
-#	handleAction
-#}
-
 setlgit() {
     echo -e "${LGREEN}Setting up 'lgit' alias...${NC}"
     if [ "$(echo $SHELL)" = "/bin/bash" ]; then
@@ -117,7 +111,8 @@ setlgit() {
 
 help() {
 	echo -e "${BOLD}┌─────────────────────────────────────────────────────────────┐${NC}"
-	echo -e "${BOLD}│ LIGHTGIT.SH - a single command for git add, commit and push │${NC}"
+	echo -e "${BOLD}
+	│ LIGHTGIT.SH - a quick command for git add, commit and push  │${NC}"
 	echo -e "${BOLD}└─────────────────────────────────────────────────────────────┘${NC}\n"
 	echo -e "${BOLD}LGIT COMMAND SETUP:\t${NC}./lightgit.sh setlgit  ${LGREY}-> creates the alias 'lgit' for './lightgit'${NC}\n"
     echo -e "${BOLD}MODES:\t\t\t${NC}lgit n ${LGREY}-> normal mode, shows processes in detail.${NC}"
@@ -134,12 +129,7 @@ elif [ "$1" == "setlgit" ]; then
 	setlgit
 elif [ "$1" == "help" ] || [ "$1" == "h" ] || [ "$1" == "man" ]; then
 	help
-elif [ "$1" == "n" ]; then
-	normalMode
-elif [ "$1" == "q" ]; then
-	quickMode
 else
 	echo -e "${LRED}Invalid mode argument."
 	exit 1
 fi
-
