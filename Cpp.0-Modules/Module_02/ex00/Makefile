@@ -1,13 +1,29 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/19 11:08:04 by mbecker           #+#    #+#              #
+#    Updated: 2024/09/19 11:13:35 by mbecker          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = fpi
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 all: $(NAME)
 
 $(NAME):
-	@c++ $(CFLAGS) -o $(NAME) main.cpp Fixed.cpp
-	@echo "$(LGREEN)./$(GREEN)$(NAME)$(LGREEN) created.$(NC)"
+	@$(CC) $(CFLAGS) -o $(NAME) main.cpp Fixed.cpp
+	@if [ -f $(NAME) ] ; then \
+		echo "$(LGREEN)./$(GREEN)$(NAME)$(LGREEN) created.$(NC)" ; \
+	else \
+		echo "$(LRED)./$(RED)$(NAME)$(LRED) failed to compile.$(NC)" ; \
+	fi 
 
 clean:
 	@echo "$(LRED)Removing objects and misc...$(NC)"

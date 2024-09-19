@@ -6,11 +6,13 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 17:43:38 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/12 15:10:31 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/17 11:53:23 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int Fixed::_fractionalBits = 8;
 
 Fixed::Fixed()
 {
