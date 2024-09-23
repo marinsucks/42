@@ -6,7 +6,7 @@
 /*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 17:43:38 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/19 11:25:43 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/23 12:36:04 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,17 @@
 
 const int Fixed::_fractionalBits = 8;
 
-static	float power(float base, int exp)
-{
-	float	result;
-
-	if (!exp)
-		return (1);
-	if (exp < 0)
-	{
-		base = 1 / base;
-		exp = -exp;
-	}
-	result = base;
-	while (--exp)
-		result *= base;
-	return (result);
-}
-
 Fixed::Fixed(): _val(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(int value): _val(value * power(2, this->_fractionalBits))
+Fixed::Fixed(int arg): _val(arg * (1 << this->_fractionalBits))
 {
 	std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(float value): _val(value * power(2, this->_fractionalBits))
+Fixed::Fixed(float arg): _val(roundf(arg * (1 << this->_fractionalBits)))
 {
 	std::cout << "Float constructor called" << std::endl;
 }
@@ -67,22 +50,12 @@ Fixed::~Fixed()
 
 float	Fixed::toFloat(void) const
 {
-	std::cout << "toFloat: ";
-	std::cout << "this->val = " << this->_val << "; ";
-	std::cout << "power = " << power(2, -this->_fractionalBits);
-	std::cout << std::endl << std::endl;
-
-	return (this->_val * power(2, -this->_fractionalBits));
+	return ((float)this->_val / (float)(1 << this->_fractionalBits));
 }
 
 int	Fixed::toInt(void) const
 {
-	std::cout << "toInt: ";
-	std::cout << "this->val = " << this->_val << "; ";
-	std::cout << "power = " << power(2, -this->_fractionalBits);
-	std::cout << std::endl << std::endl;
-
-	return (this->_val * power(2, -this->_fractionalBits));
+	return ((int)(this->_val >> this->_fractionalBits));
 }
 
 std::ostream	&operator<<( std::ostream& outstr, Fixed const &num)

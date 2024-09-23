@@ -6,11 +6,11 @@
 #    By: mbecker <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:08:04 by mbecker           #+#    #+#              #
-#    Updated: 2024/09/19 11:13:35 by mbecker          ###   ########.fr        #
+#    Updated: 2024/09/19 11:37:09 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fpi
+NAME = ex00
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
