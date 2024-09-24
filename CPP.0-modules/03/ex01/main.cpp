@@ -3,50 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:36:26 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/23 16:40:30 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/24 14:24:12 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main(void)
 {
-	ClapTrap one("♡");
-	ClapTrap two("♧");
-
-	std::cout << std::endl;
-	
-	one.attack("♧");
-	one.takeDamage(9);
-	one.beRepaired(3);
-	one.takeDamage(15);
-	one.beRepaired(3);
-
-	std::cout << std::endl;
-
-	two.attack("♡");
-	two.takeDamage(0);
-	two.beRepaired(3);
+	ClapTrap heart("♡");
+	ClapTrap club("♧");
 	
 	std::cout << std::endl;
 
-	ClapTrap three("♢");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.beRepaired(0);
-	three.attack("♧");
-	three.beRepaired(0);
-	three.attack("♧");
+	heart.attack("♧");
+	club.takeDamage(0);
+	club.attack("♡");
+	heart.takeDamage(0);
+	club.beRepaired(3);
+
+	std::cout << std::endl;
+
+	ScavTrap spike("♤");
+	ScavTrap diamond("♢");
+
+	std::cout << std::endl;
+
+	spike.attack("♢");
+	diamond.takeDamage(20);
+	diamond.attack("♤");
+	spike.takeDamage(20);
+
+	spike.guardGate();
+	diamond.guardGate();
+	spike.guardGate();
+
+
+	std::cout << std::endl;
+
 	
 	return 0;
 }
