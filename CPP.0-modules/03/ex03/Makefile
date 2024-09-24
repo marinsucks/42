@@ -6,11 +6,11 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 14:35:23 by mbecker           #+#    #+#              #
-#    Updated: 2024/09/24 14:39:24 by mbecker          ###   ########.fr        #
+#    Updated: 2024/09/24 16:05:48 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex02
+NAME = ex03
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 all: $(NAME)
 
 $(NAME):
-	@$(CC) $(CFLAGS) ClapTrap.cpp ScavTrap.cpp FragTrap.cpp main.cpp -o $(NAME)
+	@$(CC) $(CFLAGS) ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp main.cpp -o $(NAME)
 	@if [ -f $(NAME) ] ; then \
 		echo "$(LGREEN)./$(GREEN)$(NAME)$(LGREEN) created.$(NC)" ; \
 	else \

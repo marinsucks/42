@@ -6,13 +6,14 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:36:26 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/24 15:00:43 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/24 16:54:42 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
@@ -62,7 +63,7 @@ int main(void)
 
 	std::cout << std::endl;
 
-	FragTrap test("test");
+	DiamondTrap test("test");
 
 	std::cout << std::endl;
 
@@ -76,6 +77,9 @@ int main(void)
 	}
 	test.attack("target");
 
+	test.whoAmI();
+	test.takeDamage(500);
+	test.whoAmI();
 	
 	std::cout << std::endl;
 

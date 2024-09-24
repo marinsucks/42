@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:33:25 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/24 14:42:55 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/24 16:12:21 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	this->_attack_damage = 30;
 }
 
-FragTrap::FragTrap(const FragTrap& other)
+FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other)
 {
 	std::cout << "FragTrap " << "Copy constructor called" << std::endl;
 

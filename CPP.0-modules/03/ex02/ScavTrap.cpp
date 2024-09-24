@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:33:25 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/24 14:15:15 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/24 16:12:29 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->_guarding_gate = false;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& other)
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
 	std::cout << "ScavTrap " << "Copy constructor called" << std::endl;
 
