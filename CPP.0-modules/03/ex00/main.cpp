@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:36:26 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/23 16:40:30 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/24 14:44:03 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,20 @@ int main(void)
 	
 	std::cout << std::endl;
 
-	ClapTrap three("♢");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.attack("♧");
-	three.beRepaired(0);
-	three.attack("♧");
-	three.beRepaired(0);
-	three.attack("♧");
+	ClapTrap test("♢");
+	test.attack("♧");
+	test.attack("♧");
+	test.attack("♧");
+	test.attack("♧");
+	test.attack("♧");
+	test.attack("♧");
+	test.attack("♧");
+	test.attack("♧");
+	test.attack("♧");
+	test.beRepaired(0);
+	test.attack("♧");
+	test.beRepaired(0);
+	test.attack("♧");
 	
 	return 0;
 }
