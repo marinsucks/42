@@ -1,44 +1,17 @@
 # 42 C++ Modules
 
+The CPP modules are a series of projects that cover various topics in C++ programming. Each module focuses on a specific aspect of C++ and provides hands-on exercises to practice and reinforce your understanding of the language.
 
-## Module 00: The Basics
-
-1. [**megaphone**](./Module_00/ex00/): how to __output__ strings to stdin in C++ using `cout`.
-2. [**phonebook**](./Module_00/ex01/): discovering __classes__ through the making of a basic contact application.
-3. [**DreamJob**](./Module_00/ex02/): rewriting a __missing class implementation file__ with its declaration, tests and output as only resources.
-
-## Module 01: Memory Allocation and Pointers
-
- This module is designed to help you understand the memory allocation, reference, pointers to members and the usage of the switch in CPP. 
-
-## Module 02: Ad-hoc Polymorphism and Canonical Classes
-
- This module is designed to help you understand Ad-hoc polymorphism, overloads and orthodox canonical classes in CPP. 
-
-## Module 03: Inheritance
-
- This module is designed to help you understand Inheritance in CPP. 
-
-## Module 04: Subtype Polymorphism and Abstract Classes
-
- This module is designed to help you understand Subtype polymorphism, abstract classes and interfaces in CPP. 
-
-## Module 05: Try/Catch and Exceptions
-
- This module is designed to help you understand Try/Catch and Exceptions in CPP. 
-
-## Module 06: Different Casts
-
- This module is designed to help you understand the different casts in CPP. 
-
-## Module 07: Templates
-
- This module is designed to help you understand Templates in CPP. 
-
-## Module 08: Templated Containers and Algorithms
-
- This module is designed to help you understand templated containers, iterators and algorithms in CPP. 
-
-## Module 09: Containers
-
- This module is designed to help you understand the containers in CPP. 
+## Table of Contents
+| Project | Topics | Finished |
+| :-----: | :----: | :------: |
+| [Module 00](./00) | _Namespaces, classes, member functions, stdio stream, initialization lists, static, const_  | July 2024 |
+| [Module 01](./01) | _Memory allocation, pointers to members, references, switch statement_ | -- |
+| [Module 02](./02) | _Ad-hoc polymorphism, operator overloading, Orthodox Canonical class form_ | -- |
+| [Module 03](./03) | _Inheritance_ | -- |
+| [Module 04](./04) | _Subtype polymorphism, abstract classes, interfaces_ | -- |
+| [Module 05](./05) | _Repetition, Exceptions_ | -- |
+| [Module 06](./06) | _C++ casts_ | -- |
+| [Module 07](./07) | _C++ templates_ | -- |
+| [Module 08](./08) | _Templated containers, iterators, algorithms_ | -- |
+| [Module 09](./09) | _STL_ | -- |
