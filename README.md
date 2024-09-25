@@ -1,10 +1,14 @@
 # My 42 Journey
 
-Hey there! I'm Marin, a student at [42 Paris](https://github.com/42Paris) since Nov 2023. This repo is here to share all of my projects made at 42. 
+Hey there! I'm Marin, a student at [42 Paris](https://42.fr) since Nov 2023. This repo is here to share all of my projects made at 42. 
+
+## C++ Projects
+
+- 🆙 [**CPP Modules**](./CPP.0-modules/) - 🚧 In progress! 🚧 Ten modules to learn OOP through C++.
 
 ## C Projects
 
-- 🎮 [**cub3D**](https://github.com/42mates/cub3D) - In progress! A group project in which [@ku-alexej](https://github.com/ku-alexej) and I created a 3D game using raycasting techniques, inspired by the classic game Wolfenstein 3D.
+- 🎮 [**cub3D**](https://github.com/42mates/cub3D) - A group project in which [@ku-alexej](https://github.com/ku-alexej) and I created a 3D game using raycasting techniques, inspired by the classic game Wolfenstein 3D.
 
 - 🐚 [**Minishell**](https://github.com/42mates/minishell/) - A group project in which [@ku-alexej](https://github.com/ku-alexej) and I reproduced our own basic reproduction of `bash`.
 
@@ -22,20 +26,15 @@ Hey there! I'm Marin, a student at [42 Paris](https://github.com/42Paris) since 
 	- [**ft_printf**](./C.2-printf/) - I created my own implementation of printf.
 	- [**get_next_line**](./C.3-get_next_line/) - Unlocked the magic of reading files line by line!
 
-## C++ Projects
-
-- 🆙 [**Cpp Modules**](./Cpp.0-Modules/):
-	- [**Module 00**](./Cpp.0-Modules/Module_00/ex00/) - Introduction to classes.
-
 ## IT Projects
 
 - 🌱 [**Born2beroot**](./IT.0-Born2beroot/) - I set up a secure Linux server environment following strict guidelines.
 
-- 🛜 [**NetPractice**](./IT.0-Born2beroot/) - In progress! I'm setting a small-scale network using IPs and masks.  
+- 🛜 [**NetPractice**](./IT.0-Born2beroot/) - 🚧 In progress! 🚧 I'm setting a small-scale network using IPs and masks.  
 
 ## Contact
 
-For any further information, feel free to contact me on [mbecker@student.42.fr](mailto:mbecker@student.42.fr) and go take a look at [marinbecker.me](https://www.marinbecker.me)!
+For any further information, feel free to contact me on [hello@marinbecker.me](mailto:hello@marinbecker.me) and go take a look at [my website](https://www.marinbecker.me)!
 
 
 ## Still here ?!
