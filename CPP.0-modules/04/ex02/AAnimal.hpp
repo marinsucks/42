@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   AAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 11:23:00 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/26 14:18:31 by mbecker          ###   ########.fr       */
+/*   Created: 2024/09/25 11:14:04 by mbecker           #+#    #+#             */
+/*   Updated: 2024/09/25 17:51:06 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "AAnimal.hpp"
+#include <iostream>
 #include "Brain.hpp"
 
-class Cat : public AAnimal
+class AAnimal
 {
-private:
-	Brain	*_brain;
+protected:
+	std::string _type;
 public:
-	Cat();
-	Cat(Cat const &copy);
-	Cat &operator=(Cat const &copy);
-	virtual ~Cat();
+	AAnimal();
+	AAnimal(const AAnimal& copy);
+	AAnimal& operator=(const AAnimal& copy);
+	virtual ~AAnimal();
 
-	void	makeSound( void ) const;
-	std::string	getType( void ) const;
-	Brain		*getBrain( void ) const;
+	virtual void 		makeSound( void ) const = 0;
+	std::string			getType( void ) const;
+
+	virtual Brain		*getBrain( void ) const;
 };

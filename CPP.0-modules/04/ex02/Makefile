@@ -6,17 +6,18 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 14:35:23 by mbecker           #+#    #+#              #
-#    Updated: 2024/09/25 15:52:27 by mbecker          ###   ########.fr        #
+#    Updated: 2024/09/26 14:27:47 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = ex02
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC =	main.cpp \
 		Animal.cpp \
+		AAnimal.cpp \
 		Dog.cpp \
 		Cat.cpp \
 		Brain.cpp

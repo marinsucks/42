@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/26 14:23:14 by mbecker           #+#    #+#             */
+/*   Updated: 2024/09/26 14:44:47 by mbecker          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
@@ -6,8 +20,16 @@
 
 int main()
 {
+	//Abstract class test
+	Animal concrete;	// compiles
+	AAnimal abstract;	// does not compile
+
+
+
+
+
 	// Array creation
-	Animal *animals[100];
+	AAnimal *animals[100];
 	
 	for (int i = 0; i < 50; i++)
 		animals[i] = new Dog();
@@ -65,9 +87,9 @@ int main()
 		if (line == "EXIT")
 			break;
 	}
+
 	for (int i = 0; i < 100; i++)
-	{
 		delete animals[i];
-	}
+
 	return (0);
 }
