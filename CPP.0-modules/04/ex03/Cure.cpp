@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:45 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/27 13:30:44 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/27 17:31:05 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ Cure& Cure::operator=(const Cure& other)
 Cure::~Cure()
 {
 	//std::cout << "Cure - Destructor called" << std::endl;
+}
+
+std::string const & Cure::getType() const
+{
+	return _type;
 }
 
 AMateria* Cure::clone() const

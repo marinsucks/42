@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:37 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/27 13:07:17 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/27 17:31:47 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ Ice& Ice::operator=(const Ice& other)
 Ice::~Ice()
 {
 	//std::cout << "Ice - Destructor called" << std::endl;
+}
+
+std::string const & Ice::getType() const
+{
+	return _type;
 }
 
 AMateria* Ice::clone() const

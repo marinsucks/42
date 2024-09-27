@@ -6,57 +6,66 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:21 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/27 13:45:34 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/27 18:24:38 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-ICharacter::ICharacter()
+Character::Character()
 {
-	//std::cout << "ICharacter - Default constructor called" << std::endl;
+	//std::cout << "Character - Default constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->_inventory[i] = NULL;
 }
 
-ICharacter::ICharacter(const ICharacter& other)
+Character::Character(const Character& other)
 {
-	//std::cout << "ICharacter - Copy constructor called" << std::endl;
+	//std::cout << "Character - Copy constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->_inventory[i] = other._inventory[i];
 }
 
-ICharacter& ICharacter::operator=(const ICharacter& other)
+Character& Character::operator=(const Character& other)
 {
-	//std::cout << "ICharacter - Assignment operator called" << std::endl;
+	//std::cout << "Character - Assignment operator called" << std::endl;
 	return *this;
 }
 
-ICharacter::~ICharacter()
+Character::~Character()
 {
-	//std::cout << "ICharacter - Destructor called" << std::endl;
+	//std::cout << "Character - Destructor called" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+	}
 }
 
-std::string const & getName()
+std::string const & Character::getName() const
 {
-
+	return this->_name;
 }
 
-void ICharacter::equip(AMateria* m)
+void Character::equip(AMateria* m)
 {
-	int i = this->_inventory.size();
+	int i = 0;
+	while (i < 4 && this->_inventory[i] != NULL)
+		i++;
 	if (i < 4)
 		this->_inventory[i++] = m;
-	
 }
 
-void ICharacter::unequip(int idx)
+void Character::unequip(int idx)
 {
-
+	if (idx < 0 && idx >= 4)
+		return ;
+	this->_inventory[idx] = NULL;
 }
 
-void ICharacter::use(int idx, ICharacter& target)
+void Character::use(int idx, Character& target)
 {
-
+	if (idx < 0 && idx >= 4)
+		return ;
+	this->_inventory[idx]->use(target);
 }
-
