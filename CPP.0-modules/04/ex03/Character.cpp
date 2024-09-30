@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:21 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/30 15:54:08 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/30 17:35:21 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ Character& Character::operator=(const Character& other)
 	return *this;
 }
 
-Character::~Character()
+Character::~Character() 
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -81,7 +81,7 @@ void Character::equip(AMateria* m)
 	while (i < 4 && this->_inventory[i] != NULL)
 		i++;
 	if (i < 4)
-		this->_inventory[i++] = m;
+		this->_inventory[i++] = m->clone();
 }
 
 void Character::unequip(int idx)

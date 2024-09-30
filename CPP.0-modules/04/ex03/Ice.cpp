@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:37 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/30 15:50:50 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/30 16:28:56 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 Ice::Ice()
 {
-	_type = "cure";	
+	_type = "ice";	
 }
 
 Ice::Ice(const Ice& other) { *this = other; }
@@ -45,5 +45,5 @@ AMateria* Ice::clone() const
 
 void Ice::use(ICharacter& target)
 {
-	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
