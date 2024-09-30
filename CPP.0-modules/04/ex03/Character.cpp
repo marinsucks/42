@@ -6,41 +6,69 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:21 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/27 18:24:38 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/30 15:54:08 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AMateria.hpp"
 #include "Character.hpp"
 
-Character::Character()
+// CONSTRUCTORS | DESTRUCTOR
+
+Character::Character() : _name("default")
 {
-	//std::cout << "Character - Default constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->_inventory[i] = NULL;
 }
 
-Character::Character(const Character& other)
+Character::Character(std::string const &name) : _name(name)
 {
-	//std::cout << "Character - Copy constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
-		this->_inventory[i] = other._inventory[i];
+		this->_inventory[i] = NULL;
+}
+
+Character::Character(const Character& other) : _name(other._name)
+{
+	if (this == &other)
+		return ;
+	for (int i = 0; i < 4; i++)
+	{
+		if (other._inventory[i])
+			this->_inventory[i] = other._inventory[i]->clone();
+		else
+			this->_inventory[i] = NULL;
+	}
 }
 
 Character& Character::operator=(const Character& other)
 {
-	//std::cout << "Character - Assignment operator called" << std::endl;
+	if (this != &other)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (this->_inventory[i])
+				delete this->_inventory[i];
+			if (other._inventory[i])
+				this->_inventory[i] = other._inventory[i]->clone();
+			else
+				this->_inventory[i] = NULL;
+		}
+		this->_name = other._name;
+	}
 	return *this;
 }
 
 Character::~Character()
 {
-	//std::cout << "Character - Destructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->_inventory[i])
 			delete this->_inventory[i];
 	}
 }
+
+
+// PUBLIC MEMBER FUNCTIONS
 
 std::string const & Character::getName() const
 {
@@ -58,14 +86,14 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-	if (idx < 0 && idx >= 4)
+	if (idx < 0 || idx >= 4)
 		return ;
 	this->_inventory[idx] = NULL;
 }
 
-void Character::use(int idx, Character& target)
+void Character::use(int idx, ICharacter& target)
 {
-	if (idx < 0 && idx >= 4)
+	if (idx < 0 || idx >= 4)
 		return ;
 	this->_inventory[idx]->use(target);
 }
