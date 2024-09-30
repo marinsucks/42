@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:45 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/27 17:31:05 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/30 15:51:12 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,19 @@
 
 Cure::Cure()
 {
-	//std::cout << "Cure - Default constructor called" << std::endl;
-
 	_type = "cure";	
 }
 
-Cure::Cure(const Cure& other)
+Cure::Cure(const Cure& other) { *this = other; }
+
+Cure& Cure::operator=(const Cure& other) 
 {
-	//std::cout << "Cure - Copy constructor called" << std::endl;
-
-	_type = "cure";
-}
-
-Cure& Cure::operator=(const Cure& other)
-{
-	//std::cout << "Cure - Assignment operator called" << std::endl;
-
-	this->_type = other._type;
+	if (this != &other)
+		this->_type = other._type;
 	return *this;
 }
 
-Cure::~Cure()
-{
-	//std::cout << "Cure - Destructor called" << std::endl;
-}
+Cure::~Cure() {}
 
 std::string const & Cure::getType() const
 {
@@ -51,5 +40,5 @@ AMateria* Cure::clone() const
 
 void Cure::use(ICharacter& target)
 {
-	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

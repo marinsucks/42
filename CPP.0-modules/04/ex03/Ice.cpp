@@ -6,38 +6,32 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:37 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/27 17:31:47 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/30 15:50:50 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
+// CONSTRUCTORS | DESTRUCTOR
+
 Ice::Ice()
 {
-	//std::cout << "Ice - Default constructor called" << std::endl;
-
-	_type = "ice";
+	_type = "cure";	
 }
 
-Ice::Ice(const Ice& other)
+Ice::Ice(const Ice& other) { *this = other; }
+
+Ice& Ice::operator=(const Ice& other) 
 {
-	//std::cout << "Ice - Copy constructor called" << std::endl;
-
-	_type = "ice";
-}
-
-Ice& Ice::operator=(const Ice& other)
-{
-	//std::cout << "Ice - Assignment operator called" << std::endl;
-
-	this->_type = other._type;
+	if (this != &other)
+		this->_type = other._type;
 	return *this;
 }
 
-Ice::~Ice()
-{
-	//std::cout << "Ice - Destructor called" << std::endl;
-}
+Ice::~Ice() {}
+
+
+// PUBLIC MEMBER FUNCTIONS
 
 std::string const & Ice::getType() const
 {
@@ -51,5 +45,5 @@ AMateria* Ice::clone() const
 
 void Ice::use(ICharacter& target)
 {
-	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

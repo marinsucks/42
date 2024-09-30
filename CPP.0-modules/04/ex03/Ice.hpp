@@ -6,13 +6,14 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:21:13 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/27 17:31:36 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/09/30 15:39:38 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "AMateria.hpp"
+#include "Character.hpp"
 
 class Ice : public AMateria
 {
