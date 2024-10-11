@@ -21,16 +21,20 @@ WrongCat::WrongCat()
 
 WrongCat::WrongCat(WrongCat const &copy)
 {
-	this->_type = copy._type;
-
 	std::cout << "WrongCat copy constructor called" << std::endl;
+
+	*this = copy;
 }
 
 WrongCat	&WrongCat::operator=(WrongCat const &copy)
 {
-	this->_type = copy._type;
-
 	std::cout << "WrongCat assignation operator called" << std::endl;
+
+	WrongCat const *nullcheck = &copy;
+	if (this == &copy || nullcheck == NULL)
+		return *this;
+
+	this->_type = copy._type;
 
 	return *this;
 }

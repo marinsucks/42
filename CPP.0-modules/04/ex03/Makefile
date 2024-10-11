@@ -6,39 +6,46 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 11:06:29 by mbecker           #+#    #+#              #
-#    Updated: 2024/09/26 11:16:43 by mbecker          ###   ########.fr        #
+#    Updated: 2024/10/10 16:31:22 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex03
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CFLAG = -Wall -Wextra -Werror -std=c++98 -pedantic -g
 
 SRC =	AMateria.cpp \
 		Character.cpp \
 		Cure.cpp \
 		Ice.cpp \
 		MateriaSource.cpp \
+		MateriaVector.cpp \
 		main.cpp
+OBJ_DIR = obj
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
 all: $(NAME)
 
-$(NAME):
-	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
-	@if [ -f $(NAME) ] ; then \
-		echo "$(LGREEN)./$(GREEN)$(NAME)$(LGREEN) created.$(NC)" ; \
-	else \
-		echo "$(LRED)./$(RED)$(NAME)$(LRED) failed to compile.$(NC)" ; \
-	fi
+$(NAME): $(OBJ)
+	@echo "$(LYELLOW)Objects successfully compiled in $(YELLOW)$$PWD/obj/$(LYELLOW).$(NC)"
+	@$(CC) $(CFLAG) $(OBJ) -o $(NAME)
+	@if [ -f $(NAME) ] ; then echo "$(LGREEN)Created $(GREEN)$(NAME)$(LGREEN).$(NC)" ; \
+	else echo "$(LRED)Failed to compile $(RED)$(NAME)$(LRED).$(NC)" ; fi
+
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p $(OBJ_DIR)
+	@echo "$(LYELLOW)Compiling $(YELLOW)$<$(NC)"
+	@$(CC) $(CFLAG) -c $< -o $@
+	@printf "\033[1A\033[2K\r"
 
 clean:
-	@echo "$(LRED)Removing objects and misc...$(NC)"
-	@rm -rf *.out* */*.out testexe *.dSYM* .vscode
+	@echo "$(LRED)Removing $(RED)objects$(LRED)...$(NC)"
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
+	@echo "$(LRED)Removing $(RED)$(NAME)$(LRED)...$(NC)"
 	@rm -f $(NAME)
-	@echo "$(RED)FULL CLEAN FINISHED$(NC)"
 
 re: fclean all
 

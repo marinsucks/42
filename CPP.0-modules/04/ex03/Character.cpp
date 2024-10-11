@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:21 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/30 17:35:21 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/10 16:58:26 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,50 +21,51 @@ Character::Character() : _name("default")
 		this->_inventory[i] = NULL;
 }
 
-Character::Character(std::string const &name) : _name(name)
+Character::Character(std::string const &name)
 {
+	if (name.empty())
+		this->_name = "default";
+	else
+		this->_name = name;
 	for (int i = 0; i < 4; i++)
 		this->_inventory[i] = NULL;
 }
 
-Character::Character(const Character& other) : _name(other._name)
+Character::Character(const Character& copy) //: _inventory({NULL, NULL, NULL, NULL})
 {
-	if (this == &other)
-		return ;
+	Character const *nullcheck = &copy;
+
+	if (nullcheck == NULL)
+		*this = Character();
+	else if (this != &copy)
+		*this = copy;
+}
+
+Character& Character::operator=(const Character& copy)
+{
+	Character const *nullcheck = &copy;
+	if (this == &copy || nullcheck == NULL)
+		return *this;
+
 	for (int i = 0; i < 4; i++)
 	{
-		if (other._inventory[i])
-			this->_inventory[i] = other._inventory[i]->clone();
+		if (copy._inventory[i])
+		{
+			this->_inventory[i] = copy._inventory[i]->clone();
+			if (!this->_materias.contains(this->_inventory[i]))
+				this->_materias.push(this->_inventory[i]);
+		}
 		else
 			this->_inventory[i] = NULL;
 	}
-}
-
-Character& Character::operator=(const Character& other)
-{
-	if (this != &other)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			if (this->_inventory[i])
-				delete this->_inventory[i];
-			if (other._inventory[i])
-				this->_inventory[i] = other._inventory[i]->clone();
-			else
-				this->_inventory[i] = NULL;
-		}
-		this->_name = other._name;
-	}
+	this->_name = copy._name;
+	
 	return *this;
 }
 
 Character::~Character() 
 {
-	for (int i = 0; i < 4; i++)
-	{
-		if (this->_inventory[i])
-			delete this->_inventory[i];
-	}
+	this->_materias.clear();
 }
 
 
@@ -80,8 +81,12 @@ void Character::equip(AMateria* m)
 	int i = 0;
 	while (i < 4 && this->_inventory[i] != NULL)
 		i++;
-	if (i < 4)
-		this->_inventory[i++] = m->clone();
+	if (i >= 4)
+		return ;
+
+	this->_inventory[i++] = m;
+	if (!this->_materias.contains(m))
+		this->_materias.push(m);
 }
 
 void Character::unequip(int idx)
@@ -95,5 +100,6 @@ void Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx >= 4)
 		return ;
-	this->_inventory[idx]->use(target);
+	if (this->_inventory[idx])
+		this->_inventory[idx]->use(target);
 }

@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:37 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/30 16:28:56 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/10 16:14:42 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,14 @@ Ice::Ice()
 	_type = "ice";	
 }
 
-Ice::Ice(const Ice& other) { *this = other; }
+Ice::Ice(Ice const &copy)
+{
+	Ice const *nullcheck = &copy;
+	if (nullcheck == NULL)
+		*this = Ice();
+	else if (this != &copy)
+		*this = copy;
+}
 
 Ice& Ice::operator=(const Ice& other) 
 {

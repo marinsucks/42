@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:28 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/30 16:15:47 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/08 18:27:22 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,15 @@ MateriaSource::MateriaSource()
 		this->_inventory[i] = NULL;
 }
 
-MateriaSource::MateriaSource(const MateriaSource& other) { *this = other; }
+MateriaSource::MateriaSource(MateriaSource const &copy)
+{
+	MateriaSource const *nullcheck = &copy;
+
+	if (nullcheck == NULL)
+		*this = MateriaSource();
+	else if (this != &copy)
+		*this = copy;
+}
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& other)
 {

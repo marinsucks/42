@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:21:35 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/30 16:18:11 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/08 17:49:09 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ AMateria::AMateria(const AMateria& other) { *this = other; }
 
 AMateria& AMateria::operator=(const AMateria& other)
 {
-	if (this != &other)
-		this->_type = other._type;
+	AMateria const *nullcheck = &other;
+	if (this == &other || nullcheck == NULL)
+		return *this;
+	
+	this->_type = other._type;
+
 	return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:23:14 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/26 14:44:47 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/08 17:43:58 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main()
 {
 	//Abstract class test
 	Animal concrete;	// compiles
-	AAnimal abstract;	// does not compile
+	//AAnimal abstract;	// does not compile
 
 
 

@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:45 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/30 15:51:12 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/10 14:40:41 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,14 @@ Cure::Cure()
 	_type = "cure";	
 }
 
-Cure::Cure(const Cure& other) { *this = other; }
+Cure::Cure(Cure const &copy)
+{
+	Cure const *nullcheck = &copy;
+	if (nullcheck == NULL)
+		*this = Cure();
+	else if (this != &copy)
+		*this = copy;
+}
 
 Cure& Cure::operator=(const Cure& other) 
 {

@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:16:43 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/25 14:03:59 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/08 17:21:48 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,23 @@ WrongAnimal::WrongAnimal() : _type("WrongAnimal")
 	std::cout << "WrongAnimal default constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(WrongAnimal const &copy) : _type(copy._type)
+WrongAnimal::WrongAnimal(WrongAnimal const &copy)
 {
 	std::cout << "WrongAnimal copy constructor called" << std::endl;
+
+	*this = copy;
 }
 
 WrongAnimal	&WrongAnimal::operator=(WrongAnimal const &copy)
 {
+	std::cout << "WrongAnimal assignation operator called" << std::endl;
+
+	WrongAnimal const *nullcheck = &copy;
+	if (this == &copy || nullcheck == NULL)
+		return *this;
+
 	this->_type = copy._type;
+
 	return *this;
 }
 

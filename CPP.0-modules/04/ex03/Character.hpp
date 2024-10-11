@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:20:42 by mbecker           #+#    #+#             */
-/*   Updated: 2024/09/30 15:03:35 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/10 16:42:46 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include "AMateria.hpp"
+#include "MateriaVector.hpp"
 
 class ICharacter
 {
@@ -30,6 +31,7 @@ class Character : public ICharacter
 	private:
 		AMateria		*_inventory[4];
 		std::string		_name;
+		MateriaVector	_materias;	
 	public:
 		Character();
 		Character(const Character& other);

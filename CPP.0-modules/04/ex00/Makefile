@@ -6,14 +6,14 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 14:35:23 by mbecker           #+#    #+#              #
-#    Updated: 2024/09/25 14:12:51 by mbecker          ###   ########.fr        #
+#    Updated: 2024/10/10 13:47:24 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex00
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CFLAG = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC =	main.cpp \
 		Animal.cpp \
@@ -21,20 +21,21 @@ SRC =	main.cpp \
 		Cat.cpp \
 		WrongAnimal.cpp \
 		WrongCat.cpp
+OBJ =	$(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME):
-	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
-	@if [ -f $(NAME) ] ; then \
-		echo "$(LGREEN)./$(GREEN)$(NAME)$(LGREEN) created.$(NC)" ; \
-	else \
-		echo "$(LRED)./$(RED)$(NAME)$(LRED) failed to compile.$(NC)" ; \
-	fi
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAG) $(SRC) -o $(NAME)
+	@if [ -f $(NAME) ] ; then echo "$(LGREEN)./$(GREEN)$(NAME)$(LGREEN) created.$(NC)" ; \
+	else echo "$(LRED)./$(RED)$(NAME)$(LRED) failed to compile.$(NC)" ; fi
+
+%.o: %.cpp
+	@$(CC) $(CFLAG) -c $< -o $@
 
 clean:
 	@echo "$(LRED)Removing objects and misc...$(NC)"
-	@rm -rf *.out* */*.out testexe *.dSYM* .vscode
+	@rm -rf $(OBJ)
 
 fclean: clean
 	@rm -f $(NAME)

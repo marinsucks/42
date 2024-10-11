@@ -17,14 +17,27 @@ AAnimal::AAnimal() : _type("AAnimal")
 	std::cout << "AAnimal default constructor called" << std::endl;
 }
 
-AAnimal::AAnimal(AAnimal const &copy) : _type(copy._type)
+AAnimal::AAnimal(AAnimal const &copy)
 {
 	std::cout << "AAnimal copy constructor called" << std::endl;
+
+	AAnimal const *nullcheck = &copy;
+	if (nullcheck == NULL)
+		return ;
+	else if (this != &copy)
+		*this = copy;
 }
 
 AAnimal	&AAnimal::operator=(AAnimal const &copy)
 {
+	std::cout << "AAnimal assignation operator called" << std::endl;
+
+	AAnimal const *nullcheck = &copy;
+	if (this == &copy || nullcheck == NULL)
+		return *this;
+
 	this->_type = copy._type;
+
 	return *this;
 }
 
