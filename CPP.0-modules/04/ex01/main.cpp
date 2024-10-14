@@ -4,8 +4,18 @@
 #include <cstdlib>
 #include "colors_ju.h"
 
+
+
 int main()
 {
+	//Dog d;
+	//{
+	//	Dog d2 = d;
+	//}
+	//return (0);
+
+
+
 	// Array creation
 	Animal *animals[100];
 	
@@ -66,8 +76,9 @@ int main()
 			break;
 	}
 	for (int i = 0; i < 100; i++)
-	{
 		delete animals[i];
-	}
+	
+
+
 	return (0);
 }
