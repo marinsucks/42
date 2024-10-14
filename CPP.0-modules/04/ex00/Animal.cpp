@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:13:59 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/08 17:11:07 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/14 13:12:55 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ Animal::Animal() : _type("Animal")
 Animal::Animal(Animal const &copy)
 {
 	std::cout << "Animal copy constructor called" << std::endl;
-	*this = copy;
+	if (this == &copy)
+		return ;
+
+	this->_type = copy._type;
 }
 
 Animal	&Animal::operator=(Animal const &copy)
 {
-	Animal const *nullcheck = &copy;
-	if (this == &copy || nullcheck == NULL)
+	if (this == &copy)
 		return *this;
 
 	this->_type = copy._type;

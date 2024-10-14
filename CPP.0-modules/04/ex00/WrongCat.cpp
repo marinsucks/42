@@ -30,8 +30,7 @@ WrongCat	&WrongCat::operator=(WrongCat const &copy)
 {
 	std::cout << "WrongCat assignation operator called" << std::endl;
 
-	WrongCat const *nullcheck = &copy;
-	if (this == &copy || nullcheck == NULL)
+	if (this == &copy)
 		return *this;
 
 	this->_type = copy._type;

@@ -20,7 +20,7 @@ public:
 	WrongCat();
 	WrongCat(WrongCat const &copy);
 	WrongCat &operator=(WrongCat const &copy);
-	virtual ~WrongCat();
+	~WrongCat();
 
 	void	makeSound( void ) const;
 	

@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:22:55 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/08 17:15:06 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/14 13:14:02 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,14 @@ Cat::Cat(Cat const &copy)
 {
 	std::cout << "Cat copy constructor called" << std::endl;
 
-	*this = copy;
+	this->_type = copy._type;
 }
 
 Cat	&Cat::operator=(Cat const &copy)
 {
 	std::cout << "Cat assignation operator called" << std::endl;
 
-	Cat const *nullcheck = &copy;
-	if (this == &copy || nullcheck == NULL)
+	if (this == &copy)
 		return *this;
 
 	this->_type = copy._type;
