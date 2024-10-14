@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:22:21 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/10 16:58:26 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/14 17:07:24 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,14 @@ Character::Character(std::string const &name)
 
 Character::Character(const Character& copy) //: _inventory({NULL, NULL, NULL, NULL})
 {
-	Character const *nullcheck = &copy;
-
-	if (nullcheck == NULL)
-		*this = Character();
-	else if (this != &copy)
-		*this = copy;
+	if (this == &copy)
+		return ;
+	*this = copy;
 }
 
 Character& Character::operator=(const Character& copy)
 {
-	Character const *nullcheck = &copy;
-	if (this == &copy || nullcheck == NULL)
+	if (this == &copy)
 		return *this;
 
 	for (int i = 0; i < 4; i++)
