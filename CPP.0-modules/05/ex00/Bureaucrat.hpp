@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 13:24:48 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/15 15:56:05 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/15 16:34:48 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,5 @@ class Bureaucrat
 				const char* what() const throw();
 		};
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);

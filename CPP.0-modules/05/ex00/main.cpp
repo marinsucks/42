@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:49:41 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/15 16:28:40 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/15 16:34:43 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	gradeTooLow(void)
 	{
 		std::cout << "Creating Chuck with grade 151" << std::endl;
 		Bureaucrat chuck("Chuck", 151);
-		std::cout << chuck.getName() << " successfully created with grade " << chuck.getGrade() << std::endl;
+		std::cout << chuck << std::endl;
 	}
 	catch (std::exception & e)
 	{
@@ -34,7 +34,7 @@ void	gradeTooHigh(void)
 	{
 		std::cout << "Creating Jack with grade 151" << std::endl;
 		Bureaucrat jack("Jack", 0);
-		std::cout << jack.getName() << " successfully created with grade " << jack.getGrade() << std::endl;
+		std::cout << jack << std::endl;
 	}
 	catch (std::exception & e)
 	{
@@ -49,11 +49,11 @@ void	badIncrement(void)
 	{
 		std::cout << "Creating Gary with grade 1" << std::endl;
 		Bureaucrat gary("Gary", 1);
-		std::cout << gary.getName() << " successfully created with grade " << gary.getGrade() << std::endl;
+		std::cout << gary << std::endl;
 		
 		std::cout << "Incrementing Gary" << std::endl;
 		gary.incrementGrade();
-		std::cout << gary.getName() << " successfully incremented to grade " << gary.getGrade() << std::endl;
+		std::cout << gary << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -68,11 +68,11 @@ void	badDecrement(void)
 	{
 		std::cout << "Creating Ron with grade 150" << std::endl;
 		Bureaucrat ron("Ron", 150);
-		std::cout << ron.getName() << " successfully created with grade " << ron.getGrade() << std::endl;
+		std::cout << ron << std::endl;
 		
 		std::cout << "Decrementing Ron" << std::endl;
 		ron.decrementGrade();
-		std::cout << ron.getName() << " successfully decremented to grade " << ron.getGrade() << std::endl;
+		std::cout << ron << std::endl;
 	}
 	catch(const std::exception& e)
 	{
