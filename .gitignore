@@ -1,5 +1,6 @@
 /*** OBJECT FILES ***/
 *.o
+obj/
 *.so
 *.a
 archives/
