@@ -8,9 +8,9 @@ Hey there! I'm Marin, a student at [42 Paris](https://42.fr) since Nov 2023. Thi
 
 ## C Projects
 
-- 🎮 [**cub3D**](https://github.com/42mates/cub3D) - A group project in which [@ku-alexej](https://github.com/ku-alexej) and I created a 3D game using raycasting techniques, inspired by the classic game Wolfenstein 3D.
+- 🎮 [**cub3D**](https://github.com/42mates/cub3D) - A group project with [@ku-alexej](https://github.com/ku-alexej) where we created a 3D game using raycasting techniques, inspired by the classic game Wolfenstein 3D.
 
-- 🐚 [**Minishell**](https://github.com/42mates/minishell/) - A group project in which [@ku-alexej](https://github.com/ku-alexej) and I reproduced our own basic reproduction of `bash`.
+- 🐚 [**Minishell**](https://github.com/42mates/minishell/) - A group project with [@ku-alexej](https://github.com/ku-alexej) where we reproduced our own basic reproduction of `bash`.
 
 - 🍽️ [**Philosophers**](./C.8-Philosophers/) - I handled threads routine: _take a fork_, _eat_, _sleep_, _think_, _die_ - with mutexes, of course !
 
@@ -30,7 +30,7 @@ Hey there! I'm Marin, a student at [42 Paris](https://42.fr) since Nov 2023. Thi
 
 - 🌱 [**Born2beroot**](./IT.0-Born2beroot/) - I set up a secure Linux server environment following strict guidelines.
 
-- 🛜 [**NetPractice**](./IT.0-Born2beroot/) - 🚧 In progress! 🚧 I'm setting a small-scale network using IPs and masks.  
+- 🛜 [**NetPractice**](./IT.0-Born2beroot/) - I learnt how to connect small-scale networks using IPs and masks.
 
 ## Contact
 
