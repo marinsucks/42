@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:44:06 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/15 18:08:41 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/17 12:50:07 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 
 class Bureaucrat;
 
+#include "Bureaucrat.hpp"
+
 class Form
 {
 	private:
 		std::string const	_name;
-		bool				_signed;
+		bool							_signed;
 		int const			_signGrade;
 		int const			_execGrade;
 
@@ -38,12 +40,12 @@ class Form
 		int			getSignGrade() const;
 		int			getExecGrade() const;
 
-		class GradeTooHighException : std::exception
+		class GradeTooHighException : public std::exception
 		{
 			public:
 				const char* what() const throw();
 		};
-		class GradeTooLowException : std::exception
+		class GradeTooLowException : public std::exception
 		{
 			public:
 				const char* what() const throw();

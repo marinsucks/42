@@ -6,17 +6,18 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 15:07:35 by mbecker           #+#    #+#              #
-#    Updated: 2024/10/15 16:01:40 by mbecker          ###   ########.fr        #
+#    Updated: 2024/10/16 17:00:52 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = ex01
 
 CC = c++
 CFLAG = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC =	Bureaucrat.cpp \
-		main.cpp \
+			Form.cpp \
+			main.cpp \
 
 OBJ_DIR = obj
 OBJ =	$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))

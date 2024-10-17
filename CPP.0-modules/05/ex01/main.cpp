@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:49:41 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/15 16:34:43 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/17 12:52:07 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,81 +15,115 @@
 void	gradeTooLow(void)
 {
 	std::cout << "gradeTooLow(): " << std::endl;
-	try
 	{
-		std::cout << "Creating Chuck with grade 151" << std::endl;
-		Bureaucrat chuck("Chuck", 151);
-		std::cout << chuck << std::endl;
+		try
+		{
+			std::cout << "Creating Low1 with signGrade 151" << std::endl;
+			Form low1("Low1", 151, 10);
+			std::cout << low1 << std::endl;
+		}
+		catch (std::exception & e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
-	catch (std::exception & e)
 	{
-		std::cerr << e.what() << std::endl;
+		try
+		{
+			std::cout << "Creating Low2 with execGrade 151" << std::endl;
+			Form low2("Low2", 10, 151);
+			std::cout << low2 << std::endl;
+		}
+		catch (std::exception & e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 }
 
 void	gradeTooHigh(void)
 {
 	std::cout << "gradeTooHigh(): " << std::endl;
-	try
 	{
-		std::cout << "Creating Jack with grade 151" << std::endl;
-		Bureaucrat jack("Jack", 0);
-		std::cout << jack << std::endl;
+		try
+		{
+			std::cout << "Creating High1 with signGrade 0" << std::endl;
+			Form high1("High1", -13, 10);
+			std::cout << high1 << std::endl;
+		}
+		catch (std::exception & e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
-	catch (std::exception & e)
 	{
-		std::cerr << e.what() << std::endl;
+		try
+		{
+			std::cout << "Creating High2 with execGrade 0" << std::endl;
+			Form high2("High2", 10, 0);
+			std::cout << high2 << std::endl;
+		}
+		catch (std::exception & e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 }
 
-void	badIncrement(void)
+void	authorizationsCheck(void)
 {
-	std::cout << "badIncrement(): " << std::endl;
-	try
+	std::cout << "authorizationsCheck(): " << std::endl;
+	Bureaucrat alice("President Alice", 1);
+	std::cout << alice << std::endl;
+	Bureaucrat bob("My Friend Bob", 150);
+	std::cout << bob << std::endl;
+	std::cout << std::endl;
 	{
-		std::cout << "Creating Gary with grade 1" << std::endl;
-		Bureaucrat gary("Gary", 1);
-		std::cout << gary << std::endl;
-		
-		std::cout << "Incrementing Gary" << std::endl;
-		gary.incrementGrade();
-		std::cout << gary << std::endl;
+		try
+		{
+			Form nuclear("Access Nuclear Codes", 1, 1);
+			std::cout << nuclear << std::endl;
+			alice.signForm(nuclear);
+			bob.signForm(nuclear);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
-	catch(const std::exception& e)
+	std::cout << std::endl;
 	{
-		std::cerr << e.what() << std::endl;
+		try
+		{
+			Form library("Order Library Card", 150, 150);
+			std::cout << library << std::endl;
+			alice.signForm(library);
+			bob.signForm(library);
+		}
+		catch(const std::exception& e)
+		{
+			
+			std::cerr << e.what() << '\n';
+		}
 	}
 }
-
-void	badDecrement(void)
-{
-	std::cout << "badDecrement(): " << std::endl;
-	try
-	{
-		std::cout << "Creating Ron with grade 150" << std::endl;
-		Bureaucrat ron("Ron", 150);
-		std::cout << ron << std::endl;
-		
-		std::cout << "Decrementing Ron" << std::endl;
-		ron.decrementGrade();
-		std::cout << ron << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-}
-
 
 int main(void)
 {
+	//std::cout << "Creating 'Valid' Form with grades 10 and 10" << std::endl;
+	//Form valid("Valid", 10, 10);
+	//std::cout << valid << std::endl;
+	//Bureaucrat validB("Valid Bureaucrat", 10);
+	//std::cout << validB << std::endl;
+	//validB.signForm(valid);
+	//std::cout << std::endl;
+
 	gradeTooLow();
 	std::cout << std::endl;
 	gradeTooHigh();
 	std::cout << std::endl;
-	badIncrement();
-	std::cout << std::endl;
-	badDecrement();
 
+	authorizationsCheck();
+	
 	return 0;
 }

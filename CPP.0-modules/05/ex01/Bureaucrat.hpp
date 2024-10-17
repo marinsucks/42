@@ -6,15 +6,16 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 13:24:48 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/15 18:09:13 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/17 12:50:07 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include "Form.hpp"
 
-//#include "Form.hpp"
+class Form;
 
 class Bureaucrat
 {

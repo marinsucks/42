@@ -6,12 +6,12 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 14:24:43 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/15 18:09:25 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/17 12:50:07 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 
@@ -71,23 +71,15 @@ void		Bureaucrat::decrementGrade()
 
 void		Bureaucrat::signForm(Form& form)
 {
-	//Objects successfully compiled in /home/mbecker/42/CPP.0-modules/05/ex01/obj/.
-	///usr/bin/ld: /tmp/Bureaucrat-e05a4b.o: in function `Bureaucrat::signForm(Form&)':
-	//Bureaucrat.cpp:(.text+0x380): undefined reference to `Form::beSigned(Bureaucrat&)'
-	///usr/bin/ld: Bureaucrat.cpp:(.text+0x3c6): undefined reference to `Form::getName[abi:cxx11]() const'
-	///usr/bin/ld: Bureaucrat.cpp:(.text+0x4a8): undefined reference to `Form::getName[abi:cxx11]() const'
-	//clang: error: linker command failed with exit code 1 (use -v to see invocation)
-	//make: *** [Makefile:28: ex00] Error 1
 	try
 	{
 		form.beSigned(*this);
-		std::cout << this->_name << " signed the form" << form.getName() << std::endl;
+		std::cout << this->_name << " signed the form " << form.getName() << "." << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << this->_name << " couldn't sign the form " << form.getName() << " because " << e.what() << std::endl;
+		std::cout << this->_name << " couldn't sign the form " << form.getName() << " because " << e.what() << "." << std::endl;
 	}
-	
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()

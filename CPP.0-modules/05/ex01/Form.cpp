@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:57:33 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/15 17:40:41 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/17 12:50:07 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ Form::~Form() {}
 void	Form::beSigned(Bureaucrat& b)
 {
 	if (b.getGrade() > this->_signGrade)
-		throw Form::GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	this->_signed = true;
 }
 
@@ -81,10 +81,11 @@ const char* Form::GradeTooLowException::what() const throw()
 	return "Form grade is too low";
 }
 
-std::ostream&	operator<<(std::ostream& o, Form &i)
+std::ostream&	operator<<(std::ostream& o, const Form &form)
 {
-	o << "Form " << i.getName();
-	o << " is " << (i.getSigned() ? "" : "not ") << "signed, ";
-	o << "requires a grade " << i.getSignGrade() << " to be signed ";
-	o << "and a grade " << i.getExecGrade() << " to be executed." << std::endl;
+	o << "Form " << form.getName();
+	o << " is " << (form.getSigned() ? "" : "not ") << "signed, ";
+	o << "requires a grade " << form.getSignGrade() << " to be signed ";
+	o << "and a grade " << form.getExecGrade() << " to be executed.";
+	return o;
 }	
