@@ -6,18 +6,21 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 15:07:35 by mbecker           #+#    #+#              #
-#    Updated: 2024/10/17 13:19:15 by mbecker          ###   ########.fr        #
+#    Updated: 2024/10/18 16:53:44 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex02
 
 CC = c++
 CFLAG = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC =	Bureaucrat.cpp \
-			AForm.cpp \
-			main.cpp \
+		AForm.cpp \
+		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp \
+		main.cpp \
 
 OBJ_DIR = obj
 OBJ =	$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
@@ -38,7 +41,7 @@ $(OBJ_DIR)/%.o: %.cpp
 
 clean:
 	@echo "$(LRED)Removing $(RED)objects$(LRED)...$(NC)"
-	@rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR) *_shrubbery
 
 fclean: clean
 	@echo "$(LRED)Removing $(RED)$(NAME)$(LRED)...$(NC)"

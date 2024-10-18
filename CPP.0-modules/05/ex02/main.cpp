@@ -6,124 +6,50 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:49:41 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/17 13:19:15 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/18 17:04:23 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-void	gradeTooLow(void)
+void	testAllForms(Bureaucrat& b)
 {
-	std::cout << "gradeTooLow(): " << std::endl;
-	{
-		try
-		{
-			std::cout << "Creating Low1 with signGrade 151" << std::endl;
-			AForm low1("Low1", 151, 10);
-			std::cout << low1 << std::endl;
-		}
-		catch (std::exception & e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
-	{
-		try
-		{
-			std::cout << "Creating Low2 with execGrade 151" << std::endl;
-			AForm low2("Low2", 10, 151);
-			std::cout << low2 << std::endl;
-		}
-		catch (std::exception & e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
-}
+	ShrubberyCreationForm shrubbery(b.getName());
+	RobotomyRequestForm robotomy(b.getName());
+	PresidentialPardonForm pardon(b.getName());
 
-void	gradeTooHigh(void)
-{
-	std::cout << "gradeTooHigh(): " << std::endl;
-	{
-		try
-		{
-			std::cout << "Creating High1 with signGrade 0" << std::endl;
-			AForm high1("High1", -13, 10);
-			std::cout << high1 << std::endl;
-		}
-		catch (std::exception & e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
-	{
-		try
-		{
-			std::cout << "Creating High2 with execGrade 0" << std::endl;
-			AForm high2("High2", 10, 0);
-			std::cout << high2 << std::endl;
-		}
-		catch (std::exception & e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
-}
+	std::cout << b << std::endl;
 
-void	authorizationsCheck(void)
-{
-	std::cout << "authorizationsCheck(): " << std::endl;
-	Bureaucrat alice("President Alice", 1);
-	std::cout << alice << std::endl;
-	Bureaucrat bob("My Friend Bob", 150);
-	std::cout << bob << std::endl;
-	std::cout << std::endl;
-	{
-		try
-		{
-			AForm nuclear("Access Nuclear Codes", 1, 1);
-			std::cout << nuclear << std::endl;
-			alice.signAForm(nuclear);
-			bob.signAForm(nuclear);
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
-	}
-	std::cout << std::endl;
-	{
-		try
-		{
-			AForm library("Order Library Card", 150, 150);
-			std::cout << library << std::endl;
-			alice.signAForm(library);
-			bob.signAForm(library);
-		}
-		catch(const std::exception& e)
-		{
-			
-			std::cerr << e.what() << '\n';
-		}
-	}
+	b.signForm(shrubbery);
+	b.signForm(robotomy);
+
+	b.signForm(pardon);
+
+	b.executeForm(shrubbery);
+	b.executeForm(robotomy);
+	b.executeForm(pardon);
 }
 
 int main(void)
 {
-	//std::cout << "Creating 'Valid' AForm with grades 10 and 10" << std::endl;
-	//AForm valid("Valid", 10, 10);
-	//std::cout << valid << std::endl;
-	//Bureaucrat validB("Valid Bureaucrat", 10);
-	//std::cout << validB << std::endl;
-	//validB.signAForm(valid);
-	//std::cout << std::endl;
+	Bureaucrat President("President", 1);
+	Bureaucrat Surgeon("Surgeon", 45);
+	Bureaucrat Secretary("Secretary", 110);
+	Bureaucrat Intern("Intern", 140);
+	Bureaucrat Toddler("Toddler", 150);
 
-	gradeTooLow();
+	testAllForms(President);
 	std::cout << std::endl;
-	gradeTooHigh();
+	testAllForms(Surgeon);
 	std::cout << std::endl;
+	testAllForms(Secretary);
+	std::cout << std::endl;
+	testAllForms(Intern);
+	std::cout << std::endl;
+	testAllForms(Toddler);
 
-	authorizationsCheck();
-	
 	return 0;
 }
