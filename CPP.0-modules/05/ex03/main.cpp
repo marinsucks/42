@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:49:41 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/19 10:58:39 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/19 11:04:26 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
-
-#include <unistd.h>
 
 void	testForm(AForm* form)
 {
@@ -40,8 +38,6 @@ void	testForm(AForm* form)
 
 int main(void)
 {
-	sleep(30);
-
 	Intern someRandomIntern;
 	AForm* rrf;
 	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
