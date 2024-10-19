@@ -34,7 +34,7 @@ class AForm
 		AForm(std::string name, int signGrade, int execGrade);
 		AForm(const AForm& other);
 		AForm& operator=(const AForm& other);
-		~AForm();
+		virtual ~AForm();
 
 		void	beSigned(Bureaucrat& b);
 		void	execute(Bureaucrat const & executor) const;
