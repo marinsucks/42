@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:10:27 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/18 17:15:28 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/19 10:44:42 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Intern
 {
 	private:
-		
+		std::string	_formNames[3];
 	public:
 		Intern();
 		Intern(const Intern& other);

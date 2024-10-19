@@ -6,7 +6,7 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 15:07:35 by mbecker           #+#    #+#              #
-#    Updated: 2024/10/18 16:53:44 by mbecker          ###   ########.fr        #
+#    Updated: 2024/10/19 10:45:07 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC =	Bureaucrat.cpp \
 		ShrubberyCreationForm.cpp \
 		RobotomyRequestForm.cpp \
 		PresidentialPardonForm.cpp \
+		Intern.cpp \
 		main.cpp \
 
 OBJ_DIR = obj

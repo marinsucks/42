@@ -6,50 +6,62 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:49:41 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/18 17:04:23 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/19 10:58:39 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
-void	testAllForms(Bureaucrat& b)
+#include <unistd.h>
+
+void	testForm(AForm* form)
 {
-	ShrubberyCreationForm shrubbery(b.getName());
-	RobotomyRequestForm robotomy(b.getName());
-	PresidentialPardonForm pardon(b.getName());
+	if (!form)
+	{
+		std::cout << "testForm(NULL)" << std::endl;
+		return ;
+	}
 
-	std::cout << b << std::endl;
-
-	b.signForm(shrubbery);
-	b.signForm(robotomy);
-
-	b.signForm(pardon);
-
-	b.executeForm(shrubbery);
-	b.executeForm(robotomy);
-	b.executeForm(pardon);
+	std::cout << "testForm(" << form->getName() << ")" << std::endl;
+	
+	Bureaucrat toddler("Toddler", 150);
+	Bureaucrat president("President", 1);
+	
+	toddler.signForm(*form);
+	toddler.executeForm(*form);
+	president.signForm(*form);
+	president.executeForm(*form);
 }
 
 int main(void)
 {
-	Bureaucrat President("President", 1);
-	Bureaucrat Surgeon("Surgeon", 45);
-	Bureaucrat Secretary("Secretary", 110);
-	Bureaucrat Intern("Intern", 140);
-	Bureaucrat Toddler("Toddler", 150);
+	sleep(30);
 
-	testAllForms(President);
-	std::cout << std::endl;
-	testAllForms(Surgeon);
-	std::cout << std::endl;
-	testAllForms(Secretary);
-	std::cout << std::endl;
-	testAllForms(Intern);
-	std::cout << std::endl;
-	testAllForms(Toddler);
+	Intern someRandomIntern;
+	AForm* rrf;
+	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+	testForm(rrf);
+	delete rrf;
+	
+	AForm* scf;
+	scf = someRandomIntern.makeForm("shrubbery creation", "Shrubber");
+	testForm(scf);
+	delete scf;
+
+	AForm* ppf;
+	ppf = someRandomIntern.makeForm("presidential pardon", "Presider");
+	testForm(ppf);
+	delete ppf;
+
+	AForm* unknown;
+	unknown = someRandomIntern.makeForm("unknown", "Unknown");
+	testForm(unknown);
+	delete unknown;
 
 	return 0;
 }
