@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 17:08:18 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/22 17:41:14 by mbecker          ###   ########.fr       */
+/*   Created: 2024/10/22 17:25:04 by mbecker           #+#    #+#             */
+/*   Updated: 2024/10/22 17:54:32 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "ScalarConverter.hpp"
 
-#include <iostream>
-#include <cstdlib>
-
-class ScalarConverter
+int main()
 {
-	private:
-		ScalarConverter();
-		ScalarConverter(const ScalarConverter& other);
-		ScalarConverter& operator=(const ScalarConverter& other);
-		~ScalarConverter();
-		
-	public:
-		static void convert(const std::string& str);
-};
+
+	std::string input;
+	while (true) 
+	{
+		std::cout << "Enter a value, or exit: ";
+		if (!(std::cin >> input))
+			break;
+		if (input == "exit" || input == "EXIT" || input == "Exit" || input == "q")
+			break;
+		ScalarConverter::convert(input);
+	}
+	return 0;
+}
