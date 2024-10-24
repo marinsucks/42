@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:08:11 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/24 14:37:58 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/24 15:10:49 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,29 @@ ScalarConverter::~ScalarConverter() {}
 
 void	ScalarConverter::convert(const std::string& str)
 {
-	char c = str[0];
-	int i = strtod(str.c_str(), NULL);
-	float f = static_cast<float>(strtod(str.c_str(), NULL));
-	double d = strtod(str.c_str(), NULL);
+	double	d;
+	if (str.size() == 1 && !isdigit(str[0]))
+		d = str[0];
+	else
+		d = strtod(str.c_str(), NULL);
+	int		i = static_cast<int>(d);
+	float	f = static_cast<float>(d);
 
 	std::cout << "char: ";
-	if (std::isprint(c))
-		std::cout << "'" << c << "'" << std::endl;
+	if (!(d >= 0 && d <= 255))
+		std::cout << "impossible" << std::endl;
+	else if (std::isprint(d))
+		std::cout << "'" << static_cast<char>(d) << "'" << std::endl;
 	else
 		std::cout << "Non displayable" << std::endl;
-	
-	if ((!std::isdigit(c) && d == 0) 
-		&& str != "nan"
-		&& str != "inff" && str != "inf"  
-		&& str != "-inff" && str != "-inf")
-	{
-		std::cout << "int: " << static_cast<int>(c) << std::endl; 
-		std::cout << "float: "<< static_cast<float>(c) << "f" << std::endl; 
-		std::cout << "double: "<< static_cast<double>(c) << std::endl;
-		return ;
-	}
 
 	std::cout << "int: ";
-	if (static_cast<double>(i) == d || (d >= i && d < i + 1))
+	if (static_cast<double>(i) == d 
+		||  (d >= 0 && (d >= i && d < i + 1))
+		||  (d < 0 && (d <= i && d > i - 1)))
 		std::cout << i << std::endl;
 	else
-		std::cout << "out of scope" << std::endl;
+		std::cout << "impossible" << std::endl;
 
 	std::cout << "float: " << f << "f" << std::endl;
 	std::cout << "double: " << d << std::endl;
