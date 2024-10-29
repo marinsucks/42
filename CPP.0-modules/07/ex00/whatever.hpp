@@ -6,9 +6,11 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:54:58 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/28 16:06:16 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/29 11:59:08 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 template <typename T>
 void	swap(T& a, T& b)

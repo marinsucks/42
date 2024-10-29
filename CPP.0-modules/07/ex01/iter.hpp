@@ -6,9 +6,11 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:17:59 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/28 16:35:46 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/10/29 11:58:37 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 template <typename T>
 void	iter(T* array, long len, void (*func)(T&))
