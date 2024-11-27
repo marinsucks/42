@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "CREATE DATABASE IF NOT EXISTS wordpress;" >>/etc/mysql/init.sql
 echo "CREATE USER IF NOT EXISTS 'FrankBreak'@'localhost' IDENTIFIED BY 'ineedabreak';" >>/etc/mysql/init.sql
 echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'FrankBreak'@'localhost' WITH GRANT OPTION;" >>/etc/mysql/init.sql

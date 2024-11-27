@@ -6,8 +6,8 @@ services:
     env_file: example.env
     ports:
       - "3306:3306"
-    volumes:
-      - mariadb_data:/var/lib/mysql
+    #volumes:
+    #  - mariadb_data:/var/lib/mysql
 
   nginx:
     container_name: nginx_ctr
@@ -15,7 +15,7 @@ services:
     env_file: example.env
     ports:
       - "443:443"
-  
+
   wordpress:
     container_name: wordpress_ctr
     build: requirements/wordpress

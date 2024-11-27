@@ -6,16 +6,16 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 16:03:40 by mbecker           #+#    #+#              #
-#    Updated: 2024/11/25 13:41:00 by mbecker          ###   ########.fr        #
+#    Updated: 2024/11/27 11:50:52 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ENV = srcs/.env
+#ENV = srcs/.env
+ENV = srcs/example.env
 
 all: $(ENV)
-	@echo "$(RED)Finish your project first !!!$(NC)"
-	@echo "$(RED)Have you removed every sensitive info from requirements ?$(NC)"
-#	@docker compose -f ./srcs/docker-compose.yml up -d --build
+	@echo "$(RED)Have you removed every test entries from requirements ?$(NC)"
+	@docker compose -f ./srcs/docker-compose.yml up -d --build
 
 $(ENV):
 	@echo "$(YELLOW)Retrieving env file...$(NC)"
