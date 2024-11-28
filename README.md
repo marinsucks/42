@@ -4,7 +4,7 @@ Hey there! I'm Marin, a student at [42 Paris](https://42.fr) since Nov 2023. Thi
 
 ## C++ Projects
 
-- 🆙 [**CPP Modules**](./CPP.0-modules/) - 🚧 In progress! 🚧 Ten modules to learn OOP through C++.
+- 🆙 [**CPP Modules**](./CPP.0-modules/) - 🚧 In progress! 🚧 Ten modules to learn Object-Oriented Programming through C++.
 
 ## C Projects
 
@@ -12,9 +12,9 @@ Hey there! I'm Marin, a student at [42 Paris](https://42.fr) since Nov 2023. Thi
 
 - 🐚 [**Minishell**](https://github.com/42mates/minishell/) - A group project with [@ku-alexej](https://github.com/ku-alexej) where we reproduced our own basic reproduction of `bash`.
 
-- 🍽️ [**Philosophers**](./C.8-Philosophers/) - I handled threads routine: _take a fork_, _eat_, _sleep_, _think_, _die_ - with mutexes, of course !
+- 🍽️ [**Philosophers**](./C.8-Philosophers/) - I managed threads routine: _take a fork_, _eat_, _sleep_, _think_, _die_ - with mutexes, of course !
 
-- 🚰 [**pipex**](./C.6-pipex/) - I redirected files I/O with program reproducing the pipe '`|`' behavior.
+- 🚰 [**pipex**](./C.6-pipex/) - A program reproducing the pipe '`|`' behavior.
 
 - ♻️ [**push_swap**](./C.5-push_swap/) - I implemented a sorting algorithm following restricted operations.
 
@@ -27,6 +27,8 @@ Hey there! I'm Marin, a student at [42 Paris](https://42.fr) since Nov 2023. Thi
 	- [**get_next_line**](./C.3-get_next_line/) - Unlocked the magic of reading files line by line!
 
 ## IT Projects
+
+- 🐳 [**Docker**](./IT.1-Docker/) - 🚧 In progress! 🚧 I 'm containerizing applications and services with `docker-compose`.
 
 - 🌱 [**Born2beroot**](./IT.0-Born2beroot/) - I set up a secure Linux server environment following strict guidelines.
 
