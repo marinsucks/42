@@ -10,9 +10,6 @@ RUN apt-get install -y \
 	nano
 RUN apt clean
 
-#start php-fpm
-#RUN service php7.4-fpm start
-
 RUN wget https://wordpress.org/latest.tar.gz; \
 	mkdir -p /var/www; \
 	tar -xzf latest.tar.gz -C /var/www; \
@@ -29,4 +26,7 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 
 COPY tools/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN	chmod +x /usr/local/bin/entrypoint.sh
+
+#for debug
+CMD [ "tail", "-f", "/usr/local/bin/entrypoint.sh" ] 
 #ENTRYPOINT [ "entrypoint.sh" ]

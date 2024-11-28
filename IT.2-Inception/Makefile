@@ -6,7 +6,7 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 16:03:40 by mbecker           #+#    #+#              #
-#    Updated: 2024/11/27 11:50:52 by mbecker          ###   ########.fr        #
+#    Updated: 2024/11/28 17:29:57 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,13 @@ wordpress:
 	@echo "$(LYELLOW)Building WORDPRESS...$(NC)"
 	@docker compose -f ./srcs/docker-compose-wordpress.yml up -d --build
 
-clean:
+clean: down
 	@if [ -n "$$(docker ps -q)" ]; then docker stop $$(docker ps -q); fi
 	@docker container prune -f
 
 fclean: clean
 	@docker system prune -f
-	@cp srcs/.env /home/mbecker/inception.env
+	@if [ -f srcs/.env ]; then cp srcs/.env /home/mbecker/inception.env; fi
 	@rm -f srcs/.env
 
 re: clean all

@@ -9,12 +9,9 @@ RUN apt clean
 
 COPY conf/mariadb.cnf /etc/mysql/mariadb.cnf
 
-COPY ../tools/test.sh /usr/local/bin/test.sh
-#!COPY ../tools/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/test.sh
-#!RUN	chmod +x /usr/local/bin/entrypoint.sh
+COPY ../tools/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN	chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 3306
 
-ENTRYPOINT [ "test.sh" ]
-#!ENTRYPOINT [ "entrypoint.sh" ]
+ENTRYPOINT [ "entrypoint.sh" ]
