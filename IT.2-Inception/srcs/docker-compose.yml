@@ -8,11 +8,11 @@ services:
     env_file: example.env
     restart: unless-stopped
     networks:
-      - inception
+      - inception_net
     expose:
       - 3306
-    #volumes:
-      #- mariadb_data:/var/lib/mysql
+    volumes:
+      - mariadb_data:/var/lib/mysql
 
   nginx:
     container_name: nginx_ctr
@@ -24,9 +24,11 @@ services:
       - wordpress
     restart: unless-stopped
     networks:
-      - inception
+      - inception_net
     ports:
       - "443:443"
+    volumes:
+      - wordpress_data:/var/www/wordpress
 
   wordpress:
     container_name: wordpress_ctr
@@ -38,12 +40,27 @@ services:
       - mariadb
     restart: unless-stopped
     networks:
-      - inception
+      - inception_net
     expose:
       - 9000
-    #volumes:
-      #- wordpress_data:/var/www/html
+    volumes:
+      - wordpress_data:/var/www/wordpress
 
 networks:
-  inception:
+  inception_net:
     driver: bridge
+
+volumes:
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/mbecker/data/mariadb_data
+      o: bind
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/mbecker/data/wordpress_data
+      o: bind
+  

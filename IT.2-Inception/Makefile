@@ -6,46 +6,52 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 16:03:40 by mbecker           #+#    #+#              #
-#    Updated: 2024/11/28 17:29:57 by mbecker          ###   ########.fr        #
+#    Updated: 2024/12/02 17:11:32 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#ENV = srcs/.env
-ENV = srcs/example.env
+#!ENV =	srcs/.env
+ENV =	srcs/example.env
+DATA =	/home/mbecker/data
+VOLUMES = $(DATA)/mariadb_data $(DATA)/wordpress_data
 
-all: $(ENV)
-	@echo "$(RED)Have you removed every test entries from requirements ?$(NC)"
-	@docker compose -f ./srcs/docker-compose.yml up -d --build
+all: $(ENV) $(VOLUMES)
+	@echo "$(RED)REMOVE US:$(NC)"
+	@echo "$(LRED)  - $(RED)example.env$(LRED) (replace with .env in Makefile)$(NC)"
+	@echo "$(LRED)  - $(RED)rm -rf $(DATA)$(NC)"
+	@echo "$(YELLOW)Starting containers...$(NC)"
+	@docker compose -f srcs/docker-compose.yml up -d --build
+	@docker compose -f srcs/docker-compose.yml logs
 
 $(ENV):
-	@echo "$(YELLOW)Retrieving env file...$(NC)"
-	@cp /home/mbecker/inception.env ./srcs/.env
+	@echo "$(YELLOW)Retrieving environment file...$(NC)"
+	@cp /home/mbecker/inception.env srcs/.env
+
+$(VOLUMES):
+	@echo "$(YELLOW)Creating volumes directories...$(NC)"
+	@mkdir -p $(DATA)/mariadb_data
+	@mkdir -p $(DATA)/wordpress_data
 
 down:
-	@docker compose -f ./srcs/docker-compose.yml down
-
-mariadb:
-	@echo "$(LYELLOW)Building MARIADB...$(NC)"
-	@docker compose -f ./srcs/docker-compose-mariadb.yml up -d --build
-
-nginx:
-	@echo "$(LYELLOW)Building NGINX...$(NC)"
-	@docker compose -f ./srcs/docker-compose-nginx.yml up -d --build
-
-wordpress:
-	@echo "$(LYELLOW)Building WORDPRESS...$(NC)"
-	@docker compose -f ./srcs/docker-compose-wordpress.yml up -d --build
+	@echo "$(RED)Stopping containers...$(NC)"
+	@docker compose -f srcs/docker-compose.yml down
 
 clean: down
+	@echo "$(RED)Removing containers...$(NC)"
 	@if [ -n "$$(docker ps -q)" ]; then docker stop $$(docker ps -q); fi
 	@docker container prune -f
 
 fclean: clean
+	@echo "$(RED)Removing images...$(NC)"
 	@docker system prune -f
-	@if [ -f srcs/.env ]; then cp srcs/.env /home/mbecker/inception.env; fi
+	@echo "$(RED)Removing volumes...$(NC)"
+	@docker compose -f srcs/docker-compose.yml down -v
+	@sudo rm -rf $(DATA) #!REMOVE ME
+	@echo "$(RED)Removing environment file from srcs...$(NC)"
+	@if [ -f srcs/.env ]; then cp srcs/.env $$HOME/inception.env; fi
 	@rm -f srcs/.env
 
-re: clean all
+re: fclean all
 
 .PHONY : all clean re 
 

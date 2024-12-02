@@ -5,8 +5,16 @@ SECONDS=0
 while ! mysqladmin ping -h mariadb --silent; do
 	echo "Waiting for MariaDB to start... ${SECONDS} seconds elapsed"
 	sleep 1
-	SECONDS=$((SECONDS+1))
 done
+
+echo "Database Name: $DB_NAME"
+echo "Admin Name: $ADMIN_NAME"
+echo "Admin Password: $ADMIN_PWD"
+echo "WordPress URL: $WP_URL"
+echo "WordPress Title: $WP_TITLE"
+echo "Admin Email: $ADMIN_EMAIL"
+echo "User Name: $USER_NAME"
+echo "User Password: $USER_PWD"
 
 # create a new wordpress configuration file
 /wp-cli.phar config create	--allow-root \
@@ -32,6 +40,8 @@ done
 							--user_pass="$USER_PWD" \
 							--role=author \
 							--path='/var/www/wordpress'
+
+
 
 # start the php-fpm service
 mkdir -p /run/php
