@@ -6,8 +6,7 @@ RUN apt-get install -y \
 	php-fpm \
 	php-mysql \
 	mariadb-client \
-	wget \
-	nano
+	wget
 RUN apt clean
 
 EXPOSE 9000
@@ -18,7 +17,6 @@ RUN wget https://wordpress.org/latest.tar.gz; \
 	rm latest.tar.gz; \
 	chown -R root:root /var/www/wordpress
 
-
 RUN sed -i 's/^.*clear_env.*$/clear_env = no/' /etc/php/7.4/fpm/pool.d/www.conf; \
 	sed -i 's/^.*listen =.*$/listen = 0.0.0.0:9000/' /etc/php/7.4/fpm/pool.d/www.conf
 
@@ -28,4 +26,5 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 COPY tools/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN	chmod +x /usr/local/bin/entrypoint.sh
 
-ENTRYPOINT [ "entrypoint.sh" ]
+#ENTRYPOINT [ "entrypoint.sh" ]
+ENTRYPOINT [ "tail", "-f", "/dev/null" ]

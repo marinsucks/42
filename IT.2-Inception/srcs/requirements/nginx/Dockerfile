@@ -6,11 +6,6 @@ RUN apt-get install -y \
 	nginx \
 	openssl
 
-RUN apt-get install -y \
-	nano \
-	iputils-ping \
-	curl
-
 # Get SSL certificate
 RUN mkdir -p /etc/nginx/ssl; \
 	openssl req \

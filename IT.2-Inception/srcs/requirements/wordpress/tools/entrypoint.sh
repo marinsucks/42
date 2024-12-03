@@ -7,39 +7,39 @@ while ! mysqladmin ping -h mariadb --silent; do
 	sleep 1
 done
 
-echo "Database Name: $DB_NAME"
-echo "Admin Name: $ADMIN_NAME"
-echo "Admin Password: $ADMIN_PWD"
-echo "WordPress URL: $WP_URL"
-echo "WordPress Title: $WP_TITLE"
-echo "Admin Email: $ADMIN_EMAIL"
-echo "User Name: $USER_NAME"
-echo "User Password: $USER_PWD"
-
 # create a new wordpress configuration file
 /wp-cli.phar config create	--allow-root \
 							--dbname="$DB_NAME" \
 							--dbuser="$ADMIN_NAME" \
 							--dbpass="$ADMIN_PWD" \
-							--dbhost=mariadb:3306 \
-							--path='/var/www/wordpress'
+							--dbhost=mariadb \
+							--path=/var/www/wordpress
+
+## install wordpress
+#/wp-cli.phar core install --allow-root \
+#                          --url=https://mbecker.42.fr/ \
+#                          --title=Inception \
+#                          --admin_user=admin \
+#                          --admin_password=admin \
+#                          --admin_email=admin@42.fr \
+#                          --path=/var/www/wordpress
 
 # install wordpress
 /wp-cli.phar core install --allow-root \
-                          --url="$WP_URL" \
-                          --title="$WP_TITLE" \
-                          --admin_user="$ADMIN_NAME" \
-                          --admin_password="$ADMIN_PWD" \
-                          --admin_email="$ADMIN_EMAIL" \
-                          --path='/var/www/wordpress'
+                          --url=https://$DOMAIN/ \
+                          --title=$WP_TITLE \
+                          --admin_user=$ADMIN_NAME \
+                          --admin_password=$ADMIN_PWD \
+                          --admin_email=$ADMIN_EMAIL \
+                          --path=/var/www/wordpress
 
-# create a new wordpress user
+# create a new user
 /wp-cli.phar user create	--allow-root \
 							"$USER_NAME" \
 							"$USER_NAME@example.com" \
 							--user_pass="$USER_PWD" \
 							--role=author \
-							--path='/var/www/wordpress'
+							--path=/var/www/wordpress
 
 
 

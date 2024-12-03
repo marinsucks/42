@@ -2,8 +2,7 @@ FROM debian:bullseye
 
 RUN	apt-get update 
 RUN apt-get install -y \
-	mariadb-server \
-	nano
+	mariadb-server
 RUN apt clean
 
 EXPOSE 3306
