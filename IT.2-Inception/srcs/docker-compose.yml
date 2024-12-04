@@ -63,4 +63,3 @@ volumes:
       type: none
       device: /home/mbecker/data/wordpress_data
       o: bind
-  

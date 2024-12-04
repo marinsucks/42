@@ -6,7 +6,7 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 16:03:40 by mbecker           #+#    #+#              #
-#    Updated: 2024/12/02 17:11:32 by mbecker          ###   ########.fr        #
+#    Updated: 2024/12/04 14:56:39 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,12 +46,18 @@ fclean: clean
 	@docker system prune -f
 	@echo "$(RED)Removing volumes...$(NC)"
 	@docker compose -f srcs/docker-compose.yml down -v
-	@sudo rm -rf $(DATA) #!REMOVE ME
 	@echo "$(RED)Removing environment file from srcs...$(NC)"
 	@if [ -f srcs/.env ]; then cp srcs/.env $$HOME/inception.env; fi
 	@rm -f srcs/.env
 
+erase_data:
+	@echo "$(RED)Removing local data ($(DATA))...$(NC)"
+	@sudo rm -rf $(DATA)
+
 re: fclean all
+
+logs:
+	@docker compose -f srcs/docker-compose.yml logs
 
 .PHONY : all clean re 
 
