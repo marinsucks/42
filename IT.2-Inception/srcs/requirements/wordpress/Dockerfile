@@ -1,5 +1,6 @@
 FROM debian:bullseye
 
+# Install mariadb-client, php and wget
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y \
 	php \
@@ -34,4 +35,3 @@ COPY tools/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN	chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT [ "entrypoint.sh" ]
-#ENTRYPOINT [ "tail", "-f", "/dev/null" ]

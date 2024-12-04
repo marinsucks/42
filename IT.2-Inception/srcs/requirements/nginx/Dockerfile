@@ -7,7 +7,7 @@ RUN apt-get install -y \
 	openssl
 
 # Get SSL certificate
-RUN mkdir -p /etc/nginx/ssl; \
+RUN mkdir -p /etc/nginx/ssl && \
 	openssl req \
 		-x509 \
 		-nodes \
@@ -17,8 +17,4 @@ RUN mkdir -p /etc/nginx/ssl; \
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
-RUN chmod -R 755 /var/www/html
-
-RUN mv /var/www/html/index.nginx-debian.html /var/www/html/index.html
-
-CMD [ "nginx", "-g", "daemon off;" ]
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]

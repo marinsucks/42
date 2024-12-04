@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# start the mariadb service
+# wait for the mariadb service to be running
 SECONDS=0
 while ! mysqladmin ping -h mariadb --silent; do
 	echo "Waiting for MariaDB to start... ${SECONDS} seconds elapsed"
@@ -31,8 +31,6 @@ wp user create	--allow-root \
 				--user_pass="$USER_PWD" \
 				--role=author \
 				--path=/var/www/wordpress
-
-
 
 # start the php-fpm service
 mkdir -p /run/php

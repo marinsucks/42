@@ -1,6 +1,8 @@
-services:
+name: inception
 
+services:
   mariadb:
+    image: mariadb
     container_name: mariadb_ctr
     build: 
       context: requirements/mariadb
@@ -13,8 +15,8 @@ services:
       - 3306
     volumes:
       - mariadb_data:/var/lib/mysql
-
   nginx:
+    image: nginx
     container_name: nginx_ctr
     build:
       context: requirements/nginx
@@ -29,8 +31,8 @@ services:
       - "443:443"
     volumes:
       - wordpress_data:/var/www/wordpress
-
   wordpress:
+    image: wordpress
     container_name: wordpress_ctr
     build: 
       context: requirements/wordpress

@@ -6,7 +6,7 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 16:03:40 by mbecker           #+#    #+#              #
-#    Updated: 2024/12/04 14:56:39 by mbecker          ###   ########.fr        #
+#    Updated: 2024/12/04 16:49:29 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ all: $(ENV) $(VOLUMES)
 	@echo "$(LRED)  - $(RED)rm -rf $(DATA)$(NC)"
 	@echo "$(YELLOW)Starting containers...$(NC)"
 	@docker compose -f srcs/docker-compose.yml up -d --build
-	@docker compose -f srcs/docker-compose.yml logs
 
 $(ENV):
 	@echo "$(YELLOW)Retrieving environment file...$(NC)"
@@ -53,6 +52,11 @@ fclean: clean
 erase_data:
 	@echo "$(RED)Removing local data ($(DATA))...$(NC)"
 	@sudo rm -rf $(DATA)
+
+#ssl:
+#	@echo "$(YELLOW)Retrieving SSL certificate...$(NC)"
+#	@sudo docker cp nginx_ctr:/etc/nginx/ssl/inception.crt /usr/local/share/ca-certificates/self-signed.crt
+#	@sudo update-ca-certificates
 
 re: fclean all
 
