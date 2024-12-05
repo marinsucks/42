@@ -47,13 +47,13 @@ services:
       - 9000
     volumes:
       - wordpress_data:/var/www/wordpress
+#bonus
   redis:
     image: redis
     container_name: redis_ctr
     build: 
       context: requirements/redis
       dockerfile: Dockerfile
-    #env_file: example.env
     depends_on:
       - mariadb
     restart: unless-stopped
@@ -61,6 +61,17 @@ services:
       - inception_net
     expose:
       - 6379
+  adminer:
+    image: adminer
+    container_name: adminer_ctr
+    build: 
+      context: requirements/adminer
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    networks:
+      - inception_net
+    ports:
+      - "8080:9001"
 
 networks:
   inception_net:

@@ -6,7 +6,7 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 16:03:40 by mbecker           #+#    #+#              #
-#    Updated: 2024/12/04 16:49:29 by mbecker          ###   ########.fr        #
+#    Updated: 2024/12/05 16:24:27 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ VOLUMES = $(DATA)/mariadb_data $(DATA)/wordpress_data
 all: $(ENV) $(VOLUMES)
 	@echo "$(RED)REMOVE US:$(NC)"
 	@echo "$(LRED)  - $(RED)example.env$(LRED) (replace with .env in Makefile)$(NC)"
-	@echo "$(LRED)  - $(RED)rm -rf $(DATA)$(NC)"
 	@echo "$(YELLOW)Starting containers...$(NC)"
 	@docker compose -f srcs/docker-compose.yml up -d --build
 
