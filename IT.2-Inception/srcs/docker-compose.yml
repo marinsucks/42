@@ -47,6 +47,20 @@ services:
       - 9000
     volumes:
       - wordpress_data:/var/www/wordpress
+  redis:
+    image: redis
+    container_name: redis_ctr
+    build: 
+      context: requirements/redis
+      dockerfile: Dockerfile
+    #env_file: example.env
+    depends_on:
+      - mariadb
+    restart: unless-stopped
+    networks:
+      - inception_net
+    expose:
+      - 6379
 
 networks:
   inception_net:

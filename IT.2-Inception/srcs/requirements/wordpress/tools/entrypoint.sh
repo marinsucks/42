@@ -32,6 +32,11 @@ wp user create	--allow-root \
 				--role=author \
 				--path=/var/www/wordpress
 
+# install and enable the redis cache plugin
+sed -i "/\/\* That's all, stop editing! Happy publishing. \*\//i define('WP_REDIS_HOST', 'redis');\ndefine('WP_REDIS_PORT', 6379);" /var/www/wordpress/wp-config.php
+wp plugin install redis-cache --activate --allow-root --path=/var/www/wordpress
+wp redis enable --allow-root --path=/var/www/wordpress
+
 # start the php-fpm service
 mkdir -p /run/php
 exec /usr/sbin/php-fpm7.4 -F
