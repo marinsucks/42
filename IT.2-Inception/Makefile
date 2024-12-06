@@ -6,7 +6,7 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 16:03:40 by mbecker           #+#    #+#              #
-#    Updated: 2024/12/05 16:24:27 by mbecker          ###   ########.fr        #
+#    Updated: 2024/12/06 17:04:13 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ clean: down
 
 fclean: clean
 	@echo "$(RED)Removing images...$(NC)"
-	@docker system prune -f
+	@g
 	@echo "$(RED)Removing volumes...$(NC)"
 	@docker compose -f srcs/docker-compose.yml down -v
 	@echo "$(RED)Removing environment file from srcs...$(NC)"

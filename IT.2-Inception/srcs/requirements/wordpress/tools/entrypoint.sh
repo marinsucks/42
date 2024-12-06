@@ -8,7 +8,7 @@ while ! mysqladmin ping -h mariadb --silent; do
 done
 
 # wait for the wordpress database to be accessible
-until echo "SHOW DATABASES;" | mysql -h mariadb -u"$ADMIN_NAME" -p"$ADMIN_PWD" | grep -q "$DB_NAME"; do
+until echo "SHOW DATABASES;" | mysql -h mariadb -u"$DB_ADMIN_NAME" -p"$DB_ADMIN_PWD" | grep -q "$DB_NAME"; do
 	echo "Waiting for WordPress database to be accessible... ${SECONDS} seconds elapsed"
 	sleep 1
 done
@@ -16,8 +16,8 @@ done
 # create a new wordpress configuration file
 wp config create	--allow-root \
 					--dbname="$DB_NAME" \
-					--dbuser="$ADMIN_NAME" \
-					--dbpass="$ADMIN_PWD" \
+					--dbuser="$DB_ADMIN_NAME" \
+					--dbpass="$DB_ADMIN_PWD" \
 					--dbhost=mariadb \
 					--path=/var/www/wordpress
 
@@ -25,16 +25,16 @@ wp config create	--allow-root \
 wp core install --allow-root \
 				--url=https://$DOMAIN/ \
 				--title=$WP_TITLE \
-				--admin_user=$ADMIN_NAME \
-				--admin_password=$ADMIN_PWD \
-				--admin_email=$ADMIN_EMAIL \
+				--admin_user=$DB_ADMIN_NAME \
+				--admin_password=$DB_ADMIN_PWD \
+				--admin_email=$DB_ADMIN_EMAIL \
 				--path=/var/www/wordpress
 
 # create a new user
 wp user create	--allow-root \
-				"$USER_NAME" \
-				"$USER_NAME@example.com" \
-				--user_pass="$USER_PWD" \
+				"$DB_USER_NAME" \
+				"$DB_USER_NAME@example.com" \
+				--user_pass="$DB_USER_PWD" \
 				--role=author \
 				--path=/var/www/wordpress
 
