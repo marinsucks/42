@@ -7,6 +7,12 @@ while ! mysqladmin ping -h mariadb --silent; do
 	sleep 1
 done
 
+# wait for the wordpress database to be accessible
+until echo "SHOW DATABASES;" | mysql -h mariadb -u"$ADMIN_NAME" -p"$ADMIN_PWD" | grep -q "$DB_NAME"; do
+	echo "Waiting for WordPress database to be accessible... ${SECONDS} seconds elapsed"
+	sleep 1
+done
+
 # create a new wordpress configuration file
 wp config create	--allow-root \
 					--dbname="$DB_NAME" \

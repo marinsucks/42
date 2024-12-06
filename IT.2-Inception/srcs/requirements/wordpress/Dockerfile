@@ -24,14 +24,16 @@ RUN wget https://wordpress.org/latest.tar.gz && \
 	chmod -R 755 /var/www/wordpress && \
 	chown -R root:root /var/www/wordpress
 
-# Configure wordpress
+# Install wp-cli
 WORKDIR /var/www/wordpress
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
 	chmod +x wp-cli.phar && \ 
 	mv wp-cli.phar /usr/local/bin/wp
 
+# Install adminer
+RUN wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php -O adminer.php
 
+# Copy and launch entrypoint.sh
 COPY tools/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN	chmod +x /usr/local/bin/entrypoint.sh
-
 ENTRYPOINT [ "entrypoint.sh" ]
