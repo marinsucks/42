@@ -6,18 +6,18 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 16:03:40 by mbecker           #+#    #+#              #
-#    Updated: 2024/12/06 17:04:13 by mbecker          ###   ########.fr        #
+#    Updated: 2024/12/06 17:44:29 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!ENV =	srcs/.env
 ENV =	srcs/example.env
 DATA =	/home/mbecker/data
-VOLUMES = $(DATA)/mariadb_data $(DATA)/wordpress_data
+VOLUMES = $(DATA)/mariadb_data $(DATA)/wordpress_data $(DATA)/static_data
 
 all: $(ENV) $(VOLUMES)
 	@echo "$(RED)REMOVE US:$(NC)"
-	@echo "$(LRED)  - $(RED)example.env$(LRED) (replace with .env in Makefile)$(NC)"
+	@echo "$(LRED)  - $(RED)example.env$(LRED) (replace with .env in Makefile and docker-compose.yml)$(NC)"
 	@echo "$(YELLOW)Starting containers...$(NC)"
 	@docker compose -f srcs/docker-compose.yml up -d --build
 
@@ -27,8 +27,7 @@ $(ENV):
 
 $(VOLUMES):
 	@echo "$(YELLOW)Creating volumes directories...$(NC)"
-	@mkdir -p $(DATA)/mariadb_data
-	@mkdir -p $(DATA)/wordpress_data
+	@mkdir -p $(VOLUMES)
 
 down:
 	@echo "$(RED)Stopping containers...$(NC)"
@@ -41,7 +40,7 @@ clean: down
 
 fclean: clean
 	@echo "$(RED)Removing images...$(NC)"
-	@g
+	@docker system prune -f
 	@echo "$(RED)Removing volumes...$(NC)"
 	@docker compose -f srcs/docker-compose.yml down -v
 	@echo "$(RED)Removing environment file from srcs...$(NC)"
@@ -51,11 +50,6 @@ fclean: clean
 erase_data:
 	@echo "$(RED)Removing local data ($(DATA))...$(NC)"
 	@sudo rm -rf $(DATA)
-
-#ssl:
-#	@echo "$(YELLOW)Retrieving SSL certificate...$(NC)"
-#	@sudo docker cp nginx_ctr:/etc/nginx/ssl/inception.crt /usr/local/share/ca-certificates/self-signed.crt
-#	@sudo update-ca-certificates
 
 re: fclean all
 

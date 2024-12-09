@@ -31,6 +31,7 @@ services:
       - "443:443"
     volumes:
       - wordpress_data:/var/www/wordpress
+      - static_data:/var/www/static
   wordpress:
     image: wordpress
     container_name: wordpress_ctr
@@ -48,7 +49,7 @@ services:
     volumes:
       - wordpress_data:/var/www/wordpress
 
-#bonus
+#bonus: services
   redis:
     image: redis
     container_name: redis_ctr
@@ -94,4 +95,10 @@ volumes:
     driver_opts:
       type: none
       device: /home/mbecker/data/wordpress_data
+      o: bind
+  static_data: #bonus: static website
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/mbecker/data/static_data
       o: bind

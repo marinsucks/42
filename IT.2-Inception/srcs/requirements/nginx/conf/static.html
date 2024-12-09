@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<title>Inception</title>
+	<style>
+		:root {
+			--text: #f1efdf;
+			--text-dimmed: #f0edd4;
+			--background: #17181a;
+			--background-dimmed: #28292c;
+			--primary: #a6deca;
+			--accent: #eb5149; /*#f1c8c6;*/
+		}
+		body {
+			background-color: var(--background);
+			color: var(--text);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			font-family: 'Geologica', Helvetica, sans-serif;
+			font-size: 1.5em;
+			position: relative;
+		}
+		h1 {
+			font-size: 6em;
+			margin: 0;
+		}
+		button {
+			align-items: center;
+			justify-content: center;
+			border: 4px solid var(--text);
+			border-radius: 25px;
+			color: var(--text);
+			font-family: var(--title-font);
+			font-size: 0.7em;
+			background-color: var(--background-dimmed);
+			padding: 14px;
+			transition: 0.40s;
+			position: absolute;
+			bottom: 30px;
+		}
+
+		button:hover {
+			background-color: var(--text);
+			color: var(--background);
+			cursor: pointer;
+		}
+
+		.wavy {
+		  animation-name: wavy;
+		  animation-duration: 2s;
+		  animation-timing-function: ease;
+		  animation-iteration-count: infinite;
+		  position: relative;
+		  top: 0;
+		  left: 0;
+		}
+		@keyframes wavy {
+		  0% {
+			top: 0px;
+		  }
+		  50% {
+			top: -0.7em;
+			color : var(--accent);
+		  }
+		  100% {
+			top: 0px;
+		  }
+		}
+		@keyframes pulse {
+			0% {
+				transform: scale(1);
+			}
+			50% {
+				transform: scale(1.2);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+	</style>
+	<script>
+		function wave()
+		{
+			let delay = 200;
+
+			let h1 = document.getElementById("animated");
+			h1.innerHTML = "Inception"
+				.split("")
+				.map(letter => {
+				  return `<span>` + letter + `</span>`;
+				})
+				.join("");
+
+			Array.from(h1.children).forEach((span, index) => {
+				setTimeout(() => {
+				  span.classList.add("wavy");
+				}, index * 100 + delay);
+			});
+		  
+		}
+		document.addEventListener("DOMContentLoaded", wave);
+	</script>
+</head>
+<body>
+	<h1 id="animated">Inception</h1>
+	<button onclick="window.location.href='https://mbecker.42.fr'">WordPress website</button>
+</body>
+</html>

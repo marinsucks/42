@@ -4,7 +4,8 @@ FROM debian:bullseye
 RUN apt-get update 
 RUN apt-get install -y \
 	nginx \
-	openssl
+	openssl \
+	&& apt-get clean
 
 # Get SSL certificate
 RUN mkdir -p /etc/nginx/ssl && \
@@ -16,5 +17,6 @@ RUN mkdir -p /etc/nginx/ssl && \
 		-subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=${DOMAIN}/UID=${LOGIN}"
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY conf/static.html /var/www/static/index.html
 
 ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
