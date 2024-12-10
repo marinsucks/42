@@ -8,7 +8,7 @@ services:
       context: requirements/mariadb
       dockerfile: Dockerfile
     env_file: example.env
-    restart: unless-stopped
+    restart: on-failure
     networks:
       - inception_net
     expose:
@@ -24,7 +24,7 @@ services:
     env_file: example.env
     depends_on:
       - wordpress
-    restart: unless-stopped
+    restart: on-failure
     networks:
       - inception_net
     ports:
@@ -40,7 +40,7 @@ services:
     env_file: example.env
     depends_on:
       - mariadb
-    restart: unless-stopped
+    restart: on-failure
     networks:
       - inception_net
     expose:
@@ -57,7 +57,7 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - mariadb
-    restart: unless-stopped
+    restart: on-failure
     networks:
       - inception_net
     expose:
@@ -69,7 +69,9 @@ services:
       context: requirements/vsftpd
       dockerfile: Dockerfile
     env_file: example.env
-    restart: unless-stopped
+    restart: on-failure
+    networks:
+      - inception_net
     ports:
       - "21:21"
       - "10000-10010:10000-10010" # passive mode ports
@@ -84,7 +86,9 @@ services:
       context: requirements/prometheus
       dockerfile: Dockerfile
     env_file: example.env
-    restart: unless-stopped
+    restart: on-failure
+    networks:
+      - inception_net
     ports:
       - "9090:9090"
     volumes:
