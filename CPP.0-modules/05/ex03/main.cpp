@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:49:41 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/19 11:04:26 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/12/10 14:02:49 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int main(void)
 	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 	testForm(rrf);
 	delete rrf;
-	
+
 	AForm* scf;
 	scf = someRandomIntern.makeForm("shrubbery creation", "Shrubber");
 	testForm(scf);
