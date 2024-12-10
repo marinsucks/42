@@ -93,6 +93,20 @@ services:
       - "9090:9090"
     volumes:
       - prometheus_data:/prometheus
+  grafana:
+    image: grafana
+    container_name: grafana_ctr
+    build: 
+      context: requirements/grafana
+      dockerfile: Dockerfile
+    env_file: example.env
+    restart: on-failure
+    networks:
+      - inception_net
+    ports:
+      - "3000:3000"
+    volumes:
+      - prometheus_data:/prometheus
 
 networks:
   inception_net:
