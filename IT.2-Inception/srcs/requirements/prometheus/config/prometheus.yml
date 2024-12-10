@@ -1,0 +1,24 @@
+global:
+  scrape_interval: 15s  # metrics scraping interval
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'mariadb'
+    static_configs:
+      - targets: ['mariadb:3306']
+  
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx:443']
+
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+
+  - job_name: 'vsftpd'
+    static_configs:
+      - targets: ['vsftpd:21']
+
+  - job_name: 'wordpress'
+    static_configs:
+      - targets: ['wordpress:9000']

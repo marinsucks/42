@@ -6,14 +6,17 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 16:03:40 by mbecker           #+#    #+#              #
-#    Updated: 2024/12/06 17:44:29 by mbecker          ###   ########.fr        #
+#    Updated: 2024/12/09 14:48:10 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!ENV =	srcs/.env
 ENV =	srcs/example.env
 DATA =	/home/mbecker/data
-VOLUMES = $(DATA)/mariadb_data $(DATA)/wordpress_data $(DATA)/static_data
+
+VOLUMES =	$(DATA)/mariadb_data \
+			$(DATA)/wordpress_data \
+			$(DATA)/prometheus_data
 
 all: $(ENV) $(VOLUMES)
 	@echo "$(RED)REMOVE US:$(NC)"

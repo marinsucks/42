@@ -31,7 +31,6 @@ services:
       - "443:443"
     volumes:
       - wordpress_data:/var/www/wordpress
-      - static_data:/var/www/static
   wordpress:
     image: wordpress
     container_name: wordpress_ctr
@@ -78,6 +77,18 @@ services:
       - wordpress_data:/ftp/wordpress
     depends_on:
       - wordpress
+  prometheus:
+    image: prometheus
+    container_name: prometheus_ctr
+    build: 
+      context: requirements/prometheus
+      dockerfile: Dockerfile
+    env_file: example.env
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - prometheus_data:/prometheus
 
 networks:
   inception_net:
@@ -96,9 +107,9 @@ volumes:
       type: none
       device: /home/mbecker/data/wordpress_data
       o: bind
-  static_data: #bonus: static website
+  prometheus_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/mbecker/data/static_data
+      device: /home/mbecker/data/prometheus_data
       o: bind
