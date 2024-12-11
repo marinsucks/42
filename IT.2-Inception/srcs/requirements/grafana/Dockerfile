@@ -11,4 +11,9 @@ EXPOSE 3000
 
 WORKDIR /grafana
 
+RUN mkdir -p conf/provisioning/datasources conf/provisioning/dashboards
+COPY conf/datasource.yml conf/provisioning/datasources/datasource.yml
+COPY conf/dashboard.yml conf/provisioning/dashboards/dashboard.yml
+COPY conf/dashboard.json conf/provisioning/dashboards/dashboard.json
+
 CMD ["./bin/grafana-server", "--homepath=/grafana"]
