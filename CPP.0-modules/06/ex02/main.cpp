@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:20:47 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/24 18:08:03 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/12/10 11:25:01 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,21 @@ void identify(Base& p)
 
 int main()
 {
+	A a;
+	B b;
+	C c;
+	identify(a);
+	identify(b);
+	identify(c);
+
+	std::cout <<  "-----------------" << std::endl;
+
 	for (int i = 0; i < 10; i++)
 	{
-		Base *random = generate();
-		identify(*random);
-		delete random;
+		Base *ptr = generate();
+		identify(ptr);
+		delete ptr;
 	}
-	
+
 	return 0;
 }
