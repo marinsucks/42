@@ -6,11 +6,13 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:54:58 by mbecker           #+#    #+#             */
-/*   Updated: 2024/10/29 11:59:08 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/12/13 13:22:17 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+#include <iostream>
 
 template <typename T>
 void	swap(T& a, T& b)

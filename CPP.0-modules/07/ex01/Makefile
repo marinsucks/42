@@ -6,7 +6,7 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/28 16:17:22 by mbecker           #+#    #+#              #
-#    Updated: 2024/10/28 16:17:33 by mbecker          ###   ########.fr        #
+#    Updated: 2024/12/13 13:26:36 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ SRC =	main.cpp
 
 OBJ_DIR = obj
 OBJ =	$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
+
+SUBJ = ex01.cpp
+SUBJ_OBJ = $(addprefix $(OBJ_DIR)/, $(SUBJ:.cpp=.o))
 
 all: $(NAME)
 
@@ -43,6 +46,18 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
+
+subject: $(SUBJ_OBJ)
+	@echo "$(LYELLOW)Objects successfully compiled in $(YELLOW)$$PWD/obj/$(LYELLOW).$(NC)"
+	@$(CC) $(CFLAG) $(SUBJ) -o $(NAME)
+	@if [ -f $(NAME) ] ; then echo "$(LGREEN)Created $(GREEN)$(NAME)$(LGREEN).$(NC)" ; \
+	else echo "Failed to compile $(RED)$(NAME)$(LRED).$(NC)"; fi
+
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p  $(OBJ_DIR)
+	@echo "$(LYELLOW)Compiling $(YELLOW)$<$(NC)"
+	@$(CC) $(CFLAG) -c $< -o $@
+	@printf "\033[1A\033[2K\r"
 
 .PHONY : all clean fclean re libft
 
