@@ -1,0 +1,86 @@
+{
+	"dashboard": {
+		"id": null,
+		"title": "Service Monitoring Dashboard",
+		"tags": [],
+		"timezone": "browser",
+		"schemaVersion": 16,
+		"version": 0,
+		"refresh": "5s",
+		"panels": [
+			{
+				"type": "graph",
+				"title": "Redis Memory Usage",
+				"targets": [
+					{
+						"expr": "redis_memory_usage_bytes",
+						"legendFormat": "{{instance}}",
+						"refId": "A"
+					}
+				],
+				"id": 1,
+				"gridPos": {
+					"h": 8,
+					"w": 12,
+					"x": 0,
+					"y": 0
+				}
+			},
+			{
+				"type": "graph",
+				"title": "MariaDB Connections",
+				"targets": [
+					{
+						"expr": "mysql_global_status_threads_connected",
+						"legendFormat": "{{instance}}",
+						"refId": "A"
+					}
+				],
+				"id": 2,
+				"gridPos": {
+					"h": 8,
+					"w": 12,
+					"x": 12,
+					"y": 0
+				}
+			},
+			{
+				"type": "graph",
+				"title": "WordPress HTTP Requests",
+				"targets": [
+					{
+						"expr": "nginx_http_requests_total",
+						"legendFormat": "{{instance}}",
+						"refId": "A"
+					}
+				],
+				"id": 3,
+				"gridPos": {
+					"h": 8,
+					"w": 12,
+					"x": 0,
+					"y": 8
+				}
+			},
+			{
+				"type": "graph",
+				"title": "Prometheus CPU Usage",
+				"targets": [
+					{
+						"expr": "rate(process_cpu_seconds_total{job='prometheus'}[1m])",
+						"legendFormat": "{{instance}}",
+						"refId": "A"
+					}
+				],
+				"id": 4,
+				"gridPos": {
+					"h": 8,
+					"w": 12,
+					"x": 12,
+					"y": 8
+				}
+			}
+		]
+	},
+	"overwrite": false
+}
