@@ -110,24 +110,19 @@ setlgit() {
 }
 
 help() {
-	echo -e "${BOLD}┌─────────────────────────────────────────────────────────────┐${NC}"
-	echo -e "${BOLD}
-	│ LIGHTGIT.SH - a quick command for git add, commit and push  │${NC}"
-	echo -e "${BOLD}└─────────────────────────────────────────────────────────────┘${NC}\n"
+	echo -e "${BOLD}┌──────────────────────────────────────────────────────────┐${NC}"
+	echo -e "${BOLD}│ LIGHTGIT - a single command for git add, commit and push │${NC}"
+	echo -e "${BOLD}└──────────────────────────────────────────────────────────┘${NC}\n"
 	echo -e "${BOLD}LGIT COMMAND SETUP:\t${NC}./lightgit.sh setlgit  ${LGREY}-> creates the alias 'lgit' for './lightgit'${NC}\n"
-    echo -e "${BOLD}MODES:\t\t\t${NC}lgit n ${LGREY}-> normal mode, shows processes in detail.${NC}"
-    echo -e "${BOLD}\t\t\t${NC}lgit q ${LGREY}-> quick mode, only necessary infos.${NC}\n"
 }
 
-if [ $# -eq 0 ] && [ -z "$(grep "^alias lgit" ~/.zshrc)" ]; then
-    echo -e "${LRED}Missing mode argument.${NC}"
-	echo -e "${BOLD}First time using LIGHTGIT?${NC} Try ${BOLD}./lightgit.sh help${NC} for manual."
-    exit 1
-elif [ -z "$1" ] || [ "$1" == "q" ]; then
+if [ -z "$1" ] || [ "$1" == "q" ]; then
 	quickMode
 elif [ "$1" == "setlgit" ]; then
 	setlgit
-elif [ "$1" == "help" ] || [ "$1" == "h" ] || [ "$1" == "man" ]; then
+elif [ "$1" == "help" ] || [ "$1" == "h" ] \
+	|| [ "$1" == "--help" ] || [ "$1" == "-h" ] \
+	|| [ "$1" == "man" ]; then
 	help
 else
 	echo -e "${LRED}Invalid mode argument."
