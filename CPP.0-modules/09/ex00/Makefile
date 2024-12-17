@@ -6,14 +6,14 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 17:27:13 by mbecker           #+#    #+#              #
-#    Updated: 2024/11/04 17:29:38 by mbecker          ###   ########.fr        #
+#    Updated: 2024/12/17 17:15:10 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = btc
 
 CC = c++
-CFLAG = -Wall -Wextra -Werror -std=c++98 -pedantic
+CFLAG = -Wall -Wextra -Werror -std=c++98
 
 SRC =	main.cpp \
 		BitcoinExchange.cpp
