@@ -126,6 +126,8 @@ void BitcoinExchange::printConversion(std::string date, double value)
 	}
 	if (it == _data.begin() && it->first > date)
 		throw InvalidTooOld();
+	if (it->first > date && it != _data.begin())
+		--it;
 	std::cout << date << " => " << value << " = " << value * it->second << std::endl;
 }
 
