@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:14:18 by mbecker           #+#    #+#             */
-/*   Updated: 2024/12/18 16:32:36 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/12/18 17:48:36 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ void RPN::parse()
 {
 	std::istringstream iss(_str);
 	std::string token;
-
+	
+	if (_str.empty())
+		throw EmptyInputString();
 	while (iss >> token)
 	{
 		if (!isNumber(token) && !isOperator(token))
@@ -156,4 +158,9 @@ const char* RPN::DivisionByZero::what() const throw()
 const char* RPN::IntegerOverflow::what() const throw()
 {
 	return "integer overflow";
+}
+
+const char* RPN::EmptyInputString::what() const throw()
+{
+	return "empty input string";
 }

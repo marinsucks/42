@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:14:15 by mbecker           #+#    #+#             */
-/*   Updated: 2024/12/18 15:45:26 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/12/18 17:48:22 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ class RPN
 				virtual const char* what() const throw();
 		};
 		class IntegerOverflow : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		class EmptyInputString : public std::exception
 		{
 			public:
 				virtual const char* what() const throw();
