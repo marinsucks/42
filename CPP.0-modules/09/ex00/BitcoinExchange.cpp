@@ -2,11 +2,15 @@
 
 
 BitcoinExchange::BitcoinExchange()
-	: _fs(','), _filepath(""), _current_line(1)
+	: _fs(","), _file("data.csv"), _current_line(1)
+{}
+
+BitcoinExchange::BitcoinExchange(std::string & data)
+	: _fs(","), _file(data), _current_line(1)
 {}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange & copy)
-	: _data(copy._data), _fs(copy._fs), _filepath(copy._filepath), _current_line(copy._current_line)
+	: _data(copy._data), _fs(copy._fs), _file(copy._file), _current_line(copy._current_line)
 {}
 
 BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & copy)
@@ -26,7 +30,8 @@ BitcoinExchange::~BitcoinExchange()
 
 void BitcoinExchange::checkFormat(std::string line)
 {
-	if (line.length() < 11) 
+	size_t min_len = 10 + _fs.length(); // 10 is the length of the date format "YYYY-MM-DD"
+	if (line.length() < min_len)
 		throw InvalidFormat();
 
 	for (int i = 0; i < 10; ++i) 
@@ -36,15 +41,15 @@ void BitcoinExchange::checkFormat(std::string line)
 			throw InvalidFormat();
 	}
 
-	if (line[10] != _fs)
+	if (line.substr(10, _fs.length()) != _fs)
 		throw InvalidFormat();
 
 	bool decimalPointFound = false;
-	for (size_t i = 11; i < line.length(); ++i)
+	for (size_t i = min_len; i < line.length(); ++i)
 	{
 		if ((!isdigit(line[i]) && line[i] != '.' && line[i] != '\n')
 			|| (line[i] == '.' && decimalPointFound))
-			throw InvalidFormat();
+			throw InvalidValue();
 		if (line[i] == '.')
 			decimalPointFound = true;
 	}
@@ -76,7 +81,7 @@ void BitcoinExchange::checkDate(std::string date)
 
 void BitcoinExchange::parseData()
 {
-	std::ifstream infile(_filepath.c_str());
+	std::ifstream infile(_file.c_str());
 	if (!infile.is_open() || !infile.good())
 		throw InvalidFile();
 
@@ -84,6 +89,7 @@ void BitcoinExchange::parseData()
 	std::string date;
 	double value;
 
+	_current_line = 1;
 	std::getline(infile, line);
 	if (!line.find(_fs))
 		throw InvalidFormat();
@@ -95,7 +101,7 @@ void BitcoinExchange::parseData()
 		date = line.substr(0, line.find(_fs));
 		checkDate(date);
 
-		value = std::strtod(line.substr(line.find(_fs) + 1).c_str(), NULL);
+		value = std::strtod(line.substr(line.find(_fs) + _fs.length()).c_str(), NULL);
 
 		if (value < 0)
 			throw InvalidValue();
@@ -106,25 +112,84 @@ void BitcoinExchange::parseData()
 
 	if (_current_line < 2)
 		throw InvalidFile();
+	
+	infile.close();
 }
 
-
-void BitcoinExchange::run(std::string filename)
+void BitcoinExchange::printConversion(std::string date, double value)
 {
+	std::map<std::string, double>::iterator it = _data.lower_bound(date);
+	if (it == _data.end())
+	{
+		std::cerr << "Error: Date not found in data." << std::endl;
+		return;
+	}
+	if (it == _data.begin() && it->first > date)
+		throw InvalidTooOld();
+	std::cout << date << " => " << value << " = " << value * it->second << std::endl;
+}
+
+void BitcoinExchange::parseInput()
+{
+	std::ifstream infile(_file.c_str());
+	if (!infile.is_open() || !infile.good())
+		throw InvalidFile();
+
+	std::string line;
+	std::string date;
+	double value;
+
+	_current_line = 1;
+	std::getline(infile, line);
+	if (!line.find(_fs))
+		throw InvalidFormat();
+	_current_line++;
+
+	while (std::getline(infile, line))
+	{
+		try
+		{
+			checkFormat(line);
+			date = line.substr(0, line.find(_fs));
+			checkDate(date);
+			value = std::strtod(line.substr(line.find(_fs) + _fs.length()).c_str(), NULL);
+			if (value < 0)
+				throw InvalidValue();
+			printConversion(date, value);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << _file << ":" << _current_line << ":\terror: " << e.what() << std::endl;
+		}
+		_current_line++;
+	}
+
+	if (_current_line < 2)
+		throw InvalidFile();
+	
+	infile.close();
+}
+
+void BitcoinExchange::run(std::string infile)
+{
+	std::cout.precision(10); //avoid rounding double value to first decimal
 	try
 	{
-		_filepath = filename;
 		parseData();
+
+		_file = infile;
+		_fs = " | ";
+		parseInput();
+
+		//for (std::map<std::string, double>::const_iterator it = _data.begin(); it != _data.end(); ++it)
+		//	std::cout << it->first << "," << it->second << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "Error: " << e.what() << " [line " << _current_line << "]"<< '\n';
+		std::cerr << _file << ":" << _current_line << ": error: " << e.what() << std::endl;
 	}
 
-	std::cout.precision(10); //avoid rounding to first decimal
 
-	//for (std::map<std::string, double>::const_iterator it = _data.begin(); it != _data.end(); ++it)
-	//	std::cout << it->first << _fs << it->second << std::endl;
 }
 
 
@@ -146,4 +211,9 @@ const char * BitcoinExchange::InvalidDate::what() const throw()
 const char * BitcoinExchange::InvalidValue::what() const throw()
 {
 	return "invalid value";
+}
+
+const char * BitcoinExchange::InvalidTooOld::what() const throw()
+{
+	return "required date is older than the first date in data (are you Marty McFly?)";
 }
