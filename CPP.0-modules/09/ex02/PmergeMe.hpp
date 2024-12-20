@@ -6,28 +6,31 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:48:04 by mbecker           #+#    #+#             */
-/*   Updated: 2024/12/18 18:19:27 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/12/20 15:24:30 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include <vector>
-#include <list>
 #include <string>
 #include <cstdlib>
 #include <sstream>
 #include <exception>
+
+#include "AContainer.hpp"
+#include "Vector.hpp"
+#include "List.hpp"
 
 #define UINT_MAX 4294967295
 
 class PmergeMe
 {
 	private:
-		std::vector<int>	_vec;
-		std::list<int>		_list;
-		std::string			_changeme;
+		Vector	_vec;
+		List		_list;
+		double	_vec_time;
+		double	_list_time;
 
 		bool isPositiveInt(const std::string & str) const;
 		void parse(const std::string &arg);
@@ -56,3 +59,4 @@ class PmergeMe
 				virtual const char *what() const throw();
 		};
 };
+

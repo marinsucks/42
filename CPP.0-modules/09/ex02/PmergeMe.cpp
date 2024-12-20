@@ -6,25 +6,25 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 17:30:11 by mbecker           #+#    #+#             */
-/*   Updated: 2024/12/18 18:20:30 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/12/20 17:40:35 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 PmergeMe::PmergeMe()
-	: _changeme("")
 {}
 
 PmergeMe::PmergeMe(const PmergeMe & copy)
-	: _changeme(copy._changeme)
+	: _vec(copy._vec), _list(copy._list)
 {}
 
 PmergeMe & PmergeMe::operator=(const PmergeMe & copy)
 {
-	if (this != &copy)
+	if (this == &copy)
 	{
-		_changeme = copy._changeme;
+		_vec = copy._vec;
+		_list = copy._list;
 	}
 	return *this;
 }
@@ -66,22 +66,45 @@ void PmergeMe::parse(const std::string &arg)
 		if (!isPositiveInt(token))
 			throw InvalidCharacter();
 		value = atoi(token.c_str());
-		for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end(); ++it)
-		{
-			if (*it == value)
-				throw DuplicateValue();
-		}
+		if (_vec.contains(value))
+			throw DuplicateValue();
 		_vec.push_back(value);
+		_list.push_back(value);
 	}
 }
+
 
 void PmergeMe::run(const std::string &arg)
 {
 	try
 	{
 		parse(arg);
-		for (std::vector<int>::const_iterator it = _vec.begin(); it != _vec.end(); ++it)
-			std::cout << *it << " " << std::endl;
+
+		std::cout << "Before [vector]:\t";
+		_vec.print();
+		std::cout << "Before [list]:\t";
+		_list.print();
+
+		_vec_time = _vec.sort();
+		std::cout << "After [vector]:\t";
+		_vec.print();
+
+		_list_time = _list.sort();
+		std::cout << "After [list]:\t";
+		_list.print();
+
+		if (!_vec.isSorted())
+			throw std::runtime_error("Vector is not sorted");
+		if (!_list.isSorted())
+			throw std::runtime_error("List is not sorted");
+
+
+		std::cout << std::endl;
+
+		std::cout << "Time to process a range of\t" << _vec.size() << " elements" 
+			<< " with std::vector:\t" << _vec_time << " ms" << std::endl;
+		std::cout << "Time to process a range of\t" << _list.size() << " elements" 
+			<< " with std::list:\t" << _list_time << " ms" << std::endl;
 	}
 	catch(const std::exception& e)
 	{

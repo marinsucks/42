@@ -6,7 +6,7 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/18 13:05:21 by mbecker           #+#    #+#              #
-#    Updated: 2024/12/18 17:40:29 by mbecker          ###   ########.fr        #
+#    Updated: 2024/12/20 15:25:35 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ CC = c++
 CFLAG = -Wall -Wextra -Werror -std=c++98
 
 SRC =	main.cpp \
-		PmergeMe.cpp
+		PmergeMe.cpp \
+		Vector.cpp \
+		List.cpp 
 
 OBJ_DIR = obj
 OBJ =	$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
