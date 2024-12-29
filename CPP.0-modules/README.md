@@ -10,8 +10,8 @@ The CPP modules are a series of projects that cover various topics in C++ progra
 | [Module 02](./02) | _Ad-hoc polymorphism, operator overloading, Orthodox Canonical class form_ | October 2024  |
 | [Module 03](./03) | _Inheritance_ | October 2024  |
 | [Module 04](./04) | _Subtype polymorphism, abstract classes, interfaces_ | October 2024  |
-| [Module 05](./05) | _Repetition, Exceptions_ | -- |
-| [Module 06](./06) | _C++ casts_ | -- |
-| [Module 07](./07) | _C++ templates_ | -- |
-| [Module 08](./08) | _Templated containers, iterators, algorithms_ | -- |
-| [Module 09](./09) | _STL_ | -- |
+| [Module 05](./05) | _Repetition, Exceptions_ | December 2024 |
+| [Module 06](./06) | _C++ casts_ | December 2024 |
+| [Module 07](./07) | _C++ templates_ | December 2024 |
+| [Module 08](./08) | _Templated containers, iterators, algorithms_ | December 2024 |
+| [Module 09](./09) | _STL_ | December 2025 |
