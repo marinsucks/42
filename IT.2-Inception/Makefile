@@ -6,12 +6,11 @@
 #    By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 16:03:40 by mbecker           #+#    #+#              #
-#    Updated: 2024/12/09 14:48:10 by mbecker          ###   ########.fr        #
+#    Updated: 2024/12/29 16:52:51 by mbecker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#!ENV =	srcs/.env
-ENV =	srcs/example.env
+ENV =	srcs/.env
 DATA =	/home/mbecker/data
 
 VOLUMES =	$(DATA)/mariadb_data \
@@ -19,14 +18,12 @@ VOLUMES =	$(DATA)/mariadb_data \
 			$(DATA)/prometheus_data
 
 all: $(ENV) $(VOLUMES)
-	@echo "$(RED)REMOVE US:$(NC)"
-	@echo "$(LRED)  - $(RED)example.env$(LRED) (replace with .env in Makefile and docker-compose.yml)$(NC)"
 	@echo "$(YELLOW)Starting containers...$(NC)"
 	@docker compose -f srcs/docker-compose.yml up -d --build
 
 $(ENV):
-	@echo "$(YELLOW)Retrieving environment file...$(NC)"
-	@cp /home/mbecker/inception.env srcs/.env
+	@echo "$(YELLOW)Retrieving environment file (example.env)...$(NC)"
+	@cp example.env srcs/.env
 
 $(VOLUMES):
 	@echo "$(YELLOW)Creating volumes directories...$(NC)"
@@ -42,12 +39,12 @@ clean: down
 	@docker container prune -f
 
 fclean: clean
-	@echo "$(RED)Removing images...$(NC)"
+	@echo "$(RED)Removing all images...$(NC)"
+	@docker rmi $$(docker images -q)
 	@docker system prune -f
-	@echo "$(RED)Removing volumes...$(NC)"
+	@echo "$(RED)Removing inception volumes...$(NC)"
 	@docker compose -f srcs/docker-compose.yml down -v
 	@echo "$(RED)Removing environment file from srcs...$(NC)"
-	@if [ -f srcs/.env ]; then cp srcs/.env $$HOME/inception.env; fi
 	@rm -f srcs/.env
 
 erase_data:

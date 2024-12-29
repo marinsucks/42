@@ -7,7 +7,7 @@ services:
     build: 
       context: requirements/mariadb
       dockerfile: Dockerfile
-    env_file: example.env
+    env_file: .env
     restart: on-failure
     networks:
       - inception_net
@@ -21,7 +21,7 @@ services:
     build:
       context: requirements/nginx
       dockerfile: Dockerfile
-    env_file: example.env
+    env_file: .env
     depends_on:
       - wordpress
     restart: on-failure
@@ -37,7 +37,7 @@ services:
     build: 
       context: requirements/wordpress
       dockerfile: Dockerfile
-    env_file: example.env
+    env_file: .env
     depends_on:
       - mariadb
     restart: on-failure
@@ -68,7 +68,7 @@ services:
     build: 
       context: requirements/vsftpd
       dockerfile: Dockerfile
-    env_file: example.env
+    env_file: .env
     restart: on-failure
     networks:
       - inception_net
@@ -85,7 +85,7 @@ services:
     build: 
       context: requirements/prometheus
       dockerfile: Dockerfile
-    env_file: example.env
+    env_file: .env
     restart: on-failure
     networks:
       - inception_net
@@ -99,7 +99,7 @@ services:
     build: 
       context: requirements/grafana
       dockerfile: Dockerfile
-    env_file: example.env
+    env_file: .env
     restart: on-failure
     networks:
       - inception_net
