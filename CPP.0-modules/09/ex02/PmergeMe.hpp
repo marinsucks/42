@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:48:04 by mbecker           #+#    #+#             */
-/*   Updated: 2024/12/20 15:24:30 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/12/26 11:05:04 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include "Vector.hpp"
 #include "List.hpp"
 
-#define UINT_MAX 4294967295
+#define MACRO_UINT_MAX 4294967295
 
 class PmergeMe
 {
@@ -32,7 +32,7 @@ class PmergeMe
 		double	_vec_time;
 		double	_list_time;
 
-		bool isPositiveInt(const std::string & str) const;
+		void checkPositiveInt(const std::string & str) const;
 		void parse(const std::string &arg);
 
 	public:
@@ -44,6 +44,11 @@ class PmergeMe
 		void run(const std::string &arg);
 
 		class InvalidCharacter : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+		class OutOfIntBounds : public std::exception
 		{
 			public:
 				virtual const char *what() const throw();

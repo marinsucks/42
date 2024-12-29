@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:44:53 by mbecker           #+#    #+#             */
-/*   Updated: 2024/12/20 17:39:04 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/12/29 12:21:58 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <iostream>
 #include <ctime>
 #include <algorithm>
+
+#include "colors.hpp"
 
 template <typename Container>
 class AContainer

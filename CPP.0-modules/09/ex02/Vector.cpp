@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:48:05 by mbecker           #+#    #+#             */
-/*   Updated: 2024/12/20 17:57:11 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/12/29 13:38:24 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,33 +46,23 @@ std::pair<std::vector<int>, std::vector<int> > Vector::divide(std::vector<int> &
 
 void Vector::merge(std::vector<int> &left, std::vector<int> &right, std::vector<int> &ctr)
 {
-	int i = 0;
+	std::vector<int>::iterator it_left = left.begin();
+	std::vector<int>::iterator it_right = right.begin();
+	std::vector<int>::iterator it_ctr = ctr.begin();
 
-	for (std::vector<int>::iterator lv = left.begin(); lv < left.end(); lv++)
+	while (it_left != left.end() && it_right != right.end())
 	{
-		for (std::vector<int>::iterator rv = right.begin(); rv < right.end(); rv++)
-		{
-			if (*lv < *rv)
-				break;
-			ctr[i++] = *rv;
-			right.erase(rv); // erase current and returns the next iterator
-		}
-		ctr[i++] = *lv;
-	}
-
-	for (std::vector<int>::iterator lv = right.begin(); lv < right.end(); lv++)
-	{
-		std::vector<int>::iterator rv = lv + 1;
-		if (rv == right.end())
-		{
-			ctr[i++] = *lv;
-			break;
-		}
-		if (*lv < *rv)
-			ctr[i++] = *lv;
+		if (*it_left < *it_right)
+			*(it_ctr++) = *(it_left++);
 		else
-			ctr[i++] = *rv;
+			*(it_ctr++) = *(it_right++);
 	}
+
+	while (it_left != left.end())
+		*(it_ctr++) = *(it_left++);
+
+	while (it_right != right.end())
+		*(it_ctr++) = *(it_right++);
 }
 
 void Vector::mergeSort(std::vector<int> &ctr)

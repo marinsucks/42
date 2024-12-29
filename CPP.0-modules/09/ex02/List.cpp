@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:48:05 by mbecker           #+#    #+#             */
-/*   Updated: 2024/12/20 17:59:36 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/12/29 13:50:36 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,33 +47,23 @@ std::pair<std::list<int>, std::list<int> > List::divide(std::list<int> &ctr)
 
 void List::merge(std::list<int> &left, std::list<int> &right, std::list<int> &ctr)
 {
-	//std::cout << "Merging lists of size " << left.size() << " and " << right.size() << std::endl;
-	ctr.clear();
-	std::list<int>::iterator lv = left.begin();
-	std::list<int>::iterator rv = right.begin();
+	std::list<int>::iterator it_left = left.begin();
+	std::list<int>::iterator it_right = right.begin();
+	std::list<int>::iterator it_ctr = ctr.begin();
 
-	while (lv != left.end() && rv != right.end())
+	while (it_left != left.end() && it_right != right.end())
 	{
-		if (*lv <= *rv)
-			ctr.push_back(*(lv++));
+		if (*it_left < *it_right)
+			*(it_ctr++) = *(it_left++);
 		else
-			ctr.push_back(*(rv++));
+			*(it_ctr++) = *(it_right++);
 	}
 
-	
-	lv = lv == left.end() ? rv : lv;
-		
-	while (lv != right.end() && rv != left.end())
-	{
-		rv = lv;
-		++rv;
-		if (*lv < *rv)
-			ctr.push_back(*(lv));
-		else
-			ctr.push_back(*(rv));
-		++lv;
-	}
+	while (it_left != left.end())
+		*(it_ctr++) = *(it_left++);
 
+	while (it_right != right.end())
+		*(it_ctr++) = *(it_right++);
 }
 
 void List::mergeSort(std::list<int> &ctr)

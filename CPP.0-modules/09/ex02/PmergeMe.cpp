@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 17:30:11 by mbecker           #+#    #+#             */
-/*   Updated: 2024/12/20 17:40:35 by mbecker          ###   ########.fr       */
+/*   Updated: 2024/12/29 14:16:57 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,19 @@ PmergeMe & PmergeMe::operator=(const PmergeMe & copy)
 PmergeMe::~PmergeMe()
 {}
 
-bool PmergeMe::isPositiveInt(const std::string & token) const
+void PmergeMe::checkPositiveInt(const std::string & token) const
 {
-	if (token.empty())
-		return false;
-
 	for (size_t i = 0; i < token.size(); ++i)
 	{
 		if (i == 0 && (token[i] == '+'))
 			continue;
 		if (!std::isdigit(token[i]))
-			return false;
+			throw InvalidCharacter();
 	}
 
 	long long int value = atoll(token.c_str());
-	if (value < 0 || value > UINT_MAX)
-		return false;
-
-	return true;
+	if (value < 0 || value > MACRO_UINT_MAX)
+		throw OutOfIntBounds();
 }
 
 void PmergeMe::parse(const std::string &arg)
@@ -63,14 +58,15 @@ void PmergeMe::parse(const std::string &arg)
 	
 	while (iss >> token)
 	{
-		if (!isPositiveInt(token))
-			throw InvalidCharacter();
+		checkPositiveInt(token);
 		value = atoi(token.c_str());
 		if (_vec.contains(value))
 			throw DuplicateValue();
 		_vec.push_back(value);
 		_list.push_back(value);
 	}
+	if (_vec.size() == 0)
+		throw EmptyInputString();
 }
 
 
@@ -80,41 +76,41 @@ void PmergeMe::run(const std::string &arg)
 	{
 		parse(arg);
 
-		std::cout << "Before [vector]:\t";
+		std::cout << "Before:\t" << LGREY;
 		_vec.print();
-		std::cout << "Before [list]:\t";
-		_list.print();
+		std::cout << NC;
 
 		_vec_time = _vec.sort();
-		std::cout << "After [vector]:\t";
-		_vec.print();
-
-		_list_time = _list.sort();
-		std::cout << "After [list]:\t";
-		_list.print();
-
 		if (!_vec.isSorted())
 			throw std::runtime_error("Vector is not sorted");
+
+		_list_time = _list.sort();
 		if (!_list.isSorted())
 			throw std::runtime_error("List is not sorted");
 
+		std::cout << "After:\t" << LGREY;
+		_vec.print();
+		std::cout << NC << std::endl;
 
-		std::cout << std::endl;
-
-		std::cout << "Time to process a range of\t" << _vec.size() << " elements" 
-			<< " with std::vector:\t" << _vec_time << " ms" << std::endl;
-		std::cout << "Time to process a range of\t" << _list.size() << " elements" 
-			<< " with std::list:\t" << _list_time << " ms" << std::endl;
+		std::cout << "Time to process a range of " << LYELLOW << _vec.size() << NC << " elements" 
+			<< " with " << LMAGENTA << "std::vector" << NC << ": " << RED << _vec_time << " ms" << NC << std::endl;
+		std::cout << "Time to process a range of " << LYELLOW << _list.size() << NC << " elements" 
+			<< " with " << LCYAN << "std::list" << NC << ":   " << RED << _list_time << " ms" << NC << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cerr << "Error: " << e.what() << ". Exiting program." << std::endl;
 	}
 }
 
 const char *PmergeMe::InvalidCharacter::what() const throw()
 {
 	return "invalid character detected";
+}
+
+const char *PmergeMe::OutOfIntBounds::what() const throw()
+{
+	return "number out of unsigned integer bounds detected";
 }
 
 const char *PmergeMe::DuplicateValue::what() const throw()
