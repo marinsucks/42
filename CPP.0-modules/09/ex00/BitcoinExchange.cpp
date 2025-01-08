@@ -133,15 +133,15 @@ void BitcoinExchange::printConversion(std::string date, double value)
 
 void BitcoinExchange::parseInput()
 {
+	_current_line = 1;
 	std::ifstream infile(_file.c_str());
-	if (!infile.is_open() || !infile.good())
+	if (!infile.is_open() || !infile.good() || infile.peek() == std::ifstream::traits_type::eof())
 		throw InvalidFile();
 
 	std::string line;
 	std::string date;
 	double value;
 
-	_current_line = 1;
 	std::getline(infile, line);
 	if (!line.find(_fs))
 		throw InvalidFormat();
@@ -155,7 +155,7 @@ void BitcoinExchange::parseInput()
 			date = line.substr(0, line.find(_fs));
 			checkDate(date);
 			value = std::strtod(line.substr(line.find(_fs) + _fs.length()).c_str(), NULL);
-			if (value < 0)
+			if (value < 0 || value > 1000)
 				throw InvalidValue();
 			printConversion(date, value);
 		}
@@ -168,7 +168,7 @@ void BitcoinExchange::parseInput()
 
 	if (_current_line < 2)
 		throw InvalidFile();
-	
+
 	infile.close();
 }
 

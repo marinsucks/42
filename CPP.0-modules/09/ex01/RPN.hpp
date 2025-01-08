@@ -6,7 +6,7 @@
 /*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:14:15 by mbecker           #+#    #+#             */
-/*   Updated: 2024/12/18 17:48:22 by mbecker          ###   ########.fr       */
+/*   Updated: 2025/01/08 13:48:19 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@
 #include <cstdlib>
 #include <sstream>
 
-#define INT_MAX 2147483647
-#define INT_MIN -2147483648
+#ifndef INT_MAX
+# define INT_MAX 2147483647
+#endif
+
+#ifndef INT_MIN
+# define INT_MIN -2147483648
+#endif
 
 class RPN
 {
