@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.hpp                                         :+:      :+:    :+:   */
+/*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbecker <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mbecker <mbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:28:39 by mbecker           #+#    #+#             */
-/*   Updated: 2024/07/09 16:08:48 by mbecker          ###   ########.fr       */
+/*   Updated: 2025/01/16 12:15:53 by mbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#ifndef	COLORS_HPP
-# define COLORS_HPP
+#ifndef	COLORS_H
+# define COLORS_H
 
 # define RED "\033[1;31m"
 # define LRED "\033[0;31m"
