@@ -12,11 +12,11 @@ Hey there! I'm Marin, a student at [42 Paris](https://42.fr) since Nov 2023. Thi
 
 
 ## Web Projects
-- 🌐 [**webserv**](./https://github.com/42mates/webserv/) - A NGINX-inspired HTTP web server.
+- 🤵‍♂️ [**webserv**](./https://github.com/42mates/webserv/) - A NGINX-inspired HTTP web server.
 
 
 ## System Projects
-- 🐚 Shell: 
+- 🐚 **Shell**: 
 	- [**minishell**](https://github.com/42mates/minishell/) - A basic reproduction of `bash` (group project with [@ku-alexej](https://github.com/ku-alexej)).
 	- [**pipex**](./system/pipex/) - A program reproducing the pipe '`|`' behavior.
 
@@ -24,13 +24,13 @@ Hey there! I'm Marin, a student at [42 Paris](https://42.fr) since Nov 2023. Thi
 
 - ♻️ [**push_swap**](./system/push_swap/) - A sorting algorithm following restricted operations.
 
-- 🕹️ Graphics:
+- 🕹️ **Graphics**:
 	- [**cub3D**](https://github.com/42mates/cub3D) - A 3D game using raycasting techniques, inspired by the classic game Wolfenstein 3D (group project with [@ku-alexej](https://github.com/ku-alexej)).
 	- [**so_long**](./system/so_long/) - A Pokemon Heartgold-like desktop minigame using the X11 framework.  
 
 - 📦 [**CPP Modules**](./system/cpp-modules/) - Ten modules to learn Object-Oriented Programming through C++98.
 
-- 🐣 Basic C functions:
+- 🐣 **Basic C functions**:
 	- [**Piscine**](./system/piscine/) - Gotta start somewhere! I learned the basics of C and Shell.
 	- [**libft**](./system/libft/) - I built my own basic C library.
 	- [**ft_printf**](./system/printf/) - I created my own implementation of printf.
