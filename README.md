@@ -4,7 +4,7 @@ Hey there! I'm Marin, a student at [42 Paris](https://42.fr) since Nov 2023. Thi
 
 ## C++ Projects
 
-- 🌐 [**webserv**](./https://github.com/42mates/webserv/) - 🚧 In progress! 🚧 A NGINX-inspired HTTP web server.
+- 🌐 [**webserv**](./https://github.com/42mates/webserv/) - A NGINX-inspired HTTP web server.
 
 - 📦 [**CPP Modules**](./CPP.0-modules/) - Ten modules to learn Object-Oriented Programming through C++98.
 
