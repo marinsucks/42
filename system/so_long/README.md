@@ -1,8 +1,8 @@
 ## Introduction
 
-"So Long" is a 2D game developed in C using the MiniLibX graphics library. This document provides an overview of the game from a developer's perspective, including how to build and run the game, the structure of the code, and how to extend the game with new features.
+`so_long` is a 2D game developed in C using the MiniLibX graphics library. This document provides an overview of the game from a developer's perspective, including how to build and run the game, the structure of the code, and how to extend the game with new features.
 <div align="center">
-	<img src="../.misc/so_long.gif" alt="so_long.gif">
+	<img src="../../.utils/media/so_long.gif" alt="so_long.gif">
 </div>
 
 ## Building the Game
@@ -42,7 +42,7 @@ mkdir 42-so_long && cd 42-so_long
 git init && git remote add -f origin git@github.com:marinsucks/42.git
 
 # Configure Git to only fetch so_long from the remote repository.
-git config core.sparseCheckout true && echo "C.4-so_long" >> .git/info/sparse-checkout
+git config core.sparseCheckout true && echo "system/so_long" >> .git/info/sparse-checkout
 
 git pull origin master
 ```

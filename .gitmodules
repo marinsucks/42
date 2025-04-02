@@ -1,9 +1,9 @@
-[submodule "C.8-minishell"]
-	path = C.8-minishell
+[submodule "system/minishell"]
+	path = system/minishell
 	url = https://github.com/42mates/minishell/
-[submodule "C.9-cub3D"]
-	path = C.9-cub3D
-	url = https://github.com/42mates/cub3D
-[submodule "CPP.1-webserv"]
-	path = CPP.1-webserv
-	url = git@github.com:42mates/webserv.git
+[submodule "system/cub3D"]
+	path = system/cub3D
+	url = https://github.com/42mates/cub3D/
+[submodule "web/webserv"]
+	path = web/webserv
+	url = https://github.com/42mates/webserv/

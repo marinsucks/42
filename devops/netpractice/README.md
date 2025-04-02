@@ -21,5 +21,5 @@ The evaluation for this project focuses only in levels 6 and above.
 
 The following image shows an example of a network configuration for level 10.
 <div align="center">
-	<img src="../.misc/NetPractice.png" alt="NetPractice example">
+	<img src="../../.utils/media/NetPractice.png" alt="NetPractice example">
 </div>

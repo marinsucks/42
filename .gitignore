@@ -8,10 +8,10 @@ archives/
 
 /*** EXECUTABLE FILES ***/
 *.out
-push_swap
+push_swap/push_swap
 checker
-so_long
-pipex
+so_long/so_long
+pipex/pipex
 philo
 ex0*/ex0*
 
