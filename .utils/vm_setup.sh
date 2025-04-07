@@ -13,13 +13,12 @@ fi
 echo -e "${YELLOW}Updating package list...${NC}"
 sudo apt-get update
 
-echo -e "${YELLOW}Installing utils...${NC}"
+echo -e "${YELLOW}Installing basic packages...${NC}"
 sudo apt-get install -yq \
 	curl \
 	wget \
 	git \
 	ssh
-
 sudo systemctl enable ssh
 
 echo -e "${YELLOW}Installing Docker...${NC}"
@@ -46,5 +45,12 @@ sudo apt-get install -yq code
 echo -e "${YELLOW}Installing oh-my-zsh...${NC}"
 sudo apt-get install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+chsh -s $(which zsh) $USER
 
-echo -e "${GREEN}Setup complete! Please reboot for docker changes to be applied.${NC}"
+echo -e "${YELLOW}Setting theme to dark...${NC}"
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+
+echo -e "${YELLOW}Setting dock apps...${NC}"
+gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'code.desktop']"
+
+echo -e "${GREEN}Setup complete! Please reboot for changes to be applied.${NC}"
