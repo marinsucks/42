@@ -117,17 +117,17 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/mbecker/data/mariadb_data
+      device: volumes/mariadb_data
       o: bind
   wordpress_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/mbecker/data/wordpress_data
+      device: volumes/wordpress_data
       o: bind
   prometheus_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/mbecker/data/prometheus_data
+      device: volumes/prometheus_data
       o: bind
