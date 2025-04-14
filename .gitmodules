@@ -7,3 +7,6 @@
 [submodule "web/webserv"]
 	path = web/webserv
 	url = https://github.com/42mates/webserv/
+[submodule "web/transcendence"]
+	path = web/transcendence
+	url = https://github.com/42mates/transcendence
