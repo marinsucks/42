@@ -2,6 +2,13 @@
 
 Hey there! I'm Marin, a student at [42 Paris](https://42.fr) since Nov 2023. This repo is here to share all of my projects made at 42. 
 
+## Web Projects
+
+- 🚀 [**transcendence**](./https://github.com/42mates/transcendence/) - 🚧 In progress ! 🚧 A full-stack single page web app for the PONG game.
+
+- 🤵‍♂️ [**webserv**](./https://github.com/42mates/webserv/) - A NGINX-inspired HTTP web server.
+
+
 ## DevOps Projects
 
 - 🐳 [**Inception**](./devops/inception/) - I containerized a full wordpress application using `docker compose`.
@@ -9,10 +16,6 @@ Hey there! I'm Marin, a student at [42 Paris](https://42.fr) since Nov 2023. Thi
 - 🌱 [**Born2beroot**](./devops/born2beroot/) - I set up a secure Linux server environment following strict guidelines.
 
 - 🛜 [**NetPractice**](./devops/netpractice/) - I learnt how to connect small-scale networks using IPs and masks.
-
-
-## Web Projects
-- 🤵‍♂️ [**webserv**](./https://github.com/42mates/webserv/) - A NGINX-inspired HTTP web server.
 
 
 ## System Projects
@@ -47,3 +50,12 @@ Here's a cool meme for you to look at :
 <div align="center">
 	<img src="./.utils/media/meme-line42.jpg" alt="Cool Meme">
 </div>-->
+
+• C, C++
+• Bash scripting
+• Docker & Docker Compose (multi-service orchestration, containerization)  
+• Linux server security & configuration (Born2beRoot, firewall, SSH hardening)  
+• Web servers & HTTP (NGINX, custom webserv in C++, Fastify)  
+• Node.js & TypeScript (API development, logging, frontend integration)  
+• SQL & NoSQL basics (MariaDB, SQLite, Redis)  
+• Frontend tooling (Tailwind CSS, basic HTML/JS, build pipelines)
