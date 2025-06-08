@@ -50,12 +50,3 @@ Here's a cool meme for you to look at :
 <div align="center">
 	<img src="./.utils/media/meme-line42.jpg" alt="Cool Meme">
 </div>-->
-
-• C, C++
-• Bash scripting
-• Docker & Docker Compose (multi-service orchestration, containerization)  
-• Linux server security & configuration (Born2beRoot, firewall, SSH hardening)  
-• Web servers & HTTP (NGINX, custom webserv in C++, Fastify)  
-• Node.js & TypeScript (API development, logging, frontend integration)  
-• SQL & NoSQL basics (MariaDB, SQLite, Redis)  
-• Frontend tooling (Tailwind CSS, basic HTML/JS, build pipelines)
