@@ -4,9 +4,9 @@ Hey there! I'm Marin, a student at [42 Paris](https://42.fr) since Nov 2023. Thi
 
 ## Web Projects
 
-- 🚀 [**transcendence**](./https://github.com/42mates/transcendence/) - 🚧 In progress ! 🚧 A full-stack single page web app for the PONG game.
+- 🚀 [**transcendence**](https://github.com/42mates/transcendence/) - A full-stack single page web app for the PONG game.
 
-- 🤵‍♂️ [**webserv**](./https://github.com/42mates/webserv/) - A NGINX-inspired HTTP web server.
+- 🤵‍♂️ [**webserv**](https://github.com/42mates/webserv/) - A NGINX-inspired HTTP web server.
 
 
 ## DevOps Projects
